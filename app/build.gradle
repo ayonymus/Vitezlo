@@ -1,0 +1,45 @@
+
+apply plugin: 'com.android.application'
+
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.2"
+
+    defaultConfig {
+        applicationId "org.szvsszke.vitezlo"
+        minSdkVersion 14
+        targetSdkVersion 23
+    }
+
+    signingConfigs {
+        release {
+            storeFile file(release_keystore)
+            storePassword release_keystore_password
+            keyAlias release_keystore_alias
+            keyPassword release_keystore_key_password
+        }
+    }
+
+    buildTypes {
+        debug {
+            // note: you need to appy your own api key
+            resValue "string", "google_maps_api_key", debug_maps_key
+        }
+        release {
+            // note: you need to appy your own api key and keystore
+            resValue "string", "google_maps_api_key", release_maps_key
+            signingConfig signingConfigs.release
+        }
+    }
+    lintOptions {
+        abortOnError true
+    }
+}
+
+dependencies {
+    compile 'com.android.support:support-v4:23.0.0'
+    compile 'com.android.support:appcompat-v7:23.0.0'
+    compile 'com.google.android.gms:play-services-maps:8.4.0'
+    compile 'com.google.maps.android:android-maps-utils:0.4.3'
+}

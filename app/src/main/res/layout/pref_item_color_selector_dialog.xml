@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="10dp" >
+
+    <TextView
+        android:id="@+id/textViewR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="10dp"
+        android:text="R"
+        android:textColor="@color/gray"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/textViewG"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewR"
+        android:layout_marginTop="10dp"
+        android:text="G"
+        android:textColor="@color/gray"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/textViewB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewG"
+        android:layout_marginTop="10dp"
+        android:text="B"
+        android:textColor="@color/gray"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <SeekBar
+        android:id="@+id/seekBarR"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/textViewR"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/textViewR" />
+
+    <SeekBar
+        android:id="@+id/SeekBarG"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/textViewG"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/textViewG" />
+
+    <SeekBar
+        android:id="@+id/SeekBarB"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/textViewB"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/textViewB" />
+
+    <View
+        android:id="@+id/colorPreview"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignBottom="@+id/SeekBarB"
+        android:layout_toRightOf="@+id/seekBarR"
+        android:background="@color/blue" />
+
+    <TextView
+        android:id="@+id/textViewMin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/textViewMax"
+        android:layout_alignLeft="@+id/SeekBarB"
+        android:layout_below="@+id/SeekBarB"
+        android:text="0"
+        android:textColor="@color/gray"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+    
+
+
+    <TextView
+        android:id="@+id/textViewMax"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/SeekBarB"
+        android:layout_below="@+id/SeekBarB"
+        android:text="255"
+        android:textColor="@color/gray"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+</RelativeLayout>

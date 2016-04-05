@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <ScrollView
+            android:id="@+id/scrollView1"
+            android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+	>
+            
+    <LinearLayout
+        android:id="@+id/viewControlContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+        
+        <ImageView
+            android:id="@+id/imageViewMapTypeSwitch"
+            android:layout_width="40dp"
+            android:layout_height="40dp"            
+            android:src="@drawable/map_switch"/>
+        
+        <ImageView
+            android:id="@+id/imageViewHikeEnabled"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"      
+            android:src="@drawable/path_enabled"/>
+
+        <ImageView
+            android:id="@+id/ImageViewCheckPointsEnabled"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/cp_enabled" />
+        
+        <ImageView
+            android:id="@+id/imageViewUserHikeEnabled"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"      
+            android:src="@drawable/my_hike"/>
+
+        <ImageView
+            android:id="@+id/imageViewSightsEnabled"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/sights_enabled" />
+
+        <ImageView
+            android:id="@+id/imageViewTourstPathEnabled"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/tpath_enabled" />
+
+    </LinearLayout>
+    
+    </ScrollView>
+    
+
+</LinearLayout>

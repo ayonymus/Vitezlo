@@ -1,0 +1,35 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--      
+    <item
+	    android:id="@+id/hikeSpinner"
+	    android:showAsAction="always"
+	    android:orderInCategory="1"
+	    android:actionViewClass="android.widget.Spinner"
+	    android:title="@string/track_spinner"/>
+	 
+    <item 
+        android:id="@+id/spinnerUnlocked"
+        android:showAsAction="ifRoom"
+        android:orderInCategory="2"
+        android:icon="@drawable/ic_menu_unlock"
+        android:title="@string/spinner_unlocked"        
+        />
+    
+    <item 
+        android:id="@+id/spinnerLocked"
+        android:showAsAction="ifRoom"
+        android:orderInCategory="3"
+        android:icon="@drawable/ic_menu_lock"
+        android:title="@string/spinner_locked"
+        android:visible="false"        
+        />
+    -->
+    <item 
+        android:id="@+id/screenInfo"
+        android:showAsAction="ifRoom"
+        android:icon="@drawable/ic_action_about"
+        android:title="@string/screen_info"
+        android:orderInCategory="1"
+        />    
+	    
+</menu>

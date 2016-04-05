@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/infoBoxContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="@color/transparent_white"
+        android:padding="10dp"
+        android:visibility="visible"
+        android:animateLayoutChanges="true"
+         >
+        
+        <Spinner
+	        android:id="@+id/hikeSpinner" 
+	        android:layout_height="wrap_content" 
+	        android:layout_width="wrap_content" 
+	        android:scrollbars="none" />
+        
+        <TextView
+            android:id="@+id/infoBoxTitle"
+            android:layout_below="@+id/hikeSpinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title_activity_main"
+            android:textColor="#000000"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+        
+        <LinearLayout 
+            android:id="@+id/infoBoxContents"
+            android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_below="@+id/infoBoxTitle"
+	        android:orientation="vertical"
+	        android:animateLayoutChanges="true"
+     	>
+            
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imageViewCollapseExpand"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/infoBoxContents"
+            android:src="@drawable/ic_action_collapse" />
+
+        <ImageView
+            android:id="@+id/imageViewLock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/infoBoxTitle"
+            android:layout_toRightOf="@+id/infoBoxTitle"
+            android:src="@drawable/ic_menu_lock" />
+
+        <ImageView
+            android:id="@+id/imageViewUnlock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"            
+            android:layout_toRightOf="@+id/hikeSpinner"
+            android:layout_alignBottom="@+id/hikeSpinner"
+            android:src="@drawable/ic_menu_unlock" />
+
+    </RelativeLayout>

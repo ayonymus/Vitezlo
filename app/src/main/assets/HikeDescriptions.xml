@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+	Description
+	This file contains the markup of the tracks.
+	track tag: describes a hiking track
+	name: name of track
+	length: length of track in kms
+	id: unique id of a track
+	type: type of hike
+		0 - walking track
+		1 - bicicle track
+		2 - combined track (walk & canoe)
+		3 - special (eg. child competitions)
+	badge: name of picture file containing the track's badge 
+	route: name of the appropriately preapred gpx file containgin the track
+	checkpoints: ids of CheckPoints on track as defined in the CheckPoints.gpx
+		in appropriate order
+	starting: starting interval of hike
+	entryFee: entry fee
+	date: date of hike
+	other: other text or description
+	
+ -->
+<!-- 
+	Magyar leírás
+	Ebben a fájlban vannak az egyes távok leírásai.
+	Egy távot a track tag ír le.
+	name: táv neve
+    type: túra típusa.
+        0 - gyalogos
+        1 - kerékpár
+        2 - kombinált
+        3 - speciális, pl kocsmatúra, játékos vetélkedő, stb.
+	length: táv hossza
+	id: egyedi azonosító kód a fájéon belül
+	badge: a táv kitűzőjének a képe
+	route: a távot leíró előre elkészített gpx fájl
+	checkpoints: a táv ellenőrző pontjainak kódja ahogy az a
+		CheckPoints.gpx-ben definiálva van, sorrendbe rakva
+	starting: indítás intervalluma
+	entryFee: indulás összege
+	date: a túra időpontja
+	other: megjegyzések
+ -->
+<trackdata>
+    <track
+        name="Pincejáró"
+        length="7.2"
+        id="Pince"
+        type="3"
+        badge="pince.png"
+        route="Pincejaro.gpx"        
+        checkpoints="0,30,39,36,40,41,0"
+        starting="17:00-19:00"
+        leveltime="3"
+        entryFee="700-900 Ft"
+        date="2015.04.24."
+        other=""
+        >
+    </track>
+    <track
+        name="10km"
+        length="10.7"
+        elev="167"
+        id="10"
+        type="0"
+        badge="10km.png"        
+        route="10.gpx"        
+        checkpoints="0,1,2,13,0"
+        starting="7:00-10:30"
+        leveltime="5"
+        entryFee="550-750 Ft"
+        date="2015.04.25."
+        other=""
+        >
+    </track>
+    <track
+        name="15km A"
+        length="17.3"
+        elev="387"
+        id="15A"
+        type="0"
+        badge="15km.png"
+        route="15A.gpx"
+        checkpoints="0,2,8,16,0"
+        starting="7:00-10:30"
+        leveltime="7"
+        entryFee="550-750 Ft"
+        date="2015.04.25."
+        other=""
+        >
+    </track>
+    <track
+        name="15km B"
+        length="19"
+        elev="424"
+        id="15B"
+        type="0"
+        badge="15km.png"
+        route="15B.gpx"
+        checkpoints="0,4,5,4,0"
+        starting="7:00-10:30"
+        leveltime="8"
+        entryFee="550-750 Ft"
+        date="2015.04.25."
+        other=""
+        >
+    </track>
+    <track
+        name="25km A"
+        length="24"
+        elev="437"
+        id="25A"
+        type="0"
+        badge="25km.png"
+        route="25A.gpx"
+        checkpoints="0,1,7,8,2,13,0"
+        starting="7:00-10:30"
+        leveltime="8"
+        entryFee="650-850 Ft"
+        date="2015.04.25."
+        other=""
+        >
+    </track>
+	<track
+        name="25km B"
+        length="24.4"
+        elev="495"
+        id="25B"
+        type="0"
+        badge="25km.png"
+        route="25B.gpx"
+        checkpoints="0,4,14,9,6,1,0"
+        starting="7:00-10:30"
+        leveltime="8"
+        entryFee="650-850 Ft"
+        date="2015.04.25."
+        other=""
+        >
+    </track>
+    <track
+        name="25km Kombi"
+        length="23.8 + 3"
+        elev="470"
+        id="25K"
+        type="2"
+        badge="25kombi.png"
+        route="25K.gpx"
+        checkpoints="0,2,1,6,11,7,2,0"
+        starting="7:00-11:00"
+        leveltime="8"
+        entryFee="750-950 Ft"
+        date="2015.04.25."
+        other="Kenuzási lehetőség!"
+        >
+    </track>
+    <track
+        name="35km"
+        length="35.2"
+        elev="729"
+        id="35"
+        type="0"
+        badge="35km.png"
+        route="35.gpx"
+        checkpoints="0,4,5,9,10,6,1,0"
+        starting="6:00-8:30"
+        leveltime="10"
+        entryFee="850-1050 Ft"
+        date="2015.04.25."
+        other=""
+        >
+    </track>
+    <track
+        name="50km"
+        length="48.2"
+        elev="1024"
+        id="50"
+        type="0"
+        badge="50km.png"
+        route="50.gpx"
+        checkpoints="0,3,4,5,9,10,6,11,8,2,0"
+        starting="6:00-8:30"
+        leveltime="12"
+        date="2015.04.25."
+        entryFee="850-1050 Ft"
+        other="">
+    </track>
+    <track
+        name="50km kerékpár"
+        length="55.7"
+        elev="350"
+        id="50k"
+        type="1"
+        badge="50ker.png"
+        route="50ker.gpx"
+        checkpoints="0,12,8,15,7,0"
+        starting="7:00-11:00"
+        leveltime="7"
+        date="2015.04.25."
+        entryFee="650-850 Ft"
+        other="Kerékpáros táv">
+    </track>
+    <track
+        name="80km kerékpár"
+        length="80.5"
+        elev="558"
+        id="80k"
+        type="1"
+        badge="80ker.png"
+        route="80ker.gpx"
+        checkpoints="0,12,8,15,7,6,11,0"
+        starting="7:00-10:30"
+        leveltime="9"
+        date="2015.04.25."
+        entryFee="750-950 Ft"
+        other="Kerékpáros táv">
+    </track>
+</trackdata>

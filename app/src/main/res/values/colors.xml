@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="fire_brick_red">#B0171F</color>
+    <color name="dark_green">#004E00</color>
+    <color name="light_green">#4efc4e</color>
+    <color name="transparent_white">#b5ffffff</color>
+    <color name="white">#ffffff</color>
+    <color name="blue">#0000ff</color>
+    <color name="orange">#ff9900</color>
+    <color name="gray">#606060</color>
+    <color name="light_gray">#909090</color>
+</resources>

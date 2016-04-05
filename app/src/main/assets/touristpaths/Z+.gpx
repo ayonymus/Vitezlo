@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<gpx version="1.0" creator="Viking -- http://viking.sf.net/"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns="http://www.topografix.com/GPX/1/0"
+xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/GPX/1/0/gpx.xsd">
+<trk>
+  <name>Z+</name>
+  <desc>Z+</desc>
+  <trkseg>
+  <trkpt lat="48.419209753253206" lon="20.678761178167584">
+  </trkpt>
+  <trkpt lat="48.419127867837553" lon="20.678519779356243">
+  </trkpt>
+  <trkpt lat="48.419092265441783" lon="20.678439313085796">
+  </trkpt>
+  <trkpt lat="48.418946295358438" lon="20.67834275356126">
+  </trkpt>
+  <trkpt lat="48.418825246678736" lon="20.678176456602337">
+  </trkpt>
+  <trkpt lat="48.418754041438376" lon="20.677977973135235">
+  </trkpt>
+  <trkpt lat="48.418622311480803" lon="20.677817040594341">
+  </trkpt>
+  <trkpt lat="48.418536864839311" lon="20.677693658979656">
+  </trkpt>
+  <trkpt lat="48.418479900331867" lon="20.677634650381329">
+  </trkpt>
+  <trkpt lat="48.418529744279361" lon="20.677527362020733">
+  </trkpt>
+  <trkpt lat="48.418611630658461" lon="20.677371793897869">
+  </trkpt>
+  <trkpt lat="48.418665034747683" lon="20.677076750906231">
+  </trkpt>
+  <trkpt lat="48.41868995663679" lon="20.676728063734295">
+  </trkpt>
+  <trkpt lat="48.418704197710795" lon="20.676416927488567">
+  </trkpt>
+  <trkpt lat="48.418718438780807" lon="20.675971680792095">
+  </trkpt>
+  <trkpt lat="48.418721999047683" lon="20.67584293475938">
+  </trkpt>
+  <trkpt lat="48.418736240112715" lon="20.675676637800457">
+  </trkpt>
+  </trkseg>
+</trk>
+</gpx>
