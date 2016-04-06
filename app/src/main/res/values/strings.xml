@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Vitezlo 2016</string>
+    <string name="app_name">Vitézlő</string>
     <string name="title_activity_main">Vitézlő</string>
 
     <string name="settings">Beállítások</string>
