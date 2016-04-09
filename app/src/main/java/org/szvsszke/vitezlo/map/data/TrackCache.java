@@ -58,7 +58,7 @@ public class TrackCache extends AbstractDataCache<HashMap<TrackDescription, Trac
 							" could not be parsed", e);
 				} catch (IOException e) {
 					Log.e(TAG, "ioerror", e);
-				}						
+				}
 				return hike;
 				
 				}
@@ -66,9 +66,13 @@ public class TrackCache extends AbstractDataCache<HashMap<TrackDescription, Trac
 				@Override
 				protected void onPostExecute(Track result) {
 					super.onPostExecute(result);
-					Log.d(TAG, "postExecute");
-					mCache.put(trackDescription, result);					
-					notifyListener(result);
+					if(result == null) {
+						Log.e(TAG, "Track could not be loaded: " + trackDescription.getName());
+
+					} else {
+						mCache.put(trackDescription, result);
+						notifyListener(result);
+					}
 				}
 		};
 				
