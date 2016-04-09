@@ -199,7 +199,7 @@
         leveltime="7"
         date="2016.04.23."
         entryFee="900 Ft"
-        other="Rakacán kenuzási lehetőség">
+        other="Rakaca Stégnél kenuzási lehetőség">
     </track>
     <track
         name="80km kerékpár"
@@ -214,6 +214,6 @@
         leveltime="9"
         date="2016.04.23."
         entryFee="1100 Ft"
-        other="Rakacán kenuzási lehetőség">
+        other="Rakaca Stégnél kenuzási lehetőség">
     </track>
 </trackdata>
