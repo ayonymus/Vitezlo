@@ -5,149 +5,121 @@ xmlns="http://www.topografix.com/GPX/1/0"
 xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/GPX/1/0/gpx.xsd">
 <wpt lat="48.390704999999997" lon="20.790775">
   <name>Abod</name>
-  <cmt>7:40 - 18:35</cmt>
+  <cmt>7:40 - 15:00</cmt>
   <desc>8</desc>
 </wpt>
-<wpt lat="48.398824439882745" lon="20.72604563087225" hidden="hidden">
-  <name>Brikett &#xfc;zem</name>
-  <desc>33</desc>
+<wpt lat="48.537936000000002" lon="20.735859000000001">
+  <name>B&#xf3;dvaszilas</name>
+  <cmt>8:10 - 13:20</cmt>
+  <desc>12</desc>
 </wpt>
 <wpt lat="48.427810000000001" lon="20.750364999999999">
   <name>Csehi</name>
-  <cmt>7:20 - 17:40</cmt>
+  <cmt>7:20 - 18:00</cmt>
   <desc>1</desc>
-</wpt>
-<wpt lat="48.405375999999997" lon="20.727267999999999" hidden="hidden">
-  <name>Kast&#xe9;ly pince</name>
-  <desc>36</desc>
 </wpt>
 <wpt lat="48.406751" lon="20.731487000000001">
   <name>Dobog pince</name>
-  <desc>41</desc>
-</wpt>
-<wpt lat="48.311458000000002" lon="20.747638999999999">
-  <name>Edel&#xe9;ny</name>
-  <cmt>7:30 - 11:50</cmt>
-  <desc>12</desc>
-</wpt>
-<wpt lat="48.399934999999999" lon="20.730688000000001" hidden="hidden">
-  <name>Erd&#xe9;szet</name>
-  <desc>34</desc>
-</wpt>
-<wpt lat="48.391806000000003" lon="20.710125999999999" hidden="hidden">
-  <name>Kishegy pince</name>
-  <desc>39</desc>
-</wpt>
-<wpt lat="48.411791999999998" lon="20.729859000000001">
-  <name>Forr&#xe1;s barlang</name>
-  <cmt>7:50 - 18:20</cmt>
-  <desc>13</desc>
+  <cmt>18:40 - 21:10</cmt>
+  <desc>21</desc>
 </wpt>
 <wpt lat="48.419742999999997" lon="20.778534000000001">
   <name>Galv&#xe1;cs</name>
-  <cmt>7:55 - 17:45</cmt>
+  <cmt>7:30 - 19:20</cmt>
   <desc>7</desc>
 </wpt>
-<wpt lat="48.407989999999998" lon="20.727098999999999" hidden="hidden">
-  <name>Hadh&#xe1;zy h&#xe1;z</name>
-  <desc>38</desc>
+<wpt lat="48.558235000000003" lon="20.838426999999999">
+  <name>H&#xed;dv&#xe9;gard&#xf3;</name>
+  <cmt>8:45 - 14:25</cmt>
+  <desc>17</desc>
 </wpt>
-<wpt lat="48.398196357547803" lon="20.875873738856317">
-  <name>Irota</name>
-  <cmt>8:35 - 14:25</cmt>
-  <desc>15</desc>
-</wpt>
-<wpt lat="48.409291847117601" lon="20.724328984580993">
+<wpt lat="48.409292000000001" lon="20.724329000000001">
   <name>Iskola</name>
   <cmt>6:00 - 20:30</cmt>
   <desc>0</desc>
 </wpt>
+<wpt lat="48.405417" lon="20.726938000000001">
+  <name>Kast&#xe9;ly</name>
+  <cmt>7:15 - 12:43</cmt>
+  <desc>19</desc>
+</wpt>
 <wpt lat="48.384957" lon="20.759741999999999">
   <name>Kecskefarm</name>
-  <cmt>8:10 - 14:50</cmt>
-  <desc>16</desc>
+  <cmt>8:10 - 16:45</cmt>
+  <desc>15</desc>
 </wpt>
-<wpt lat="48.392124000000003" lon="20.716812000000001">
-  <name>Kis-hegy</name>
-  <cmt>06:13 -9:10</cmt>
-  <desc>3</desc>
+<wpt lat="48.391806000000003" lon="20.710125999999999">
+  <name>Kishegy borospince</name>
+  <cmt>18:10 - 20:05</cmt>
+  <desc>20</desc>
 </wpt>
-<wpt lat="48.408940551851551" lon="20.723203159868717">
-  <name>K&#xe9;kfest&#x151; h&#xe1;z</name>
-  <desc>30</desc>
-</wpt>
-<wpt lat="48.433129000000001" lon="20.695767">
+<wpt lat="48.433656999999997" lon="20.698464000000001">
   <name>K&#xf6;z&#xe9;p-hegy</name>
-  <cmt>7:30-13:20</cmt>
-  <desc>14</desc>
+  <cmt>8:30-16:10</cmt>
+  <desc>13</desc>
 </wpt>
 <wpt lat="48.411476" lon="20.676966">
   <name>Lip&#xf3;c</name>
-  <cmt>6:23 - 15:28</cmt>
+  <cmt>6:23 - 17:26</cmt>
   <desc>4</desc>
 </wpt>
 <wpt lat="48.484979000000003" lon="20.735168000000002">
   <name>Martonyi kolostorrom</name>
-  <cmt>7:50-14:30</cmt>
+  <cmt>7:45-13:45</cmt>
   <desc>10</desc>
 </wpt>
 <wpt lat="48.440061999999998" lon="20.794029999999999">
   <name>Meszes</name>
-  <cmt>8:20 - 18:30</cmt>
+  <cmt>7:50 - 18:30</cmt>
   <desc>11</desc>
 </wpt>
-<wpt lat="48.471896000000001" lon="20.691509">
+<wpt lat="48.472141000000001" lon="20.687107999999998">
   <name>Perkupa</name>
-  <cmt>Vezetett</cmt>
-  <desc>100</desc>
+  <cmt>7:30 - 11:40</cmt>
+  <desc>16</desc>
 </wpt>
 <wpt lat="48.451148000000003" lon="20.763728">
   <name>Rakaca st&#xe9;g</name>
-  <cmt>7:55-16:50</cmt>
+  <cmt>7:50-18:10</cmt>
   <desc>6</desc>
 </wpt>
-<wpt lat="48.405417" lon="20.726938000000001" hidden="hidden">
-  <name>Sport egyes&#xfc;let</name>
-  <desc>37</desc>
+<wpt lat="48.462197000000003" lon="20.837247999999999">
+  <name>Rakacaszend</name>
+  <cmt>9:05 - 17:10</cmt>
+  <desc>3</desc>
 </wpt>
-<wpt lat="48.410272999999997" lon="20.718354999999999" hidden="hidden">
-  <name>Sport &#xf6;lt&#xf6;z&#x151;</name>
-  <desc>31</desc>
+<wpt lat="48.407434000000002" lon="20.727101000000001">
+  <name>Strand r&#xe9;t</name>
+  <cmt>19:11 - 22:00</cmt>
+  <desc>23</desc>
 </wpt>
 <wpt lat="48.449356000000002" lon="20.736837000000001">
   <name>Szalonna reform&#xe1;tus templom</name>
-  <cmt>7:20-15:00</cmt>
+  <cmt>8:00-14:45</cmt>
   <desc>9</desc>
 </wpt>
-<wpt lat="48.403825655150321" lon="20.728359036147594" hidden="hidden">
-  <name>Szoci&#xe1;lis szolg&#xe1;ltat&#xf3;</name>
-  <desc>35</desc>
+<wpt lat="48.522675" lon="20.67492">
+  <name>Sz&#xf6;gliget</name>
+  <cmt>7:45 - 12:20</cmt>
+  <desc>14</desc>
 </wpt>
-<wpt lat="48.520702999999997" lon="20.676666000000001">
-  <name>Sz&#xf6;gliget - Holl&#xf3;</name>
-  <cmt>Vezetett</cmt>
-  <desc>101</desc>
-</wpt>
-<wpt lat="48.402448999999997" lon="20.662302">
-  <name>Telekesi k&#xe1;polna</name>
-  <cmt>6:30-12:00</cmt>
-  <desc>150</desc>
-</wpt>
-<wpt lat="48.400297999999999" lon="20.721831999999999" hidden="hidden">
-  <name>Vas&#xfa;t&#xe1;llom&#xe1;s</name>
-  <desc>32</desc>
+<wpt lat="48.491698" lon="20.818901">
+  <name>Tornabarakony</name>
+  <cmt>8:40 - 16:10 </cmt>
+  <desc>18</desc>
 </wpt>
 <wpt lat="48.407702" lon="20.734414999999998">
   <name>V&#xe1;r</name>
-  <cmt>7:05 - 20:10</cmt>
+  <cmt>7:05 - 12:45</cmt>
   <desc>2</desc>
 </wpt>
-<wpt lat="48.406337999999998" lon="20.729696000000001" hidden="hidden">
-  <name>V&#xe1;rallja &#xfa;ti vend&#xe9;gh&#xe1;z</name>
-  <desc>40</desc>
+<wpt lat="48.407702" lon="20.734414999999998">
+  <name>V&#xe1;r pince</name>
+  <cmt>18:55 - 21:30</cmt>
+  <desc>22</desc>
 </wpt>
-<wpt lat="48.442718134686267" lon="20.690144053646115">
-  <name>&#xd6;rd&#xf6;gg&#xe1;t</name>
+<wpt lat="48.442717999999999" lon="20.690144">
+  <name>&#xd6;rd&#xf6;g-g&#xe1;t</name>
   <cmt>6:50 - 13:50</cmt>
   <desc>5</desc>
 </wpt>
