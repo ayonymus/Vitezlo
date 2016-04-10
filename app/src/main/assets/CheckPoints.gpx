@@ -8,7 +8,7 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
   <cmt>7:40 - 15:00</cmt>
   <desc>8</desc>
 </wpt>
-<wpt lat="48.537936000000002" lon="20.735859000000001">
+<wpt lat="48.537118999999997" lon="20.731197999999999">
   <name>B&#xf3;dvaszilas</name>
   <cmt>8:10 - 13:20</cmt>
   <desc>12</desc>
@@ -28,7 +28,7 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
   <cmt>7:30 - 19:20</cmt>
   <desc>7</desc>
 </wpt>
-<wpt lat="48.558235000000003" lon="20.838426999999999">
+<wpt lat="48.561723000000001" lon="20.838048000000001">
   <name>H&#xed;dv&#xe9;gard&#xf3;</name>
   <cmt>8:45 - 14:25</cmt>
   <desc>17</desc>
@@ -68,12 +68,12 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
   <cmt>7:45-13:45</cmt>
   <desc>10</desc>
 </wpt>
-<wpt lat="48.440061999999998" lon="20.794029999999999">
+<wpt lat="48.439193000000003" lon="20.795359999999999">
   <name>Meszes</name>
   <cmt>7:50 - 18:30</cmt>
   <desc>11</desc>
 </wpt>
-<wpt lat="48.472141000000001" lon="20.687107999999998">
+<wpt lat="48.471004000000001" lon="20.689888">
   <name>Perkupa</name>
   <cmt>7:30 - 11:40</cmt>
   <desc>16</desc>
@@ -83,7 +83,7 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
   <cmt>7:50-18:10</cmt>
   <desc>6</desc>
 </wpt>
-<wpt lat="48.462197000000003" lon="20.837247999999999">
+<wpt lat="48.462003000000003" lon="20.835481999999999">
   <name>Rakacaszend</name>
   <cmt>9:05 - 17:10</cmt>
   <desc>3</desc>
@@ -98,12 +98,12 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
   <cmt>8:00-14:45</cmt>
   <desc>9</desc>
 </wpt>
-<wpt lat="48.522675" lon="20.67492">
+<wpt lat="48.522249000000002" lon="20.676234000000001">
   <name>Sz&#xf6;gliget</name>
   <cmt>7:45 - 12:20</cmt>
   <desc>14</desc>
 </wpt>
-<wpt lat="48.491698" lon="20.818901">
+<wpt lat="48.491857000000003" lon="20.818659">
   <name>Tornabarakony</name>
   <cmt>8:40 - 16:10 </cmt>
   <desc>18</desc>
