@@ -191,6 +191,9 @@
 	<string name="phone_instruction">Tap phone number to start call</string>
 	<string name="show_cp_open">Show Check Point opening times</string>
 	<string name="start_anyway">Start anyways</string>
+	<string name="location_permission_reason">Location permission is essential for the integrated GoogleMaps module. We do not collect any location or other data.</string>
+	<string name="no_permission_desc">Permissions essential for core app functionality are not granted, therefore only this page is displayed. Please grant Location access.</string>
+	<string name="no_permission_title">Location Permission Problem</string>
 
 </resources>
 

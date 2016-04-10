@@ -72,7 +72,6 @@ public class NoGoogleServicesFragment extends Fragment{
 		 
 		            //Finish the activity so they can't circumvent the check
 		            getActivity().finish();
-					
 				}
 			});
 		}

@@ -66,8 +66,7 @@ public class ExportFragment extends Fragment {
 			
 			@Override
 			public void onClick(View v) {
-				Log.d(TAG, "mBtnExport clicked");
-				// check of there is anyhing to be exported
+				// check if there is anyhing to be exported
 				if (!GpsDatabase.getInstance(getActivity()).isEmpty()) {
 					// disable button while export is taking place
 					mBtnEport.setEnabled(false);
@@ -81,6 +80,11 @@ public class ExportFragment extends Fragment {
 
 			}
 		});
+
+		if(!PermissionHelper.hasWriteExternal(getContext())) {
+			mBtnEport.setEnabled(false);
+            PermissionHelper.requestWritePermission(getActivity());
+		}
 		
 		mSpinNames = (Spinner) inflated.findViewById(R.id.spinnerUserHikeNames);
 		setupSpinner();
@@ -151,7 +155,7 @@ public class ExportFragment extends Fragment {
 				// export to a temporary location
 				try {
 					
-					String filename = mETFileName.getText().toString();
+					String filename = params[0];
 					if (!filename.endsWith(suffix)) {
 						filename.concat(suffix);
 					}
@@ -160,8 +164,7 @@ public class ExportFragment extends Fragment {
 					
 					FileOutputStream fos = new FileOutputStream (tmp);
 					String version = Utilities.getAppVersion(getActivity());
-					XMLTools.writeToGPX(track, fos, version, 
-							mETDescription.getText().toString());
+					XMLTools.writeToGPX(track, fos, version, params[0]);
 					
 					// verify file is created					
 					if(tmp.exists()) {
@@ -234,7 +237,7 @@ public class ExportFragment extends Fragment {
 				Log.d(TAG, getString(resultID));
 			};
 			
-		}.execute("");
+		}.execute(mETFileName.getText().toString());
 				
 	}
 	

@@ -7,6 +7,7 @@ import org.szvsszke.vitezlo.gpslogger.GpsLoggerServiceReplyHandler;
 import org.szvsszke.vitezlo.gpslogger.GpsLoggerServiceReplyHandler.HandleReply;
 import org.szvsszke.vitezlo.gpslogger.IGpsLoggerServiceMessages;
 
+import android.Manifest;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -26,7 +27,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
@@ -40,7 +41,7 @@ import android.widget.Toast;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 
-public class MainActivity extends ActionBarActivity implements 
+public class MainActivity extends AppCompatActivity implements
 		IGpsLoggerServiceMessages {
 
 	/* constants*/
@@ -114,10 +115,6 @@ public class MainActivity extends ActionBarActivity implements
         		R.drawable.ic_action_about};
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList = (ListView ) findViewById(R.id.navigation_drawer);
-        /*
-        mDrawerList.setAdapter(new ArrayAdapter<String>(this,
-        		R.layout.item_drawer_list, mFragmentTitles));
-        */
         mDrawerList.setAdapter(new NavDrawerAdapter(mFragmentTitles, icons, this));
         mDrawerList.setOnItemClickListener(new DrawerItemClickListener());        
         
@@ -140,9 +137,7 @@ public class MainActivity extends ActionBarActivity implements
         
         mDrawerLayout.setDrawerListener(mDrawerToggle);
         if (savedInstanceState == null) {
-        	// start with map fragment
-        	setCurrentFragment(0);
-            
+            setCurrentFragment(0);
         }
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);         
         // extend navigation drawer on first run
@@ -160,11 +155,6 @@ public class MainActivity extends ActionBarActivity implements
 		inflater.inflate(R.menu.hike_menu_items, menu);		
 		
 		return super.onCreateOptionsMenu(menu);
-	}
-	
-	@Override
-	protected void onPause() {	
-		super.onPause();	
 	}
 	
 	// listener for action bar
@@ -212,7 +202,7 @@ public class MainActivity extends ActionBarActivity implements
 
             @Override
             public void run() {
-                doubleBackToExitPressedOnce=false;                       
+                doubleBackToExitPressedOnce = false;
             }
         }, 2000); // wait 2 seconds
     }
@@ -239,51 +229,59 @@ public class MainActivity extends ActionBarActivity implements
 	// select content
 	public void setCurrentFragment(int position) {
 		Log.d(TAG, "selectFragment: " + position);
+
+        // check permissions
+        if (!PermissionHelper.hasCoarse(this) || !PermissionHelper.hasFineLocation(this)) {
+            Log.d(TAG, "No perissions, start askpermission fragment");
+            // start with map fragment
+            mCurrentFragment = new AskPermissionFragment();
+        } else {
 		
 		switch (position) {
-		// start logging fragment
-		case 1:
-			mCurrentFragment = new MapPreferncesFragment();
-			break;
-		case 2:			
-			mCurrentFragment = new GpsLoggerFragment();
-			break;
-		case 3:
-			mCurrentFragment = new GpsLoggerPrefernceFragment();
-			break;
-		case 4:
-			mCurrentFragment = new ExportFragment();
-			break;
-		case 5: 
-			mCurrentFragment = new GeneralInfoFragment();
-			break;
-		default:
-			// launch map
-			// check if it had already been instantiated
-			if (mMapFragment == null) {
-			
-				// check if google services are available			
-				boolean servicesAvailable = (GooglePlayServicesUtil
-						.isGooglePlayServicesAvailable(this) == 
-						ConnectionResult.SUCCESS);
-				if(servicesAvailable && isGoogleMapsInstalled()) {					
-					mMapFragment = new MapFragment();
-					// keep reference so the parsed xml data doesn't have to
-					// be loaded again
-					mCurrentFragment = mMapFragment;
-				}else {
-					mCurrentFragment = new NoGoogleServicesFragment();
-				}
-			}
-			else {
-				mCurrentFragment = mMapFragment;
-			}
+            // start logging fragment
+            case 1:
+                mCurrentFragment = new MapPreferncesFragment();
+                break;
+            case 2:
+                mCurrentFragment = new GpsLoggerFragment();
+                break;
+            case 3:
+                mCurrentFragment = new GpsLoggerPrefernceFragment();
+                break;
+            case 4:
+                mCurrentFragment = new ExportFragment();
+                break;
+            case 5:
+                mCurrentFragment = new GeneralInfoFragment();
+                break;
+            default:
+                // launch map
+                // check if it had already been instantiated
+                if (mMapFragment == null) {
+
+                    // check if google services are available
+                    boolean servicesAvailable = (GooglePlayServicesUtil
+                            .isGooglePlayServicesAvailable(this) ==
+                            ConnectionResult.SUCCESS);
+                    if (servicesAvailable && isGoogleMapsInstalled()) {
+                        mMapFragment = new MapFragment();
+                        // keep reference so the parsed xml data doesn't have to
+                        // be loaded again
+                        mCurrentFragment = mMapFragment;
+                    } else {
+                        mCurrentFragment = new NoGoogleServicesFragment();
+                    }
+                } else {
+                    mCurrentFragment = mMapFragment;
+                }
+            }
 		}
 		
 		// begin transaction
 		FragmentTransaction fragTransaction = getSupportFragmentManager().beginTransaction();	
 		fragTransaction.replace(R.id.fragment_container, mCurrentFragment);
-		fragTransaction.commit();
+        fragTransaction.commitAllowingStateLoss();
+		//fragTransaction.commit();
 		
 		// udpate drawer
 		mDrawerList.setItemChecked(position, true);
@@ -417,7 +415,7 @@ public class MainActivity extends ActionBarActivity implements
 	@Override
 	public void requestStopService(Handler replyTo) {
 		sendRequest(GpsLoggerService.makeServiceRequest(
-				GpsLoggerService.REQ_STOP_LOGGING_GPS), replyTo);
+                GpsLoggerService.REQ_STOP_LOGGING_GPS), replyTo);
 		
 	}
 	
@@ -438,8 +436,28 @@ public class MainActivity extends ActionBarActivity implements
 			}
 		}));		
 	}
-	
-	private class LoggerHandler extends Handler {
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        if(requestCode == PermissionHelper.LOCATION_REQUEST) {
+            if (grantResults.length > 1){
+                if(grantResults[0] == PackageManager.PERMISSION_GRANTED &&
+                        grantResults[1] == PackageManager.PERMISSION_GRANTED) {
+                    setCurrentFragment(0);
+                }
+            }
+        }
+		// write permission
+		if(requestCode == PermissionHelper.WRITE_REQUEST) {
+			if (grantResults.length > 0){
+				if(grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+					setCurrentFragment(4);
+				}
+			}
+		}
+    }
+
+    private class LoggerHandler extends Handler {
 		
 		@Override
 		public void handleMessage(Message msg) {		

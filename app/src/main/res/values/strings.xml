@@ -25,22 +25,22 @@
 
 	<string name="vitezlo">Vitézlő</string>
 	<string name="choose_track">Válassz túrát!</string>
- 	<string name="distance_made">Megtett út: </string>
- 	<string name="time_elapsed">Eltelt idő: </string>
- 	<string name="av_speed">Átlag sebesség: </string>
- 	<string name="av_speed_short">Átl.seb.: </string>
- 	<string name="satellite_num">Érzékelhető műholdak:</string>
+	<string name="distance_made">Megtett út: </string>
+	<string name="time_elapsed">Eltelt idő: </string>
+	<string name="av_speed">Átlag sebesség: </string>
+	<string name="av_speed_short">Átl.seb.: </string>
+	<string name="satellite_num">Érzékelhető műholdak:</string>
 	<string name="connected">Csatlakoztatva</string>
 	<string name="error">Hiba</string>
 	<string name="disconnected_msg">Leválasztva. Kérlek, csatlakozz újra!</string>
 	<string name="please_wait">Kérlek, várj</string>
 	<string name="please_wait_retry">Adatok töltődnek, kérlek várj!</string>
 	<string name="contents_loaded">Adatok betöltve</string>
-	<string name="no_data">Nincs adat</string>	
+	<string name="no_data">Nincs adat</string>
 	<string name="path">Útvonal</string>
 	<string name="path_covered">Megett út</string>
 	<string name="user_path">Saját út</string>
-	
+
 	<string name="sights">Látnivalók</string>
 	<string name="my_location">Helyezetem</string>
 	<string name="zoom">Nagyítás</string>
@@ -48,12 +48,13 @@
 	<string name="checkpoints">Ellenőrzőpontok</string>
 	<string name="map_not_ready">A térkép még nem áll készen</string>
 	<string name="start_finish">Rajt/Cél</string>
-	<string name="cp">EP</string> <!-- short for checkpoint -->
-	
+	<string name="cp">EP</string>
+	<!-- short for checkpoint -->
+
 	<string name="reset">Alaphelyzet</string>
 	<string name="reset_detail">Alaphelyzetbe állítja az összes beállítást.</string>
 	<string name="reset_reassure">Valóban visszaállítod az alaphelyzetet?</string>
-	
+
 	<string name="length">Hossz: </string>
 	<string name="disclaimer">Az itt megjelenített adatok\ntájékoztató jellegűek!</string>
 	<string name="cancel">Mégse</string>
@@ -63,9 +64,9 @@
 	<string name="a">A </string>
 	<string name="time">Idő:</string>
 	<string name="elapsed_time">Eltelt idő:</string>
-	
+
 	<string name="back_to_exit">Kilépéshez érintsd meg mégegyszer a Vissza gombot</string>
-	
+
 	<string name="home_page">Weboldalunk</string>
 	<string name="home_page_link">http://www.szendroitura.hu/</string>
 	<string name="general_information">Információ</string>
@@ -93,7 +94,7 @@
 	<string name="off">Ki</string>
 	<string name="yes">Igen</string>
     <string name="no">Nem</string>
-		
+
 	<string name="report_error">Hibajelentés</string>
 	<string name="report_error_desc">Segíts nekünk a hibák jelzésével!</string>
 	<string name="report_error_question">Szeretnél jelenteni egy hibát?</string>
@@ -103,16 +104,16 @@
 	    írd be a hiba típusát, leírását! Köszönjük! :)
 	</string>
 	<string name="stop">Állj!</string>
-	<string name="hike_settings">Túra beállítások</string>	
+	<string name="hike_settings">Túra beállítások</string>
 	<string name="send_email">Email küldése...</string>
 	<string name="gps_accuracy">Gps átlag pontossága: </string>
 	<string name="points_recorded">Rögzített pontok: </string>
 	<string name="log_as">Mentés neve: </string>
-	
+
 	<string name="screen_info">Infó</string>
 	<string name="spinner_locked">Rögzítve</string>
 	<string name="spinner_unlocked">Feloldva</string>
-	
+
 	<string name="logging">Naplózás</string>
 	<string name="logging_preferences">Naplózás beállítások</string>
 	<string name="log_state_running">Naplózás fut</string>
@@ -129,22 +130,22 @@
 	<string name="logger_dont_show_warning">Vettem, nem akarom látni többet ezt a figyelmeztetést.</string>
 	<string name="map">Térkép</string>
 	<string name="map_preferences">Térkép beállítások</string>
-	
+
 	<string name="drawer_open">Fiók nyitva</string>
 	<string name="drawer_close">Fiók zárva</string>
 	<string name="no_data_"> - </string>
-	
+
 	<string name="current_log">Mostani túra</string>
-	
+
 	<!-- problem with services -->
 	<string name="prob_services">Hiba a Google szolgáltatásokkal</string>
 	<string name="prob_no_service">A Google szolgáltatások nincsenek telepítve!</string>
 	<string name="prob_no_service_sol">A térkép nézet sajnos nem lesz elérhető ezen az eszköszön.</string>
 	<string name="prob_service_update_">A Google szolgáltatások frissítésre szorulnak!</string>
-	<string name="prob_service_update_sol">A Play Áruházon keresztül megteheted</string>
+	<string name="prob_service_update_sol">A Play Áruházon keresztül ezt megteheted</string>
 	<string name="prob_maps_missing">A Google Térkép nincs telepítve!</string>
 	<string name="prob_maps_missing_sol">Ide kattintva telepítheted a Térképet</string>
-	
+
 	<!-- MapPreferencesFragment -->
 	<string name="info_box_visible">Infó doboz</string>
 	<string name="info_box_visible_desc">Kapcsold ki, ha nem érdekelnek az információk, és már kiválasztottad a túrádat!</string>
@@ -157,7 +158,7 @@
 	<string name="my_hike_color_title">Saját utam színe</string>
 	<string name="center_to_track">Útvonal középre állítása</string>
 	<string name="center_to_track_desc">Túraútvonal kiválasztásakor középre állítja az útvonalat</string>
-	
+
 	<!-- LoggerPreferencesFragment -->
 	<string name="logger_prefs">Naplózási beállítások</string>
 	<string name="min_distance_between_fix">Minimum távolság a pontok között</string>
@@ -173,7 +174,7 @@
 	<string name="delete_user_hikes_success">GPS adatok törölve</string>
 	<string name="logger_restart_required">A változtatások érvénybe lépéséhez meg kell állítani és újra kell indítani a naplózást</string>
 	<string name="logger_must_be_stopped">A naplózás jelenleg is fut! Az adatok törléséhez le kell állítani a naplózást.</string>
-	
+
 	<!-- Export fragment -->
 	<string name="export_hike">Naplózott túra exportálása</string>
 	<string name="export_file_name">Fájl neve</string>
@@ -186,9 +187,9 @@
 	<string name="export_failed">Az exportálás nem sikerült</string>
 	<string name="export_success">A file exportálva az sdcard0\gpx könyvtárba.</string>
 	<string name="file_exists">A fájl már létezik!</string>
-	<string name="dir_not_created">A könyvtárat nem sikerült létrehozni!</string>	
+	<string name="dir_not_created">A könyvtárat nem sikerült létrehozni!</string>
 	<string name="export_no_data">Nincsenek naplózott túrák!</string>
-	
+
 	<!-- Info fragment -->
 	<string name="contact">Kapcsolat</string>
 	<string name="please_contact">Megkérünk, hogy ha segítségre van szükséged, vagy esetleg feladod a túrát, jelezz nekünk az alábbi elérhetőségek egyikén!</string>
@@ -199,8 +200,11 @@
 	<string name="homepage">http://www.szendroitura.hu/</string>
 	<string name="copy_to_clipboard">Másolás vágólapra</string>
 	<string name="copied"> átmásolva vágólapra</string>
-	
-	
-	
+
+    <!-- Permission fragment -->
+    <string name="no_permission_title">Pozíció engedély probléma</string>
+    <string name="no_permission_desc">Az app működéséhez elengedhetetlen engedélyeket nem adtál meg, ezért az alapfunkciók nem érhetők el. Kérlek, engedélyezd az app számára, hogy hozzáférjen a pozíció adatokhoz!</string>
+    <string name="location_permission_reason">A pozíció adatokra az integrált GoogleMaps térkép működéséhez van szükség. Semmilyen pozíció vagy egyéb adatot nem gyűjtünk a készülékről.</string>
+
 </resources>
 

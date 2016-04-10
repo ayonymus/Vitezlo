@@ -9,12 +9,14 @@ import org.szvsszke.vitezlo.gpslogger.IGpsLoggerServiceMessages;
 import org.szvsszke.vitezlo.map.model.Track;
 import org.szvsszke.vitezlo.utilities.Utilities;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -22,7 +24,9 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.preference.PreferenceManager;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.text.format.DateUtils;
 import android.text.format.Time;
 import android.util.Log;
@@ -38,91 +42,95 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class GpsLoggerFragment extends Fragment implements HandleReply{
-	
-	// GpsLoggerConstants
-	private final String TAG = getClass().getName();
-	
-	private static final String WARNING = "logger_warn";
-	
-	// ui
-	private TextView mTVAVGSpeed, mTVDistance, mTVPointsRecorded, 
-	mTVAvrgAccuracy, mTVLogName, mTVStatus;
-	
-	// chronometervt
-	private Chronometer mChronometer;
-	private View mTVTime;
-	// images as buttons
-	private ImageView mPlay;
-	private ImageView mPause;
-	
-	private LinearLayout mInfoContainer;	
-	
-	private GpsDatabase mDB;
-	
-	private LocationManager mLocManager;
+public class GpsLoggerFragment extends Fragment implements HandleReply {
+
+    // GpsLoggerConstants
+    private final String TAG = getClass().getName();
+
+    private static final String WARNING = "logger_warn";
+
+    // ui
+    private TextView mTVAVGSpeed, mTVDistance, mTVPointsRecorded,
+            mTVAvrgAccuracy, mTVLogName, mTVStatus;
+
+    // chronometervt
+    private Chronometer mChronometer;
+    private View mTVTime;
+    // images as buttons
+    private ImageView mPlay;
+    private ImageView mPause;
+
+    private LinearLayout mInfoContainer;
+
+    private GpsDatabase mDB;
+
+    private LocationManager mLocManager;
 
     private String mCurrentLogName = null;
     private boolean isRunning = false;
-    
+
     private GpsLoggerServiceReplyHandler mReplyHandler;
     private IGpsLoggerServiceMessages mMessages;
-    
+
     private LayoutInflater inflater;
 
-	private SharedPreferences mPrefs;
+    private SharedPreferences mPrefs;
 
-	private View elapsed;
+    private View elapsed;
 
-	private TextView mTVelapsed;
-    
-    
+    private TextView mTVelapsed;
+
+
     @Override
     public void onAttach(Activity activity) {
-    	super.onAttach(activity);
-    	// acquire reference to messenger from activity
-    	try {
+        super.onAttach(activity);
+        // acquire reference to messenger from activity
+        try {
             mMessages = ((IGpsLoggerServiceMessages) activity);
             //test if successful
-            if(mMessages == null) {
-            	Log.e(TAG, "onAttach, messenger refernce is null!"); 
+            if (mMessages == null) {
+                Log.e(TAG, "onAttach, messenger refernce is null!");
             }
-            
+
         } catch (ClassCastException e) {
             /** The activity does not implement the listener. */
-        	Log.e(TAG, "onAttach: ", e);
+            Log.e(TAG, "onAttach: ", e);
         }
-    	mReplyHandler = new GpsLoggerServiceReplyHandler(this);
+        mReplyHandler = new GpsLoggerServiceReplyHandler(this);
     }
-	
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
-		this.inflater = inflater;
-		View root = inflater.inflate(R.layout.fragment_logger, null);
-		//setup labels
-		mInfoContainer = (LinearLayout) root.findViewById(R.id.statContainer);
-		
-		setUpTextViews(inflater);
-		mPrefs = PreferenceManager
-				.getDefaultSharedPreferences(getActivity());		
-		// setup control buttons
-		mPlay = (ImageView) root.findViewById(R.id.imageViewPlay);
-		mPause = (ImageView) root.findViewById(R.id.imageViewPause);
-		LoggerButtonListener listener = new LoggerButtonListener();
-		mPlay.setOnClickListener(listener);
-		mPause.setOnClickListener(listener);
-		// status bar
-		mTVStatus = (TextView) root.findViewById(R.id.textViewStatus);
 
-		mDB = GpsDatabase.getInstance((getActivity().getApplicationContext()));
-		mLocManager = (LocationManager) getActivity().getSystemService(
-				Context.LOCATION_SERVICE);
-		mLocManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 
-				mPrefs.getInt(GpsLoggerConstants.PREF_MIN_TIME_BETWEEN_FIX, 5000),
-				mPrefs.getInt(GpsLoggerConstants.PREF_MIN_DISTANCE_BETWEEN_FIX, 5),
-				new LocListener());
-		// set default state
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        this.inflater = inflater;
+        View root = inflater.inflate(R.layout.fragment_logger, null);
+        //setup labels
+        mInfoContainer = (LinearLayout) root.findViewById(R.id.statContainer);
+
+        setUpTextViews(inflater);
+        mPrefs = PreferenceManager
+                .getDefaultSharedPreferences(getActivity());
+        // setup control buttons
+        mPlay = (ImageView) root.findViewById(R.id.imageViewPlay);
+        mPause = (ImageView) root.findViewById(R.id.imageViewPause);
+        LoggerButtonListener listener = new LoggerButtonListener();
+        mPlay.setOnClickListener(listener);
+        mPause.setOnClickListener(listener);
+        // status bar
+        mTVStatus = (TextView) root.findViewById(R.id.textViewStatus);
+
+        mDB = GpsDatabase.getInstance((getActivity().getApplicationContext()));
+        mLocManager = (LocationManager) getActivity().getSystemService(
+                Context.LOCATION_SERVICE);
+        if (PermissionHelper.hasCoarse(getContext())  &&
+                PermissionHelper.hasFineLocation(getContext())) {
+            mLocManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,
+                    mPrefs.getInt(GpsLoggerConstants.PREF_MIN_TIME_BETWEEN_FIX, 5000),
+                    mPrefs.getInt(GpsLoggerConstants.PREF_MIN_DISTANCE_BETWEEN_FIX, 5),
+                    new LocListener());
+        }
+
+        // set default state
 		handleReply(10, null, 0);
 		return root;
 	}

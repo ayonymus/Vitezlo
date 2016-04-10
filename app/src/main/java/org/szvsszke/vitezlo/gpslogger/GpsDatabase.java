@@ -319,7 +319,7 @@ public class GpsDatabase extends SQLiteOpenHelper {
 
 	/**
 	 * Calls the onDatasetChanged on all registered OnDatasetChangedListeners.
-	 * @param the change code stored in the interface
+	 * @param code stored in the interface
 	 * */
 	private void callback(int code){
 		for(OnDatasetChangedListener listener : mCallbacks) {
