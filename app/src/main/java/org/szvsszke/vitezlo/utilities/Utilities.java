@@ -31,43 +31,6 @@ public class Utilities {
 	private static final String TAG = Utilities.class.getName();
 	
 	/**
-	 * Creates a list of indices from the current track
-	 * that represent the checkpoints.
-	 * 
-	 * @param checkpoints a list of checkpoint coordinates
-	 * @param currentTrack the track being selected
-	 * 
-	 * @return the indices of checkpoints in currentTrack	 * 
-	 * */
-	public static List<Integer> findCheckPointsOnCurrentTrack (List<LatLng> checkpoints, 
-			List<LatLng> currentTrack) {		
-		/*
-		Log.d(TAG, "findCheckPointsOnCurrentTrack"); 
-		Log.d(TAG, "mTrack size: " + mCurrentTrack.size()); 
-		 */
-		ArrayList<Integer> checkPointsOnTrack = new ArrayList<Integer>();
-		int startNode = 0;
-				
-		// start from one
-		for (int i = 0; i < checkpoints.size() - 1; i++ ) {
-			//Log.d(TAG, "cp " + checkpoints.get(i).toString());
-			//int nearest = findNearestPointOnCurrentTrack(checkpoints.get(i), startNode, 
-			//		mCurrentTrack.size()-1);
-			int nearest = findNearestPointOnCurrentTrack(
-					currentTrack.subList(startNode, currentTrack.size()-1), checkpoints.get(i)); 
-			
-			//Log.d(TAG, "nearest: " + nearest);
-			checkPointsOnTrack.add(nearest);
-			startNode = nearest;
-		}
-		
-		// put in last one
-		checkPointsOnTrack.add(currentTrack.size() -1);
-		
-		return checkPointsOnTrack;
-	}
-	
-	/**
 	 * @param currentTrack The current hike track
 	 * @param currentLocation of the device 
 	 * @return the index of the nearest point in the mTrack list 
@@ -93,46 +56,19 @@ public class Utilities {
 	}
 	
 	/**
-	 * Make a list of checkpoints from the checkpoints map
-	 * @param cpmap the map of all checkpoints
-	 * @param description of the track that contains the checkpoint IDs
-	 * 
-	 * @return A List<LatLng> of checkpoints of a certain track
-	 * */
-	public static ArrayList<Waypoint> makeCheckPointList (HashMap<Integer, Waypoint> cpmap, 
-			TrackDescription desc) {
-		
-		if (cpmap == null) {
-			//Log.d(TAG, "makeCheckPointList() CheckPointMap is null!");
-			return null;
-		}
-		else if (desc == null) {
-			//Log.d(TAG, "makeCheckPointList() desc is null!");
-			return null;
-		}
-		
-		ArrayList<Waypoint> cplist = new ArrayList<Waypoint>();
-		for(int i: desc.getCheckPointIDs()) {
-			cplist.add(cpmap.get(i));
-		}
-		
-		return cplist;
-	}
-	
-	/**
 	 * This function transforms a list of checkpoints into a HashMap of Wayoints
 	 * @param checkPointList a list of waypoints with the appropriate id strored in the description
 	 * @return a nice mapping of checkpoints
 	 * */
-	public static HashMap<Integer, Waypoint> checkPointListToMap (ArrayList<Waypoint> checkPointList) {
+	public static HashMap<String, Waypoint> checkPointListToMap (ArrayList<Waypoint> checkPointList) {
 		if (checkPointList == null) {
 			return null;
 		}
-		HashMap<Integer, Waypoint> cpMap = new HashMap<Integer, Waypoint>();
+		HashMap<String, Waypoint> cpMap = new HashMap<>();
 		
 		for (Waypoint wp : checkPointList) {
 			try {
-				int key = Integer.parseInt(wp.getDescription());
+				String key = wp.getDescription();
 				cpMap.put(key, wp);
 			}
 			catch (Exception e){
@@ -173,7 +109,7 @@ public class Utilities {
 	
 	/**
 	 * Fetches the version information from the manifest file.
-	 * @param the context of the application
+	 * @param context of the activity
 	 * 
 	 * @return the versionName stored in the manifest file.
 	 * */

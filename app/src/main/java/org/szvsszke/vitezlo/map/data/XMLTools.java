@@ -73,7 +73,7 @@ public class XMLTools {
 	
 	/**
 	 * Method for parsing a prepared Gpx file into a Track object.
-	 * @param in InputStream that points to the appropriate resource.
+	 * @param is InputStream that points to the appropriate resource.
 	 * 
 	 * @return null if input stream is null, or the parsed track 
 	 * */
@@ -153,11 +153,11 @@ public class XMLTools {
 	/**
 	 *	Parses the wayoints (wpt tag) from a gpx file.	
 	 * 
-	 * @param input stream to a file
+	 * @param inputStream input to a file
 	 * @return The waypoints stored in the gpx in an arraylist.
 	 * */
 	
-	public static ArrayList<Waypoint> parseWaypoints (InputStream stream) {
+	public static ArrayList<Waypoint> parseWaypoints (InputStream inputStream) {
 		// parse checkpoints xml
 
 		DocumentBuilderFactory docBuilderFactory = DocumentBuilderFactory.newInstance();
@@ -167,9 +167,9 @@ public class XMLTools {
 		// access file
 		try { 
 			DocumentBuilder documentBuilder = docBuilderFactory.newDocumentBuilder();
-			//InputStream stream = context.getResources().getAssets().open(params[0]);
+			//InputStream inputStream = context.getResources().getAssets().open(params[0]);
 			//Log.d(TAG, "args[0] " + params[0]);
-			Document doc = documentBuilder.parse(stream);
+			Document doc = documentBuilder.parse(inputStream);
 			Element rootElement = doc.getDocumentElement();
 			
 			NodeList nodeList = rootElement.getElementsByTagName("wpt");
@@ -227,7 +227,7 @@ public class XMLTools {
 			    waypointList.add(wp);
 			}
 			
-			stream.close();
+			inputStream.close();
 		} catch (ParserConfigurationException e) {
 			e.printStackTrace();
 			
@@ -321,15 +321,9 @@ public class XMLTools {
 			    String date = attributes.getNamedItem("date").getTextContent();
 			    String levelTime = attributes.getNamedItem("leveltime").getTextContent();
 
-			    // convert to checkpoints to int[]
 			    String[] cps = checkpoints.split(",");
-			    int[] cpIDs = new int[cps.length];
-			    for (int k = 0; k < cps.length; k++) {
-			    	cpIDs[k] = Integer.parseInt(cps[k]);
-			    }
-			    
 			    TrackDescription track = new TrackDescription(name, id, type, routeFile, 
-			    		starting, entryFee, other, cpIDs, badge, date, length, levelTime);
+			    		starting, entryFee, other, cps, badge, date, length, levelTime);
 			    tracks.add(track);
 			}
 			

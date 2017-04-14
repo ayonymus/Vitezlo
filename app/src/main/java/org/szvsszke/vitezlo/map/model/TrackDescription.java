@@ -24,11 +24,11 @@ public class TrackDescription {
 	private String	other;
 	private String 	length;
 	private String 	levelTime;
-	private int[] 	checkPointIDs;
+	private String[] checkPointIDs;
 	
 	public TrackDescription(String name, String iD, int type, 
 			String routeFileName, String starting, String entryFee, String other,
-			int[] checkPointIDs, String badge, String date, String length, String levelTime) {
+			String[] checkPointIDs, String badge, String date, String length, String levelTime) {
 		this.name = name;
 		this.id = iD;
 		
@@ -201,15 +201,8 @@ public class TrackDescription {
 	/**
 	 * @return the checkPointIDs
 	 */
-	public int[] getCheckPointIDs() {
+	public String[] getCheckPointIDs() {
 		return checkPointIDs;
-	}
-
-	/**
-	 * @param checkPointIDs the checkPointIDs to set
-	 */
-	public void setCheckPointIDs(int[] checkPointIDs) {
-		this.checkPointIDs = checkPointIDs;
 	}
 
 	public String getLevelTime() {

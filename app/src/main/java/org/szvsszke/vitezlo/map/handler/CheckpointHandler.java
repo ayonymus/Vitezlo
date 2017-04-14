@@ -68,11 +68,11 @@ public class CheckpointHandler extends AbstractMapItemHandler {
 		else {			
 			mCheckpoints = new CheckPointCache(mParent);
 			mCheckpoints.setDataLoadedListener(
-					new DataLoadedListener<HashMap<Integer,Waypoint>>() {
+					new DataLoadedListener<HashMap<String, Waypoint>>() {
 
 				@Override
 				public void onDataLoaded(
-					HashMap<Integer, Waypoint> loaded) {
+					HashMap<String, Waypoint> loaded) {
 					markCheckPoints(description);						
 				}
 			});
@@ -112,8 +112,6 @@ public class CheckpointHandler extends AbstractMapItemHandler {
 	    if (mMarkers != null) {	    
 		    mMarkers.drawMarkers(checkPoints,
 		    		getCheckpointBitmaps(mCheckpoints.acquireData().size()));
-	    } else {
-	    	Log.d(TAG, "MarkerDrawer is null!");
 	    }
     }
     
