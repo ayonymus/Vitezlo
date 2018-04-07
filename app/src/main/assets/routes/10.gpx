@@ -4,26 +4,8 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 xmlns="http://www.topografix.com/GPX/1/0"
 xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/GPX/1/0/gpx.xsd">
 <trk>
-  <name>13,2km 2017 v&#xe9;gs&#x151; 10km</name>
+  <name>Vit&#xe9;zl&#x151; 10 km gyalogos 2018</name>
   <trkseg>
-  <trkpt lat="48.409245237999997" lon="20.724334129999999">
-    <ele>150.103027</ele>
-  </trkpt>
-  <trkpt lat="48.409358226000002" lon="20.724301692000001">
-    <ele>145.77709999999999</ele>
-  </trkpt>
-  <trkpt lat="48.409422264" lon="20.724584664999998">
-    <ele>144.81579600000001</ele>
-  </trkpt>
-  <trkpt lat="48.409417988999998" lon="20.724260034">
-    <ele>144.335205</ele>
-  </trkpt>
-  <trkpt lat="48.409316484000001" lon="20.724287694000001">
-    <ele>148.18042</ele>
-  </trkpt>
-  <trkpt lat="48.409332073999998" lon="20.724262968000001">
-    <ele>150.583618</ele>
-  </trkpt>
   <trkpt lat="48.409311539000001" lon="20.724292136999999">
     <ele>146.73840300000001</ele>
   </trkpt>
@@ -64,10 +46,6 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
     <ele>153.46765099999999</ele>
     <time>2007-11-02T08:32:10Z</time>
   </trkpt>
-  <trkpt lat="48.407835233999997" lon="20.729689411999999">
-    <ele>155.87097199999999</ele>
-    <time>2007-11-02T08:32:12Z</time>
-  </trkpt>
   <trkpt lat="48.408126672999998" lon="20.730538918000001">
     <ele>184.22985800000001</ele>
     <time>2007-11-02T08:33:07Z</time>
@@ -75,10 +53,6 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
   <trkpt lat="48.408204959999999" lon="20.730489967">
     <ele>168.368042</ele>
     <time>2007-11-02T08:33:16Z</time>
-  </trkpt>
-  <trkpt lat="48.408240331000002" lon="20.730530702999999">
-    <ele>167.88732899999999</ele>
-    <time>2007-11-02T08:33:33Z</time>
   </trkpt>
   <trkpt lat="48.408367820000002" lon="20.730585689000002">
     <ele>167.40673799999999</ele>
@@ -152,167 +126,7 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
     <ele>188.075073</ele>
     <time>2007-12-16T10:10:40Z</time>
   </trkpt>
-  <trkpt lat="48.408934269" lon="20.735632265">
-    <ele>189.997681</ele>
-    <time>2007-12-16T10:11:17Z</time>
-  </trkpt>
-  <trkpt lat="48.408838799000002" lon="20.735899982999999">
-    <ele>193.843018</ele>
-    <time>2007-12-16T10:11:29Z</time>
-  </trkpt>
-  <trkpt lat="48.408677363999999" lon="20.736064938999998">
-    <ele>196.24633800000001</ele>
-    <time>2007-12-16T10:11:42Z</time>
-  </trkpt>
-  <trkpt lat="48.408403778" lon="20.736060496">
-    <ele>200.09167500000001</ele>
-    <time>2007-12-16T10:11:59Z</time>
-  </trkpt>
-  <trkpt lat="48.408328677" lon="20.735947507999999">
-    <ele>202.97546399999999</ele>
-    <time>2007-12-16T10:12:05Z</time>
-  </trkpt>
-  <trkpt lat="48.408265225999997" lon="20.735760004999999">
-    <ele>208.74340799999999</ele>
-    <time>2007-12-16T10:12:16Z</time>
-  </trkpt>
-  <trkpt lat="48.408233207000002" lon="20.735495808">
-    <ele>213.06933599999999</ele>
-    <time>2007-12-16T10:12:33Z</time>
-  </trkpt>
-  <trkpt lat="48.408189620999998" lon="20.735256587999999">
-    <ele>214.99194299999999</ele>
-    <time>2007-12-16T10:12:46Z</time>
-  </trkpt>
-  <trkpt lat="48.408147794999998" lon="20.735135302">
-    <ele>215.472656</ele>
-    <time>2007-12-16T10:12:53Z</time>
-  </trkpt>
-  <trkpt lat="48.408118123000001" lon="20.735115437000001">
-    <ele>215.953247</ele>
-    <time>2007-12-16T10:12:56Z</time>
-  </trkpt>
-  <trkpt lat="48.407948138000002" lon="20.735137732999998">
-    <ele>216.43396000000001</ele>
-    <time>2007-12-16T10:13:09Z</time>
-  </trkpt>
-  <trkpt lat="48.407824085999998" lon="20.735205375">
-    <ele>216.91467299999999</ele>
-    <time>2007-12-16T10:13:20Z</time>
-  </trkpt>
-  <trkpt lat="48.407648737000002" lon="20.735316182999998">
-    <ele>216.43396000000001</ele>
-    <time>2007-12-16T10:13:34Z</time>
-  </trkpt>
-  <trkpt lat="48.407593081000002" lon="20.735379886">
-    <ele>216.91467299999999</ele>
-    <time>2007-12-16T10:13:43Z</time>
-  </trkpt>
-  <trkpt lat="48.407582771000001" lon="20.735392375">
-    <ele>216.91467299999999</ele>
-    <time>2007-12-16T10:13:59Z</time>
-  </trkpt>
-  <trkpt lat="48.407535832000001" lon="20.735479631">
-    <ele>223.163208</ele>
-    <time>2007-12-16T10:15:47Z</time>
-  </trkpt>
-  <trkpt lat="48.407487803999999" lon="20.735641737000002">
-    <ele>224.12451200000001</ele>
-    <time>2007-12-16T10:15:57Z</time>
-  </trkpt>
-  <trkpt lat="48.407421587000002" lon="20.735752461000001">
-    <ele>220.75988799999999</ele>
-    <time>2007-12-16T10:16:07Z</time>
-  </trkpt>
-  <trkpt lat="48.407421587000002" lon="20.735752545">
-    <ele>220.75988799999999</ele>
-    <time>2007-12-16T10:16:07Z</time>
-  </trkpt>
-  <trkpt lat="48.407406582999997" lon="20.735752797">
-    <ele>218.83727999999999</ele>
-    <time>2007-12-16T10:16:15Z</time>
-  </trkpt>
-  <trkpt lat="48.407480176999997" lon="20.735616590999999">
-    <ele>219.79858400000001</ele>
-    <time>2007-12-16T10:16:24Z</time>
-  </trkpt>
-  <trkpt lat="48.407602971000003" lon="20.735364044000001">
-    <ele>221.240601</ele>
-    <time>2007-12-16T10:16:41Z</time>
-  </trkpt>
-  <trkpt lat="48.407689136999998" lon="20.735309394000002">
-    <ele>221.721191</ele>
-    <time>2007-12-16T10:16:54Z</time>
-  </trkpt>
-  <trkpt lat="48.407836156000002" lon="20.735280225">
-    <ele>219.317993</ele>
-    <time>2007-12-16T10:17:06Z</time>
-  </trkpt>
-  <trkpt lat="48.407985019000002" lon="20.735237561000002">
-    <ele>214.99194299999999</ele>
-    <time>2007-12-16T10:17:18Z</time>
-  </trkpt>
-  <trkpt lat="48.408098342000002" lon="20.735209229999999">
-    <ele>215.953247</ele>
-    <time>2007-12-16T10:17:27Z</time>
-  </trkpt>
-  <trkpt lat="48.408140418999999" lon="20.735201603">
-    <ele>215.472656</ele>
-    <time>2007-12-16T10:17:33Z</time>
-  </trkpt>
-  <trkpt lat="48.408162631000003" lon="20.735483904999999">
-    <ele>216.43396000000001</ele>
-    <time>2007-12-16T10:17:45Z</time>
-  </trkpt>
-  <trkpt lat="48.408222981000002" lon="20.735811638000001">
-    <ele>215.472656</ele>
-    <time>2007-12-16T10:17:59Z</time>
-  </trkpt>
-  <trkpt lat="48.408233207000002" lon="20.735898641999999">
-    <ele>214.51123000000001</ele>
-    <time>2007-12-16T10:18:13Z</time>
-  </trkpt>
-  <trkpt lat="48.408309146999997" lon="20.736066614999999">
-    <ele>214.03064000000001</ele>
-    <time>2007-12-16T10:18:25Z</time>
-  </trkpt>
-  <trkpt lat="48.408318618000003" lon="20.736075080999999">
-    <ele>213.550049</ele>
-    <time>2007-12-16T10:18:26Z</time>
-  </trkpt>
-  <trkpt lat="48.408469240999999" lon="20.736158062000001">
-    <ele>212.10803200000001</ele>
-    <time>2007-12-16T10:18:39Z</time>
-  </trkpt>
-  <trkpt lat="48.408604609000001" lon="20.736170132000002">
-    <ele>211.14672899999999</ele>
-    <time>2007-12-16T10:18:51Z</time>
-  </trkpt>
-  <trkpt lat="48.408752130000003" lon="20.736160576">
-    <ele>208.74340799999999</ele>
-    <time>2007-12-16T10:19:03Z</time>
-  </trkpt>
-  <trkpt lat="48.408778030000001" lon="20.736141382">
-    <ele>208.74340799999999</ele>
-    <time>2007-12-16T10:19:05Z</time>
-  </trkpt>
-  <trkpt lat="48.408807701999997" lon="20.736032249000001">
-    <ele>209.224121</ele>
-    <time>2007-12-16T10:19:10Z</time>
-  </trkpt>
-  <trkpt lat="48.408859585999998" lon="20.735954046">
-    <ele>205.859497</ele>
-    <time>2007-12-16T10:19:16Z</time>
-  </trkpt>
-  <trkpt lat="48.408922199000003" lon="20.735677695">
-    <ele>206.34008800000001</ele>
-    <time>2007-12-16T10:19:29Z</time>
-  </trkpt>
-  <trkpt lat="48.408974669999999" lon="20.735406791999999">
-    <ele>205.859497</ele>
-    <time>2007-12-16T10:19:41Z</time>
-  </trkpt>
-  <trkpt lat="48.409017753000001" lon="20.735391200999999">
+  <trkpt lat="48.409017837" lon="20.735391200999999">
     <ele>205.859497</ele>
     <time>2007-12-16T10:19:47Z</time>
   </trkpt>
@@ -320,11 +134,11 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
     <ele>203.93689000000001</ele>
     <time>2007-12-16T10:20:07Z</time>
   </trkpt>
-  <trkpt lat="48.409231071999997" lon="20.735753550999998">
+  <trkpt lat="48.409231071999997" lon="20.735753634999998">
     <ele>205.859497</ele>
     <time>2007-12-16T10:20:29Z</time>
   </trkpt>
-  <trkpt lat="48.409302150999999" lon="20.736014647000001">
+  <trkpt lat="48.409302234999998" lon="20.736014564000001">
     <ele>201.533569</ele>
     <time>2007-12-16T10:20:45Z</time>
   </trkpt>
@@ -336,11 +150,7 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
     <ele>196.72692900000001</ele>
     <time>2007-12-16T10:21:30Z</time>
   </trkpt>
-  <trkpt lat="48.409634912000001" lon="20.735954968000001">
-    <ele>188.55578600000001</ele>
-    <time>2007-12-16T10:21:38Z</time>
-  </trkpt>
-  <trkpt lat="48.409640947" lon="20.735934265000001">
+  <trkpt lat="48.409640864000004" lon="20.735934265000001">
     <ele>185.671753</ele>
     <time>2007-12-16T10:21:46Z</time>
   </trkpt>
@@ -356,7 +166,7 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
     <ele>182.307129</ele>
     <time>2007-12-16T10:23:15Z</time>
   </trkpt>
-  <trkpt lat="48.410244528" lon="20.736250346999999">
+  <trkpt lat="48.410244528" lon="20.736250262999999">
     <ele>181.34582499999999</ele>
     <time>2007-12-16T10:23:29Z</time>
   </trkpt>
@@ -367,10 +177,6 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
   <trkpt lat="48.410496739999999" lon="20.736459893999999">
     <ele>175.57788099999999</ele>
     <time>2007-12-16T10:23:55Z</time>
-  </trkpt>
-  <trkpt lat="48.410509814999998" lon="20.736474814000001">
-    <ele>175.09728999999999</ele>
-    <time>2007-12-16T10:23:57Z</time>
   </trkpt>
   <trkpt lat="48.410597574000001" lon="20.736569278000001">
     <ele>172.69397000000001</ele>
@@ -384,21 +190,13 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
     <ele>169.810059</ele>
     <time>2007-12-16T10:24:30Z</time>
   </trkpt>
-  <trkpt lat="48.410770827999997" lon="20.737085352000001">
+  <trkpt lat="48.410770827999997" lon="20.737085436000001">
     <ele>169.810059</ele>
     <time>2007-12-16T10:24:39Z</time>
-  </trkpt>
-  <trkpt lat="48.410780299000002" lon="20.737149305999999">
-    <ele>169.810059</ele>
-    <time>2007-12-16T10:24:43Z</time>
   </trkpt>
   <trkpt lat="48.410743670999999" lon="20.737235387999998">
     <ele>166.445312</ele>
     <time>2007-12-16T10:24:52Z</time>
-  </trkpt>
-  <trkpt lat="48.410717435000002" lon="20.737249049999999">
-    <ele>164.042114</ele>
-    <time>2007-12-16T10:25:06Z</time>
   </trkpt>
   <trkpt lat="48.410692038000001" lon="20.737315434999999">
     <ele>162.600098</ele>
@@ -408,27 +206,27 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
     <ele>160.196899</ele>
     <time>2007-12-16T10:25:29Z</time>
   </trkpt>
-  <trkpt lat="48.410612913000001" lon="20.737602347999999">
-    <ele>159.71618699999999</ele>
+  <trkpt lat="48.410612913000001" lon="20.737602264">
+    <ele>159.71618599999999</ele>
     <time>2007-12-16T10:25:38Z</time>
   </trkpt>
   <trkpt lat="48.410561029" lon="20.737737379999999">
     <ele>159.23547400000001</ele>
     <time>2007-12-16T10:25:47Z</time>
   </trkpt>
-  <trkpt lat="48.410524651000003" lon="20.737889009">
+  <trkpt lat="48.410524735000003" lon="20.737889009">
     <ele>156.83215300000001</ele>
     <time>2007-12-16T10:25:57Z</time>
   </trkpt>
-  <trkpt lat="48.410492548999997" lon="20.73807274">
+  <trkpt lat="48.410492464999997" lon="20.73807274">
     <ele>155.39025899999999</ele>
     <time>2007-12-16T10:26:08Z</time>
   </trkpt>
   <trkpt lat="48.410444603999998" lon="20.738243228000002">
-    <ele>152.98693800000001</ele>
+    <ele>152.98693900000001</ele>
     <time>2007-12-16T10:26:20Z</time>
   </trkpt>
-  <trkpt lat="48.410404958000001" lon="20.738430395999998">
+  <trkpt lat="48.410405042000001" lon="20.738430395999998">
     <ele>151.06420900000001</ele>
     <time>2007-12-16T10:26:33Z</time>
   </trkpt>
@@ -444,10 +242,6 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
     <ele>147.69970699999999</ele>
     <time>2007-12-16T10:27:02Z</time>
   </trkpt>
-  <trkpt lat="48.410403029999998" lon="20.738766090999999">
-    <ele>146.73840300000001</ele>
-    <time>2007-12-16T10:27:06Z</time>
-  </trkpt>
   <trkpt lat="48.410374699000002" lon="20.738838678">
     <ele>146.257812</ele>
     <time>2007-12-16T10:27:16Z</time>
@@ -456,21 +250,13 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
     <ele>144.335205</ele>
     <time>2007-12-16T10:27:29Z</time>
   </trkpt>
-  <trkpt lat="48.410327760999998" lon="20.73895284">
-    <ele>143.85436999999999</ele>
-    <time>2007-12-16T10:27:34Z</time>
-  </trkpt>
   <trkpt lat="48.410391881999999" lon="20.739032803000001">
     <ele>144.335205</ele>
     <time>2007-12-16T10:27:44Z</time>
   </trkpt>
-  <trkpt lat="48.410439072000003" lon="20.739064151000001">
+  <trkpt lat="48.410439072000003" lon="20.739064235000001">
     <ele>144.81579600000001</ele>
     <time>2007-12-16T10:27:57Z</time>
-  </trkpt>
-  <trkpt lat="48.410452231999997" lon="20.739061302">
-    <ele>145.77709999999999</ele>
-    <time>2007-12-16T10:28:09Z</time>
   </trkpt>
   <trkpt lat="48.410511575999998" lon="20.739075634999999">
     <ele>146.73840300000001</ele>
@@ -480,7 +266,7 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
     <ele>147.21899400000001</ele>
     <time>2007-12-16T10:28:45Z</time>
   </trkpt>
-  <trkpt lat="48.410729924000002" lon="20.739179654000001">
+  <trkpt lat="48.410729924000002" lon="20.739179738000001">
     <ele>146.73840300000001</ele>
     <time>2007-12-16T10:28:56Z</time>
   </trkpt>
@@ -492,77 +278,8 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
     <ele>147.69970699999999</ele>
     <time>2007-12-16T10:29:19Z</time>
   </trkpt>
-  <trkpt lat="48.411156060000003" lon="20.739637893000001">
-    <ele>147.21899400000001</ele>
-    <time>2007-12-16T10:29:33Z</time>
-  </trkpt>
-  <trkpt lat="48.411221187999999" lon="20.739682065">
-    <ele>148.18042</ele>
-    <time>2007-12-16T10:29:41Z</time>
-  </trkpt>
-  <trkpt lat="48.411216326000002" lon="20.739694972999999">
-    <ele>148.18042</ele>
-    <time>2007-12-16T10:29:42Z</time>
-  </trkpt>
-  <trkpt lat="48.411213644" lon="20.739766136">
-    <ele>147.21899400000001</ele>
-    <time>2007-12-16T10:29:46Z</time>
-  </trkpt>
-  <trkpt lat="48.411250440000003" lon="20.740061933">
-    <ele>146.257812</ele>
-    <time>2007-12-16T10:29:59Z</time>
-  </trkpt>
-  <trkpt lat="48.411256307999999" lon="20.740292100000001">
-    <ele>146.257812</ele>
-    <time>2007-12-16T10:30:09Z</time>
-  </trkpt>
-  <trkpt lat="48.411223450999998" lon="20.740577169000002">
-    <ele>146.257812</ele>
-    <time>2007-12-16T10:30:22Z</time>
-  </trkpt>
-  <trkpt lat="48.411168633000003" lon="20.740860476999998">
-    <ele>145.77709999999999</ele>
-    <time>2007-12-16T10:30:36Z</time>
-  </trkpt>
-  <trkpt lat="48.411188666000001" lon="20.740911187999998">
-    <ele>145.77709999999999</ele>
-    <time>2007-12-16T10:30:44Z</time>
-  </trkpt>
-  <trkpt lat="48.411201742000003" lon="20.740905822999999">
-    <ele>144.335205</ele>
-    <time>2007-12-16T10:30:53Z</time>
-  </trkpt>
-  <trkpt lat="48.411223954" lon="20.740904566000001">
-    <ele>144.335205</ele>
-    <time>2007-12-16T10:30:56Z</time>
-  </trkpt>
-  <trkpt lat="48.41127676" lon="20.740980756999999">
-    <ele>144.335205</ele>
-    <time>2007-12-16T10:31:05Z</time>
-  </trkpt>
-  <trkpt lat="48.411270725000001" lon="20.741013447">
-    <ele>144.335205</ele>
-    <time>2007-12-16T10:31:08Z</time>
-  </trkpt>
-  <trkpt lat="48.411216660999997" lon="20.741204888999999">
-    <ele>144.81579600000001</ele>
-    <time>2007-12-16T10:31:20Z</time>
-  </trkpt>
-  <trkpt lat="48.411214231000002" lon="20.741370766999999">
-    <ele>144.81579600000001</ele>
-    <time>2007-12-16T10:31:31Z</time>
-  </trkpt>
-  <trkpt lat="48.411214231000002" lon="20.741370766999999">
-    <ele>144.81579600000001</ele>
-    <time>2007-12-16T10:31:31Z</time>
-  </trkpt>
-  <trkpt lat="48.411282794999998" lon="20.741500686999998">
-    <ele>144.81579600000001</ele>
-    <time>2007-12-16T10:31:41Z</time>
-  </trkpt>
-  <trkpt lat="48.411335432999998" lon="20.741634294000001">
-    <ele>145.29638700000001</ele>
-    <time>2007-12-16T10:31:51Z</time>
+  <trkpt lat="48.411167376000002" lon="20.739779127999999">
+    <ele>151.06420900000001</ele>
   </trkpt>
   <trkpt lat="48.411040305999997" lon="20.741178989000002">
     <ele>150.583618</ele>
@@ -607,18 +324,6 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
     <ele>146.73840300000001</ele>
     <time>2011-01-16T12:47:48Z</time>
   </trkpt>
-  <trkpt lat="48.408452728999997" lon="20.749432984999999">
-    <ele>146.257812</ele>
-    <time>2011-01-16T12:47:59Z</time>
-  </trkpt>
-  <trkpt lat="48.408411489999999" lon="20.749457207999999">
-    <ele>146.257812</ele>
-    <time>2011-01-16T12:48:00Z</time>
-  </trkpt>
-  <trkpt lat="48.408635705999998" lon="20.749324774000002">
-    <ele>146.257812</ele>
-    <time>2011-01-16T12:48:04Z</time>
-  </trkpt>
   <trkpt lat="48.408432361000003" lon="20.749444970999999">
     <ele>146.257812</ele>
     <time>2011-01-16T12:48:09Z</time>
@@ -639,78 +344,25 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
     <ele>147.21899400000001</ele>
     <time>2011-01-16T12:49:03Z</time>
   </trkpt>
-  <trkpt lat="48.407241292000002" lon="20.752833606999999">
-    <ele>147.69970699999999</ele>
-    <time>2011-01-16T12:49:06Z</time>
-  </trkpt>
-  <trkpt lat="48.407222767999997" lon="20.753132338">
-    <ele>145.29638700000001</ele>
-    <time>2011-01-16T12:49:10Z</time>
-  </trkpt>
-  <trkpt lat="48.407206172000002" lon="20.753638520999999">
-    <ele>163.56152299999999</ele>
-  </trkpt>
-  <trkpt lat="48.407236431000001" lon="20.753773721000002">
-    <ele>177.50060999999999</ele>
-  </trkpt>
-  <trkpt lat="48.407206172000002" lon="20.753638520999999">
-    <ele>163.56152299999999</ele>
-  </trkpt>
-  <trkpt lat="48.407236431000001" lon="20.753773721000002">
-    <ele>177.50060999999999</ele>
-  </trkpt>
-  <trkpt lat="48.406844743999997" lon="20.753223617">
-    <ele>177.981201</ele>
-  </trkpt>
-  <trkpt lat="48.406782550999999" lon="20.752683738000002">
-    <ele>179.42321799999999</ele>
-  </trkpt>
   <trkpt lat="48.406828064000003" lon="20.752614001000001">
     <ele>179.42321799999999</ele>
   </trkpt>
   <trkpt lat="48.406595383000003" lon="20.752271013000001">
-    <ele>180.38452100000001</ele>
-  </trkpt>
-  <trkpt lat="48.406572584000003" lon="20.752112763">
-    <ele>180.86523399999999</ele>
-  </trkpt>
-  <trkpt lat="48.406670233" lon="20.752152158000001">
-    <ele>181.82641599999999</ele>
+    <ele>180.384522</ele>
   </trkpt>
   <trkpt lat="48.406606195000002" lon="20.752072697999999">
     <ele>181.82641599999999</ele>
   </trkpt>
-  <trkpt lat="48.406580462999997" lon="20.751805146999999">
+  <trkpt lat="48.406580462999997" lon="20.751805062999999">
     <ele>182.307129</ele>
   </trkpt>
   <trkpt lat="48.406535536" lon="20.751700792000001">
     <ele>183.26843299999999</ele>
   </trkpt>
-  <trkpt lat="48.406393713999996" lon="20.751548326000002">
-    <ele>185.19116199999999</ele>
-  </trkpt>
-  <trkpt lat="48.406366976000001" lon="20.751483365999999">
-    <ele>185.19116199999999</ele>
-  </trkpt>
-  <trkpt lat="48.406413076" lon="20.751425446999999">
-    <ele>182.78784200000001</ele>
-  </trkpt>
-  <trkpt lat="48.406377202000002" lon="20.751402061">
-    <ele>183.74902299999999</ele>
-  </trkpt>
-  <trkpt lat="48.406361611999998" lon="20.751435756999999">
+  <trkpt lat="48.406361611999998" lon="20.751435840999999">
     <ele>182.307129</ele>
   </trkpt>
-  <trkpt lat="48.406285838999999" lon="20.751953339">
-    <ele>183.74902299999999</ele>
-  </trkpt>
-  <trkpt lat="48.406333615999998" lon="20.752061298000001">
-    <ele>183.74902299999999</ele>
-  </trkpt>
-  <trkpt lat="48.406280977999998" lon="20.751948477999999">
-    <ele>185.19116199999999</ele>
-  </trkpt>
-  <trkpt lat="48.406274607" lon="20.752020142999999">
+  <trkpt lat="48.406274607" lon="20.752020058999999">
     <ele>185.671753</ele>
   </trkpt>
   <trkpt lat="48.406181316999998" lon="20.753997685000002">
@@ -731,13 +383,13 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
   <trkpt lat="48.407073318999998" lon="20.758583341000001">
     <ele>226.04711900000001</ele>
   </trkpt>
-  <trkpt lat="48.407397949999996" lon="20.759517755000001">
+  <trkpt lat="48.407398034000003" lon="20.759517839000001">
     <ele>215.953247</ele>
   </trkpt>
   <trkpt lat="48.408102114000002" lon="20.760548394000001">
     <ele>239.505493</ele>
   </trkpt>
-  <trkpt lat="48.408353151999997" lon="20.761060948000001">
+  <trkpt lat="48.408353236000004" lon="20.761060864000001">
     <ele>246.71545399999999</ele>
   </trkpt>
   <trkpt lat="48.408613660999997" lon="20.761449533">
@@ -746,14 +398,8 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
   <trkpt lat="48.408694294999997" lon="20.761896622999998">
     <ele>258.25134300000002</ele>
   </trkpt>
-  <trkpt lat="48.408588682999998" lon="20.762238437000001">
-    <ele>244.79284699999999</ele>
-  </trkpt>
-  <trkpt lat="48.408431438999997" lon="20.762369111000002">
-    <ele>258.73193400000002</ele>
-  </trkpt>
   <trkpt lat="48.408549121" lon="20.763008901999999">
-    <ele>255.84802199999999</ele>
+    <ele>255.84802300000001</ele>
   </trkpt>
   <trkpt lat="48.408377795" lon="20.763189196999999">
     <ele>255.36731</ele>
@@ -761,7 +407,7 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
   <trkpt lat="48.408230525" lon="20.763512989999999">
     <ele>252.00280799999999</ele>
   </trkpt>
-  <trkpt lat="48.408078811999999" lon="20.763662355000001">
+  <trkpt lat="48.408078811999999" lon="20.763662439000001">
     <ele>252.963989</ele>
   </trkpt>
   <trkpt lat="48.407942103000003" lon="20.763876094">
@@ -773,25 +419,19 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
   <trkpt lat="48.407735322000001" lon="20.765165733">
     <ele>232.29577599999999</ele>
   </trkpt>
-  <trkpt lat="48.408035058999999" lon="20.766118252999998">
+  <trkpt lat="48.408035058999999" lon="20.766118336000002">
     <ele>234.69909699999999</ele>
   </trkpt>
   <trkpt lat="48.408338399999998" lon="20.766807916000001">
     <ele>227.489136</ele>
   </trkpt>
-  <trkpt lat="48.408217952000001" lon="20.767865627999999">
+  <trkpt lat="48.408218034999997" lon="20.767865627999999">
     <ele>227.489136</ele>
-  </trkpt>
-  <trkpt lat="48.407829282999998" lon="20.768443979000001">
-    <ele>227.489136</ele>
-  </trkpt>
-  <trkpt lat="48.407660219999997" lon="20.768560235999999">
-    <ele>228.931152</ele>
   </trkpt>
   <trkpt lat="48.407721827000003" lon="20.768748494">
     <ele>229.89233400000001</ele>
   </trkpt>
-  <trkpt lat="48.407592745000002" lon="20.769414351999998">
+  <trkpt lat="48.407592661999999" lon="20.769414436000002">
     <ele>228.931152</ele>
   </trkpt>
   <trkpt lat="48.407642785" lon="20.769614261000001">
@@ -800,27 +440,23 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
   <trkpt lat="48.407628285000001" lon="20.769747198000001">
     <ele>226.52783199999999</ele>
   </trkpt>
-  <trkpt lat="48.407687879999997" lon="20.769863957999998">
+  <trkpt lat="48.407687879999997" lon="20.769864041000002">
     <ele>225.085938</ele>
   </trkpt>
-  <trkpt lat="48.408236643000002" lon="20.770364105999999">
+  <trkpt lat="48.408236559000002" lon="20.770364105999999">
     <ele>236.14099100000001</ele>
   </trkpt>
   <trkpt lat="48.408312500000001" lon="20.770670800000001">
     <ele>226.52783199999999</ele>
     <time>2016-09-08T10:09:32Z</time>
   </trkpt>
-  <trkpt lat="48.408366647000001" lon="20.770772388000001">
+  <trkpt lat="48.408366563000001" lon="20.770772388000001">
     <ele>227.008545</ele>
     <time>2016-09-08T10:09:22Z</time>
   </trkpt>
-  <trkpt lat="48.408370251000001" lon="20.770866768000001">
+  <trkpt lat="48.408370335000001" lon="20.770866768000001">
     <ele>227.489136</ele>
     <time>2016-09-08T10:09:12Z</time>
-  </trkpt>
-  <trkpt lat="48.408353403" lon="20.770899373999999">
-    <ele>227.489136</ele>
-    <time>2016-09-08T10:09:03Z</time>
   </trkpt>
   <trkpt lat="48.408288108000001" lon="20.771033317000001">
     <ele>227.96972700000001</ele>
@@ -842,13 +478,9 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
     <ele>225.085938</ele>
     <time>2016-09-08T10:08:10Z</time>
   </trkpt>
-  <trkpt lat="48.407991054" lon="20.771604041">
+  <trkpt lat="48.407991137000003" lon="20.771604041">
     <ele>226.04711900000001</ele>
     <time>2016-09-08T10:08:01Z</time>
-  </trkpt>
-  <trkpt lat="48.407955262999998" lon="20.771619212000001">
-    <ele>226.04711900000001</ele>
-    <time>2016-09-08T10:07:52Z</time>
   </trkpt>
   <trkpt lat="48.407888208000003" lon="20.771688194999999">
     <ele>226.52783199999999</ele>
@@ -862,11 +494,7 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
     <ele>226.04711900000001</ele>
     <time>2016-09-08T10:07:19Z</time>
   </trkpt>
-  <trkpt lat="48.407769017" lon="20.771866980999999">
-    <ele>226.04711900000001</ele>
-    <time>2016-09-08T10:07:17Z</time>
-  </trkpt>
-  <trkpt lat="48.407752168999998" lon="20.771962451">
+  <trkpt lat="48.407752168999998" lon="20.771962535">
     <ele>226.04711900000001</ele>
     <time>2016-09-08T10:07:10Z</time>
   </trkpt>
@@ -882,7 +510,7 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
     <ele>222.20178200000001</ele>
     <time>2016-09-08T10:06:39Z</time>
   </trkpt>
-  <trkpt lat="48.407545974000001" lon="20.772563852000001">
+  <trkpt lat="48.407545974000001" lon="20.772563936000001">
     <ele>222.20178200000001</ele>
     <time>2016-09-08T10:06:28Z</time>
   </trkpt>
@@ -902,15 +530,11 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
     <ele>219.317993</ele>
     <time>2016-09-08T10:05:47Z</time>
   </trkpt>
-  <trkpt lat="48.407406582999997" lon="20.773254353999999">
+  <trkpt lat="48.407406582999997" lon="20.773254436999999">
     <ele>218.35656700000001</ele>
     <time>2016-09-08T10:05:37Z</time>
   </trkpt>
-  <trkpt lat="48.407402308999998" lon="20.773293916">
-    <ele>217.87597700000001</ele>
-    <time>2016-09-08T10:05:30Z</time>
-  </trkpt>
-  <trkpt lat="48.407427538" lon="20.773449149000001">
+  <trkpt lat="48.407427538" lon="20.773449065000001">
     <ele>216.43396000000001</ele>
     <time>2016-09-08T10:05:21Z</time>
   </trkpt>
@@ -926,14 +550,6 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
     <ele>205.859497</ele>
     <time>2016-09-08T09:58:14Z</time>
   </trkpt>
-  <trkpt lat="48.407736829999997" lon="20.774066392000002">
-    <ele>206.34008800000001</ele>
-    <time>2016-09-08T09:57:59Z</time>
-  </trkpt>
-  <trkpt lat="48.407747139999998" lon="20.774074941999999">
-    <ele>206.34008800000001</ele>
-    <time>2016-09-08T09:57:53Z</time>
-  </trkpt>
   <trkpt lat="48.407776142000003" lon="20.774141074999999">
     <ele>205.378784</ele>
     <time>2016-09-08T09:57:46Z</time>
@@ -946,7 +562,7 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
     <ele>205.378784</ele>
     <time>2016-09-08T09:57:29Z</time>
   </trkpt>
-  <trkpt lat="48.407842944999999" lon="20.774479032999999">
+  <trkpt lat="48.407842860999999" lon="20.774479032999999">
     <ele>206.82067900000001</ele>
     <time>2016-09-08T09:57:20Z</time>
   </trkpt>
@@ -957,14 +573,6 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
   <trkpt lat="48.407837581000003" lon="20.774601996000001">
     <ele>208.26281700000001</ele>
     <time>2016-09-08T09:56:57Z</time>
-  </trkpt>
-  <trkpt lat="48.407871528000001" lon="20.774639714999999">
-    <ele>206.34008800000001</ele>
-    <time>2016-09-08T09:56:41Z</time>
-  </trkpt>
-  <trkpt lat="48.407864234999998" lon="20.774667459">
-    <ele>205.859497</ele>
-    <time>2016-09-08T09:56:33Z</time>
   </trkpt>
   <trkpt lat="48.407896338" lon="20.774787236000002">
     <ele>205.859497</ele>
@@ -978,15 +586,11 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
     <ele>203.93689000000001</ele>
     <time>2016-09-08T09:55:51Z</time>
   </trkpt>
-  <trkpt lat="48.407976636999997" lon="20.775010446">
-    <ele>203.456177</ele>
-    <time>2016-09-08T09:55:41Z</time>
-  </trkpt>
   <trkpt lat="48.408012092" lon="20.775030898000001">
     <ele>198.16894500000001</ele>
     <time>2016-09-08T09:55:32Z</time>
   </trkpt>
-  <trkpt lat="48.408038998000002" lon="20.775173055">
+  <trkpt lat="48.408038998000002" lon="20.775173139">
     <ele>197.688232</ele>
     <time>2016-09-08T09:55:20Z</time>
   </trkpt>
@@ -1034,7 +638,7 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
     <ele>193.36230499999999</ele>
     <time>2016-09-08T09:52:28Z</time>
   </trkpt>
-  <trkpt lat="48.409044825999999" lon="20.776163544999999">
+  <trkpt lat="48.409044825999999" lon="20.776163460999999">
     <ele>193.843018</ele>
     <time>2016-09-08T09:52:23Z</time>
   </trkpt>
@@ -1062,8 +666,8 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
     <ele>188.075073</ele>
     <time>2016-09-08T09:51:35Z</time>
   </trkpt>
-  <trkpt lat="48.409632146" lon="20.776010407000001">
-    <ele>187.11376999999999</ele>
+  <trkpt lat="48.409632062999997" lon="20.776010407000001">
+    <ele>187.11376899999999</ele>
     <time>2016-09-08T09:51:26Z</time>
   </trkpt>
   <trkpt lat="48.409716217000003" lon="20.776027421999999">
@@ -1086,15 +690,11 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
     <ele>184.22985800000001</ele>
     <time>2016-09-08T09:50:37Z</time>
   </trkpt>
-  <trkpt lat="48.410132126999997" lon="20.776158179999999">
-    <ele>186.63317900000001</ele>
-    <time>2016-09-08T09:50:28Z</time>
-  </trkpt>
   <trkpt lat="48.410198594999997" lon="20.776160191999999">
     <ele>189.03637699999999</ele>
     <time>2016-09-08T09:50:19Z</time>
   </trkpt>
-  <trkpt lat="48.410297837000002" lon="20.776123646999999">
+  <trkpt lat="48.410297837000002" lon="20.776123562999999">
     <ele>189.03637699999999</ele>
     <time>2016-09-08T09:50:09Z</time>
   </trkpt>
@@ -1102,12 +702,12 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
     <ele>189.997681</ele>
     <time>2016-09-08T09:50:00Z</time>
   </trkpt>
-  <trkpt lat="48.410484251" lon="20.776068578">
+  <trkpt lat="48.410484334000003" lon="20.776068578">
     <ele>187.59435999999999</ele>
     <time>2016-09-08T09:49:52Z</time>
   </trkpt>
-  <trkpt lat="48.410583744" lon="20.776114259">
-    <ele>187.11376999999999</ele>
+  <trkpt lat="48.41058366" lon="20.776114259">
+    <ele>187.11376899999999</ele>
     <time>2016-09-08T09:49:45Z</time>
   </trkpt>
   <trkpt lat="48.410689523000002" lon="20.776198078">
@@ -1118,11 +718,11 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
     <ele>186.152466</ele>
     <time>2016-09-08T09:49:26Z</time>
   </trkpt>
-  <trkpt lat="48.410880128000002" lon="20.776395556000001">
+  <trkpt lat="48.410880128000002" lon="20.776395639">
     <ele>185.671753</ele>
     <time>2016-09-08T09:49:18Z</time>
   </trkpt>
-  <trkpt lat="48.410972999000002" lon="20.776495552">
+  <trkpt lat="48.410972999000002" lon="20.776495636">
     <ele>184.71057099999999</ele>
     <time>2016-09-08T09:49:08Z</time>
   </trkpt>
@@ -1130,12 +730,12 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
     <ele>184.22985800000001</ele>
     <time>2016-09-08T09:48:55Z</time>
   </trkpt>
-  <trkpt lat="48.411295451000001" lon="20.776686324">
+  <trkpt lat="48.411295535000001" lon="20.776686324">
     <ele>182.78784200000001</ele>
     <time>2016-09-08T09:48:42Z</time>
   </trkpt>
   <trkpt lat="48.411455629000002" lon="20.776789170000001">
-    <ele>180.38452100000001</ele>
+    <ele>180.384522</ele>
     <time>2016-09-08T09:48:29Z</time>
   </trkpt>
   <trkpt lat="48.411581525999999" lon="20.776902828000001">
@@ -1143,7 +743,7 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
     <time>2016-09-08T09:48:18Z</time>
   </trkpt>
   <trkpt lat="48.411673475000001" lon="20.777029897999999">
-    <ele>177.02001999999999</ele>
+    <ele>177.02001899999999</ele>
     <time>2016-09-08T09:48:08Z</time>
   </trkpt>
   <trkpt lat="48.411752432999997" lon="20.777152609000002">
@@ -1158,21 +758,17 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
     <ele>175.57788099999999</ele>
     <time>2016-09-08T09:47:36Z</time>
   </trkpt>
-  <trkpt lat="48.411780931000003" lon="20.777456787999999">
-    <ele>175.09728999999999</ele>
-    <time>2016-09-08T09:47:32Z</time>
-  </trkpt>
   <trkpt lat="48.411887968000002" lon="20.777550916999999">
     <ele>176.058594</ele>
     <time>2016-09-08T09:47:21Z</time>
   </trkpt>
-  <trkpt lat="48.411741200999998" lon="20.777850654000002">
+  <trkpt lat="48.411741200999998" lon="20.777850738000001">
   </trkpt>
-  <trkpt lat="48.411903641999999" lon="20.777831123999999">
+  <trkpt lat="48.411903557999999" lon="20.777831123999999">
     <ele>188.08000000000001</ele>
     <time>2016-08-24T10:29:25Z</time>
   </trkpt>
-  <trkpt lat="48.412050241999999" lon="20.777729955000002">
+  <trkpt lat="48.412050241999999" lon="20.777730038000001">
     <ele>186.63</ele>
     <time>2016-08-24T10:30:27Z</time>
   </trkpt>
@@ -1180,7 +776,7 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
     <ele>184.22999999999999</ele>
     <time>2016-08-24T10:31:05Z</time>
   </trkpt>
-  <trkpt lat="48.412859933" lon="20.776914143999999">
+  <trkpt lat="48.412859933" lon="20.776914059999999">
     <ele>183.75</ele>
     <time>2016-08-24T10:31:44Z</time>
   </trkpt>
@@ -1188,7 +784,7 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
     <ele>182.78999999999999</ele>
     <time>2016-08-24T10:32:30Z</time>
   </trkpt>
-  <trkpt lat="48.413536184999998" lon="20.776179051">
+  <trkpt lat="48.413536184999998" lon="20.776179135">
     <ele>181.83000000000001</ele>
     <time>2016-08-24T10:33:01Z</time>
   </trkpt>
@@ -1196,27 +792,15 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
     <ele>181.34999999999999</ele>
     <time>2016-08-24T10:33:39Z</time>
   </trkpt>
-  <trkpt lat="48.414036752999998" lon="20.775106921999999">
+  <trkpt lat="48.414036836000001" lon="20.775106921999999">
     <ele>180.38</ele>
     <time>2016-08-24T10:34:31Z</time>
   </trkpt>
-  <trkpt lat="48.414036752999998" lon="20.775106921999999">
-    <ele>180.38</ele>
-    <time>2016-08-24T10:34:31Z</time>
-  </trkpt>
-  <trkpt lat="48.414411340000001" lon="20.774608449999999">
+  <trkpt lat="48.414411340000001" lon="20.774608533999999">
     <ele>179.90000000000001</ele>
     <time>2016-08-24T10:35:07Z</time>
   </trkpt>
-  <trkpt lat="48.414411340000001" lon="20.774608449999999">
-    <ele>179.90000000000001</ele>
-    <time>2016-08-24T10:35:07Z</time>
-  </trkpt>
-  <trkpt lat="48.414707556000003" lon="20.774181726999998">
-    <ele>179.41999999999999</ele>
-    <time>2016-08-24T10:35:43Z</time>
-  </trkpt>
-  <trkpt lat="48.414707556000003" lon="20.774181726999998">
+  <trkpt lat="48.414707640000003" lon="20.774181726999998">
     <ele>179.41999999999999</ele>
     <time>2016-08-24T10:35:43Z</time>
   </trkpt>
@@ -1224,11 +808,7 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
     <ele>178.94</ele>
     <time>2016-08-24T10:36:28Z</time>
   </trkpt>
-  <trkpt lat="48.415074265000001" lon="20.774170412">
-    <ele>178.94</ele>
-    <time>2016-08-24T10:36:28Z</time>
-  </trkpt>
-  <trkpt lat="48.415390598000002" lon="20.774634852999998">
+  <trkpt lat="48.415390598000002" lon="20.774634936999998">
     <ele>178.94</ele>
     <time>2016-08-24T10:37:06Z</time>
   </trkpt>
@@ -1248,7 +828,7 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
     <ele>188.08000000000001</ele>
     <time>2016-08-24T10:39:36Z</time>
   </trkpt>
-  <trkpt lat="48.417384652000003" lon="20.776408882999998">
+  <trkpt lat="48.417384736000002" lon="20.776408882999998">
     <ele>188.08000000000001</ele>
     <time>2016-08-24T10:40:29Z</time>
   </trkpt>
@@ -1276,27 +856,27 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
     <ele>183.75</ele>
     <time>2016-08-24T10:44:51Z</time>
   </trkpt>
-  <trkpt lat="48.419866785000004" lon="20.777987447000001">
+  <trkpt lat="48.419866785000004" lon="20.777987363000001">
     <ele>182.31</ele>
     <time>2016-08-24T10:45:06Z</time>
   </trkpt>
-  <trkpt lat="48.419642150000001" lon="20.778108899999999">
+  <trkpt lat="48.419642234000001" lon="20.778108899999999">
     <ele>179.903809</ele>
     <time>2015-09-15T10:47:59Z</time>
   </trkpt>
-  <trkpt lat="48.419499657999999" lon="20.778000857999999">
-    <ele>180.38452100000001</ele>
+  <trkpt lat="48.419499741999999" lon="20.778000941999998">
+    <ele>180.384522</ele>
     <time>2015-09-15T10:47:55Z</time>
   </trkpt>
   <trkpt lat="48.419086933000003" lon="20.777120589999999">
     <ele>177.50060999999999</ele>
     <time>2015-09-15T10:47:44Z</time>
   </trkpt>
-  <trkpt lat="48.419047956999997" lon="20.777003662999999">
+  <trkpt lat="48.419048041000003" lon="20.777003662999999">
     <ele>177.50060999999999</ele>
     <time>2015-09-15T10:47:42Z</time>
   </trkpt>
-  <trkpt lat="48.419110486000001" lon="20.776619352000001">
+  <trkpt lat="48.419110486000001" lon="20.776619436000001">
     <ele>177.50060999999999</ele>
     <time>2015-09-15T10:47:37Z</time>
   </trkpt>
@@ -1329,7 +909,7 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
     <time>2015-09-15T10:47:03Z</time>
   </trkpt>
   <trkpt lat="48.417691261999998" lon="20.773213534">
-    <ele>177.02001999999999</ele>
+    <ele>177.02001899999999</ele>
     <time>2015-09-15T10:46:56Z</time>
   </trkpt>
   <trkpt lat="48.417329164000002" lon="20.772368804999999">
@@ -1341,7 +921,7 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
     <time>2015-09-15T10:46:33Z</time>
   </trkpt>
   <trkpt lat="48.416927587000004" lon="20.770752271999999">
-    <ele>177.02001999999999</ele>
+    <ele>177.02001899999999</ele>
     <time>2015-09-15T10:46:21Z</time>
   </trkpt>
   <trkpt lat="48.416780568999997" lon="20.770004271000001">
@@ -1356,7 +936,7 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
     <ele>174.61657700000001</ele>
     <time>2015-09-15T10:45:47Z</time>
   </trkpt>
-  <trkpt lat="48.416083948999997" lon="20.767640825000001">
+  <trkpt lat="48.416083864999997" lon="20.767640825000001">
     <ele>173.65527299999999</ele>
     <time>2015-09-15T10:45:41Z</time>
   </trkpt>
@@ -1388,7 +968,7 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
     <ele>165.96472199999999</ele>
     <time>2015-09-15T10:44:51Z</time>
   </trkpt>
-  <trkpt lat="48.414836553999997" lon="20.762769934000001">
+  <trkpt lat="48.414836637999997" lon="20.762769934000001">
     <ele>165.96472199999999</ele>
     <time>2015-09-15T10:44:47Z</time>
   </trkpt>
@@ -1400,11 +980,11 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
     <ele>167.88732899999999</ele>
     <time>2015-09-15T10:44:29Z</time>
   </trkpt>
-  <trkpt lat="48.415947742999997" lon="20.761768463999999">
+  <trkpt lat="48.415947658999997" lon="20.761768463999999">
     <ele>167.88732899999999</ele>
     <time>2015-09-15T10:44:17Z</time>
   </trkpt>
-  <trkpt lat="48.416066346999997" lon="20.761723452999998">
+  <trkpt lat="48.416066262999998" lon="20.761723537000002">
     <ele>167.88732899999999</ele>
     <time>2015-09-15T10:44:14Z</time>
   </trkpt>
@@ -1432,51 +1012,11 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
     <ele>164.042114</ele>
     <time>2015-09-15T10:43:11Z</time>
   </trkpt>
-  <trkpt lat="48.418587035999998" lon="20.759759741">
-    <ele>163.56152299999999</ele>
-    <time>2015-09-15T10:42:58Z</time>
-  </trkpt>
-  <trkpt lat="48.418658702000002" lon="20.759678772000001">
-    <ele>163.08081100000001</ele>
-    <time>2015-09-15T10:42:55Z</time>
-  </trkpt>
-  <trkpt lat="48.418756350999999" lon="20.759630826999999">
-    <ele>163.08081100000001</ele>
-    <time>2015-09-15T10:42:50Z</time>
-  </trkpt>
-  <trkpt lat="48.418756602000002" lon="20.759631078999998">
-    <ele>163.08081100000001</ele>
-    <time>2015-09-15T10:42:47Z</time>
-  </trkpt>
-  <trkpt lat="48.418749142000003" lon="20.759553378">
-    <ele>162.600098</ele>
-    <time>2015-09-15T10:42:38Z</time>
-  </trkpt>
-  <trkpt lat="48.418740258" lon="20.759594701000001">
-    <ele>164.042114</ele>
-    <time>2015-09-15T10:42:31Z</time>
-  </trkpt>
-  <trkpt lat="48.418740174" lon="20.7595916">
-    <ele>163.08081100000001</ele>
-    <time>2015-09-15T10:42:24Z</time>
-  </trkpt>
-  <trkpt lat="48.418739418999998" lon="20.759594534000001">
-    <ele>163.56152299999999</ele>
-    <time>2015-09-15T10:42:18Z</time>
-  </trkpt>
-  <trkpt lat="48.418734055000002" lon="20.759583218">
-    <ele>163.56152299999999</ele>
-    <time>2015-09-15T10:21:05Z</time>
-  </trkpt>
-  <trkpt lat="48.418757776" lon="20.759577435000001">
-    <ele>161.63891599999999</ele>
-    <time>2015-09-15T10:19:52Z</time>
-  </trkpt>
   <trkpt lat="48.418775713000002" lon="20.75956394">
     <ele>161.63891599999999</ele>
     <time>2015-09-15T10:19:08Z</time>
   </trkpt>
-  <trkpt lat="48.418820556" lon="20.759480120999999">
+  <trkpt lat="48.41882064" lon="20.759480120999999">
     <ele>161.15820299999999</ele>
     <time>2015-09-15T10:19:00Z</time>
   </trkpt>
@@ -1516,21 +1056,13 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
     <ele>157.31286600000001</ele>
     <time>2015-09-15T10:17:39Z</time>
   </trkpt>
-  <trkpt lat="48.419382311" lon="20.758323920999999">
-    <ele>156.83215300000001</ele>
-    <time>2015-09-15T10:17:35Z</time>
-  </trkpt>
   <trkpt lat="48.419417011999997" lon="20.758332889999998">
     <ele>155.87097199999999</ele>
     <time>2015-09-15T10:17:28Z</time>
   </trkpt>
-  <trkpt lat="48.419481050000002" lon="20.758343702000001">
+  <trkpt lat="48.419481134000002" lon="20.758343702000001">
     <ele>155.87097199999999</ele>
     <time>2015-09-15T10:17:20Z</time>
-  </trkpt>
-  <trkpt lat="48.419512818000001" lon="20.758348227999999">
-    <ele>158.27417</ele>
-    <time>2015-09-15T10:17:14Z</time>
   </trkpt>
   <trkpt lat="48.419609796000003" lon="20.758105991000001">
     <ele>161.63891599999999</ele>
@@ -1556,47 +1088,11 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
     <ele>163.56152299999999</ele>
     <time>2015-09-15T10:16:19Z</time>
   </trkpt>
-  <trkpt lat="48.419631338000002" lon="20.757507272000002">
-    <ele>162.600098</ele>
-    <time>2015-09-15T10:16:16Z</time>
-  </trkpt>
-  <trkpt lat="48.419666290000002" lon="20.757403085">
-    <ele>161.63891599999999</ele>
-    <time>2015-09-15T10:16:07Z</time>
-  </trkpt>
-  <trkpt lat="48.419731837" lon="20.757380202">
-    <ele>163.56152299999999</ele>
-    <time>2015-09-15T10:16:00Z</time>
-  </trkpt>
-  <trkpt lat="48.41981071" lon="20.757358829000001">
-    <ele>166.445312</ele>
-    <time>2015-09-15T10:15:55Z</time>
-  </trkpt>
-  <trkpt lat="48.419751785999999" lon="20.757312895999998">
-    <ele>166.445312</ele>
-    <time>2015-09-15T10:15:52Z</time>
-  </trkpt>
-  <trkpt lat="48.419767376000003" lon="20.757294874999999">
-    <ele>165.00341800000001</ele>
-    <time>2015-09-15T10:15:46Z</time>
-  </trkpt>
-  <trkpt lat="48.419782128000001" lon="20.757279283999999">
-    <ele>165.00341800000001</ele>
-    <time>2015-09-15T10:15:42Z</time>
-  </trkpt>
-  <trkpt lat="48.419786150999997" lon="20.757220946">
-    <ele>165.96472199999999</ele>
-    <time>2015-09-15T10:15:36Z</time>
-  </trkpt>
-  <trkpt lat="48.419792438000002" lon="20.757186747999999">
+  <trkpt lat="48.419792438000002" lon="20.757186663999999">
     <ele>167.40673799999999</ele>
     <time>2015-09-15T10:15:32Z</time>
   </trkpt>
-  <trkpt lat="48.419795120000003" lon="20.757178953">
-    <ele>167.40673799999999</ele>
-    <time>2015-09-15T10:15:31Z</time>
-  </trkpt>
-  <trkpt lat="48.419784055999997" lon="20.757118855000002">
+  <trkpt lat="48.419784139999997" lon="20.757118938000001">
     <ele>167.40673799999999</ele>
     <time>2015-09-15T10:15:26Z</time>
   </trkpt>
@@ -1604,11 +1100,11 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
     <ele>167.40673799999999</ele>
     <time>2015-09-15T10:15:21Z</time>
   </trkpt>
-  <trkpt lat="48.419900145" lon="20.756827332">
+  <trkpt lat="48.419900062000004" lon="20.756827332">
     <ele>168.368042</ele>
     <time>2015-09-15T10:15:11Z</time>
   </trkpt>
-  <trkpt lat="48.419981952999997" lon="20.756626418">
+  <trkpt lat="48.419982036999997" lon="20.756626418">
     <ele>169.32946799999999</ele>
     <time>2015-09-15T10:15:04Z</time>
   </trkpt>
@@ -1620,25 +1116,13 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
     <ele>168.84875500000001</ele>
     <time>2015-09-15T10:14:55Z</time>
   </trkpt>
-  <trkpt lat="48.420001147000001" lon="20.756255685999999">
-    <ele>169.32946799999999</ele>
-    <time>2015-09-15T10:14:52Z</time>
-  </trkpt>
-  <trkpt lat="48.419976755999997" lon="20.756137837000001">
+  <trkpt lat="48.419976839999997" lon="20.756137837000001">
     <ele>170.77136200000001</ele>
     <time>2015-09-15T10:14:44Z</time>
-  </trkpt>
-  <trkpt lat="48.419971558999997" lon="20.756112522999999">
-    <ele>171.25207499999999</ele>
-    <time>2015-09-15T10:14:42Z</time>
   </trkpt>
   <trkpt lat="48.419891260999997" lon="20.755931223000001">
     <ele>168.368042</ele>
     <time>2015-09-15T10:14:32Z</time>
-  </trkpt>
-  <trkpt lat="48.419870473000003" lon="20.75587213">
-    <ele>167.88732899999999</ele>
-    <time>2015-09-15T10:14:30Z</time>
   </trkpt>
   <trkpt lat="48.419871981999997" lon="20.755712371000001">
     <ele>166.92602500000001</ele>
@@ -1652,7 +1136,7 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
     <ele>163.56152299999999</ele>
     <time>2015-09-15T10:14:12Z</time>
   </trkpt>
-  <trkpt lat="48.419732256000003" lon="20.755280871">
+  <trkpt lat="48.419732340000003" lon="20.755280871">
     <ele>162.600098</ele>
     <time>2015-09-15T10:14:05Z</time>
   </trkpt>
@@ -1660,15 +1144,11 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
     <ele>164.522705</ele>
     <time>2015-09-15T10:13:59Z</time>
   </trkpt>
-  <trkpt lat="48.419711049999997" lon="20.755185316999999">
-    <ele>166.92602500000001</ele>
-    <time>2015-09-15T10:13:52Z</time>
-  </trkpt>
-  <trkpt lat="48.419692357999999" lon="20.755071239999999">
+  <trkpt lat="48.419692441999999" lon="20.755071239999999">
     <ele>167.40673799999999</ele>
     <time>2015-09-15T10:13:44Z</time>
   </trkpt>
-  <trkpt lat="48.419687748000001" lon="20.754853226000002">
+  <trkpt lat="48.419687664000001" lon="20.754853226000002">
     <ele>167.40673799999999</ele>
     <time>2015-09-15T10:13:37Z</time>
   </trkpt>
@@ -1680,19 +1160,11 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
     <ele>168.368042</ele>
     <time>2015-09-15T10:13:20Z</time>
   </trkpt>
-  <trkpt lat="48.419621112000002" lon="20.754251153999999">
-    <ele>168.368042</ele>
-    <time>2015-09-15T10:13:17Z</time>
-  </trkpt>
-  <trkpt lat="48.419607616999997" lon="20.754206479">
-    <ele>168.368042</ele>
-    <time>2015-09-15T10:13:15Z</time>
-  </trkpt>
   <trkpt lat="48.419579538000001" lon="20.754062057999999">
     <ele>169.32946799999999</ele>
     <time>2015-09-15T10:13:08Z</time>
   </trkpt>
-  <trkpt lat="48.419559671999998" lon="20.753977653">
+  <trkpt lat="48.419559671999998" lon="20.753977736">
     <ele>167.88732899999999</ele>
     <time>2015-09-15T10:13:04Z</time>
   </trkpt>
@@ -1704,29 +1176,21 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
     <ele>168.368042</ele>
     <time>2015-09-15T10:12:50Z</time>
   </trkpt>
-  <trkpt lat="48.419401254999997" lon="20.753411790000001">
+  <trkpt lat="48.419401338" lon="20.753411790000001">
     <ele>168.368042</ele>
     <time>2015-09-15T10:12:46Z</time>
-  </trkpt>
-  <trkpt lat="48.419392789" lon="20.753380526000001">
-    <ele>167.40673799999999</ele>
-    <time>2015-09-15T10:12:43Z</time>
   </trkpt>
   <trkpt lat="48.419354400000003" lon="20.753295366">
     <ele>166.92602500000001</ele>
     <time>2015-09-15T10:12:35Z</time>
   </trkpt>
-  <trkpt lat="48.419324308999997" lon="20.753220347999999">
+  <trkpt lat="48.419324308999997" lon="20.753220263999999">
     <ele>165.96472199999999</ele>
     <time>2015-09-15T10:12:25Z</time>
   </trkpt>
-  <trkpt lat="48.419277956999998" lon="20.753135019999998">
+  <trkpt lat="48.419278040999998" lon="20.753135019999998">
     <ele>166.92602500000001</ele>
     <time>2015-09-15T10:12:19Z</time>
-  </trkpt>
-  <trkpt lat="48.419243674999997" lon="20.753093194000002">
-    <ele>167.88732899999999</ele>
-    <time>2015-09-15T10:12:13Z</time>
   </trkpt>
   <trkpt lat="48.419189275999997" lon="20.752997305000001">
     <ele>169.32946799999999</ele>
@@ -1736,35 +1200,27 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
     <ele>169.810059</ele>
     <time>2015-09-15T10:12:01Z</time>
   </trkpt>
-  <trkpt lat="48.419143175999999" lon="20.752883898">
-    <ele>169.810059</ele>
-    <time>2015-09-15T10:12:00Z</time>
-  </trkpt>
   <trkpt lat="48.419073187000002" lon="20.752792871">
     <ele>173.17468299999999</ele>
     <time>2015-09-15T10:11:49Z</time>
   </trkpt>
-  <trkpt lat="48.419053824999999" lon="20.752751798999999">
-    <ele>173.17468299999999</ele>
-    <time>2015-09-15T10:11:46Z</time>
-  </trkpt>
-  <trkpt lat="48.418945194999999" lon="20.752581647">
+  <trkpt lat="48.418945194999999" lon="20.752581563">
     <ele>172.69397000000001</ele>
     <time>2015-09-15T10:11:37Z</time>
   </trkpt>
-  <trkpt lat="48.418838242" lon="20.752445860000002">
+  <trkpt lat="48.418838158" lon="20.752445860000002">
     <ele>174.135864</ele>
     <time>2015-09-15T10:11:28Z</time>
   </trkpt>
-  <trkpt lat="48.418782921999998" lon="20.752386851000001">
+  <trkpt lat="48.418782921999998" lon="20.752386935000001">
     <ele>175.09728999999999</ele>
     <time>2015-09-15T10:11:24Z</time>
   </trkpt>
-  <trkpt lat="48.418642357000003" lon="20.752197335999998">
+  <trkpt lat="48.418642441000003" lon="20.752197335999998">
     <ele>174.135864</ele>
     <time>2015-09-15T10:11:14Z</time>
   </trkpt>
-  <trkpt lat="48.418463654999996" lon="20.751935653">
+  <trkpt lat="48.418463739000003" lon="20.751935737">
     <ele>174.135864</ele>
     <time>2015-09-15T10:11:02Z</time>
   </trkpt>
@@ -1789,7 +1245,7 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
     <time>2015-09-15T10:09:23Z</time>
   </trkpt>
   <trkpt lat="48.417988735999998" lon="20.750552387999999">
-    <ele>177.02001999999999</ele>
+    <ele>177.02001899999999</ele>
     <time>2015-09-15T10:09:15Z</time>
   </trkpt>
   <trkpt lat="48.417893014999997" lon="20.75034041">
@@ -1804,7 +1260,7 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
     <ele>180.86523399999999</ele>
     <time>2015-09-15T10:08:45Z</time>
   </trkpt>
-  <trkpt lat="48.417658824" lon="20.749809247999998">
+  <trkpt lat="48.417658824" lon="20.749809164999999">
     <ele>182.78784200000001</ele>
     <time>2015-09-15T10:08:32Z</time>
   </trkpt>
@@ -1820,7 +1276,7 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
     <ele>187.59435999999999</ele>
     <time>2015-09-15T10:08:00Z</time>
   </trkpt>
-  <trkpt lat="48.417328744999999" lon="20.749325110000001">
+  <trkpt lat="48.417328660999999" lon="20.749325110000001">
     <ele>186.63317900000001</ele>
     <time>2015-09-15T10:07:51Z</time>
   </trkpt>
@@ -1836,87 +1292,59 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
     <ele>183.26843299999999</ele>
     <time>2015-09-15T10:07:25Z</time>
   </trkpt>
-  <trkpt lat="48.416993888" lon="20.749424854000001">
-    <ele>180.86523399999999</ele>
-    <time>2015-09-15T10:07:17Z</time>
-  </trkpt>
   <trkpt lat="48.416924066999997" lon="20.749490819999998">
     <ele>179.42321799999999</ele>
     <time>2015-09-15T10:07:09Z</time>
   </trkpt>
-  <trkpt lat="48.416613181999999" lon="20.749623253999999">
+  <trkpt lat="48.416613181999999" lon="20.749623337999999">
     <ele>175.09728999999999</ele>
     <time>2015-09-15T10:06:45Z</time>
   </trkpt>
-  <trkpt lat="48.416456357000001" lon="20.749644879000002">
+  <trkpt lat="48.416456439999997" lon="20.749644879000002">
     <ele>177.50060999999999</ele>
     <time>2015-09-15T10:06:40Z</time>
-  </trkpt>
-  <trkpt lat="48.416441521000003" lon="20.749646052999999">
-    <ele>176.058594</ele>
-    <time>2015-09-15T10:06:39Z</time>
   </trkpt>
   <trkpt lat="48.416364659000003" lon="20.749671366000001">
     <ele>177.50060999999999</ele>
     <time>2015-09-15T10:06:35Z</time>
   </trkpt>
-  <trkpt lat="48.416327611" lon="20.749682346">
-    <ele>177.50060999999999</ele>
-    <time>2015-09-15T10:06:32Z</time>
-  </trkpt>
-  <trkpt lat="48.416264998000003" lon="20.749703553">
+  <trkpt lat="48.416264998000003" lon="20.749703636">
     <ele>177.981201</ele>
     <time>2015-09-15T10:06:23Z</time>
   </trkpt>
-  <trkpt lat="48.416198948000002" lon="20.749701122000001">
+  <trkpt lat="48.416198864999998" lon="20.749701122000001">
     <ele>177.981201</ele>
     <time>2015-09-15T10:06:16Z</time>
   </trkpt>
-  <trkpt lat="48.416117644000003" lon="20.749715455">
-    <ele>180.38452100000001</ele>
+  <trkpt lat="48.416117560000004" lon="20.749715539">
+    <ele>180.384522</ele>
     <time>2015-09-15T10:06:10Z</time>
   </trkpt>
-  <trkpt lat="48.416045056999998" lon="20.749756190999999">
+  <trkpt lat="48.416045140000001" lon="20.749756190999999">
     <ele>184.22985800000001</ele>
     <time>2015-09-15T10:06:08Z</time>
-  </trkpt>
-  <trkpt lat="48.416001721999997" lon="20.749742276999999">
-    <ele>188.075073</ele>
-    <time>2015-09-15T10:06:04Z</time>
   </trkpt>
   <trkpt lat="48.415918908999998" lon="20.749678239000001">
     <ele>189.03637699999999</ele>
     <time>2015-09-15T10:05:56Z</time>
   </trkpt>
-  <trkpt lat="48.415786390999997" lon="20.749563156000001">
+  <trkpt lat="48.415786390999997" lon="20.749563240000001">
     <ele>189.51696799999999</ele>
     <time>2015-09-15T10:05:43Z</time>
   </trkpt>
-  <trkpt lat="48.415759987999998" lon="20.749577489">
-    <ele>189.997681</ele>
-    <time>2015-09-15T10:05:20Z</time>
-  </trkpt>
-  <trkpt lat="48.415758312000001" lon="20.749580590000001">
-    <ele>188.55578600000001</ele>
-    <time>2015-09-15T10:04:53Z</time>
-  </trkpt>
-  <trkpt lat="48.415765352999998" lon="20.749543710000001">
-    <ele>189.51696799999999</ele>
-    <time>2015-09-15T10:04:46Z</time>
-  </trkpt>
-  <trkpt lat="48.415737106000002" lon="20.749418651999999">
+  <trkpt lat="48.415737106000002" lon="20.749418735999999">
     <ele>189.51696799999999</ele>
     <time>2015-09-15T10:04:36Z</time>
   </trkpt>
-  <trkpt lat="48.415720006000001" lon="20.749265347000001">
+  <trkpt lat="48.415720006000001" lon="20.749265263000002">
     <ele>189.03637699999999</ele>
     <time>2015-09-15T10:04:26Z</time>
   </trkpt>
-  <trkpt lat="48.415686645999997" lon="20.749178678">
+  <trkpt lat="48.415686563000001" lon="20.749178678">
     <ele>189.997681</ele>
     <time>2015-09-15T10:04:19Z</time>
   </trkpt>
-  <trkpt lat="48.415676587999997" lon="20.749064852">
+  <trkpt lat="48.415676587999997" lon="20.749064935">
     <ele>189.03637699999999</ele>
     <time>2015-09-15T10:04:11Z</time>
   </trkpt>
@@ -1932,19 +1360,15 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
     <ele>186.152466</ele>
     <time>2015-09-15T10:03:51Z</time>
   </trkpt>
-  <trkpt lat="48.415575251" lon="20.748579456000002">
+  <trkpt lat="48.415575335" lon="20.748579539000001">
     <ele>183.26843299999999</ele>
     <time>2015-09-15T10:03:41Z</time>
   </trkpt>
-  <trkpt lat="48.415558570999998" lon="20.748544334999998">
-    <ele>183.26843299999999</ele>
-    <time>2015-09-15T10:03:38Z</time>
-  </trkpt>
-  <trkpt lat="48.415480451999997" lon="20.748386838999998">
+  <trkpt lat="48.415480535" lon="20.748386838999998">
     <ele>183.26843299999999</ele>
     <time>2015-09-15T10:03:28Z</time>
   </trkpt>
-  <trkpt lat="48.415414988999999" lon="20.748229342999998">
+  <trkpt lat="48.415414988999999" lon="20.748229259999999">
     <ele>184.71057099999999</ele>
     <time>2015-09-15T10:03:19Z</time>
   </trkpt>
@@ -1961,7 +1385,7 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
     <time>2015-09-15T10:02:49Z</time>
   </trkpt>
   <trkpt lat="48.415249866000003" lon="20.747706312999998">
-    <ele>180.38452100000001</ele>
+    <ele>180.384522</ele>
     <time>2015-09-15T10:02:39Z</time>
   </trkpt>
   <trkpt lat="48.415217427999998" lon="20.747632133">
@@ -1972,13 +1396,9 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
     <ele>177.50060999999999</ele>
     <time>2015-09-15T10:02:21Z</time>
   </trkpt>
-  <trkpt lat="48.415166968000001" lon="20.747368857000001">
+  <trkpt lat="48.415166968000001" lon="20.747368941000001">
     <ele>179.42321799999999</ele>
     <time>2015-09-15T10:02:14Z</time>
-  </trkpt>
-  <trkpt lat="48.415159006000003" lon="20.747359134">
-    <ele>179.42321799999999</ele>
-    <time>2015-09-15T10:02:13Z</time>
   </trkpt>
   <trkpt lat="48.415091615000001" lon="20.747262575000001">
     <ele>177.981201</ele>
@@ -1992,17 +1412,9 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
     <ele>174.61657700000001</ele>
     <time>2015-09-15T10:01:47Z</time>
   </trkpt>
-  <trkpt lat="48.414988266000002" lon="20.746999634000002">
-    <ele>174.61657700000001</ele>
-    <time>2015-09-15T10:01:45Z</time>
-  </trkpt>
   <trkpt lat="48.414943004000001" lon="20.746873234999999">
     <ele>174.135864</ele>
     <time>2015-09-15T10:01:36Z</time>
-  </trkpt>
-  <trkpt lat="48.414938225999997" lon="20.746861501000001">
-    <ele>174.135864</ele>
-    <time>2015-09-15T10:01:35Z</time>
   </trkpt>
   <trkpt lat="48.414894472999997" lon="20.746675421999999">
     <ele>172.213257</ele>
@@ -2012,7 +1424,7 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
     <ele>170.77136200000001</ele>
     <time>2015-09-15T10:01:18Z</time>
   </trkpt>
-  <trkpt lat="48.414881145999999" lon="20.746386916999999">
+  <trkpt lat="48.414881061999999" lon="20.746386916999999">
     <ele>168.368042</ele>
     <time>2015-09-15T10:01:10Z</time>
   </trkpt>
@@ -2020,15 +1432,11 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
     <ele>167.88732899999999</ele>
     <time>2015-09-15T10:01:01Z</time>
   </trkpt>
-  <trkpt lat="48.414825825000001" lon="20.746222380999999">
-    <ele>166.92602500000001</ele>
-    <time>2015-09-15T10:00:57Z</time>
-  </trkpt>
-  <trkpt lat="48.414773941" lon="20.746042252999999">
+  <trkpt lat="48.414773941" lon="20.746042336999999">
     <ele>167.88732899999999</ele>
     <time>2015-09-15T10:00:46Z</time>
   </trkpt>
-  <trkpt lat="48.414711662999999" lon="20.745885344000001">
+  <trkpt lat="48.414711662999999" lon="20.745885260000001">
     <ele>169.810059</ele>
     <time>2015-09-15T10:00:36Z</time>
   </trkpt>
@@ -2036,31 +1444,23 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
     <ele>167.88732899999999</ele>
     <time>2015-09-15T10:00:30Z</time>
   </trkpt>
-  <trkpt lat="48.414553245999997" lon="20.745528610000001">
+  <trkpt lat="48.414553161999997" lon="20.745528610000001">
     <ele>167.40673799999999</ele>
     <time>2015-09-15T10:00:21Z</time>
-  </trkpt>
-  <trkpt lat="48.414534302" lon="20.745496759000002">
-    <ele>167.40673799999999</ele>
-    <time>2015-09-15T10:00:19Z</time>
   </trkpt>
   <trkpt lat="48.414482837999998" lon="20.745387626999999">
     <ele>166.92602500000001</ele>
     <time>2015-09-15T10:00:13Z</time>
   </trkpt>
-  <trkpt lat="48.414478897999999" lon="20.745324176">
-    <ele>167.40673799999999</ele>
-    <time>2015-09-15T10:00:02Z</time>
-  </trkpt>
   <trkpt lat="48.414249484999999" lon="20.745006836999998">
     <ele>149.14160200000001</ele>
     <time>2007-12-16T10:37:10Z</time>
   </trkpt>
-  <trkpt lat="48.414142699999999" lon="20.744910444999999">
+  <trkpt lat="48.414142699999999" lon="20.744910360999999">
     <ele>149.14160200000001</ele>
     <time>2007-12-16T10:36:57Z</time>
   </trkpt>
-  <trkpt lat="48.414021245999997" lon="20.744804163000001">
+  <trkpt lat="48.414021161999997" lon="20.744804163000001">
     <ele>149.62231399999999</ele>
     <time>2007-12-16T10:36:42Z</time>
   </trkpt>
@@ -2076,23 +1476,23 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
     <ele>149.62231399999999</ele>
     <time>2007-12-16T10:35:38Z</time>
   </trkpt>
-  <trkpt lat="48.413135027999999" lon="20.743912244000001">
+  <trkpt lat="48.413135027999999" lon="20.743912160000001">
     <ele>149.62231399999999</ele>
     <time>2007-12-16T10:35:14Z</time>
   </trkpt>
-  <trkpt lat="48.412926988999999" lon="20.743696242999999">
+  <trkpt lat="48.412926988999999" lon="20.743696158999999">
     <ele>149.62231399999999</ele>
     <time>2007-12-16T10:34:56Z</time>
   </trkpt>
-  <trkpt lat="48.412203294999998" lon="20.743201543000001">
+  <trkpt lat="48.412203294999998" lon="20.743201459000002">
     <ele>149.14160200000001</ele>
     <time>2007-12-16T10:33:59Z</time>
   </trkpt>
-  <trkpt lat="48.412066502000002" lon="20.743109844999999">
+  <trkpt lat="48.412066502000002" lon="20.743109760999999">
     <ele>149.14160200000001</ele>
     <time>2007-12-16T10:33:47Z</time>
   </trkpt>
-  <trkpt lat="48.411629722000001" lon="20.742531157999998">
+  <trkpt lat="48.411629722000001" lon="20.742531241999998">
     <ele>147.69970699999999</ele>
     <time>2007-12-16T10:33:06Z</time>
   </trkpt>
@@ -2100,39 +1500,37 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
     <ele>147.69970699999999</ele>
     <time>2007-12-16T10:32:54Z</time>
   </trkpt>
-  <trkpt lat="48.411468454000001" lon="20.742078284000002">
+  <trkpt lat="48.411468538000001" lon="20.742078284000002">
     <ele>147.69970699999999</ele>
     <time>2007-12-16T10:32:41Z</time>
-  </trkpt>
-  <trkpt lat="48.411432746999999" lon="20.741990189999999">
-    <ele>146.257812</ele>
-    <time>2007-12-16T10:32:21Z</time>
-  </trkpt>
-  <trkpt lat="48.411421347000001" lon="20.741966218000002">
-    <ele>145.77709999999999</ele>
-    <time>2007-12-16T10:32:10Z</time>
-  </trkpt>
-  <trkpt lat="48.411366111" lon="20.741845937000001">
-    <ele>145.77709999999999</ele>
-    <time>2007-12-16T10:32:02Z</time>
   </trkpt>
   <trkpt lat="48.411335432999998" lon="20.741634294000001">
     <ele>145.29638700000001</ele>
     <time>2007-12-16T10:31:51Z</time>
   </trkpt>
-  <trkpt lat="48.411040305999997" lon="20.741178989000002">
-    <ele>150.583618</ele>
+  <trkpt lat="48.411282794999998" lon="20.741500686999998">
+    <ele>144.81579600000001</ele>
+    <time>2007-12-16T10:31:41Z</time>
   </trkpt>
-  <trkpt lat="48.411167376000002" lon="20.739779127999999">
-    <ele>151.06420900000001</ele>
+  <trkpt lat="48.411214231000002" lon="20.741370766999999">
+    <ele>144.81579600000001</ele>
+    <time>2007-12-16T10:31:31Z</time>
   </trkpt>
-  <trkpt lat="48.411216326000002" lon="20.739694972999999">
-    <ele>148.18042</ele>
-    <time>2007-12-16T10:29:42Z</time>
+  <trkpt lat="48.411168633000003" lon="20.740860476999998">
+    <ele>145.77709999999999</ele>
+    <time>2007-12-16T10:30:36Z</time>
   </trkpt>
-  <trkpt lat="48.411221187999999" lon="20.739682065">
-    <ele>148.18042</ele>
-    <time>2007-12-16T10:29:41Z</time>
+  <trkpt lat="48.411223534000001" lon="20.740577169000002">
+    <ele>146.257812</ele>
+    <time>2007-12-16T10:30:22Z</time>
+  </trkpt>
+  <trkpt lat="48.411256307999999" lon="20.740292100000001">
+    <ele>146.257812</ele>
+    <time>2007-12-16T10:30:09Z</time>
+  </trkpt>
+  <trkpt lat="48.411250440000003" lon="20.740061933">
+    <ele>146.257812</ele>
+    <time>2007-12-16T10:29:59Z</time>
   </trkpt>
   <trkpt lat="48.411156060000003" lon="20.739637893000001">
     <ele>147.21899400000001</ele>
@@ -2146,7 +1544,7 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
     <ele>147.69970699999999</ele>
     <time>2007-12-16T10:29:08Z</time>
   </trkpt>
-  <trkpt lat="48.410729924000002" lon="20.739179654000001">
+  <trkpt lat="48.410729924000002" lon="20.739179738000001">
     <ele>146.73840300000001</ele>
     <time>2007-12-16T10:28:56Z</time>
   </trkpt>
@@ -2162,10 +1560,6 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
     <ele>145.77709999999999</ele>
     <time>2007-12-16T10:28:09Z</time>
   </trkpt>
-  <trkpt lat="48.410439072000003" lon="20.739064151000001">
-    <ele>144.81579600000001</ele>
-    <time>2007-12-16T10:27:57Z</time>
-  </trkpt>
   <trkpt lat="48.410391881999999" lon="20.739032803000001">
     <ele>144.335205</ele>
     <time>2007-12-16T10:27:44Z</time>
@@ -2173,10 +1567,6 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
   <trkpt lat="48.410327760999998" lon="20.73895284">
     <ele>143.85436999999999</ele>
     <time>2007-12-16T10:27:34Z</time>
-  </trkpt>
-  <trkpt lat="48.410337232000003" lon="20.738895088">
-    <ele>144.335205</ele>
-    <time>2007-12-16T10:27:29Z</time>
   </trkpt>
   <trkpt lat="48.410374699000002" lon="20.738838678">
     <ele>146.257812</ele>
@@ -2186,10 +1576,6 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
     <ele>146.73840300000001</ele>
     <time>2007-12-16T10:27:06Z</time>
   </trkpt>
-  <trkpt lat="48.410431780000003" lon="20.738743207999999">
-    <ele>147.69970699999999</ele>
-    <time>2007-12-16T10:27:02Z</time>
-  </trkpt>
   <trkpt lat="48.410438233999997" lon="20.738659221999999">
     <ele>148.18042</ele>
     <time>2007-12-16T10:26:54Z</time>
@@ -2198,19 +1584,19 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
     <ele>149.14160200000001</ele>
     <time>2007-12-16T10:26:44Z</time>
   </trkpt>
-  <trkpt lat="48.410404958000001" lon="20.738430395999998">
+  <trkpt lat="48.410405042000001" lon="20.738430395999998">
     <ele>151.06420900000001</ele>
     <time>2007-12-16T10:26:33Z</time>
   </trkpt>
   <trkpt lat="48.410444603999998" lon="20.738243228000002">
-    <ele>152.98693800000001</ele>
+    <ele>152.98693900000001</ele>
     <time>2007-12-16T10:26:20Z</time>
   </trkpt>
-  <trkpt lat="48.410492548999997" lon="20.73807274">
+  <trkpt lat="48.410492464999997" lon="20.73807274">
     <ele>155.39025899999999</ele>
     <time>2007-12-16T10:26:08Z</time>
   </trkpt>
-  <trkpt lat="48.410524651000003" lon="20.737889009">
+  <trkpt lat="48.410524735000003" lon="20.737889009">
     <ele>156.83215300000001</ele>
     <time>2007-12-16T10:25:57Z</time>
   </trkpt>
@@ -2218,8 +1604,8 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
     <ele>159.23547400000001</ele>
     <time>2007-12-16T10:25:47Z</time>
   </trkpt>
-  <trkpt lat="48.410612913000001" lon="20.737602347999999">
-    <ele>159.71618699999999</ele>
+  <trkpt lat="48.410612913000001" lon="20.737602264">
+    <ele>159.71618599999999</ele>
     <time>2007-12-16T10:25:38Z</time>
   </trkpt>
   <trkpt lat="48.410661695999998" lon="20.737453987999999">
@@ -2230,21 +1616,13 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
     <ele>162.600098</ele>
     <time>2007-12-16T10:25:19Z</time>
   </trkpt>
-  <trkpt lat="48.410717435000002" lon="20.737249049999999">
+  <trkpt lat="48.410717435000002" lon="20.737249133999999">
     <ele>164.042114</ele>
     <time>2007-12-16T10:25:06Z</time>
-  </trkpt>
-  <trkpt lat="48.410743670999999" lon="20.737235387999998">
-    <ele>166.445312</ele>
-    <time>2007-12-16T10:24:52Z</time>
   </trkpt>
   <trkpt lat="48.410780299000002" lon="20.737149305999999">
     <ele>169.810059</ele>
     <time>2007-12-16T10:24:43Z</time>
-  </trkpt>
-  <trkpt lat="48.410770827999997" lon="20.737085352000001">
-    <ele>169.810059</ele>
-    <time>2007-12-16T10:24:39Z</time>
   </trkpt>
   <trkpt lat="48.410737300000001" lon="20.736922659000001">
     <ele>169.810059</ele>
@@ -2262,15 +1640,11 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
     <ele>175.09728999999999</ele>
     <time>2007-12-16T10:23:57Z</time>
   </trkpt>
-  <trkpt lat="48.410496739999999" lon="20.736459893999999">
-    <ele>175.57788099999999</ele>
-    <time>2007-12-16T10:23:55Z</time>
-  </trkpt>
   <trkpt lat="48.410400013" lon="20.736410189000001">
     <ele>179.42321799999999</ele>
     <time>2007-12-16T10:23:43Z</time>
   </trkpt>
-  <trkpt lat="48.410244528" lon="20.736250346999999">
+  <trkpt lat="48.410244528" lon="20.736250262999999">
     <ele>181.34582499999999</ele>
     <time>2007-12-16T10:23:29Z</time>
   </trkpt>
@@ -2286,14 +1660,6 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
     <ele>188.075073</ele>
     <time>2007-12-16T10:22:21Z</time>
   </trkpt>
-  <trkpt lat="48.409640947" lon="20.735934265000001">
-    <ele>185.671753</ele>
-    <time>2007-12-16T10:21:46Z</time>
-  </trkpt>
-  <trkpt lat="48.409634912000001" lon="20.735954968000001">
-    <ele>188.55578600000001</ele>
-    <time>2007-12-16T10:21:38Z</time>
-  </trkpt>
   <trkpt lat="48.409649162000001" lon="20.736003498999999">
     <ele>196.72692900000001</ele>
     <time>2007-12-16T10:21:30Z</time>
@@ -2302,11 +1668,11 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
     <ele>202.01428200000001</ele>
     <time>2007-12-16T10:20:51Z</time>
   </trkpt>
-  <trkpt lat="48.409302150999999" lon="20.736014647000001">
+  <trkpt lat="48.409302234999998" lon="20.736014564000001">
     <ele>201.533569</ele>
     <time>2007-12-16T10:20:45Z</time>
   </trkpt>
-  <trkpt lat="48.409231071999997" lon="20.735753550999998">
+  <trkpt lat="48.409231071999997" lon="20.735753634999998">
     <ele>205.859497</ele>
     <time>2007-12-16T10:20:29Z</time>
   </trkpt>
@@ -2314,47 +1680,187 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
     <ele>203.93689000000001</ele>
     <time>2007-12-16T10:20:07Z</time>
   </trkpt>
-  <trkpt lat="48.409017753000001" lon="20.735391200999999">
+  <trkpt lat="48.409017837" lon="20.735391200999999">
     <ele>205.859497</ele>
     <time>2007-12-16T10:19:47Z</time>
   </trkpt>
-  <trkpt lat="48.409027643999998" lon="20.735195483999998">
-    <ele>188.075073</ele>
-    <time>2007-12-16T10:10:40Z</time>
+  <trkpt lat="48.408922199000003" lon="20.735677695">
+    <ele>206.34008800000001</ele>
+    <time>2007-12-16T10:19:29Z</time>
   </trkpt>
-  <trkpt lat="48.409069301999999" lon="20.735027007999999">
-    <ele>187.59435999999999</ele>
-    <time>2007-12-16T10:10:26Z</time>
+  <trkpt lat="48.408859585999998" lon="20.735953962">
+    <ele>205.859497</ele>
+    <time>2007-12-16T10:19:16Z</time>
   </trkpt>
-  <trkpt lat="48.409084137999997" lon="20.734881163000001">
-    <ele>183.26843299999999</ele>
-    <time>2007-12-16T10:10:16Z</time>
+  <trkpt lat="48.408807701999997" lon="20.736032166000001">
+    <ele>209.224121</ele>
+    <time>2007-12-16T10:19:10Z</time>
   </trkpt>
-  <trkpt lat="48.409111211000003" lon="20.73469081">
-    <ele>180.86523399999999</ele>
-    <time>2007-12-16T10:10:06Z</time>
+  <trkpt lat="48.408778030000001" lon="20.736141382">
+    <ele>208.74340799999999</ele>
+    <time>2007-12-16T10:19:05Z</time>
   </trkpt>
-  <trkpt lat="48.409059411000001" lon="20.734012881000002">
+  <trkpt lat="48.408604609000001" lon="20.736170132000002">
+    <ele>211.146728</ele>
+    <time>2007-12-16T10:18:51Z</time>
+  </trkpt>
+  <trkpt lat="48.408469240999999" lon="20.736158062000001">
+    <ele>212.10803200000001</ele>
+    <time>2007-12-16T10:18:39Z</time>
+  </trkpt>
+  <trkpt lat="48.408318618000003" lon="20.736075080999999">
+    <ele>213.550049</ele>
+    <time>2007-12-16T10:18:26Z</time>
+  </trkpt>
+  <trkpt lat="48.408233207000002" lon="20.735898641999999">
+    <ele>214.51123100000001</ele>
+    <time>2007-12-16T10:18:13Z</time>
+  </trkpt>
+  <trkpt lat="48.408222981000002" lon="20.735811638000001">
+    <ele>215.472656</ele>
+    <time>2007-12-16T10:17:59Z</time>
+  </trkpt>
+  <trkpt lat="48.408162631000003" lon="20.735483904999999">
+    <ele>216.43396000000001</ele>
+    <time>2007-12-16T10:17:45Z</time>
+  </trkpt>
+  <trkpt lat="48.408140418999999" lon="20.735201603">
+    <ele>215.472656</ele>
+    <time>2007-12-16T10:17:33Z</time>
+  </trkpt>
+  <trkpt lat="48.407985019000002" lon="20.735237561000002">
+    <ele>214.99194299999999</ele>
+    <time>2007-12-16T10:17:18Z</time>
+  </trkpt>
+  <trkpt lat="48.407836240000002" lon="20.735280225">
+    <ele>219.317993</ele>
+    <time>2007-12-16T10:17:06Z</time>
+  </trkpt>
+  <trkpt lat="48.407689136999998" lon="20.735309394000002">
+    <ele>221.721191</ele>
+    <time>2007-12-16T10:16:54Z</time>
+  </trkpt>
+  <trkpt lat="48.407602971000003" lon="20.735363960000001">
+    <ele>221.240601</ele>
+    <time>2007-12-16T10:16:41Z</time>
+  </trkpt>
+  <trkpt lat="48.407480176999997" lon="20.735616590999999">
+    <ele>219.79858400000001</ele>
+    <time>2007-12-16T10:16:24Z</time>
+  </trkpt>
+  <trkpt lat="48.407406582999997" lon="20.735752797">
+    <ele>218.83727999999999</ele>
+    <time>2007-12-16T10:16:15Z</time>
+  </trkpt>
+  <trkpt lat="48.407487803999999" lon="20.735641737000002">
+    <ele>224.12451200000001</ele>
+    <time>2007-12-16T10:15:57Z</time>
+  </trkpt>
+  <trkpt lat="48.407535832000001" lon="20.735479631">
+    <ele>223.163208</ele>
+    <time>2007-12-16T10:15:47Z</time>
+  </trkpt>
+  <trkpt lat="48.407582771000001" lon="20.735392375">
+    <ele>216.91467299999999</ele>
+    <time>2007-12-16T10:13:59Z</time>
+  </trkpt>
+  <trkpt lat="48.407648737000002" lon="20.735316182999998">
+    <ele>216.43396000000001</ele>
+    <time>2007-12-16T10:13:34Z</time>
+  </trkpt>
+  <trkpt lat="48.407824085999998" lon="20.735205375">
+    <ele>216.91467299999999</ele>
+    <time>2007-12-16T10:13:20Z</time>
+  </trkpt>
+  <trkpt lat="48.407730878999999" lon="20.734444632999999">
+    <ele>220.75988799999999</ele>
+    <time>2013-11-07T11:26:44Z</time>
+  </trkpt>
+  <trkpt lat="48.407883095000003" lon="20.734052862999999">
+    <ele>217.87597700000001</ele>
+    <time>2013-11-07T11:52:13Z</time>
+  </trkpt>
+  <trkpt lat="48.407867336999999" lon="20.733931242000001">
+    <ele>216.43396000000001</ele>
+    <time>2013-11-07T11:52:23Z</time>
+  </trkpt>
+  <trkpt lat="48.407906312000001" lon="20.733805429">
+    <ele>214.51123100000001</ele>
+    <time>2013-11-07T11:52:41Z</time>
+  </trkpt>
+  <trkpt lat="48.407970099000003" lon="20.733792773000001">
+    <ele>213.06933599999999</ele>
+    <time>2013-11-07T11:52:49Z</time>
+  </trkpt>
+  <trkpt lat="48.408090713999997" lon="20.733729741000001">
+    <ele>212.10803200000001</ele>
+    <time>2013-11-07T11:53:01Z</time>
+  </trkpt>
+  <trkpt lat="48.408192890000002" lon="20.733678191999999">
+    <ele>209.70483400000001</ele>
+    <time>2013-11-07T11:53:12Z</time>
+  </trkpt>
+  <trkpt lat="48.408410484000001" lon="20.733778019999999">
+    <ele>209.70483400000001</ele>
+    <time>2013-11-07T11:53:30Z</time>
+  </trkpt>
+  <trkpt lat="48.408507630000003" lon="20.733809787999999">
+    <ele>207.782105</ele>
+    <time>2013-11-07T11:53:41Z</time>
+  </trkpt>
+  <trkpt lat="48.408546018999999" lon="20.733726639">
+    <ele>205.378784</ele>
+    <time>2013-11-07T11:53:49Z</time>
+  </trkpt>
+  <trkpt lat="48.408626402000003" lon="20.733672492">
+    <ele>201.05285599999999</ele>
+    <time>2013-11-07T11:54:00Z</time>
+  </trkpt>
+  <trkpt lat="48.408698319000003" lon="20.733634437999999">
+    <ele>199.61084</ele>
+    <time>2013-11-07T11:54:10Z</time>
+  </trkpt>
+  <trkpt lat="48.408765793000001" lon="20.733606024">
+    <ele>198.64953600000001</ele>
+    <time>2013-11-07T11:54:18Z</time>
+  </trkpt>
+  <trkpt lat="48.408860005000001" lon="20.733563611000001">
+    <ele>191.920288</ele>
+    <time>2013-11-07T11:54:30Z</time>
+  </trkpt>
+  <trkpt lat="48.408931922000001" lon="20.733543661999999">
+    <ele>188.55578600000001</ele>
+    <time>2013-11-07T11:54:38Z</time>
+  </trkpt>
+  <trkpt lat="48.409080617000001" lon="20.733452634999999">
     <ele>181.34582499999999</ele>
-    <time>2007-12-16T10:09:13Z</time>
+    <time>2013-11-07T11:55:00Z</time>
   </trkpt>
-  <trkpt lat="48.409057650999998" lon="20.733777936999999">
-    <ele>181.34582499999999</ele>
-    <time>2007-12-16T10:08:40Z</time>
+  <trkpt lat="48.409159993999999" lon="20.73332632">
+    <ele>177.50060999999999</ele>
+    <time>2013-11-07T11:55:12Z</time>
   </trkpt>
-  <trkpt lat="48.409466268000003" lon="20.733274771000001">
+  <trkpt lat="48.409263175" lon="20.733176786000001">
+    <ele>174.61657700000001</ele>
+    <time>2013-11-07T11:55:27Z</time>
+  </trkpt>
+  <trkpt lat="48.409319166000003" lon="20.733133703">
+    <ele>173.65527299999999</ele>
+    <time>2013-11-07T11:55:40Z</time>
+  </trkpt>
+  <trkpt lat="48.409383288000001" lon="20.732982913000001">
+    <ele>171.25207499999999</ele>
+    <time>2013-11-07T12:04:22Z</time>
+  </trkpt>
+  <trkpt lat="48.409444139999998" lon="20.732925497">
     <ele>170.290649</ele>
-    <time>2007-12-16T10:06:50Z</time>
+    <time>2013-11-07T12:04:32Z</time>
   </trkpt>
-  <trkpt lat="48.409551848" lon="20.732790548000001">
-    <ele>165.48413099999999</ele>
-    <time>2007-11-02T08:37:13Z</time>
+  <trkpt lat="48.409613874000001" lon="20.732691139">
+    <ele>166.445312</ele>
+    <time>2013-11-07T12:04:38Z</time>
   </trkpt>
-  <trkpt lat="48.409602976999999" lon="20.732702370999998">
-    <ele>164.522705</ele>
-    <time>2007-11-02T08:36:52Z</time>
-  </trkpt>
-  <trkpt lat="48.409447661000002" lon="20.732119158">
+  <trkpt lat="48.409447661000002" lon="20.732119242">
     <ele>166.445312</ele>
     <time>2007-11-02T08:35:58Z</time>
   </trkpt>
@@ -2362,11 +1868,11 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
     <ele>165.48413099999999</ele>
     <time>2007-11-02T08:35:44Z</time>
   </trkpt>
-  <trkpt lat="48.409132249999999" lon="20.731857139999999">
+  <trkpt lat="48.409132165999999" lon="20.731857139999999">
     <ele>165.00341800000001</ele>
     <time>2007-11-02T08:35:29Z</time>
   </trkpt>
-  <trkpt lat="48.409006269999999" lon="20.731723950999999">
+  <trkpt lat="48.409006269999999" lon="20.731724034999999">
     <ele>165.96472199999999</ele>
     <time>2007-11-02T08:35:16Z</time>
   </trkpt>
@@ -2374,11 +1880,11 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
     <ele>166.445312</ele>
     <time>2007-11-02T08:35:02Z</time>
   </trkpt>
-  <trkpt lat="48.408886744" lon="20.731385825">
+  <trkpt lat="48.40888666" lon="20.731385825">
     <ele>169.32946799999999</ele>
     <time>2007-11-02T08:34:50Z</time>
   </trkpt>
-  <trkpt lat="48.408727151999997" lon="20.731004113000001">
+  <trkpt lat="48.408727235999997" lon="20.731004113000001">
     <ele>167.88732899999999</ele>
     <time>2007-11-02T08:34:21Z</time>
   </trkpt>
@@ -2394,23 +1900,15 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
     <ele>167.88732899999999</ele>
     <time>2007-11-02T08:33:33Z</time>
   </trkpt>
-  <trkpt lat="48.408204959999999" lon="20.730489967">
-    <ele>168.368042</ele>
-    <time>2007-11-02T08:33:16Z</time>
-  </trkpt>
   <trkpt lat="48.408126672999998" lon="20.730538918000001">
     <ele>184.22985800000001</ele>
     <time>2007-11-02T08:33:07Z</time>
   </trkpt>
-  <trkpt lat="48.407835149999997" lon="20.729689411999999">
+  <trkpt lat="48.407835233999997" lon="20.729689411999999">
     <ele>155.87097199999999</ele>
     <time>2007-11-02T08:32:12Z</time>
   </trkpt>
-  <trkpt lat="48.407813273000002" lon="20.729668791999998">
-    <ele>153.46765099999999</ele>
-    <time>2007-11-02T08:32:10Z</time>
-  </trkpt>
-  <trkpt lat="48.407325446999998" lon="20.728722727000001">
+  <trkpt lat="48.407325362999998" lon="20.728722727000001">
     <ele>153.948364</ele>
   </trkpt>
   <trkpt lat="48.407416892999997" lon="20.727867438000001">
@@ -2419,19 +1917,19 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
   <trkpt lat="48.407740769999997" lon="20.727517074000001">
     <ele>146.73840300000001</ele>
   </trkpt>
-  <trkpt lat="48.408024748999999" lon="20.727275339999998">
+  <trkpt lat="48.408024664999999" lon="20.727275339999998">
     <ele>147.21899400000001</ele>
   </trkpt>
   <trkpt lat="48.408345607999998" lon="20.727100492999998">
     <ele>147.21899400000001</ele>
   </trkpt>
-  <trkpt lat="48.408446945000001" lon="20.727086831000001">
+  <trkpt lat="48.408446861000002" lon="20.727086831000001">
     <ele>147.69970699999999</ele>
   </trkpt>
   <trkpt lat="48.408875930999997" lon="20.726909720999998">
     <ele>145.77709999999999</ele>
   </trkpt>
-  <trkpt lat="48.409045747999997" lon="20.726663545000001">
+  <trkpt lat="48.409045665000001" lon="20.726663461000001">
     <ele>144.81579600000001</ele>
   </trkpt>
   <trkpt lat="48.409174661999998" lon="20.726192901000001">
@@ -2440,29 +1938,11 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
   <trkpt lat="48.409331068" lon="20.725376587">
     <ele>145.29638700000001</ele>
   </trkpt>
-  <trkpt lat="48.409283962000003" lon="20.724578043000001">
+  <trkpt lat="48.409283962000003" lon="20.724577960000001">
     <ele>146.73840300000001</ele>
   </trkpt>
   <trkpt lat="48.409311539000001" lon="20.724292136999999">
     <ele>146.73840300000001</ele>
-  </trkpt>
-  <trkpt lat="48.409332073999998" lon="20.724262968000001">
-    <ele>150.583618</ele>
-  </trkpt>
-  <trkpt lat="48.409316484000001" lon="20.724287694000001">
-    <ele>148.18042</ele>
-  </trkpt>
-  <trkpt lat="48.409417988999998" lon="20.724260034">
-    <ele>144.335205</ele>
-  </trkpt>
-  <trkpt lat="48.409422347000003" lon="20.724584664999998">
-    <ele>144.81579600000001</ele>
-  </trkpt>
-  <trkpt lat="48.409358226000002" lon="20.724301692000001">
-    <ele>145.77709999999999</ele>
-  </trkpt>
-  <trkpt lat="48.409245153999997" lon="20.724334129999999">
-    <ele>150.103027</ele>
   </trkpt>
   </trkseg>
 </trk>

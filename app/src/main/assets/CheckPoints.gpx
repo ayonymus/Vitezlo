@@ -3,6 +3,11 @@
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 xmlns="http://www.topografix.com/GPX/1/0"
 xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/GPX/1/0/gpx.xsd">
+  <name>CheckPoints</name>
+  <author></author>
+  <desc></desc>
+  <time>2017-04-15T09:24:36.732866Z</time>
+  <keywords></keywords>
 <wpt lat="48.390704999999997" lon="20.790775">
   <name>Abod</name>
   <cmt>7:40 - 15:00</cmt>
@@ -23,6 +28,16 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
   <cmt>18:40 - 21:10</cmt>
   <desc>21</desc>
 </wpt>
+<wpt lat="48.294843" lon="20.741222">
+  <name>Edel&#xe9;ny </name>
+  <time>2018-04-07T17:56:21Z</time>
+  <desc>edeleny</desc>
+</wpt>
+<wpt lat="48.407278884982318" lon="20.633447846252441">
+  <name>Fels&#x151;telekes </name>
+  <time>2018-04-07T18:15:00Z</time>
+  <desc>felsotelekes</desc>
+</wpt>
 <wpt lat="48.419742999999997" lon="20.778534000000001">
   <name>Galv&#xe1;cs</name>
   <cmt>9:55 - 19:20</cmt>
@@ -33,12 +48,6 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
   <time>2017-04-15T14:09:45Z</time>
   <cmt>07:30 - 14:30</cmt>
   <desc>galvacs2</desc>
-</wpt>
-<wpt lat="48.444012999999998" lon="20.583801000000001">
-  <name>&#xc9;gersz&#xf6;g</name>
-  <time>2017-04-15T09:26:12Z</time>
-  <cmt>7:50 - 13:00</cmt>
-  <desc>egerszog</desc>
 </wpt>
 <wpt lat="48.561723000000001" lon="20.838048000000001">
   <name>H&#xed;dv&#xe9;gard&#xf3;</name>
@@ -60,10 +69,16 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
   <cmt>8:10 - 16:45</cmt>
   <desc>kecskefarm</desc>
 </wpt>
+<wpt lat="48.392530999999998" lon="20.717476999999999">
+  <name>Kishegy</name>
+  <time>2018-04-07T17:38:32Z</time>
+  <desc>kishegy</desc>
+</wpt>
 <wpt lat="48.391806000000003" lon="20.710125999999999">
   <name>Kishegy borospince</name>
+  <time>2018-04-07T17:39:49Z</time>
   <cmt>18:10 - 20:05</cmt>
-  <desc>kishegy</desc>
+  <desc>kishegy_pince</desc>
 </wpt>
 <wpt lat="48.433656999999997" lon="20.698464000000001">
   <name>K&#xf6;z&#xe9;p-hegy</name>
@@ -78,7 +93,7 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
 <wpt lat="48.410648999999999" lon="20.790866000000001">
   <name>Maraszt tet&#x151;</name>
   <time>2017-04-15T14:11:31Z</time>
-  <cmt>07:40 - 13:15   </cmt>
+  <cmt>07:40 - 13:15	 </cmt>
   <desc>maraszt</desc>
 </wpt>
 <wpt lat="48.484979000000003" lon="20.735168000000002">
@@ -91,12 +106,7 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
   <cmt>7:50 - 18:50</cmt>
   <desc>meszes</desc>
 </wpt>
-<wpt lat="48.442717999999999" lon="20.690144">
-  <name>&#xd6;rd&#xf6;g-g&#xe1;t</name>
-  <cmt>6:50 - 14:50</cmt>
-  <desc>ordog</desc>
-</wpt>
-<wpt lat="48.471004000000001" lon="20.689888">
+<wpt lat="48.470121354131983" lon="20.689677676040649">
   <name>Perkupa</name>
   <cmt>7:25 - 15:50</cmt>
   <desc>perkupa</desc>
@@ -111,6 +121,16 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
   <cmt>9:05 - 17:45</cmt>
   <desc>rakacaszend</desc>
 </wpt>
+<wpt lat="48.394475" lon="20.644573000000001">
+  <name>Rudabanya</name>
+  <time>2018-04-07T17:39:12Z</time>
+  <desc>rudabanya</desc>
+</wpt>
+<wpt lat="48.372338999999997" lon="20.616616">
+  <name>Rudab&#xe1;nya Rudapark </name>
+  <time>2018-04-07T18:12:22Z</time>
+  <desc>rudapark</desc>
+</wpt>
 <wpt lat="48.407434000000002" lon="20.727101000000001">
   <name>Strand r&#xe9;t</name>
   <cmt>19:11 - 22:00</cmt>
@@ -121,7 +141,12 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
   <cmt>7:15 - 15:00</cmt>
   <desc>szalonna</desc>
 </wpt>
-<wpt lat="48.522249000000002" lon="20.676234000000001">
+<wpt lat="48.384091420104419" lon="20.675073503318785">
+  <name>Szuhogy</name>
+  <time>2018-04-07T17:55:23Z</time>
+  <desc>szuhogy</desc>
+</wpt>
+<wpt lat="48.522626115930954" lon="20.675370773155212">
   <name>Sz&#xf6;gliget</name>
   <cmt>7:45 - 15:05</cmt>
   <desc>szogliget</desc>
@@ -140,5 +165,15 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
   <name>V&#xe1;r pince</name>
   <cmt>18:55 - 21:30</cmt>
   <desc>22</desc>
+</wpt>
+<wpt lat="48.444012999999998" lon="20.583801000000001">
+  <name>&#xc9;gersz&#xf6;g</name>
+  <time>2017-04-15T09:26:12Z</time>
+  <desc>egerszog</desc>
+</wpt>
+<wpt lat="48.442717999999999" lon="20.690144">
+  <name>&#xd6;rd&#xf6;g-g&#xe1;t</name>
+  <cmt>6:50 - 14:50</cmt>
+  <desc>ordog</desc>
 </wpt>
 </gpx>
