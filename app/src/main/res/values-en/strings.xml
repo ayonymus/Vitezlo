@@ -23,7 +23,7 @@
 	<string name="name">Name</string>
 	<string name="checkpoint_short">CP</string>
 
-	<string name="vitezlo">Vitézlő</string>
+	<string name="vitezlo">Vitézlő 2018</string>
 	<string name="choose_track">Choose track</string>
  	<string name="distance_made">Distance: </string>
  	<string name="time_elapsed">Elapsed time: </string>
@@ -31,6 +31,7 @@
  	<string name="av_speed_short">Avg.Speed: </string>
  	<string name="satellite_num">Sattelites:</string>
 	<string name="connected">Connected</string>
+
 	<string name="error">Error</string>
 	<string name="disconnected_msg">Disconnected. Please reconnect</string>
 	<string name="please_wait">Please wait...</string>
