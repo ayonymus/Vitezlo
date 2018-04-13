@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="org.szvsszke.vitezlo">
+    package="org.szvsszke.vitezlo2018">
 
     <uses-sdk
         android:minSdkVersion="14"
@@ -24,7 +24,7 @@
         android:hardwareAccelerated="true"
         >
         
-        <activity android:name="org.szvsszke.vitezlo.MainActivity" android:label="@string/vitezlo">
+        <activity android:name="org.szvsszke.vitezlo2018.MainActivity" android:label="@string/vitezlo">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"
                     android:screenOrientation="portrait"/>
@@ -33,7 +33,7 @@
         </activity>
 
         <service 
-            android:name="org.szvsszke.vitezlo.gpslogger.GpsLoggerService"
+            android:name="org.szvsszke.vitezlo2018.gpslogger.GpsLoggerService"
             android:icon="@drawable/ic_launcher"
             android:process=":VitezloLoggerService">
 
