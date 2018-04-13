@@ -41,7 +41,7 @@ public class MarkerDrawer {
 			MarkerOptions mark = new MarkerOptions();
 			mark.position(wp.getLatLng())
 				.title(wp.getName())
-				.snippet(wp.getComment())					
+				.snippet(wp.getComment())
 				.icon(icon);
 				
 			Marker m = mMap.addMarker(mark);				
@@ -66,7 +66,7 @@ public class MarkerDrawer {
 			MarkerOptions mark = new MarkerOptions();
 			mark.position(wp.getLatLng())
 				.title(wp.getName())
-				.snippet(wp.getComment())
+				//.snippet(wp.getComment())
 				.icon(icons.get(i));
 			
 			Marker m = mMap.addMarker(mark);				
