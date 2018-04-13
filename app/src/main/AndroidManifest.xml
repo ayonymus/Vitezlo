@@ -29,9 +29,9 @@
                 <action android:name="android.intent.action.MAIN"
                     android:screenOrientation="portrait"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>               
+            </intent-filter>
         </activity>
-        
+
         <service 
             android:name="org.szvsszke.vitezlo.gpslogger.GpsLoggerService"
             android:icon="@drawable/ic_launcher"
