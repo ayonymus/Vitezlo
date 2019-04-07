@@ -48,7 +48,7 @@
 	<string name="ok">OK</string>
 	<string name="checkpoints">Check points</string>
 	<string name="map_not_ready">Map is not ready</string>
-	<string name="start_finish">Start/Finish</string>
+	<string name="start_finish">Start</string>
 	<string name="cp">CP</string> <!-- short for checkpoint -->
 	
 	<string name="reset">Reset</string>

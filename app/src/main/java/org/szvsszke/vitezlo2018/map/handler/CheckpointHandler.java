@@ -12,7 +12,6 @@ import org.szvsszke.vitezlo2018.map.model.TrackDescription;
 import org.szvsszke.vitezlo2018.map.model.Waypoint;
 
 import android.app.Activity;
-import android.util.Log;
 
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.BitmapDescriptor;
@@ -25,9 +24,7 @@ import com.google.maps.android.ui.IconGenerator;
  * */
 
 public class CheckpointHandler extends AbstractMapItemHandler {
-	
-	private static final String TAG = CheckpointHandler.class.getName();
-	
+
 	private MarkerDrawer mMarkers;
 	private CheckPointCache mCheckpoints;
 	
@@ -40,7 +37,6 @@ public class CheckpointHandler extends AbstractMapItemHandler {
 	 * @param parent the parent*/
 	public CheckpointHandler (Activity parent) {
 		super(parent);
-		Log.d(TAG, "instantiate");
 		mParent = parent;
 		mCheckpoints = new CheckPointCache(mParent);
 		
@@ -61,7 +57,6 @@ public class CheckpointHandler extends AbstractMapItemHandler {
 	 * @param description of hike
 	 * */
 	public void drawCheckpoints(final TrackDescription description) {
-		Log.d(TAG, "drawCheckpoints");
 		if (mCheckpoints != null) {
 			markCheckPoints(description);
 		}
@@ -81,17 +76,14 @@ public class CheckpointHandler extends AbstractMapItemHandler {
 	
 	@Override
 	public void remove() {
-		Log.d(TAG, "removeCheckpoints");
 		if (mMarkers != null) {
 			mMarkers.removeMarkers();
 		}
 	}
 	
     private void markCheckPoints(TrackDescription description) { 	
-    	Log.d(TAG, "markCheckPoints");
     	remove();
     	if (mMap == null ) {
-    		Log.d(TAG, "map is not set");
     		mPending = description;
     		return;
     	}
@@ -116,7 +108,6 @@ public class CheckpointHandler extends AbstractMapItemHandler {
     }
     
     private ArrayList<BitmapDescriptor> getCheckpointBitmaps(int chekPoints) {
-    	Log.d(TAG, "getCheckpointBitmaps");
     	if (mBitmapCache == null) {
     		//generate Bitmaps for all checkpoints
     		ArrayList<BitmapDescriptor> bitmaps = new ArrayList<BitmapDescriptor>();    		

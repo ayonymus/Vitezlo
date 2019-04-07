@@ -47,7 +47,7 @@
 	<string name="ok">OK</string>
 	<string name="checkpoints">Ellenőrzőpontok</string>
 	<string name="map_not_ready">A térkép még nem áll készen</string>
-	<string name="start_finish">Rajt/Cél</string>
+	<string name="start_finish">Rajt</string>
 	<string name="cp">EP</string>
 	<!-- short for checkpoint -->
 
