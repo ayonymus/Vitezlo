@@ -1,22 +1,5 @@
 package org.szvsszke.vitezlo2018;
 
-import java.util.ArrayList;
-
-import org.szvsszke.vitezlo2018.gpslogger.GpsDatabase;
-import org.szvsszke.vitezlo2018.gpslogger.GpsLoggerService;
-import org.szvsszke.vitezlo2018.gpslogger.GpsLoggerServiceReplyHandler.HandleReply;
-import org.szvsszke.vitezlo2018.map.MapDecorator;
-import org.szvsszke.vitezlo2018.map.MapPreferences;
-import org.szvsszke.vitezlo2018.map.data.AbstractDataCache.DataLoadedListener;
-import org.szvsszke.vitezlo2018.map.data.DescriptionsCache;
-import org.szvsszke.vitezlo2018.map.data.UserPathCache;
-import org.szvsszke.vitezlo2018.map.model.Track;
-import org.szvsszke.vitezlo2018.map.model.TrackDescription;
-import org.szvsszke.vitezlo2018.map.overlay.InfoBox;
-import org.szvsszke.vitezlo2018.map.overlay.MapControlBox;
-import org.szvsszke.vitezlo2018.map.overlay.MapControlBox.MapControlListener;
-import org.szvsszke.vitezlo2018.utilities.Utilities;
-
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
@@ -32,12 +15,24 @@ import android.widget.RelativeLayout;
 
 import com.google.android.gms.maps.MapView;
 
+import org.szvsszke.vitezlo2018.map.MapDecorator;
+import org.szvsszke.vitezlo2018.map.MapPreferences;
+import org.szvsszke.vitezlo2018.map.data.AbstractDataCache.DataLoadedListener;
+import org.szvsszke.vitezlo2018.map.data.DescriptionsCache;
+import org.szvsszke.vitezlo2018.map.model.Track;
+import org.szvsszke.vitezlo2018.map.model.TrackDescription;
+import org.szvsszke.vitezlo2018.map.overlay.InfoBox;
+import org.szvsszke.vitezlo2018.map.overlay.MapControlBox;
+import org.szvsszke.vitezlo2018.map.overlay.MapControlBox.MapControlListener;
+import org.szvsszke.vitezlo2018.utilities.Utilities;
+
+import java.util.ArrayList;
+
 /**
  * This fragment is responsible for loading data and displaying it
  * overlaying a map. 
  * */
-public class MapFragment extends Fragment implements MapControlListener, 
-		HandleReply {
+public class MapFragment extends Fragment implements MapControlListener {
 
 	private static final String TAG = MapFragment.class.getName();
 	private static final long TEN_SECONDS = 10000;
@@ -54,13 +49,9 @@ public class MapFragment extends Fragment implements MapControlListener,
 	private MapControlBox mControlBox;
 
 	private DescriptionsCache mDescriptions;
-	private UserPathCache mUserPaths;
 
 	//view variables
 	private boolean isBoxExpanded = true;
-	
-	private boolean isLoggerRunning;
-	private boolean mUpdaterRunning = false;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -77,8 +68,6 @@ public class MapFragment extends Fragment implements MapControlListener,
 		mMapDecorator = new MapDecorator(getActivity(), mMapView, mMapPrefs);
 		
 		mDescriptions = new DescriptionsCache(getActivity());
-		
-		mUserPaths = new UserPathCache(getActivity());
 
         mInfoContainer = (RelativeLayout) 
         		inflatedView.findViewById(R.id.infoBoxHolder);
@@ -99,10 +88,10 @@ public class MapFragment extends Fragment implements MapControlListener,
 			mControlBox = new MapControlBox(mMapPrefs);	
 			mControlBox.onCreateView(inflater, mControlContainer);
 			mControlBox.setListener(this);		
-			// check if user path database has any entries
-			if (GpsDatabase.getInstance(getActivity()).isEmpty()) {
-				mControlBox.enableUserHikeButton(false);
-			}
+
+
+			mControlBox.enableUserHikeButton(false);
+
 		}
 		else {
 			mControlContainer.setVisibility(View.GONE);
@@ -130,7 +119,6 @@ public class MapFragment extends Fragment implements MapControlListener,
 	public void onDestroy() {
 		Log.d(TAG, "onDestroy");
 		super.onDestroy();
-		stopUpdater();
 		mMapView.onDestroy();
 		mMapPrefs.setInfoboxLocked(mInfoBox.isSpinnerLocked());
 		mMapPrefs.saveMapPreferences();
@@ -168,32 +156,6 @@ public class MapFragment extends Fragment implements MapControlListener,
 				}
 			});
 		}
-	}
-	
-	private void setCurrentUserPath(int pathNr) {
-		Log.d(TAG, "setCurrentUserPath");
-		mMapPrefs.setSelectedUserPathIndex(pathNr);
-		if (mUserPaths.acquireUserPathNames() == null) {
-			return;
-		};
-		final String pathName = mUserPaths.acquireUserPathNames().get(pathNr);
-		mUserPaths.acquireTrack(pathName);
-		
-		if (mUserPaths.acquireTrack(pathName) == null) {
-			mUserPaths.setTrackLoadedListener(new DataLoadedListener<Track>() {
-	
-				@Override
-				public void onDataLoaded(Track loaded) {
-					mMapDecorator.drawUserPath(loaded);
-					updateUserInfo(loaded);
-				}			
-			});
-		} else {
-			mMapDecorator.drawUserPath(mUserPaths.acquireTrack(pathName));
-			updateUserInfo(mUserPaths.acquireTrack(pathName));
-		}
-		getActivity().setTitle(pathName);
-		mInfoBox.setTitle(pathName);
 	}
 	
 	private void setupInfobox(LayoutInflater inflater) {
@@ -236,62 +198,15 @@ public class MapFragment extends Fragment implements MapControlListener,
 			});
 		}
 	}
-	
-	private void updateUserInfo(Track userPath) {
-		long duration = userPath.getTime().get(userPath.getTime().size() -1)
-				- userPath.getTime().get(0);
-		double length = Utilities.calculateTrackLength(
-				userPath.getTrackPoints());
-		Double accuracy = Utilities.calculateAverageAccuracy(userPath);
-		
-		String[] userInfo = new String[]{
-			Utilities.roundedSpeedInKMH(duration, length),
-			Utilities.distanceToKMorM(length),
-			Utilities.millisToHMS(duration),
-			accuracy.intValue() + " m",
-			"" + userPath.getTrackPoints().size()
-		};
-
-		mInfoBox.setTitle(userPath.getTrackName());
-		mInfoBox.addItems(getResources().getString(R.string.user_path),
-				getResources().getStringArray(R.array.user_path_short),
-				userInfo);
-	}
-
-	private void setUserPathSpinner() {
-		Log.d(TAG, "setUserPathSpinner");
-		if (mUserPaths.acquireUserPathNames() != null) {
-			mInfoBox.setupSpinner(mUserPaths.acquireUserPathNames(), 
-					new UserPathSpinnerListener(), 0);
-		}
-		else {
-			mUserPaths.setPathNamesLoadedListener(
-					new DataLoadedListener<ArrayList<String>>() {
-						@Override
-						public void onDataLoaded(ArrayList<String> loaded) {
-							mInfoBox.setupSpinner(mUserPaths.acquireUserPathNames(),
-									new UserPathSpinnerListener(), 0);
-						}
-			});
-		}
-	}
 
 	@Override
 	public void displayPreferenceChanged() {
 		Log.d(TAG, "displayPreferenceChanged");
 		mMapDecorator.decorate(mDescriptions.getDescription(
 				mMapPrefs.getSelectedTrackIndex()));
-		if  (mMapPrefs.isUserPathEnabled()) {
-			showUserPathInfo();
-			if (isLoggerRunning) {
-				startUserInfoUpdater();
-			}
-		}
-		else {
-			stopUpdater();
-			showTrackInfo();
-			mMapDecorator.removeUserPath();
-		}
+
+		showTrackInfo();
+		mMapDecorator.removeUserPath();
 	}
 	
 	private void showTrackInfo() {
@@ -327,58 +242,6 @@ public class MapFragment extends Fragment implements MapControlListener,
 		}
 	}
 
-	private void showUserPathInfo() {
-		Log.d(TAG, "showUserPathInfo");
-		setUserPathSpinner();
-		setCurrentUserPath(0);
-	}
-	
-	private void startUserInfoUpdater() {
-		Log.d(TAG, "startUserInfoUpdater");
-		mUserPaths.alwaysQuery(true);
-		mUpdaterRunning = true;
-		mInfoBox.lockSpinner(true);
-		
-		mUserPaths.setTrackLoadedListener(
-				new DataLoadedListener<Track>() {
-			@Override
-			public void onDataLoaded(Track loaded) {
-				updateUserInfo(loaded);								
-			}							
-		});
-		
-		Runnable updater = new Runnable() {
-			@Override
-			public void run() {
-				Log.d(TAG, "userInfo updater thread started");
-				while (mUpdaterRunning) {
-					//updateUserInfo();
-					if (mUserPaths.acquireUserPathNames() != null) {
-						mUserPaths.acquireTrack(
-								mUserPaths.acquireUserPathNames().get(0));
-					}
-					try {
-						Thread.sleep(TEN_SECONDS);
-					} catch (InterruptedException e) {
-						Log.e(TAG, "updater thread interrupted", e);
-					}
-				}				
-			}
-		};
-		Thread updaterThread = new Thread(updater);
-		updaterThread.start();
-	}
-	
-	private void stopUpdater() {
-		Log.d(TAG, "stopUpdater");
-		if (mUpdaterRunning) {
-			mUpdaterRunning = false;
-			mInfoBox.lockSpinner(false);
-			mUserPaths.alwaysQuery(false);
-			mUserPaths.removeTrackLoadedListener();
-		}
-	}
-
 	private class TrackSpinnerListener implements OnItemSelectedListener {
 
 		@Override
@@ -386,34 +249,10 @@ public class MapFragment extends Fragment implements MapControlListener,
 				int position, long id) {
 			Log.d(TAG, "onItemSelected " + position);
 			setCurrentTrack(position);
-			if (!isLoggerRunning) {
-				updateTrackInfo();
-			}
 		}
 
 		@Override
 		public void onNothingSelected(AdapterView<?> parent) {}		
 	}
-	
-	private class UserPathSpinnerListener implements OnItemSelectedListener {
 
-		@Override
-		public void onItemSelected(AdapterView<?> parent, View view,
-				int position, long id) {
-
-			setCurrentUserPath(position);
-		}
-
-		@Override
-		public void onNothingSelected(AdapterView<?> parent) {}
-	}
-
-	@Override
-	public void handleReply(int stateCode, String logName, long chronoBaseTime) {
-		Log.d(TAG, "handleServiceReply");
-		if(stateCode == GpsLoggerService.RUNNING) {
-			isLoggerRunning = true;
-			mControlBox.enableUserHikeButton(true);
-		}
-	}
 }

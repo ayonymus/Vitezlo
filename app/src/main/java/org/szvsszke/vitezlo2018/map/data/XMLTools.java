@@ -53,8 +53,7 @@ public class XMLTools {
 	 * 
 	 * 
 	 * */
-	private static XmlPullParser getPullParser(InputStream in) throws 
-			XmlPullParserException, IOException{
+	private static XmlPullParser getPullParser(InputStream in) {
 		
 		XmlPullParser parser = null;
 		try {

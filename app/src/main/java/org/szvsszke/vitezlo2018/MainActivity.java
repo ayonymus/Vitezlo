@@ -1,11 +1,6 @@
 package org.szvsszke.vitezlo2018;
 
 import org.szvsszke.vitezlo2018.adapter.NavDrawerAdapter;
-import org.szvsszke.vitezlo2018.gpslogger.GpsLoggerConstants;
-import org.szvsszke.vitezlo2018.gpslogger.GpsLoggerService;
-import org.szvsszke.vitezlo2018.gpslogger.GpsLoggerServiceReplyHandler;
-import org.szvsszke.vitezlo2018.gpslogger.GpsLoggerServiceReplyHandler.HandleReply;
-import org.szvsszke.vitezlo2018.gpslogger.IGpsLoggerServiceMessages;
 
 import android.content.ComponentName;
 import android.content.Context;
@@ -40,8 +35,7 @@ import android.widget.Toast;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 
-public class MainActivity extends AppCompatActivity implements
-		IGpsLoggerServiceMessages {
+public class MainActivity extends AppCompatActivity {
 
 	/* constants*/
 	private static final String TAG = MainActivity.class.getName();
@@ -92,14 +86,6 @@ public class MainActivity extends AppCompatActivity implements
         
         
         setContentView(R.layout.activity_vitezlo_main);
-        // service
-    	if (mReqestMessengerReference == null) {
-			// get an intent that starts the service
-			Intent loggerI = GpsLoggerService.makeIntent(this);
-			this.bindService(loggerI,
-					mServiceConnection, 
-					Context.BIND_AUTO_CREATE);
-		}
         
         // action bar stuff
         mActionBar = getSupportActionBar();        
@@ -242,15 +228,6 @@ public class MainActivity extends AppCompatActivity implements
                 mCurrentFragment = new MapPreferncesFragment();
                 break;
             case 2:
-                mCurrentFragment = new GpsLoggerFragment();
-                break;
-            case 3:
-                mCurrentFragment = new GpsLoggerPrefernceFragment();
-                break;
-            case 4:
-                mCurrentFragment = new ExportFragment();
-                break;
-            case 5:
                 mCurrentFragment = new GeneralInfoFragment();
                 break;
             default:
@@ -305,29 +282,7 @@ public class MainActivity extends AppCompatActivity implements
 	public Fragment getFragment() {
 		return mCurrentFragment;
 	}
-	
-	/// services messages
-	@Override
-	public Messenger getGpsLoggerServiceMessenger() {
-		return mReqestMessengerReference;
-	}
-	
-	/**
-	 * Messages the logger service with a request.
-	 * 
-	 * @param request something from the service
-	 * @param replyTo where to reply
-	 * 
-	 * */
-	public void sendRequest (Bundle request, 
-			Handler replyTo) {
-		Log.d(TAG, "messageService");		
-		Message requestMsg = Message.obtain();
-		requestMsg.replyTo = new Messenger (replyTo);
-		requestMsg.setData(request);
-		sendMessage(requestMsg);
-	}
-	
+
 	private void sendMessage(final Message message) {
 		// try to send a couple of times while not blocking the ui thread		
 		
@@ -361,80 +316,6 @@ public class MainActivity extends AppCompatActivity implements
 			}
 		}).start();
 	}
-	
-	/**
-	 * Makes a request to the logger service.
-	 * */
-	public void requestStatus(Handler replyTo) {
-		sendRequest(GpsLoggerService.makeServiceRequest(
-				GpsLoggerService.REQ_LOGGER_STATE), replyTo);
-	}
-	
-	/**
-	 * Retrieves logger preferences from shared preferes creates a 
-	 * start request message.
-	 * 
-	 * @param logName the name (date, time) of the hike
-	 * @param base of the chronometer
-	 * @param replyTo message handler
-	 *  
-	 * */
-	public void requestStartService (String logName, long base, 
-			Handler replyTo) {
-		Log.d(TAG, "startLogger");
-		// make request
-		SharedPreferences prefs = 
-				PreferenceManager.getDefaultSharedPreferences(this);
-		Bundle request = GpsLoggerService.makeServiceRequest(
-				GpsLoggerService.REQ_START_LOGGING_GPS);
-		request.putString(GpsLoggerService.LOG_NAME, logName);
-		request.putLong(GpsLoggerService.BASE_TIME, base);
-		request.putInt(GpsLoggerConstants.PREF_MIN_TIME_BETWEEN_FIX,  
-				prefs.getInt(GpsLoggerConstants.PREF_MIN_TIME_BETWEEN_FIX,
-						GpsLoggerConstants.FIVE_SECONDS));
-		request.putInt(GpsLoggerConstants.PREF_MIN_DISTANCE_BETWEEN_FIX, 
-				prefs.getInt(GpsLoggerConstants.PREF_MIN_DISTANCE_BETWEEN_FIX, 
-						GpsLoggerConstants.DEF_MIN_DISTANCE));
-		request.putInt(GpsLoggerConstants.PREF_BATTERY_LIMIT, 
-				prefs.getInt(GpsLoggerConstants.PREF_BATTERY_LIMIT,
-						GpsLoggerConstants.DEF_BATTERY_LIMIT));
-		//TODO calculate when to stop the logging service (long)
-		request.putLong(GpsLoggerConstants.PREF_GPS_TIMEOUT, 
-				prefs.getLong(GpsLoggerConstants.PREF_GPS_TIMEOUT, 0));
-				
-		// start the logger service		
-		Intent starter = GpsLoggerService.makeIntent(this);
-		this.startService(starter);
-		sendRequest(request, replyTo);
-	}
-	
-	/**
-	 * Stops the service.
-	 * */
-	@Override
-	public void requestStopService(Handler replyTo) {
-		sendRequest(GpsLoggerService.makeServiceRequest(
-                GpsLoggerService.REQ_STOP_LOGGING_GPS), replyTo);
-		
-	}
-	
-	/**
-	 * Restarts the services.
-	 * */
-	@Override
-	public void restartService() {
-		Log.d(TAG, "restartService");
-		// stop service first
-		requestStopService(new GpsLoggerServiceReplyHandler( new HandleReply() {
-			
-			@Override
-			public void handleReply(int stateCode, String logName, long chronoBaseTime) {
-				//start again 
-				requestStartService(logName, chronoBaseTime, new LoggerHandler() );
-				
-			}
-		}));		
-	}
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
@@ -455,16 +336,5 @@ public class MainActivity extends AppCompatActivity implements
 			}
 		}
     }
-
-    private class LoggerHandler extends Handler {
-		
-		@Override
-		public void handleMessage(Message msg) {		
-			super.handleMessage(msg);
-			Bundle data = msg.getData();
-			int stateCode = data.getInt(GpsLoggerService.LOGGER_STATE);
-			Log.d(TAG, "service status: " + stateCode);
-		}
-	}
 
 }

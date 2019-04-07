@@ -3,9 +3,6 @@
     <string-array name="fragment_titles">	    
 	    <item>@string/map</item>
 	    <item>@string/map_preferences</item>
-	    <item>@string/logging</item>
-	    <item>@string/logging_preferences</item>
-	    <item>@string/export_hike</item>
 	    <item>@string/information</item>
 	</string-array>
 	
@@ -17,23 +14,5 @@
 	    <item>@string/leveltime</item>
 	    <item>@string/other</item>
 	</string-array>
-	
-    <string-array name="user_hike_info">
-        <item>@string/av_speed</item>
-        <item>@string/distance_made</item>
-        <item>@string/elapsed_time</item>
-        <item>@string/gps_accuracy</item>
-        <item>@string/points_recorded</item>
-        <item>@string/log_as</item>
-    </string-array>
-    
-    
-    <string-array name="user_path_short">
-        <item>@string/av_speed</item>
-        <item>@string/distance_made</item>
-        <item>@string/elapsed_time</item>
-        <item>@string/gps_accuracy</item>
-        <item>@string/points_recorded</item>
-    </string-array>
      
 </resources>

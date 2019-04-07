@@ -21,17 +21,9 @@ public class PermissionHelper {
     public static final String FINE = Manifest.permission.ACCESS_FINE_LOCATION;
     private static final String[] LOC_PERMISSIONS = new String[]{COARSE, FINE};
 
-    public static final String WRITE_PERMISSION = Manifest.permission.WRITE_EXTERNAL_STORAGE;
-
     public static void requestLocation(Activity activity){
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             activity.requestPermissions(LOC_PERMISSIONS, LOCATION_REQUEST);
-        }
-    }
-
-    public static void requestWritePermission(Activity activity) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            activity.requestPermissions(new String[]{WRITE_PERMISSION}, WRITE_REQUEST);
         }
     }
 
@@ -41,10 +33,6 @@ public class PermissionHelper {
 
     public static boolean hasFineLocation(Context context) {
         return hasPermission(Manifest.permission.ACCESS_FINE_LOCATION, context);
-    }
-
-    public static boolean hasWriteExternal(Context context) {
-        return hasPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE, context);
     }
 
     public static boolean hasPermission(String permission, Context context) {

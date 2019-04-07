@@ -34,9 +34,6 @@ public class MapPreferncesFragment extends AbstractPreferenceFragment {
 		addColorSelectorItem(MapPreferences.TRACK_COLOR, 
 				R.string.hike_color_title, MapPreferences.DEFAULT_TRACK_COLOR);
 		
-		addColorSelectorItem(MapPreferences.USER_PATH_COLOR,
-				R.string.my_hike_color_title, MapPreferences.DEFAULT_USER_HIKE_COLOR);
-		
 		addResetPreferencesItem();
 		return layout; 
 	}
