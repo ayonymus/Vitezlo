@@ -1,20 +1,10 @@
 package org.szvsszke.vitezlo2018;
 
-import org.szvsszke.vitezlo2018.adapter.NavDrawerAdapter;
-
-import android.content.ComponentName;
-import android.content.Context;
-import android.content.Intent;
-import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.IBinder;
-import android.os.Message;
-import android.os.Messenger;
-import android.os.RemoteException;
 import android.preference.PreferenceManager;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.Fragment;
@@ -34,6 +24,8 @@ import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
+
+import org.szvsszke.vitezlo2018.adapter.NavDrawerAdapter;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -55,30 +47,8 @@ public class MainActivity extends AppCompatActivity {
     private MapFragment mMapFragment = null;
     
     private boolean doubleBackToExitPressedOnce;
-    
-	// service 
-    private Messenger mReqestMessengerReference = null;
-    
-    // service connection
-	private ServiceConnection mServiceConnection = new ServiceConnection() {
-		
-		@Override
-		public void onServiceDisconnected(ComponentName name) {
-			Log.d(TAG, "onServiceDisconnected");
-			 /* Called if the Service crashes and is no longer
-	            * available.  The ServiceConnection will remain bound,
-	            * but the Service will not respond to any requests.
-	            */
-			mReqestMessengerReference = null;
-		}
-		
-		@Override
-		public void onServiceConnected(ComponentName name, IBinder binder) {
-			Log.d(TAG, "onServiceConnected");
-			mReqestMessengerReference = new Messenger(binder);
-		}
-	};
-	
+
+
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -194,7 +164,6 @@ public class MainActivity extends AppCompatActivity {
     
     @Override
     protected void onDestroy() {
-    	unbindService(mServiceConnection);
     	super.onDestroy();
     };
     
@@ -283,39 +252,6 @@ public class MainActivity extends AppCompatActivity {
 		return mCurrentFragment;
 	}
 
-	private void sendMessage(final Message message) {
-		// try to send a couple of times while not blocking the ui thread		
-		
-		new Thread (new Runnable() {
-			
-			@Override
-			public void run() {
-				try {
-					boolean sent = false;
-					int tries = 0;
-					while (tries < 10){
-						if (mReqestMessengerReference != null) {
-							mReqestMessengerReference.send(message);
-							sent = true;
-							break;
-						} 
-						tries++;
-						Thread.sleep(100); //ms
-					}
-					if (sent) {
-						Log.d(TAG, "message sent in " + tries + " tires" );
-					} else {
-						Log.e(TAG, "message not sent!");
-					}
-										
-				} catch (InterruptedException e){
-					e.printStackTrace();
-				} catch (RemoteException e) {
-					e.printStackTrace();
-				}				
-			}
-		}).start();
-	}
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
