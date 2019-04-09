@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Vitézlő 2018</string>
-    <string name="title_activity_main">Vitézlő 2018</string>
+    <string name="app_name">Vitézlő 2019</string>
+    <string name="title_activity_main">Vitézlő 2019</string>
 
     <string name="settings">Beállítások</string>
     <string name="help">Segítség</string>
@@ -23,7 +23,7 @@
 	<string name="name">Name</string>
 	<string name="checkpoint_short">EP</string>
 
-	<string name="vitezlo">Vitézlő 2018</string>
+	<string name="vitezlo">Vitézlő 2019</string>
 	<string name="choose_track">Válassz túrát!</string>
 	<string name="distance_made">Megtett út: </string>
 	<string name="time_elapsed">Eltelt idő: </string>

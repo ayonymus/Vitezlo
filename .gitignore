@@ -6,4 +6,5 @@ build/
 
 app/.gitignore
 app/build/
+app/release/
 *.keystore
