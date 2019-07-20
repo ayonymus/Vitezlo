@@ -7,4 +7,4 @@ import org.szvsszke.vitezlo2018.framework.localdata.checkpoint.CheckpointLoader
  * Repository for handling the checkpoint data
  */
 class CheckpointRepository(checkpointLoader: CheckpointLoader
-): BaseRepository<List<Checkpoint>>(checkpointLoader, emptyList())
+): BaseRepository<Map<String, Checkpoint>>(checkpointLoader, emptyMap())

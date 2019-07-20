@@ -15,7 +15,7 @@ class CheckpointRepositoryTest {
 
     private val checkpoint1 = mock<Checkpoint> { }
     private val checkpoint2 = mock<Checkpoint> { }
-    private val checkpoints = listOf(checkpoint1, checkpoint2)
+    private val checkpoints = mapOf(Pair("A", checkpoint1), Pair("B", checkpoint2))
 
     private val checkpointLoader = mock<CheckpointLoader> {
         on { load() } doReturn checkpoints
@@ -46,12 +46,12 @@ class CheckpointRepositoryTest {
     }
 
     @Test
-    fun `given data is empty then should return empty list`() {
-        given { checkpointLoader.load() }.willReturn(emptyList())
+    fun `given data is empty then should return empty map`() {
+        given { checkpointLoader.load() }.willReturn(emptyMap())
 
         val result = repository.getData()
 
-        assertEquals(emptyList(), result)
+        assertEquals(emptyMap(), result)
         verify(checkpointLoader, times(1)).load()
     }
 }
