@@ -2,7 +2,7 @@ package org.szvsszke.vitezlo2018;
 
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.v4.app.Fragment;
+import androidx.fragment.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,12 +19,10 @@ import org.szvsszke.vitezlo2018.map.MapDecorator;
 import org.szvsszke.vitezlo2018.map.MapPreferences;
 import org.szvsszke.vitezlo2018.map.data.AbstractDataCache.DataLoadedListener;
 import org.szvsszke.vitezlo2018.map.data.DescriptionsCache;
-import org.szvsszke.vitezlo2018.map.model.Track;
 import org.szvsszke.vitezlo2018.map.model.TrackDescription;
 import org.szvsszke.vitezlo2018.map.overlay.InfoBox;
 import org.szvsszke.vitezlo2018.map.overlay.MapControlBox;
 import org.szvsszke.vitezlo2018.map.overlay.MapControlBox.MapControlListener;
-import org.szvsszke.vitezlo2018.utilities.Utilities;
 
 import java.util.ArrayList;
 

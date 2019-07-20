@@ -1,6 +1,5 @@
 apply plugin: 'com.android.application'
 
-
 android {
     compileSdkVersion 28
 
@@ -30,8 +29,8 @@ android {
 }
 
 dependencies {
-    implementation 'com.android.support:support-v4:25.3.1'
-    implementation 'com.android.support:appcompat-v7:25.3.1'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.appcompat:appcompat:1.0.2'
     implementation 'com.google.android.gms:play-services-maps:8.4.0'
     implementation 'com.google.maps.android:android-maps-utils:0.4.3'
 }
@@ -42,3 +41,4 @@ static def getEnvironmentVariable(key) {
         throw new GradleException(String.format("Please set %s as environment variable", key))
     return String.format("\"%s\"", value)
 }
+
