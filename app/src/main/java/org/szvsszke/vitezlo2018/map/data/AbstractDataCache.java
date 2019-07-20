@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import android.app.Activity;
 
+@Deprecated
 public abstract class AbstractDataCache<E> {
 	
 	protected Activity mParent;
