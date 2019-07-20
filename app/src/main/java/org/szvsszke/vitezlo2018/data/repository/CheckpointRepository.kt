@@ -1,20 +1,24 @@
 package org.szvsszke.vitezlo2018.data.repository
 
+import org.szvsszke.vitezlo2018.domain.Checkpoint
 import org.szvsszke.vitezlo2018.framework.localdata.CheckpointLoader
-import org.szvsszke.vitezlo2018.map.model.Waypoint
 
 /**
  * Repository for handling the checkpoint data
  */
 class CheckpointRepository(private val checkpointLoader: CheckpointLoader) {
 
-    private var cache: List<Waypoint> = emptyList()
+    private var cache: List<Checkpoint>? = null
 
-    fun getData(): List<Waypoint> {
-        if(cache.isEmpty()) {
+    fun getData(): List<Checkpoint>? {
+        if(cache == null) {
             cache = checkpointLoader.loadData()
         }
-        return cache
+        return if(cache != null) {
+            cache
+        } else {
+            emptyList()
+        }
     }
 
 }
