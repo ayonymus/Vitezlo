@@ -35,6 +35,7 @@ import com.google.android.gms.maps.model.LatLng;
  * This class encapsulates the xml parsing functions.
  * 
  * **/
+@Deprecated
 public class XMLTools {
 	
 	private static final String TAG = XMLTools.class.getName();

@@ -10,6 +10,7 @@ import android.app.Activity;
 import android.os.AsyncTask;
 import android.util.Log;
 
+@Deprecated
 public class CheckPointCache extends AbstractDataCache<HashMap<String, Waypoint>>{
 	
 	private static final String TAG = CheckPointCache.class.getName();

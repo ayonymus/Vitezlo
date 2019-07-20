@@ -5,6 +5,7 @@ import java.io.Serializable;
 import com.google.android.gms.maps.model.LatLng;
 
 // a representation of a waypoint in a gpx file
+@Deprecated // shouldn't rely on one data structure on all layers of app
 public class Waypoint implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
