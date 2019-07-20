@@ -1,9 +1,6 @@
 package org.szvsszke.vitezlo2018.data.repository
 
-import com.nhaarman.mockitokotlin2.doReturn
-import com.nhaarman.mockitokotlin2.mock
-import com.nhaarman.mockitokotlin2.times
-import com.nhaarman.mockitokotlin2.verify
+import com.nhaarman.mockitokotlin2.*
 import org.junit.Before
 import org.junit.Test
 import org.szvsszke.vitezlo2018.framework.localdata.CheckpointLoader
@@ -32,8 +29,25 @@ class CheckpointRepositoryTest {
         val result = repository.getData()
 
         assertEquals(waypoints, result)
-
         verify(checkpointLoader, times(1)).loadData()
     }
 
+    @Test
+    fun `given cached data when data requested then should not load from disk again`() {
+        repository.getData()
+        val result = repository.getData()
+
+        assertEquals(waypoints, result)
+        verify(checkpointLoader, times(1)).loadData()
+    }
+
+    @Test
+    fun `given data is empty then should return empty list`() {
+        given { checkpointLoader.loadData() }.willReturn(emptyList())
+
+        val result = repository.getData()
+
+        assertEquals(emptyList(), result)
+        verify(checkpointLoader, times(1)).loadData()
+    }
 }

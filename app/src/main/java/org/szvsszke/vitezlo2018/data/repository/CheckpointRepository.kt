@@ -8,8 +8,13 @@ import org.szvsszke.vitezlo2018.map.model.Waypoint
  */
 class CheckpointRepository(private val checkpointLoader: CheckpointLoader) {
 
+    private var cache: List<Waypoint> = emptyList()
+
     fun getData(): List<Waypoint> {
-        return checkpointLoader.loadData()
+        if(cache.isEmpty()) {
+            cache = checkpointLoader.loadData()
+        }
+        return cache
     }
 
 }
