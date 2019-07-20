@@ -7,31 +7,23 @@ android {
     defaultConfig {
         applicationId "org.szvsszke.vitezlo2018"
         minSdkVersion 14
-        targetSdkVersion 26
+        targetSdkVersion 28
         versionCode 15
         versionName "1.1.4"
-    }
-
-    signingConfigs {
-        release {
-            storeFile file(release_keystore)
-            storePassword release_keystore_password
-            keyAlias release_keystore_alias
-            keyPassword release_keystore_key_password
-        }
+        multiDexEnabled false
     }
 
     buildTypes {
+
         debug {
             // you need to apply your own api key
-            resValue "string", "google_maps_api_key", debug_maps_key
+            resValue "string", "google_maps_api_key", getEnvironmentVariable("MAPS_KEY")
         }
         release {
-            // you need to apply your own api key and keystore
-            resValue "string", "google_maps_api_key", release_maps_key
-            signingConfig signingConfigs.release
+            resValue "string", "google_maps_api_key", getEnvironmentVariable("MAPS_KEY")
         }
     }
+
     lintOptions {
         abortOnError false
     }
@@ -42,4 +34,11 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:25.3.1'
     implementation 'com.google.android.gms:play-services-maps:8.4.0'
     implementation 'com.google.maps.android:android-maps-utils:0.4.3'
+}
+
+static def getEnvironmentVariable(key) {
+    def value = System.getenv(key)
+    if (value == null)
+        throw new GradleException(String.format("Please set %s as environment variable", key))
+    return String.format("\"%s\"", value)
 }
