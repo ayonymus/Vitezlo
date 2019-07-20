@@ -8,7 +8,7 @@ import com.nhaarman.mockitokotlin2.verify
 import org.junit.Before
 import org.junit.Test
 import org.szvsszke.vitezlo2018.domain.Checkpoint
-import org.szvsszke.vitezlo2018.framework.localdata.CheckpointLoader
+import org.szvsszke.vitezlo2018.framework.localdata.checkpoint.CheckpointLoader
 import kotlin.test.assertEquals
 
 class CheckpointRepositoryTest {
@@ -18,7 +18,7 @@ class CheckpointRepositoryTest {
     private val checkpoints = listOf(checkpoint1, checkpoint2)
 
     private val checkpointLoader = mock<CheckpointLoader> {
-        on { loadData() } doReturn checkpoints
+        on { load() } doReturn checkpoints
     }
 
     private lateinit var repository: CheckpointRepository
@@ -33,7 +33,7 @@ class CheckpointRepositoryTest {
         val result = repository.getData()
 
         assertEquals(checkpoints, result)
-        verify(checkpointLoader, times(1)).loadData()
+        verify(checkpointLoader, times(1)).load()
     }
 
     @Test
@@ -42,16 +42,16 @@ class CheckpointRepositoryTest {
         val result = repository.getData()
 
         assertEquals(checkpoints, result)
-        verify(checkpointLoader, times(1)).loadData()
+        verify(checkpointLoader, times(1)).load()
     }
 
     @Test
     fun `given data is empty then should return empty list`() {
-        given { checkpointLoader.loadData() }.willReturn(emptyList())
+        given { checkpointLoader.load() }.willReturn(emptyList())
 
         val result = repository.getData()
 
         assertEquals(emptyList(), result)
-        verify(checkpointLoader, times(1)).loadData()
+        verify(checkpointLoader, times(1)).load()
     }
 }
