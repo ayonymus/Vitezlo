@@ -1,3 +1,5 @@
+package org.szvsszke.vitezlo2018
+
 import android.app.Application
 import org.szvsszke.vitezlo2018.BuildConfig
 import timber.log.Timber
