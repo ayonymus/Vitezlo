@@ -4,6 +4,7 @@ buildscript {
     repositories {
         google()
         mavenCentral()
+        jcenter()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.4.2'
@@ -11,9 +12,19 @@ buildscript {
     }
 }
 
+plugins {
+    id("io.gitlab.arturbosch.detekt").version("1.0.0-RC16")
+}
+
 allprojects {
     repositories {
         google()
         mavenCentral()
     }
+}
+
+detekt {
+    toolVersion = "1.0.0-RC16"
+    input = files("src/main/java")
+    filters = ".*/resources/.*,.*/build/.*"
 }
