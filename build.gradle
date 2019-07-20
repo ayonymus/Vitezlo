@@ -20,6 +20,7 @@ allprojects {
     repositories {
         google()
         mavenCentral()
+        jcenter()
     }
 }
 
@@ -27,4 +28,5 @@ detekt {
     toolVersion = "1.0.0-RC16"
     input = files("src/main/java")
     filters = ".*/resources/.*,.*/build/.*"
+
 }
