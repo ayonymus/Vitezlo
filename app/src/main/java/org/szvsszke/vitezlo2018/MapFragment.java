@@ -247,6 +247,7 @@ public class MapFragment extends Fragment implements MapControlListener {
 				int position, long id) {
 			Log.d(TAG, "onItemSelected " + position);
 			setCurrentTrack(position);
+			updateTrackInfo();
 		}
 
 		@Override
