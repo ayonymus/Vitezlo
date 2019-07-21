@@ -9,7 +9,7 @@ import com.google.android.gms.maps.model.MarkerOptions
  */
 class MarkerHandler {
 
-    private val visibleMarkers: HashSet<Marker> = HashSet()
+    private val visibleMarkers: ArrayList<Marker> = ArrayList()
 
     fun addMarkers(map: GoogleMap, markerOptions: List<MarkerOptions>) {
         markerOptions.forEach { markerOption ->

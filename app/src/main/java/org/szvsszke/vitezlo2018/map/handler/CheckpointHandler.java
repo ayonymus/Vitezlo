@@ -2,16 +2,18 @@ package org.szvsszke.vitezlo2018.map.handler;
 
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.BitmapDescriptor;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.maps.android.ui.IconGenerator;
 
-import org.szvsszke.vitezlo2018.R;
+import org.szvsszke.vitezlo2018.data.repository.BaseMappingRepository;
 import org.szvsszke.vitezlo2018.data.repository.CheckpointRepository;
 import org.szvsszke.vitezlo2018.domain.Checkpoint;
 import org.szvsszke.vitezlo2018.framework.localdata.checkpoint.CheckpointLoader;
 import org.szvsszke.vitezlo2018.framework.localdata.checkpoint.GpxCheckpointMapper;
-import org.szvsszke.vitezlo2018.map.MarkerDrawer;
+import org.szvsszke.vitezlo2018.presentation.map.marker.CheckpointMarkerFactory;
 import org.szvsszke.vitezlo2018.map.model.TrackDescription;
+import org.szvsszke.vitezlo2018.presentation.map.marker.CheckpointIconSource;
+import org.szvsszke.vitezlo2018.presentation.map.marker.MarkerHandler;
 
 import android.app.Activity;
 import android.os.AsyncTask;
@@ -32,10 +34,9 @@ import timber.log.Timber;
 public class CheckpointHandler extends AbstractMapItemHandler {
 
 	private CheckpointRepository mCheckpointRepository;
+	private CheckpointMarkerFactory mMarkerFactory;
+	private MarkerHandler mMarkerHandler;
 
-	private MarkerDrawer mMarkers;
-
-	private ArrayList<BitmapDescriptor> mBitmapCache;
 	private TrackDescription mPending;
 	
 	private Activity mParent;
@@ -51,12 +52,16 @@ public class CheckpointHandler extends AbstractMapItemHandler {
 				new GPXParser(),
 				new GpxCheckpointMapper());
 		mCheckpointRepository = new CheckpointRepository(checkpointLoader);
+		mMarkerHandler = new MarkerHandler();
+		CheckpointIconSource iconSource = new CheckpointIconSource(new IconGenerator(mParent));
+		BaseMappingRepository<String, BitmapDescriptor> iconRepository = new BaseMappingRepository<>(iconSource);
+		mMarkerFactory = new CheckpointMarkerFactory(iconRepository);
+
 	}
 	
 	@Override
 	public void setMap(GoogleMap map) {	
 		super.setMap(map);
-		mMarkers = new MarkerDrawer(mMap);
 		if (mPending != null) {
 			drawCheckpoints(mPending);
 		}
@@ -87,9 +92,7 @@ public class CheckpointHandler extends AbstractMapItemHandler {
 	
 	@Override
 	public void remove() {
-		if (mMarkers != null) {
-			mMarkers.removeMarkers();
-		}
+		mMarkerHandler.removeMarkers();
 	}
 	
     private void markCheckPoints(TrackDescription description, Map<String, Checkpoint> checkpoints) {
@@ -98,45 +101,20 @@ public class CheckpointHandler extends AbstractMapItemHandler {
     		mPending = description;
     		return;
     	}
-	    
-	    // create a list of waypoints for displaying them in the proper order ??
-	    List<Checkpoint> checkPoints = new ArrayList<Checkpoint>();
-	    	
+
+	    List<Checkpoint> checkPoints = new ArrayList<>();
 	    for(int i = 0; i < description.getCheckPointIDs().length; i++) {
-	
 	    	Checkpoint cp = checkpoints.get(description.getCheckPointIDs()[i]);
-	    	
 	    	if(cp != null) {
 		    	checkPoints.add(cp);
-		    	
 	    	}
 	    }
-	    	    
-	    if (mMarkers != null) {	    
-		    mMarkers.drawMarkers(checkPoints,
-		    		getCheckpointBitmaps(checkpoints.size()));
+	    List<MarkerOptions> markerOptions = new ArrayList<>();
+	    for(Checkpoint checkpoint: checkPoints) {
+	    	markerOptions.add(mMarkerFactory.create(checkpoint));
 	    }
-    }
-    
-    private ArrayList<BitmapDescriptor> getCheckpointBitmaps(int chekPoints) {
-    	if (mBitmapCache == null) {
-    		//generate Bitmaps for all checkpoints
-    		ArrayList<BitmapDescriptor> bitmaps = new ArrayList<BitmapDescriptor>();    		
-    		IconGenerator iconGenerator = new IconGenerator(mParent);
-    		iconGenerator.setStyle(IconGenerator.STYLE_WHITE);    		
-    		iconGenerator.setContentRotation(90);
 
-    		bitmaps.add(BitmapDescriptorFactory.fromBitmap(
-    				iconGenerator.makeIcon(mParent.getString(R.string.start_finish))));
-    		
-    		for (int i = 1; i < chekPoints; i++) {
-    			
-    			bitmaps.add(BitmapDescriptorFactory.fromBitmap(
-    					iconGenerator.makeIcon(mParent.getString(R.string.cp) + i)));
-    		}
-    		mBitmapCache = bitmaps;
-    	}    	
-    	return mBitmapCache;
+	    mMarkerHandler.addMarkers(mMap, markerOptions);
     }
 
 	@Override
