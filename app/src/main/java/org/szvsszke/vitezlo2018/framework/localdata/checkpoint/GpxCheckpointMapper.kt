@@ -11,9 +11,9 @@ class GpxCheckpointMapper {
     fun mapToCheckPointMap(gpx: Gpx): Map<String, Checkpoint> {
         val map = HashMap<String, Checkpoint>()
 
-        gpx.wayPoints.forEach { waypoint ->
-            waypoint.apply {
-                map[desc] = Checkpoint(desc, name, latitude, longitude)
+        gpx.wayPoints.forEachIndexed { index, wayPoint ->
+            wayPoint.apply {
+                map[desc] = Checkpoint(desc, name, index, latitude, longitude)
             }
         }
         return map

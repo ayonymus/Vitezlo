@@ -27,7 +27,7 @@ internal class CheckpointLoaderTest {
         on { parse(mockStream) } doReturn mockGpx
     }
 
-    private val checkpointMap = mapOf(Pair("id", Checkpoint("id", "one", 1.0, 2.0)))
+    private val checkpointMap = mapOf(Pair("id", Checkpoint("id", "one", 0,1.0, 2.0)))
     private val gpxCheckpointMapper = mock<GpxCheckpointMapper> {
         on {mapToCheckPointMap(mockGpx) } doReturn checkpointMap
     }

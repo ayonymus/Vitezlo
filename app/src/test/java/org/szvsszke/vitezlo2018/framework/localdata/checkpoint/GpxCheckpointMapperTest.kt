@@ -54,8 +54,8 @@ class GpxCheckpointMapperTest {
                 .build()
 
         val expected = mapOf(
-                Pair(desc1, Checkpoint(desc1, name1,1.0, 1.0)),
-                Pair(desc2, Checkpoint(desc2, name2,1.0, 1.0)))
+                Pair(desc1, Checkpoint(desc1, name1,0, 1.0, 1.0)),
+                Pair(desc2, Checkpoint(desc2, name2,1, 1.0, 1.0)))
 
         val result = mapper.mapToCheckPointMap(gpx)
 
