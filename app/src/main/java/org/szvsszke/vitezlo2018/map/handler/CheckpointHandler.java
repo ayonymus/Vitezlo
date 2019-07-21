@@ -1,33 +1,40 @@
 package org.szvsszke.vitezlo2018.map.handler;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
-import org.szvsszke.vitezlo2018.R;
-import org.szvsszke.vitezlo2018.map.MarkerDrawer;
-import org.szvsszke.vitezlo2018.map.data.AbstractDataCache.DataLoadedListener;
-import org.szvsszke.vitezlo2018.map.data.CheckPointCache;
-import org.szvsszke.vitezlo2018.map.model.TrackDescription;
-import org.szvsszke.vitezlo2018.map.model.Waypoint;
-
-import android.app.Activity;
-
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.maps.android.ui.IconGenerator;
 
+import org.szvsszke.vitezlo2018.R;
+import org.szvsszke.vitezlo2018.data.repository.CheckpointRepository;
+import org.szvsszke.vitezlo2018.domain.Checkpoint;
+import org.szvsszke.vitezlo2018.framework.localdata.checkpoint.CheckpointLoader;
+import org.szvsszke.vitezlo2018.framework.localdata.checkpoint.GpxCheckpointMapper;
+import org.szvsszke.vitezlo2018.map.MarkerDrawer;
+import org.szvsszke.vitezlo2018.map.model.TrackDescription;
+
+import android.app.Activity;
+import android.os.AsyncTask;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import io.ticofab.androidgpxparser.parser.GPXParser;
+import timber.log.Timber;
+
 /**Class for managing check point drawing onto the map.
  * 
  * @author Gabor Tatrai
  * */
-
+// TODO split this tasks responsibilities
+@Deprecated
 public class CheckpointHandler extends AbstractMapItemHandler {
 
+	private CheckpointRepository mCheckpointRepository;
+
 	private MarkerDrawer mMarkers;
-	private CheckPointCache mCheckpoints;
-	
+
 	private ArrayList<BitmapDescriptor> mBitmapCache;
 	private TrackDescription mPending;
 	
@@ -38,8 +45,12 @@ public class CheckpointHandler extends AbstractMapItemHandler {
 	public CheckpointHandler (Activity parent) {
 		super(parent);
 		mParent = parent;
-		mCheckpoints = new CheckPointCache(mParent);
-		
+
+		// TODO obviously, these should be injected
+		CheckpointLoader checkpointLoader = new CheckpointLoader(mParent.getAssets(),
+				new GPXParser(),
+				new GpxCheckpointMapper());
+		mCheckpointRepository = new CheckpointRepository(checkpointLoader);
 	}
 	
 	@Override
@@ -57,21 +68,21 @@ public class CheckpointHandler extends AbstractMapItemHandler {
 	 * @param description of hike
 	 * */
 	public void drawCheckpoints(final TrackDescription description) {
-		if (mCheckpoints != null) {
-			markCheckPoints(description);
-		}
-		else {			
-			mCheckpoints = new CheckPointCache(mParent);
-			mCheckpoints.setDataLoadedListener(
-					new DataLoadedListener<HashMap<String, Waypoint>>() {
+		// TODO remove async task
+		AsyncTask<String, Integer, Map<String, Checkpoint>> loader = new AsyncTask<String, Integer, Map<String, Checkpoint>>() {
+			@Override
+			protected Map<String, Checkpoint> doInBackground(final String... strings) {
+				Map data = mCheckpointRepository.getData();
+				Timber.v("Checkpoints loaded");
+				return data;
+			}
 
-				@Override
-				public void onDataLoaded(
-					HashMap<String, Waypoint> loaded) {
-					markCheckPoints(description);						
-				}
-			});
-		}
+			@Override
+			protected void onPostExecute(final Map<String, Checkpoint> checkpoints) {
+				markCheckPoints(description, checkpoints);
+			}
+		};
+		loader.execute();
 	}
 	
 	@Override
@@ -81,19 +92,19 @@ public class CheckpointHandler extends AbstractMapItemHandler {
 		}
 	}
 	
-    private void markCheckPoints(TrackDescription description) { 	
+    private void markCheckPoints(TrackDescription description, Map<String, Checkpoint> checkpoints) {
     	remove();
     	if (mMap == null ) {
     		mPending = description;
     		return;
     	}
 	    
-	    // create a list of waypoints for displaying it properly
-	    List<Waypoint> checkPoints = new ArrayList<Waypoint>();
+	    // create a list of waypoints for displaying them in the proper order ??
+	    List<Checkpoint> checkPoints = new ArrayList<Checkpoint>();
 	    	
 	    for(int i = 0; i < description.getCheckPointIDs().length; i++) {
 	
-	    	Waypoint cp = mCheckpoints.acquireData().get(description.getCheckPointIDs()[i]);
+	    	Checkpoint cp = checkpoints.get(description.getCheckPointIDs()[i]);
 	    	
 	    	if(cp != null) {
 		    	checkPoints.add(cp);
@@ -103,7 +114,7 @@ public class CheckpointHandler extends AbstractMapItemHandler {
 	    	    
 	    if (mMarkers != null) {	    
 		    mMarkers.drawMarkers(checkPoints,
-		    		getCheckpointBitmaps(mCheckpoints.acquireData().size()));
+		    		getCheckpointBitmaps(checkpoints.size()));
 	    }
     }
     
@@ -129,7 +140,5 @@ public class CheckpointHandler extends AbstractMapItemHandler {
     }
 
 	@Override
-	public void prepare() {
-		mCheckpoints.loadToMemory();
-	}
+	public void prepare() { }
 }

@@ -3,14 +3,18 @@ package org.szvsszke.vitezlo2018.map;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.szvsszke.vitezlo2018.domain.Checkpoint;
 import org.szvsszke.vitezlo2018.map.model.Waypoint;
 
 import android.util.Log;
 
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+
+import timber.log.Timber;
 
 /**Class for drawing markers and caching drawers on the map.
  * 
@@ -55,16 +59,17 @@ public class MarkerDrawer {
 	 * @param waypoints the Waypoint representation of markers
 	 * @param icons to be displayed
 	 * */
-	public void drawMarkers (List<Waypoint> waypoints, 
+	public void drawMarkers (List<Checkpoint> waypoints,
 			ArrayList<BitmapDescriptor> icons) {
 		Log.d(TAG, "drawMarkers");
 		
 		mVisibleMarkers = new ArrayList<Marker>();
 		// do not add the last checkpoint
-		for (int i = 0; i< waypoints.size() - 1; i++){					
-			Waypoint wp =  waypoints.get(i);					
+		for (int i = 0; i< waypoints.size() - 1; i++){
+			Checkpoint wp =  waypoints.get(i);
+			Timber.v(wp.getName());
 			MarkerOptions mark = new MarkerOptions();
-			mark.position(wp.getLatLng())
+			mark.position(new LatLng(wp.getLatitude(), wp.getLongitude()))
 				.title(wp.getName())
 				//.snippet(wp.getComment())
 				.icon(icons.get(i));

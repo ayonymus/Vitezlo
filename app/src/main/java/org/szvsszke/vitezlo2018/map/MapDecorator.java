@@ -60,7 +60,6 @@ public class MapDecorator {
 		setupMapIfNeeded();
 		
 		mCheckpoints = new CheckpointHandler(mParent);
-		mCheckpoints.prepare();
 		mTouristPaths = new TouristPathsHandler(mParent);
 		mSights = new SightsHandler(mParent);
 	}
