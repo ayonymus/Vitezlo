@@ -3,7 +3,7 @@ package org.szvsszke.vitezlo2018.framework.localdata.checkpoint
 import android.content.res.AssetManager
 import io.ticofab.androidgpxparser.parser.GPXParser
 import org.szvsszke.vitezlo2018.domain.Checkpoint
-import org.szvsszke.vitezlo2018.framework.localdata.DataSource
+import org.szvsszke.vitezlo2018.data.repository.DataSource
 import org.szvsszke.vitezlo2018.map.data.FilePath
 import timber.log.Timber
 

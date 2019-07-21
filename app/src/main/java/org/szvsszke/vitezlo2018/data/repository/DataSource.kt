@@ -1,4 +1,4 @@
-package org.szvsszke.vitezlo2018.framework.localdata
+package org.szvsszke.vitezlo2018.data.repository
 
 /**
  *
