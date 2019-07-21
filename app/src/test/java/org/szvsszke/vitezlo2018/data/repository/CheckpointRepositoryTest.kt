@@ -18,7 +18,7 @@ class CheckpointRepositoryTest {
     private val checkpoints = mapOf(Pair("A", checkpoint1), Pair("B", checkpoint2))
 
     private val checkpointLoader = mock<CheckpointLoader> {
-        on { load() } doReturn checkpoints
+        on { getData() } doReturn checkpoints
     }
 
     private lateinit var repository: CheckpointRepository
@@ -33,7 +33,7 @@ class CheckpointRepositoryTest {
         val result = repository.getData()
 
         assertEquals(checkpoints, result)
-        verify(checkpointLoader, times(1)).load()
+        verify(checkpointLoader, times(1)).getData()
     }
 
     @Test
@@ -42,16 +42,16 @@ class CheckpointRepositoryTest {
         val result = repository.getData()
 
         assertEquals(checkpoints, result)
-        verify(checkpointLoader, times(1)).load()
+        verify(checkpointLoader, times(1)).getData()
     }
 
     @Test
     fun `given data is empty then should return empty map`() {
-        given { checkpointLoader.load() }.willReturn(emptyMap())
+        given { checkpointLoader.getData() }.willReturn(emptyMap())
 
         val result = repository.getData()
 
         assertEquals(emptyMap(), result)
-        verify(checkpointLoader, times(1)).load()
+        verify(checkpointLoader, times(1)).getData()
     }
 }

@@ -3,7 +3,7 @@ package org.szvsszke.vitezlo2018.framework.localdata.checkpoint
 import android.content.res.AssetManager
 import io.ticofab.androidgpxparser.parser.GPXParser
 import org.szvsszke.vitezlo2018.domain.Checkpoint
-import org.szvsszke.vitezlo2018.framework.localdata.LocalDataStorage
+import org.szvsszke.vitezlo2018.framework.localdata.DataSource
 import org.szvsszke.vitezlo2018.map.data.FilePath
 import timber.log.Timber
 
@@ -13,10 +13,10 @@ import timber.log.Timber
 class CheckpointLoader(private val assets: AssetManager,
                        private val gpxParser: GPXParser,
                        private val gpxCheckpointMapper: GpxCheckpointMapper
-): LocalDataStorage<Map<String, Checkpoint>> {
+): DataSource<Map<String, Checkpoint>> {
 
-    override fun load(): Map<String, Checkpoint>? {
-        // TODO error handling
+    override fun getData(): Map<String, Checkpoint>? {
+        // TODO error handling, here or in use case?
         try {
             return gpxCheckpointMapper.mapToCheckPointMap(
                     gpxParser.parse(

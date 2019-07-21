@@ -41,7 +41,7 @@ internal class CheckpointLoaderTest {
 
     @Test
     fun `given a gpx file when data loaded then return a map of checkpoints`() {
-        val result = loader.load()
+        val result = loader.getData()
 
         assertEquals(checkpointMap, result)
     }
@@ -49,7 +49,7 @@ internal class CheckpointLoaderTest {
     @Test
     fun `given a gpx file when an error happens then return empty map`() {
         given(gpxParser.parse(any())).willThrow(XmlPullParserException("Olle"))
-        val result = loader.load()
+        val result = loader.getData()
 
         assertEquals(emptyMap(), result)
 
