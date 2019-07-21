@@ -5,8 +5,8 @@ import org.szvsszke.vitezlo2018.domain.Repository
 /**
  * Class to encapsulate common functionality of simple repositories
  */
-class BaseRepository<T>(private val source: DataSource<T>,
-                        private val defaultValue: T): Repository<T> {
+open class BaseRepository<T>(private val source: DataSource<T>,
+                             private val defaultValue: T): Repository<T> {
 
     private var cache: T? = null
 
