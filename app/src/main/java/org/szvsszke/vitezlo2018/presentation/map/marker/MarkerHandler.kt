@@ -5,7 +5,7 @@ import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 
 /**
- * Class to display and cache visibleMarkers on a GoogleMap
+ * Class to display and cache visible Markers on a GoogleMap
  */
 class MarkerHandler {
 
