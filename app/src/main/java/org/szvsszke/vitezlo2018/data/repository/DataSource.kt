@@ -1,12 +1,10 @@
 package org.szvsszke.vitezlo2018.data.repository
 
 /**
- *
- * Base interface for retrieving different data types stored locally
- *
+ * Base interface for retrieving data
  */
 interface DataSource<T> {
 
-    fun getData(): T?
+    fun getData(): T
 
 }

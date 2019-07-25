@@ -1,4 +1,4 @@
-package org.szvsszke.vitezlo2018.domain
+package org.szvsszke.vitezlo2018.domain.entity
 
 data class Checkpoint(
         val id: String,

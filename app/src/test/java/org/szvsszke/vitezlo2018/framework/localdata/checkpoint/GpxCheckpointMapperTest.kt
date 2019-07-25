@@ -4,7 +4,7 @@ import io.ticofab.androidgpxparser.parser.domain.Gpx
 import io.ticofab.androidgpxparser.parser.domain.WayPoint
 import org.junit.Before
 import org.junit.Test
-import org.szvsszke.vitezlo2018.domain.Checkpoint
+import org.szvsszke.vitezlo2018.domain.entity.Checkpoint
 import kotlin.test.assertEquals
 
 class GpxCheckpointMapperTest {
@@ -54,8 +54,8 @@ class GpxCheckpointMapperTest {
                 .build()
 
         val expected = mapOf(
-                Pair(desc1, Checkpoint(desc1, name1,0, 1.0, 1.0)),
-                Pair(desc2, Checkpoint(desc2, name2,1, 1.0, 1.0)))
+                Pair(desc1, Checkpoint(desc1, name1, 0, 1.0, 1.0)),
+                Pair(desc2, Checkpoint(desc2, name2, 1, 1.0, 1.0)))
 
         val result = mapper.mapToCheckPointMap(gpx)
 

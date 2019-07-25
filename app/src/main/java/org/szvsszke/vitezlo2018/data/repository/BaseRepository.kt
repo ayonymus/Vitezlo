@@ -8,15 +8,12 @@ import org.szvsszke.vitezlo2018.domain.Repository
 open class BaseRepository<T>(private val source: DataSource<T>,
                              private val defaultValue: T): Repository<T> {
 
-    private var cache: T? = null
+    private var cache: T = defaultValue
 
     override fun getData(): T {
-        if(cache == null) {
+        if(cache == defaultValue) {
             cache = source.getData()
         }
-        return cache?.let {
-            it
-        } ?: defaultValue
+        return cache
     }
-
 }

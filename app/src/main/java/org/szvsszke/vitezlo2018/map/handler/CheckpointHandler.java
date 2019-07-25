@@ -6,8 +6,9 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.maps.android.ui.IconGenerator;
 
 import org.szvsszke.vitezlo2018.data.repository.BaseMappingRepository;
-import org.szvsszke.vitezlo2018.data.repository.CheckpointRepository;
-import org.szvsszke.vitezlo2018.domain.Checkpoint;
+import org.szvsszke.vitezlo2018.data.repository.checkpoint.CheckpointRepository;
+import org.szvsszke.vitezlo2018.data.repository.checkpoint.CheckpointResult;
+import org.szvsszke.vitezlo2018.domain.entity.Checkpoint;
 import org.szvsszke.vitezlo2018.framework.localdata.checkpoint.CheckpointLoader;
 import org.szvsszke.vitezlo2018.framework.localdata.checkpoint.GpxCheckpointMapper;
 import org.szvsszke.vitezlo2018.presentation.map.marker.CheckpointMarkerFactory;
@@ -73,18 +74,23 @@ public class CheckpointHandler extends AbstractMapItemHandler {
 	 * @param description of hike
 	 * */
 	public void drawCheckpoints(final TrackDescription description) {
-		// TODO remove async task
-		AsyncTask<String, Integer, Map<String, Checkpoint>> loader = new AsyncTask<String, Integer, Map<String, Checkpoint>>() {
+// TODO remove async task
+		AsyncTask<String, Integer, CheckpointResult> loader = new AsyncTask<String, Integer, CheckpointResult>() {
 			@Override
-			protected Map<String, Checkpoint> doInBackground(final String... strings) {
-				Map data = mCheckpointRepository.getData();
+			protected CheckpointResult doInBackground(final String... strings) {
+				CheckpointResult data = mCheckpointRepository.getData();
 				Timber.v("Checkpoints loaded");
 				return data;
 			}
 
 			@Override
-			protected void onPostExecute(final Map<String, Checkpoint> checkpoints) {
-				markCheckPoints(description, checkpoints);
+			protected void onPostExecute(final CheckpointResult result) {
+				if (result instanceof CheckpointResult.Data) {
+					Map<String, Checkpoint> checkpoints = ((CheckpointResult.Data) result).getData();
+					markCheckPoints(description, checkpoints);
+				} else {
+					Timber.e("Could not load checkpoints");
+				}
 			}
 		};
 		loader.execute();

@@ -2,7 +2,7 @@ package org.szvsszke.vitezlo2018.presentation.map.marker
 
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.MarkerOptions
-import org.szvsszke.vitezlo2018.domain.Checkpoint
+import org.szvsszke.vitezlo2018.domain.entity.Checkpoint
 import java.util.ArrayList
 
 /**

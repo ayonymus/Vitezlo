@@ -1,7 +1,7 @@
 package org.szvsszke.vitezlo2018.framework.localdata.checkpoint
 
 import io.ticofab.androidgpxparser.parser.domain.Gpx
-import org.szvsszke.vitezlo2018.domain.Checkpoint
+import org.szvsszke.vitezlo2018.domain.entity.Checkpoint
 
 /**
  * Maps the Gpx data into a map of Checkpoints

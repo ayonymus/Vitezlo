@@ -6,7 +6,7 @@ import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify
 import org.junit.Test
-import org.szvsszke.vitezlo2018.domain.Checkpoint
+import org.szvsszke.vitezlo2018.domain.entity.Checkpoint
 
 internal class CheckpointHandlerTest {
 
