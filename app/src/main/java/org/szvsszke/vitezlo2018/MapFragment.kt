@@ -15,7 +15,6 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.google.android.gms.maps.MapView
 import io.ticofab.androidgpxparser.parser.GPXParser
-import kotlinx.android.synthetic.main.pref_item_color.*
 import org.szvsszke.vitezlo2018.data.CheckpointListMapper
 import org.szvsszke.vitezlo2018.data.repository.checkpoint.CheckpointRepository
 import org.szvsszke.vitezlo2018.framework.localdata.checkpoint.CheckpointLoader
@@ -72,6 +71,8 @@ class MapFragment : Fragment(), MapControlListener {
                               savedInstanceState: Bundle?): View? {
         val inflatedView = inflater.inflate(R.layout.fragment_map, container,
                 false)
+
+        App.getComponent().inject(this)
 
         mapPrefs = MapPreferences(
                 PreferenceManager.getDefaultSharedPreferences(activity))
