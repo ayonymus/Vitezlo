@@ -73,6 +73,7 @@ dependencies {
     // quality
     debugImplementation "com.squareup.leakcanary:leakcanary-android:$leak_version"
     implementation "com.jakewharton.timber:timber:$timber_version"
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
 }
 
 static def getEnvironmentVariable(key) {

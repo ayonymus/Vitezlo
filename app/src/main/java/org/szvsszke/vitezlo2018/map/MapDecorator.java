@@ -1,16 +1,5 @@
 package org.szvsszke.vitezlo2018.map;
 
-import org.szvsszke.vitezlo2018.adapter.CustomInfoWindowAdapter;
-import org.szvsszke.vitezlo2018.map.handler.CheckpointHandler;
-import org.szvsszke.vitezlo2018.map.handler.SightsHandler;
-import org.szvsszke.vitezlo2018.map.handler.TouristPathsHandler;
-import org.szvsszke.vitezlo2018.map.handler.TrackHandler;
-import org.szvsszke.vitezlo2018.map.model.Track;
-import org.szvsszke.vitezlo2018.map.model.TrackDescription;
-
-import android.app.Activity;
-import android.util.Log;
-
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -19,6 +8,19 @@ import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
+
+import org.szvsszke.vitezlo2018.adapter.CustomInfoWindowAdapter;
+import org.szvsszke.vitezlo2018.domain.entity.Checkpoint;
+import org.szvsszke.vitezlo2018.map.handler.CheckpointHandler;
+import org.szvsszke.vitezlo2018.map.handler.SightsHandler;
+import org.szvsszke.vitezlo2018.map.handler.TouristPathsHandler;
+import org.szvsszke.vitezlo2018.map.handler.TrackHandler;
+import org.szvsszke.vitezlo2018.map.model.TrackDescription;
+
+import android.app.Activity;
+import android.util.Log;
+
+import java.util.List;
 
 /**
  * This class is responsible for drawing lines and markers onto the google map, 
@@ -30,8 +32,7 @@ public class MapDecorator {
 	
 	private static final LatLng DEFAULT_POS = 
 			new LatLng(48.409291847117601, 20.724328984580993);
-	private static final int USR_PATH_WIDTH = 8;
-	private static final int USR_Z_INDEX = 20;
+
 	private Activity mParent;
 	 	
 	private GoogleMap mMap;
@@ -114,7 +115,6 @@ public class MapDecorator {
 		if (isMapReady) {
 			if (mLastTrack != null) {
 				displayTrack(mLastTrack);
-				displayCheckpoints(mLastTrack);
 			}
 			displaySights();
 			displayTouristPaths();
@@ -123,25 +123,6 @@ public class MapDecorator {
 			}
 		}
 		
-	}
-	
-	/**
-	 * Draws the userPath onto the map. 
-	 * 
-	 * @param userPath the user path to draw or remove. If null is passed
-	 * the line is removed from the map.
-	 * 
-	 * */
-	public void drawUserPath(Track userPath) {
-		Log.d(TAG, "drawUserPath");
-		if (mUserPathDrawer == null) {
-			Log.d(TAG, "mUserPathDrawer is null");
-			return;
-		}
-		mUserPathDrawer.setColor(mMapPrefs.getUserPathColor());
-		mUserPathDrawer.setWidth(USR_PATH_WIDTH);
-		mUserPathDrawer.setZIndex(USR_Z_INDEX);
-		mUserPathDrawer.drawPath(userPath.getTrackPoints(), mMapPrefs.isCenterToTrack());
 	}
 
 	/**Removes the user path if it is drawn.*/
@@ -163,11 +144,9 @@ public class MapDecorator {
 	}
 	
 	
-	private void displayCheckpoints(TrackDescription description) {
-		Log.d(TAG, "displayCheckpoints");
-		
+	public void drawCheckpoints(List<Checkpoint> checkpoints) {
 		if (mMapPrefs.areCheckpointsEnabled()) {
-			mCheckpoints.drawCheckpoints(description);
+			mCheckpoints.drawCheckpoints(checkpoints);
 		}
 		else{			
 			mCheckpoints.remove();
