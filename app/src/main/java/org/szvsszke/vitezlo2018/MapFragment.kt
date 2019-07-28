@@ -12,6 +12,7 @@ import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.google.android.gms.maps.MapView
 import org.szvsszke.vitezlo2018.map.MapDecorator
@@ -21,6 +22,7 @@ import org.szvsszke.vitezlo2018.map.model.TrackDescription
 import org.szvsszke.vitezlo2018.map.overlay.InfoBox
 import org.szvsszke.vitezlo2018.map.overlay.MapControlBox
 import org.szvsszke.vitezlo2018.map.overlay.MapControlBox.MapControlListener
+import org.szvsszke.vitezlo2018.presentation.ViewModelFactory
 import org.szvsszke.vitezlo2018.presentation.map.MapViewModel
 import org.szvsszke.vitezlo2018.presentation.map.marker.CheckpointHandler
 import org.szvsszke.vitezlo2018.usecase.CheckpointState
@@ -35,13 +37,16 @@ import javax.inject.Inject
 class MapFragment : Fragment(), MapControlListener {
 
     @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+
+    private lateinit var viewModel: MapViewModel
+
+    @Inject
     lateinit var checkpointHandler: CheckpointHandler
 
     @Inject
     lateinit var getCheckpoints: GetCheckpoints
 
-    // TODO remove lateinit
-    private lateinit var viewModel: MapViewModel
 
     private lateinit var mapDecorator: MapDecorator
 
@@ -64,16 +69,13 @@ class MapFragment : Fragment(), MapControlListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel = ViewModelProviders.of(this)
-                .get(MapViewModel::class.java)
+        App.getComponent().inject(this)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val inflatedView = inflater.inflate(R.layout.fragment_map, container,
                 false)
-
-        App.getComponent().inject(this)
 
         mapPrefs = MapPreferences(
                 PreferenceManager.getDefaultSharedPreferences(activity))
@@ -110,6 +112,12 @@ class MapFragment : Fragment(), MapControlListener {
         return inflatedView
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel = ViewModelProviders.of(this, viewModelFactory)
+                .get(MapViewModel::class.java)
+    }
+
     override fun onResume() {
         super.onResume()
         mapView.onResume()
@@ -120,11 +128,11 @@ class MapFragment : Fragment(), MapControlListener {
     }
 
     private fun showCheckpoint(description: TrackDescription) {
-        viewModel.getCheckpoints(getCheckpoints, description.checkPointIDs).observe(this,
+        viewModel.getCheckpoints(description.checkPointIDs).observe(this,
                 Observer<CheckpointState> { result ->
                     when (result) {
                         is CheckpointState.Data -> mapDecorator.drawCheckpoints(result.data)
-                        else -> Timber.e("Could not get errors")
+                        else -> Timber.e("Could not get checkpoints")
                     }
                 })
     }

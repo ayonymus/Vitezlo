@@ -7,7 +7,8 @@ import javax.inject.Singleton
 @Component(modules = [
     AppModule::class,
     FrameworkModule:: class,
-    GoogleMapsModule::class
+    GoogleMapsModule::class,
+    ViewModelModule::class
 ])
 @Singleton
 interface AppComponent {
