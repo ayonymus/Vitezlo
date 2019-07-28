@@ -213,12 +213,12 @@ class MapFragment : Fragment(), MapControlListener {
 
     override fun displayPreferenceChanged() {
         mDescriptions!!.getDescription(mapPrefs!!.selectedTrackIndex)?.let { description ->
-            mapDecorator!!.decorate(description)
+            mapDecorator.decorate(description)
             showCheckpoint(description)
         }
 
         showTrackInfo()
-        mapDecorator!!.removeUserPath()
+        mapDecorator.removeUserPath()
     }
 
     private fun showTrackInfo() {

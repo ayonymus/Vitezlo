@@ -11,22 +11,22 @@ import org.szvsszke.vitezlo2018.usecase.CheckpointState
 
 class MapViewModel: ViewModel() {
 
-    private lateinit var checkpointJob: Job
+    private var checkpointJob: Job? = null
 
     private val checkpointState: MutableLiveData<CheckpointState> = MutableLiveData()
 
     fun getCheckpoints(getCheckpoints: GetCheckpoints,
-                               ids: Array<String>): MutableLiveData<CheckpointState> {
+                       ids: Array<String>): MutableLiveData<CheckpointState> {
+        checkpointJob?.cancel()
         checkpointJob = CoroutineScope(Dispatchers.IO).launch {
-            if (checkpointState.value == null) {
-                checkpointState.postValue(getCheckpoints.invoke(ids))
-            }
+            checkpointState.postValue(getCheckpoints.invoke(ids))
         }
+
         return checkpointState
     }
 
     override fun onCleared() {
-        checkpointJob.cancel()
+        checkpointJob?.cancel()
         super.onCleared()
     }
 
