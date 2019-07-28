@@ -5,8 +5,10 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions;
 import org.szvsszke.vitezlo2018.domain.entity.Checkpoint
 import org.szvsszke.vitezlo2018.domain.MappingRepository
+import javax.inject.Inject
 
-class CheckpointMarkerFactory(private val iconRepository: MappingRepository<String, BitmapDescriptor>) {
+class CheckpointMarkerFactory @Inject constructor(
+        private val iconRepository: MappingRepository<String, BitmapDescriptor>) {
 
     fun create(checkpoint: Checkpoint) = MarkerOptions()
             .position(LatLng(checkpoint.latitude, checkpoint.longitude))

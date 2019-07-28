@@ -6,13 +6,14 @@ import org.szvsszke.vitezlo2018.data.repository.checkpoint.CheckpointResult
 import org.szvsszke.vitezlo2018.data.repository.DataSource
 import org.szvsszke.vitezlo2018.map.data.FilePath
 import timber.log.Timber
+import javax.inject.Inject
 
 /**
  * Loader class to get checkpoint data from a local gpx asset file
  */
-class CheckpointLoader(private val assets: AssetManager,
-                       private val gpxParser: GPXParser,
-                       private val gpxCheckpointMapper: GpxCheckpointMapper
+class CheckpointLoader @Inject constructor(private val assets: AssetManager,
+                                           private val gpxParser: GPXParser,
+                                           private val gpxCheckpointMapper: GpxCheckpointMapper
 ): DataSource<CheckpointResult> {
 
     override fun getData(): CheckpointResult {

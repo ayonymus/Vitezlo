@@ -19,7 +19,7 @@ class MapViewModel: ViewModel() {
                        ids: Array<String>): MutableLiveData<CheckpointState> {
         checkpointJob?.cancel()
         checkpointJob = CoroutineScope(Dispatchers.IO).launch {
-            checkpointState.postValue(getCheckpoints.invoke(ids))
+            checkpointState.postValue(getCheckpoints(ids))
         }
 
         return checkpointState

@@ -3,8 +3,9 @@ package org.szvsszke.vitezlo2018.data
 import org.szvsszke.vitezlo2018.domain.entity.Checkpoint
 import timber.log.Timber
 import java.util.ArrayList
+import javax.inject.Inject
 
-class CheckpointListMapper {
+class CheckpointListMapper @Inject constructor() {
 
     fun mapCheckpoint(checkpointMap: Map<String, Checkpoint>, ids: Array<String>): List<Checkpoint> {
         val checkPoints = ArrayList<Checkpoint>()

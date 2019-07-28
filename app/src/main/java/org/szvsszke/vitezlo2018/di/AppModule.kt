@@ -10,4 +10,7 @@ class AppModule(private val appContext: Context) {
     @Provides
     fun provideApplicationContext(): Context = appContext
 
+    @Provides
+    fun provideAssetManager(context: Context) = context.assets!!
+
 }

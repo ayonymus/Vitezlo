@@ -14,11 +14,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.google.android.gms.maps.MapView
-import io.ticofab.androidgpxparser.parser.GPXParser
-import org.szvsszke.vitezlo2018.data.CheckpointListMapper
-import org.szvsszke.vitezlo2018.data.repository.checkpoint.CheckpointRepository
-import org.szvsszke.vitezlo2018.framework.localdata.checkpoint.CheckpointLoader
-import org.szvsszke.vitezlo2018.framework.localdata.checkpoint.GpxCheckpointMapper
 import org.szvsszke.vitezlo2018.map.MapDecorator
 import org.szvsszke.vitezlo2018.map.MapPreferences
 import org.szvsszke.vitezlo2018.map.data.DescriptionsCache
@@ -27,9 +22,11 @@ import org.szvsszke.vitezlo2018.map.overlay.InfoBox
 import org.szvsszke.vitezlo2018.map.overlay.MapControlBox
 import org.szvsszke.vitezlo2018.map.overlay.MapControlBox.MapControlListener
 import org.szvsszke.vitezlo2018.presentation.map.MapViewModel
+import org.szvsszke.vitezlo2018.presentation.map.marker.CheckpointHandler
 import org.szvsszke.vitezlo2018.usecase.CheckpointState
 import org.szvsszke.vitezlo2018.usecase.GetCheckpoints
 import timber.log.Timber
+import javax.inject.Inject
 
 /**
  * This fragment is responsible for loading data and displaying it
@@ -37,11 +34,14 @@ import timber.log.Timber
  */
 class MapFragment : Fragment(), MapControlListener {
 
+    @Inject
+    lateinit var checkpointHandler: CheckpointHandler
+
+    @Inject
+    lateinit var getCheckpoints: GetCheckpoints
+
     // TODO remove lateinit
     private lateinit var viewModel: MapViewModel
-
-    // TODO this should be injected to ViewModelFactory
-    private lateinit var getCheckpoints: GetCheckpoints
 
     private lateinit var mapDecorator: MapDecorator
 
@@ -64,7 +64,8 @@ class MapFragment : Fragment(), MapControlListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        instantiateObjects()
+        viewModel = ViewModelProviders.of(this)
+                .get(MapViewModel::class.java)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -80,7 +81,7 @@ class MapFragment : Fragment(), MapControlListener {
         mapView = inflatedView.findViewById(R.id.mapView) as MapView
         mapView.onCreate(savedInstanceState)
 
-        mapDecorator = MapDecorator(activity, mapView, mapPrefs)
+        mapDecorator = MapDecorator(activity, mapView, mapPrefs, checkpointHandler)
 
         mDescriptions = DescriptionsCache(activity)
 
@@ -101,28 +102,12 @@ class MapFragment : Fragment(), MapControlListener {
             mControlBox = MapControlBox(mapPrefs)
             mControlBox!!.onCreateView(inflater, mControlContainer)
             mControlBox!!.setListener(this)
-
-
             mControlBox!!.enableUserHikeButton(false)
 
         } else {
             mControlContainer!!.visibility = View.GONE
         }
         return inflatedView
-    }
-
-    // TODO these should be injected
-    private fun instantiateObjects() {
-
-        val checkpointLoader = CheckpointLoader(context!!.assets,
-                GPXParser(),
-                GpxCheckpointMapper())
-        val checkpointRepository = CheckpointRepository(checkpointLoader)
-
-        getCheckpoints = GetCheckpoints(checkpointRepository, CheckpointListMapper())
-
-        viewModel = ViewModelProviders.of(this)
-                .get(MapViewModel::class.java)
     }
 
     override fun onResume() {

@@ -6,23 +6,16 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.MapsInitializer;
-import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
-import com.google.maps.android.ui.IconGenerator;
 
 import org.szvsszke.vitezlo2018.adapter.CustomInfoWindowAdapter;
-import org.szvsszke.vitezlo2018.data.repository.BaseMappingRepository;
 import org.szvsszke.vitezlo2018.domain.entity.Checkpoint;
-
 import org.szvsszke.vitezlo2018.map.handler.SightsHandler;
 import org.szvsszke.vitezlo2018.map.handler.TouristPathsHandler;
 import org.szvsszke.vitezlo2018.map.handler.TrackHandler;
 import org.szvsszke.vitezlo2018.map.model.TrackDescription;
 import org.szvsszke.vitezlo2018.presentation.map.marker.CheckpointHandler;
-import org.szvsszke.vitezlo2018.presentation.map.marker.CheckpointIconSource;
-import org.szvsszke.vitezlo2018.presentation.map.marker.CheckpointMarkerFactory;
-import org.szvsszke.vitezlo2018.presentation.map.marker.MarkerHandler;
 
 import android.app.Activity;
 import android.util.Log;
@@ -61,7 +54,7 @@ public class MapDecorator {
 	
 	private TrackDescription mLastTrack;
 	
-	public MapDecorator(Activity parent, MapView view, MapPreferences prefs){
+	public MapDecorator(Activity parent, MapView view, MapPreferences prefs, CheckpointHandler checkpointHandler){
 		mParent = parent;
 		mMapView = view;
 		mMapPrefs = prefs;
@@ -71,21 +64,12 @@ public class MapDecorator {
 		setupMapIfNeeded();
 
 
-		checkpointHandler = createCheckpointHandler();
+		this.checkpointHandler = checkpointHandler;
 
 		mTouristPaths = new TouristPathsHandler(mParent);
 		mSights = new SightsHandler(mParent);
 	}
 
-	// TODO these should be injected
-	private CheckpointHandler createCheckpointHandler() {
-		MarkerHandler markerHandler = new MarkerHandler();
-		CheckpointIconSource iconSource = new CheckpointIconSource(new IconGenerator(mParent));
-		BaseMappingRepository<String, BitmapDescriptor> iconRepository = new BaseMappingRepository<>(iconSource);
-		CheckpointMarkerFactory markerFactory = new CheckpointMarkerFactory(iconRepository);
-		return new CheckpointHandler(markerFactory, markerHandler);
-	}
-	
 	/**
 	 * This method sets up the default view, the listeners and adapters.
 	 * */
