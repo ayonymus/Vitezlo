@@ -36,11 +36,6 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
   <name>Kil&#xe1;t&#xf3; torony</name>
   <cmt>kilato.jpg</cmt>
 </wpt>
-<wpt lat="48.429080999999996" lon="20.785862000000002">
-  <name>Kosbor (V&#xe9;dett!)</name>
-  <cmt>kosbor.jpg</cmt>
-  <desc>http://hu.wikipedia.org/wiki/Ag%C3%A1rkosbor</desc>
-</wpt>
 <wpt lat="48.408994831044318" lon="20.72321273974228">
   <name>K&#xe9;kfest&#x151; h&#xe1;z</name>
   <cmt>kekfesto-haz.jpg</cmt>
