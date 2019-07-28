@@ -6,6 +6,6 @@ package org.szvsszke.vitezlo2018.domain
  */
 interface Repository<T> {
 
-    fun getData(): T
+    fun getData(): Result<T>
 
 }
