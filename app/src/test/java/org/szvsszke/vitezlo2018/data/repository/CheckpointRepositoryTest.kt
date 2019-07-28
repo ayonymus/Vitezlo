@@ -7,7 +7,9 @@ import com.nhaarman.mockitokotlin2.times
 import com.nhaarman.mockitokotlin2.verify
 import org.junit.Before
 import org.junit.Test
-import org.szvsszke.vitezlo2018.domain.Checkpoint
+import org.szvsszke.vitezlo2018.data.repository.checkpoint.CheckpointRepository
+import org.szvsszke.vitezlo2018.data.repository.checkpoint.CheckpointResult
+import org.szvsszke.vitezlo2018.domain.entity.Checkpoint
 import org.szvsszke.vitezlo2018.framework.localdata.checkpoint.CheckpointLoader
 import kotlin.test.assertEquals
 
@@ -18,7 +20,7 @@ class CheckpointRepositoryTest {
     private val checkpoints = mapOf(Pair("A", checkpoint1), Pair("B", checkpoint2))
 
     private val checkpointLoader = mock<CheckpointLoader> {
-        on { load() } doReturn checkpoints
+        on { getData() } doReturn CheckpointResult.Data(checkpoints)
     }
 
     private lateinit var repository: CheckpointRepository
@@ -32,8 +34,8 @@ class CheckpointRepositoryTest {
     fun `given no cached data when data requested then should load from disk`() {
         val result = repository.getData()
 
-        assertEquals(checkpoints, result)
-        verify(checkpointLoader, times(1)).load()
+        assertEquals(CheckpointResult.Data(checkpoints), result)
+        verify(checkpointLoader, times(1)).getData()
     }
 
     @Test
@@ -41,17 +43,27 @@ class CheckpointRepositoryTest {
         repository.getData()
         val result = repository.getData()
 
-        assertEquals(checkpoints, result)
-        verify(checkpointLoader, times(1)).load()
+        assertEquals(CheckpointResult.Data(checkpoints), result)
+        verify(checkpointLoader, times(1)).getData()
     }
 
     @Test
     fun `given data is empty then should return empty map`() {
-        given { checkpointLoader.load() }.willReturn(emptyMap())
+        given { checkpointLoader.getData() }.willReturn(CheckpointResult.Data(emptyMap()))
 
         val result = repository.getData()
 
-        assertEquals(emptyMap(), result)
-        verify(checkpointLoader, times(1)).load()
+        assertEquals(CheckpointResult.Data(emptyMap()), result)
+        verify(checkpointLoader, times(1)).getData()
+    }
+
+    @Test
+    fun `given loader returns error then propagate error`() {
+        given { checkpointLoader.getData() }.willReturn(CheckpointResult.Error)
+
+        val result = repository.getData()
+
+        assertEquals(CheckpointResult.Error, result)
+        verify(checkpointLoader, times(1)).getData()
     }
 }

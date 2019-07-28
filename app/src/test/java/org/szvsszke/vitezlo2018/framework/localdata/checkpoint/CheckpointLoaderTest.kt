@@ -9,7 +9,8 @@ import io.ticofab.androidgpxparser.parser.GPXParser
 import io.ticofab.androidgpxparser.parser.domain.Gpx
 import org.junit.Before
 import org.junit.Test
-import org.szvsszke.vitezlo2018.domain.Checkpoint
+import org.szvsszke.vitezlo2018.data.repository.checkpoint.CheckpointResult
+import org.szvsszke.vitezlo2018.domain.entity.Checkpoint
 import org.szvsszke.vitezlo2018.map.data.FilePath
 import org.xmlpull.v1.XmlPullParserException
 import java.io.InputStream
@@ -27,7 +28,8 @@ internal class CheckpointLoaderTest {
         on { parse(mockStream) } doReturn mockGpx
     }
 
-    private val checkpointMap = mapOf(Pair("id", Checkpoint("id", "one", 1.0, 2.0)))
+    private val checkpointMap = mapOf(Pair("id",
+            Checkpoint("id", "one", 0, 1.0, 2.0)))
     private val gpxCheckpointMapper = mock<GpxCheckpointMapper> {
         on {mapToCheckPointMap(mockGpx) } doReturn checkpointMap
     }
@@ -41,17 +43,16 @@ internal class CheckpointLoaderTest {
 
     @Test
     fun `given a gpx file when data loaded then return a map of checkpoints`() {
-        val result = loader.load()
+        val result = loader.getData()
 
-        assertEquals(checkpointMap, result)
+        assertEquals(CheckpointResult.Data(checkpointMap), result)
     }
 
     @Test
-    fun `given a gpx file when an error happens then return empty map`() {
+    fun `given a gpx file when an error happens then return Error object`() {
         given(gpxParser.parse(any())).willThrow(XmlPullParserException("Olle"))
-        val result = loader.load()
+        val result = loader.getData()
 
-        assertEquals(emptyMap(), result)
-
+        assertEquals(CheckpointResult.Error, result)
     }
 }

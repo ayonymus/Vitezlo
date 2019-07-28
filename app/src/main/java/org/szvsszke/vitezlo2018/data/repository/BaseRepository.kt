@@ -1,22 +1,19 @@
 package org.szvsszke.vitezlo2018.data.repository
 
-import org.szvsszke.vitezlo2018.framework.localdata.LocalDataStorage
+import org.szvsszke.vitezlo2018.domain.Repository
 
 /**
  * Class to encapsulate common functionality of simple repositories
  */
-abstract class BaseRepository<T>(protected val storage: LocalDataStorage<T>,
-                                 protected val defaultValue: T) {
+open class BaseRepository<T>(private val source: DataSource<T>,
+                             private val defaultValue: T): Repository<T> {
 
-    private var cache: T? = null
+    private var cache: T = defaultValue
 
-    fun getData(): T {
-        if(cache == null) {
-            cache = storage.load()
+    override fun getData(): T {
+        if(cache == defaultValue) {
+            cache = source.getData()
         }
-        return cache?.let {
-            it
-        } ?: defaultValue
+        return cache
     }
-
 }
