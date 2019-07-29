@@ -1,6 +1,7 @@
 package org.szvsszke.vitezlo2018
 
 import android.app.Application
+import net.danlew.android.joda.JodaTimeAndroid
 import org.szvsszke.vitezlo2018.di.AppComponent
 import org.szvsszke.vitezlo2018.di.AppModule
 import org.szvsszke.vitezlo2018.di.DaggerAppComponent
@@ -21,6 +22,7 @@ class App: Application() {
         if(BuildConfig.DEBUG) {
             Timber.plant(Timber.DebugTree())
         }
+        JodaTimeAndroid.init(this)
     }
 
     companion object {
