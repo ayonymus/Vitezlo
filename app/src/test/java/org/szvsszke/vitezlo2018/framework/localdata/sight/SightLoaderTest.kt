@@ -9,7 +9,7 @@ import io.ticofab.androidgpxparser.parser.GPXParser
 import io.ticofab.androidgpxparser.parser.domain.Gpx
 import org.junit.Before
 import org.junit.Test
-import org.szvsszke.vitezlo2018.data.repository.sight.LoadingResult
+import org.szvsszke.vitezlo2018.domain.Loading
 import org.szvsszke.vitezlo2018.domain.entity.Sight
 import org.szvsszke.vitezlo2018.map.data.FilePath
 import org.xmlpull.v1.XmlPullParserException
@@ -45,7 +45,7 @@ internal class SightLoaderTest {
     fun `given a gpx file when data loaded then return a list of sights`() {
         val result = loader.getData()
 
-        assertEquals(LoadingResult.Data(sightList), result)
+        assertEquals(Loading.Success(sightList), result)
     }
 
     @Test
@@ -53,6 +53,6 @@ internal class SightLoaderTest {
         given(gpxParser.parse(any())).willThrow(XmlPullParserException("Olle"))
         val result = loader.getData()
 
-        assertEquals(LoadingResult.Error(), result)
+        assertEquals(Loading.Failure(), result)
     }
 }

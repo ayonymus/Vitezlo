@@ -7,14 +7,14 @@ import com.nhaarman.mockitokotlin2.verify
 import org.junit.Test
 import org.szvsszke.vitezlo2018.data.CheckpointListMapper
 import org.szvsszke.vitezlo2018.data.repository.checkpoint.CheckpointRepository
-import org.szvsszke.vitezlo2018.data.repository.checkpoint.CheckpointResult
+import org.szvsszke.vitezlo2018.domain.Loading
 import org.szvsszke.vitezlo2018.domain.entity.Checkpoint
 import kotlin.test.assertEquals
 
 internal class GetCheckpointsTest {
 
     private val checkpoints = mapOf<String, Checkpoint>()
-    private val checkpointsResult = CheckpointResult.Data(checkpoints)
+    private val checkpointsResult = Loading.Success(checkpoints)
     private val ids = arrayOf("")
     private val checkpoint = mock<Checkpoint> { }
     private val checkpointList = listOf(checkpoint)
@@ -37,7 +37,7 @@ internal class GetCheckpointsTest {
 
     @Test
     fun `given a list of ids when checkpoints call errors then return error`() {
-        given { repo.getData() }.willReturn(CheckpointResult.Error)
+        given { repo.getData() }.willReturn(Loading.Failure())
 
         val result = getCheckpoints.invoke(ids)
         verify(repo).getData()

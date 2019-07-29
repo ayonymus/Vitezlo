@@ -9,8 +9,8 @@ import io.ticofab.androidgpxparser.parser.GPXParser
 import io.ticofab.androidgpxparser.parser.domain.Gpx
 import org.junit.Before
 import org.junit.Test
-import org.szvsszke.vitezlo2018.data.repository.checkpoint.CheckpointResult
 import org.szvsszke.vitezlo2018.domain.entity.Checkpoint
+import org.szvsszke.vitezlo2018.domain.Loading
 import org.szvsszke.vitezlo2018.map.data.FilePath
 import org.xmlpull.v1.XmlPullParserException
 import java.io.InputStream
@@ -45,7 +45,7 @@ internal class CheckpointLoaderTest {
     fun `given a gpx file when data loaded then return a map of checkpoints`() {
         val result = loader.getData()
 
-        assertEquals(CheckpointResult.Data(checkpointMap), result)
+        assertEquals(Loading.Success(checkpointMap), result)
     }
 
     @Test
@@ -53,6 +53,6 @@ internal class CheckpointLoaderTest {
         given(gpxParser.parse(any())).willThrow(XmlPullParserException("Olle"))
         val result = loader.getData()
 
-        assertEquals(CheckpointResult.Error, result)
+        assertEquals(Loading.Failure(), result)
     }
 }
