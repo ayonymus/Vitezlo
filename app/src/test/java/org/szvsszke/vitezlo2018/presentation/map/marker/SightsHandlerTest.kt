@@ -6,33 +6,33 @@ import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify
 import org.junit.Test
-import org.szvsszke.vitezlo2018.domain.entity.Checkpoint
+import org.szvsszke.vitezlo2018.domain.entity.Sight
 
-internal class CheckpointHandlerTest {
+internal class SightsHandlerTest {
 
-    private val checkpoint = mock<Checkpoint> { }
+    private val sight = mock<Sight> { }
     private val marker = mock<MarkerOptions> { }
 
     private val map = mock<GoogleMap> { }
 
-    private val markerFactory = mock<CheckpointMarkerFactory> {
-        on { create(checkpoint) } doReturn marker
+    private val markerFactory = mock<SightMarkerFactory> {
+        on { create(sight) } doReturn marker
     }
 
     private val markerHandler = mock<MarkerHandler> { }
 
-    private val checkpointHandler = CheckpointHandler(markerHandler, markerFactory)
+    private val sightsHandler = SightsHandler(markerHandler, markerFactory)
 
     @Test
     fun `given a list of checkpoints then create a list of markers and display on map`() {
-        checkpointHandler.showCheckpoints(map, listOf(checkpoint))
+        sightsHandler.showSights(map, listOf(sight))
         verify(markerHandler).removeMarkers()
         verify(markerHandler).addMarkers(map, listOf(marker))
     }
 
     @Test
     fun `when hide checkpoints then forward to markerHandler`() {
-        checkpointHandler.hideCheckpoints()
+        sightsHandler.hideSights()
         verify(markerHandler).removeMarkers()
     }
 }

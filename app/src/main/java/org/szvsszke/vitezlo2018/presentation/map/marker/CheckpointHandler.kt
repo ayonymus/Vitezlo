@@ -9,8 +9,8 @@ import javax.inject.Inject
 /**
  * Class to show or hide checkpoints on a GoogleMap
  */
-class CheckpointHandler @Inject constructor(private val markerFactory: CheckpointMarkerFactory,
-                                            private val markerHandler: MarkerHandler) {
+class CheckpointHandler @Inject constructor(private val markerHandler: MarkerHandler,
+                                            private val markerFactory: CheckpointMarkerFactory) {
 
     fun showCheckpoints(map: GoogleMap, checkPoints: List<Checkpoint>) {
         markerHandler.removeMarkers()
