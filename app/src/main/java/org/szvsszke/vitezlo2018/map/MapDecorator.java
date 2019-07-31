@@ -14,7 +14,7 @@ import org.szvsszke.vitezlo2018.domain.entity.Checkpoint;
 import org.szvsszke.vitezlo2018.domain.entity.Sight;
 import org.szvsszke.vitezlo2018.map.handler.TouristPathsHandler;
 import org.szvsszke.vitezlo2018.map.handler.TrackHandler;
-import org.szvsszke.vitezlo2018.map.model.TrackDescription;
+import org.szvsszke.vitezlo2018.domain.entity.Description;
 import org.szvsszke.vitezlo2018.presentation.map.marker.CheckpointHandler;
 import org.szvsszke.vitezlo2018.presentation.map.marker.SightsHandler;
 
@@ -53,7 +53,7 @@ public class MapDecorator {
 
 	private MapPreferences mMapPrefs;
 
-	private TrackDescription mLastTrack;
+	private Description mLastTrack;
 
 	private CheckpointHandler checkpointHandler;
 	private SightsHandler sightsHandler;
@@ -119,7 +119,7 @@ public class MapDecorator {
 	/**Decorates the map based on the preferences object provided in the 
 	 * constructor.
 	 * @param description the Track to display.*/
-	public void decorate(TrackDescription description) {
+	public void decorate(Description description) {
 		Log.d(TAG, "decorate");	
 		if (description != null) {
 			mLastTrack = description;
@@ -143,7 +143,7 @@ public class MapDecorator {
 		}
 	}
 
-	private void displayTrack(TrackDescription description) {
+	private void displayTrack(Description description) {
 		Log.d(TAG, "displayTrack");
 		
 		if (mMapPrefs.isHikeEnabled()) {

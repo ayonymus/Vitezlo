@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.HashMap;
 
 import org.szvsszke.vitezlo2018.map.model.Track;
-import org.szvsszke.vitezlo2018.map.model.TrackDescription;
+import org.szvsszke.vitezlo2018.domain.entity.Description;
 import org.xmlpull.v1.XmlPullParserException;
 
 import android.app.Activity;
@@ -12,7 +12,7 @@ import android.os.AsyncTask;
 import android.util.Log;
 
 /**Loads and stores Tracks*/
-public class TrackCache extends AbstractDataCache<HashMap<TrackDescription, Track>>{
+public class TrackCache extends AbstractDataCache<HashMap<Description, Track>>{
 
 	private static final String TAG = TrackCache.class.getName();
 	
@@ -20,7 +20,7 @@ public class TrackCache extends AbstractDataCache<HashMap<TrackDescription, Trac
 	
 	public TrackCache(Activity parent) {
 		super(parent);
-		mCache = new HashMap<TrackDescription, Track> ();
+		mCache = new HashMap<Description, Track> ();
 	}
 
 	@Override
@@ -33,14 +33,14 @@ public class TrackCache extends AbstractDataCache<HashMap<TrackDescription, Trac
 	 * If path is loaded from cache the updateMap is called after the 
 	 * separate loading thread finished.
 	 * 
-	 * @param trackDescription hikeDescription that contains a reference to the path.
+	 * @param description hikeDescription that contains a reference to the path.
 	 * @return the latlng list representation of the hike.
 	 * */	
-	public Track acqureTrack(final TrackDescription trackDescription) {
+	public Track acqureTrack(final Description description) {
 		Log.d(TAG, "acquireTrack");
 		
-		if (mCache.containsKey(trackDescription)) {
-			return mCache.get(trackDescription);
+		if (mCache.containsKey(description)) {
+			return mCache.get(description);
 		}
 		// start an async task for loading a hike
 		AsyncTask<String, Integer, Track> loader = 
@@ -52,9 +52,9 @@ public class TrackCache extends AbstractDataCache<HashMap<TrackDescription, Trac
 				try {
 					hike = XMLTools.parseGPX(getAssetStream(
 							FilePath.PATH_TO_ROUTES + 
-							trackDescription.getRouteFileName()));
+							description.getRouteFileName()));
 				} catch (XmlPullParserException e) {
-					Log.e(TAG, trackDescription.getRouteFileName() + 
+					Log.e(TAG, description.getRouteFileName() +
 							" could not be parsed", e);
 				} catch (IOException e) {
 					Log.e(TAG, "ioerror", e);
@@ -67,10 +67,10 @@ public class TrackCache extends AbstractDataCache<HashMap<TrackDescription, Trac
 				protected void onPostExecute(Track result) {
 					super.onPostExecute(result);
 					if(result == null) {
-						Log.e(TAG, "Track could not be loaded: " + trackDescription.getName());
+						Log.e(TAG, "Track could not be loaded: " + description.getName());
 
 					} else {
-						mCache.put(trackDescription, result);
+						mCache.put(description, result);
 						notifyListener(result);
 					}
 				}

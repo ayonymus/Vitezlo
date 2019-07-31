@@ -18,7 +18,7 @@ import com.google.android.gms.maps.MapView
 import org.szvsszke.vitezlo2018.map.MapDecorator
 import org.szvsszke.vitezlo2018.map.MapPreferences
 import org.szvsszke.vitezlo2018.map.data.DescriptionsCache
-import org.szvsszke.vitezlo2018.map.model.TrackDescription
+import org.szvsszke.vitezlo2018.domain.entity.Description
 import org.szvsszke.vitezlo2018.map.overlay.InfoBox
 import org.szvsszke.vitezlo2018.map.overlay.MapControlBox
 import org.szvsszke.vitezlo2018.map.overlay.MapControlBox.MapControlListener
@@ -120,7 +120,7 @@ class MapFragment : Fragment(), MapControlListener {
         }
     }
 
-    private fun showCheckpoint(description: TrackDescription) {
+    private fun showCheckpoint(description: Description) {
         viewModel.getCheckpoints(description.checkPointIDs).observe(this,
                 Observer<CheckpointState> { result ->
                     when (result) {
@@ -176,7 +176,7 @@ class MapFragment : Fragment(), MapControlListener {
         }
     }
 
-    private fun updateViews(description: TrackDescription) {
+    private fun updateViews(description: Description) {
         mapDecorator.decorate(description)
         showCheckpoint(description)
         showSights()

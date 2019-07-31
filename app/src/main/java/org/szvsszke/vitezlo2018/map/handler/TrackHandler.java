@@ -4,7 +4,7 @@ import org.szvsszke.vitezlo2018.map.LineDrawer;
 import org.szvsszke.vitezlo2018.map.data.TrackCache;
 import org.szvsszke.vitezlo2018.map.data.AbstractDataCache.DataLoadedListener;
 import org.szvsszke.vitezlo2018.map.model.Track;
-import org.szvsszke.vitezlo2018.map.model.TrackDescription;
+import org.szvsszke.vitezlo2018.domain.entity.Description;
 
 import android.app.Activity;
 import android.graphics.Color;
@@ -35,7 +35,7 @@ public class TrackHandler extends AbstractMapItemHandler implements DataLoadedLi
 	/**
 	 * @param track description of track to display.
 	 * */
-	public void displayTrack (TrackDescription track, boolean center) {
+	public void displayTrack (Description track, boolean center) {
 		Log.d(TAG, "displayTrack");
 		mCenter = center;
 		mTracks.setTrackLoadedListener(TrackHandler.this);

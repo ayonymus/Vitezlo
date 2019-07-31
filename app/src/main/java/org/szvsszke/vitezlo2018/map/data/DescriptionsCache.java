@@ -3,13 +3,13 @@ package org.szvsszke.vitezlo2018.map.data;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import org.szvsszke.vitezlo2018.map.model.TrackDescription;
+import org.szvsszke.vitezlo2018.domain.entity.Description;
 
 import android.app.Activity;
 import android.os.AsyncTask;
 import android.util.Log;
 
-public class DescriptionsCache extends AbstractDataCache<ArrayList<TrackDescription>>{
+public class DescriptionsCache extends AbstractDataCache<ArrayList<Description>>{
 	
 	private static final String TAG = DescriptionsCache.class.getName();
 
@@ -20,13 +20,13 @@ public class DescriptionsCache extends AbstractDataCache<ArrayList<TrackDescript
 	@Override
 	public void loadToMemory() {
 		if (mCache == null) {
-			AsyncTask<String, Integer, ArrayList<TrackDescription>> loader = 
-					new AsyncTask<String, Integer, ArrayList<TrackDescription>>() {
+			AsyncTask<String, Integer, ArrayList<Description>> loader =
+					new AsyncTask<String, Integer, ArrayList<Description>>() {
 				
 				@Override
-				protected ArrayList<TrackDescription> doInBackground(
+				protected ArrayList<Description> doInBackground(
 						String... params) {
-					ArrayList<TrackDescription> descs = null;
+					ArrayList<Description> descs = null;
 					try {
 						descs = XMLTools.parseHikeDescriptions(
 										mParent.getResources().getAssets()
@@ -39,7 +39,7 @@ public class DescriptionsCache extends AbstractDataCache<ArrayList<TrackDescript
 				}
 
 				@Override
-				protected void onPostExecute(ArrayList<TrackDescription> descriptions) {
+				protected void onPostExecute(ArrayList<Description> descriptions) {
 					mCache = descriptions;
 					notifyListener(mCache);
 					super.onPostExecute(descriptions);					
@@ -56,8 +56,8 @@ public class DescriptionsCache extends AbstractDataCache<ArrayList<TrackDescript
 	/**
 	 * @param index the id of the description
 	 * @return the hike description corresponding to the index*/
-	public TrackDescription getDescription(int index) {
-		TrackDescription desc = null;
+	public Description getDescription(int index) {
+		Description desc = null;
 		if (mCache != null) {
 			desc = mCache.get(index);
 		}
@@ -77,7 +77,7 @@ public class DescriptionsCache extends AbstractDataCache<ArrayList<TrackDescript
 		}
 		
 		ArrayList<String>  names = new ArrayList<String> ();
-		for(TrackDescription desc : mCache) {
+		for(Description desc : mCache) {
 			names.add(desc.getName());
 			Log.v(TAG, desc.getName());
 		}
