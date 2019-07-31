@@ -22,11 +22,9 @@ import org.szvsszke.vitezlo2018.map.model.TrackDescription
 import org.szvsszke.vitezlo2018.map.overlay.InfoBox
 import org.szvsszke.vitezlo2018.map.overlay.MapControlBox
 import org.szvsszke.vitezlo2018.map.overlay.MapControlBox.MapControlListener
-import org.szvsszke.vitezlo2018.presentation.ViewModelFactory
 import org.szvsszke.vitezlo2018.presentation.map.MapViewModel
-import org.szvsszke.vitezlo2018.presentation.map.marker.CheckpointHandler
 import org.szvsszke.vitezlo2018.usecase.CheckpointState
-import org.szvsszke.vitezlo2018.usecase.GetCheckpoints
+import org.szvsszke.vitezlo2018.usecase.SightsState
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -39,16 +37,10 @@ class MapFragment : Fragment(), MapControlListener {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
+    @Inject
+    lateinit var mapDecorator: MapDecorator
+
     private lateinit var viewModel: MapViewModel
-
-    @Inject
-    lateinit var checkpointHandler: CheckpointHandler
-
-    @Inject
-    lateinit var getCheckpoints: GetCheckpoints
-
-
-    private lateinit var mapDecorator: MapDecorator
 
     private lateinit var mapView: MapView
 
@@ -83,7 +75,7 @@ class MapFragment : Fragment(), MapControlListener {
         mapView = inflatedView.findViewById(R.id.mapView) as MapView
         mapView.onCreate(savedInstanceState)
 
-        mapDecorator = MapDecorator(activity, mapView, mapPrefs, checkpointHandler)
+        mapDecorator.init(activity, mapView, mapPrefs)
 
         mDescriptions = DescriptionsCache(activity)
 
@@ -124,6 +116,7 @@ class MapFragment : Fragment(), MapControlListener {
         mDescriptions!!.getDescription(mapPrefs!!.selectedTrackIndex)?.let { description ->
             mapDecorator.decorate(description)
             showCheckpoint(description)
+            showSights()
         }
     }
 
@@ -131,8 +124,18 @@ class MapFragment : Fragment(), MapControlListener {
         viewModel.getCheckpoints(description.checkPointIDs).observe(this,
                 Observer<CheckpointState> { result ->
                     when (result) {
-                        is CheckpointState.Data -> mapDecorator.drawCheckpoints(result.data)
+                        is CheckpointState.Data -> mapDecorator.markCheckpoints(result.data)
                         else -> Timber.e("Could not get checkpoints")
+                    }
+                })
+    }
+
+    private fun showSights() {
+        viewModel.getSights().observe(this,
+                Observer { result ->
+                    when(result) {
+                        is SightsState.Data -> mapDecorator.markSights(result.data)
+                        else -> Timber.e("Could not get sights")
                     }
                 })
     }
@@ -176,6 +179,7 @@ class MapFragment : Fragment(), MapControlListener {
     private fun updateViews(description: TrackDescription) {
         mapDecorator.decorate(description)
         showCheckpoint(description)
+        showSights()
         activity?.title = description.name
         mInfoBox?.setTitle(description.name)
     }
@@ -208,7 +212,9 @@ class MapFragment : Fragment(), MapControlListener {
     override fun displayPreferenceChanged() {
         mDescriptions!!.getDescription(mapPrefs!!.selectedTrackIndex)?.let { description ->
             mapDecorator.decorate(description)
+            // FIXME this is not how it should work, logic should move
             showCheckpoint(description)
+            showSights()
         }
 
         showTrackInfo()

@@ -2,6 +2,7 @@ package org.szvsszke.vitezlo2018.di
 
 import android.content.Context
 import com.google.android.gms.maps.model.BitmapDescriptor
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.maps.android.ui.IconGenerator
 import dagger.Module
 import dagger.Provides
@@ -18,5 +19,8 @@ class GoogleMapsModule {
     @Provides
     fun provideIconRepository(iconSource: CheckpointIconSource): MappingRepository<String, BitmapDescriptor> =
             BaseMappingRepository(iconSource)
+
+    @Provides
+    fun provideDefaultMarkerBitmap() = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)!!
 
 }

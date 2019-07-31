@@ -11,64 +11,73 @@ import com.google.android.gms.maps.model.Marker;
 
 import org.szvsszke.vitezlo2018.adapter.CustomInfoWindowAdapter;
 import org.szvsszke.vitezlo2018.domain.entity.Checkpoint;
-import org.szvsszke.vitezlo2018.map.handler.SightsHandler;
+import org.szvsszke.vitezlo2018.domain.entity.Sight;
 import org.szvsszke.vitezlo2018.map.handler.TouristPathsHandler;
 import org.szvsszke.vitezlo2018.map.handler.TrackHandler;
 import org.szvsszke.vitezlo2018.map.model.TrackDescription;
 import org.szvsszke.vitezlo2018.presentation.map.marker.CheckpointHandler;
+import org.szvsszke.vitezlo2018.presentation.map.marker.SightsHandler;
 
 import android.app.Activity;
 import android.util.Log;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 import androidx.annotation.NonNull;
 
 /**
  * This class is responsible for drawing lines and markers onto the google map, 
  * and for providing the necessary data for these operations.
+ * TODO too many responsibilities, cut smaller
  * */
 public class MapDecorator {
 	
 	private static final String TAG = MapDecorator.class.getName();
-	
+
 	private static final LatLng DEFAULT_POS = 
 			new LatLng(48.409291847117601, 20.724328984580993);
 
 	private Activity mParent;
-	 	
+
 	private GoogleMap mMap;
 	private MapView mMapView;
 	
 	private boolean isMapReady = false;
-	
-	private CheckpointHandler checkpointHandler;
 
 	private TrackHandler mTracks;
 	private TouristPathsHandler mTouristPaths;
-	private SightsHandler mSights;
-	
+
 	private LineDrawer mUserPathDrawer;
-	
+
 	private MapPreferences mMapPrefs;
-	
+
 	private TrackDescription mLastTrack;
-	
-	public MapDecorator(Activity parent, MapView view, MapPreferences prefs, CheckpointHandler checkpointHandler){
-		mParent = parent;
-		mMapView = view;
-		mMapPrefs = prefs;
-		
-		mTracks = new TrackHandler(mParent);
-		mTracks.setLineColor(mMapPrefs.getTrackColor());
-		setupMapIfNeeded();
 
+	private CheckpointHandler checkpointHandler;
+	private SightsHandler sightsHandler;
 
+	@Inject
+	public MapDecorator(CheckpointHandler checkpointHandler, SightsHandler sightsHandler){
 		this.checkpointHandler = checkpointHandler;
-
-		mTouristPaths = new TouristPathsHandler(mParent);
-		mSights = new SightsHandler(mParent);
+		this.sightsHandler = sightsHandler;
 	}
+
+	// TODO remove context dependency
+	public void init(Activity parent, MapView view, MapPreferences prefs) {
+        mParent = parent;
+        mMapView = view;
+
+        mMapPrefs = prefs;
+
+        mTracks = new TrackHandler(mParent);
+        mTracks.setLineColor(mMapPrefs.getTrackColor());
+        setupMapIfNeeded();
+
+
+        mTouristPaths = new TouristPathsHandler(mParent);
+    }
 
 	/**
 	 * This method sets up the default view, the listeners and adapters.
@@ -97,7 +106,6 @@ public class MapDecorator {
 		                Log.i(TAG, "map is ready");		                
 		                mTracks.setMap(mMap);
 		                mTouristPaths.setMap(mMap);
-		                mSights.setMap(mMap);
 		                mUserPathDrawer = new LineDrawer(mMap);
 		                decorate(mLastTrack);
 		                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(
@@ -120,7 +128,6 @@ public class MapDecorator {
 			if (mLastTrack != null) {
 				displayTrack(mLastTrack);
 			}
-			displaySights();
 			displayTouristPaths();
 			if (mMap.getMapType() != mMapPrefs.getMapType()) {
 				mMap.setMapType(mMapPrefs.getMapType());
@@ -147,8 +154,7 @@ public class MapDecorator {
 		}
 	}
 	
-	@NonNull
-	public void drawCheckpoints(List<Checkpoint> checkpoints) {
+	public void markCheckpoints(@NonNull List<Checkpoint> checkpoints) {
 		if (mMapPrefs.areCheckpointsEnabled()) {
 			if (mMap != null) {
 				checkpointHandler.showCheckpoints(mMap, checkpoints);
@@ -158,6 +164,17 @@ public class MapDecorator {
 			checkpointHandler.hideCheckpoints();
 		}
 	}
+
+	public void markSights(@NonNull List<Sight> sights) {
+        if (mMapPrefs.areSightsEnabled()) {
+            if(mMap != null) {
+                sightsHandler.showSights(mMap, sights);
+            }
+        }
+        else {
+            sightsHandler.hideSights();
+        }
+    }
 	
 	private void displayTouristPaths() {
 		if (mMapPrefs.areTouristPathsEnabled()) {
@@ -165,15 +182,6 @@ public class MapDecorator {
 		}
 		else {
 			mTouristPaths.remove();
-		}
-	}
-	
-	private void displaySights() {
-		if (mMapPrefs.areSightsEnabled()) {
-			mSights.draw();
-		}
-		else {
-			mSights.remove();
 		}
 	}
 
@@ -200,5 +208,5 @@ public class MapDecorator {
 			}
 			return true;
 		}
-	}	
+	}
 }
