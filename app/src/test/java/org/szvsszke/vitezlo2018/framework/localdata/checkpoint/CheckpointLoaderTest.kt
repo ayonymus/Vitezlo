@@ -50,9 +50,10 @@ internal class CheckpointLoaderTest {
 
     @Test
     fun `given a gpx file when an error happens then return Error object`() {
-        given(gpxParser.parse(any())).willThrow(XmlPullParserException("Olle"))
+        val error = XmlPullParserException("")
+        given(gpxParser.parse(any())).willThrow(error)
         val result = loader.getData()
 
-        assertEquals(Loading.Failure(), result)
+        assertEquals(Loading.Failure(error), result)
     }
 }
