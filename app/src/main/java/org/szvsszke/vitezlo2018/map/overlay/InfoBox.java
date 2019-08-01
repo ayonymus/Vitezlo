@@ -1,11 +1,8 @@
 package org.szvsszke.vitezlo2018.map.overlay;
 
-import java.util.ArrayList;
-
 import org.szvsszke.vitezlo2018.R;
 
 import android.app.Activity;
-import android.os.SystemClock;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,12 +10,14 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
-import android.widget.Chronometer;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * This class handles the InfoBox overlay
@@ -46,16 +45,11 @@ public class InfoBox {
 	private ImageView locked;
 	private ImageView unLocked;
 	
-	// chronometer
-	private Chronometer mChrono;
-	private View mChronoContainer;
-	
 	// state variables
 	private boolean isInfoExpanded = true;
 	private boolean isSpinnerLocked = false;
 	private boolean isLockEnabled = true;
-	private boolean isChronoStarted = false;
-	
+
 	// constructor for the overlay
 	public InfoBox(Activity parentActivity) {
 		mParentActivity = parentActivity;
@@ -75,10 +69,7 @@ public class InfoBox {
 		});
 		mSpinner = (Spinner) mBaseView.findViewById(R.id.hikeSpinner);
 		
-		mContent = 
-				(LinearLayout) mBaseView.findViewById(R.id.infoBoxContents);
-		addChronometer(inflater, mContent);
-		enableChronometer(false);
+		mContent = (LinearLayout) mBaseView.findViewById(R.id.infoBoxContents);
 		// create title view
 		mTitle = (TextView) mBaseView.findViewById(R.id.infoBoxTitle);
 		mTitle.setVisibility(View.GONE);
@@ -113,7 +104,7 @@ public class InfoBox {
 	/**
 	 * Adds a line of statistics to the info box
 	 * @param label of the info
-	 * @param the info itself
+	 * @param content the info itself
 	 * */
 	public void addStatLine(String label, String content) {				
 		// inflate info line layout
@@ -133,47 +124,6 @@ public class InfoBox {
 		mContents.add(contentTV);
 	}
 	
-	private void addChronometer(LayoutInflater inflater, LinearLayout container) {
-		mChronoContainer = inflater.inflate(R.layout.info_box_chrono_item, null);
-		mChrono = (Chronometer)mChronoContainer.findViewById(R.id.chronometer1);
-		mChrono.setBase(SystemClock.elapsedRealtime());
-		container.addView(mChronoContainer);
-		
-	}
-	
-	/**@param true to enable chronometer.*/
-	public void enableChronometer(boolean enable) {
-		if (enable) {
-			mChronoContainer.setVisibility(View.VISIBLE);
-		}
-		else {
-			mChronoContainer.setVisibility(View.GONE);
-		}
-	}
-	
-	/**Sets the base time of the chronometer.
-	 * @param base for chronometer*/
-	public void setChronoBase(long base) {
-		mChrono.setBase(base);	
-	}
-	
-	/**Starts the chronometer.*/
-	public void startChronometer() {
-		mChrono.start();
-		isChronoStarted = true;
-	}
-	/**Stops the chronometer.*/
-	public void stopChronometer() {
-		mChrono.stop();
-		isChronoStarted = false;
-	}
-	
-	/**@return true if chronometer is started.*/
-	public boolean isChronoStarted() {
-		return isChronoStarted;
-	}
-	
-	
 	/**
 	 * Makes corresponding textView GONE or VISIBLE
 	 * @param label of textView
@@ -190,21 +140,6 @@ public class InfoBox {
 			if (mLabels.get(line) != null) {
 				mLabels.get(line).setVisibility(View.GONE);
 			}
-		}
-	}	
-	
-	/**
-	 * Updates a line's contents or creates a new line if it doesnt exist
-	 * @param lineNR number of line
-	 * @param content the content
-	 * */
-	public void updateContent(int lineNR, String content) {
-		// check if textview exists
-		if (lineNR < mLabels.size()) {
-			mContents.get(lineNR).setText(content);
-		}
-		else {
-			Log.d(TAG, "No such line: " + lineNR);
 		}
 	}
 	
@@ -281,13 +216,7 @@ public class InfoBox {
 		}
 		isInfoExpanded = expand;
 	}
-	
-	/**
-	 * @return if InfoBox is expanded
-	 * */
-	public boolean isExpanded() {
-		return isInfoExpanded;
-	}
+
 
 	/**
 	 * Sets a listener for the container.
@@ -345,34 +274,6 @@ public class InfoBox {
 		}
 	}
 	
-	/**
-	 * Sets a custom listener for the content part of the infobox, 
-	 * replacing the default expand/collapse action.
-	 * InfoBox does not contain the expand/collapse arrow and the lock icon.
-	 * @param listener for the onclick action
-	 * */
-	public void setInfoBoxOnClickListener (OnClickListener listener) {
-		mContainer.setOnClickListener(listener);
-	}
-	
-	/**
-	 * Enables / disables lock
-	 * @param enabled => true.
-	 * */
-	public void enableLock(boolean enabled) {
-		// only take action if there is a change
-		if (isLockEnabled != enabled) {			
-			isLockEnabled = enabled;
-			
-			if (enabled) {
-				lockSpinner(false);		
-			}
-			else {
-				lockSpinner(true);
-			}
-		}
-	}
-	
 	// listens for the two lock icons
 	private class LockListener implements OnClickListener {
 
@@ -388,46 +289,17 @@ public class InfoBox {
 	 * @param names that are presented on the spinner
 	 * @param listener for selected items
 	 * @param selected the currently selected item
-	 * @param lockSpinnner weather the spinner should be locked
 	 * */
-	public void setupSpinner(ArrayList<String> names, 
-			OnItemSelectedListener listener, int selected) {
+	public void setupSpinner(List<String> names, OnItemSelectedListener listener, int selected) {
 		Log.d(TAG, "setupSpinner");		
 		
 		if (mAdapter == null) {
-			mAdapter = new ArrayAdapter<String> (mParentActivity, 
+			mAdapter = new ArrayAdapter<>(mParentActivity,
 					R.layout.info_box_spinner_item, R.id.textViewTrackName, names);
 			mSpinner.setAdapter(mAdapter);
-		}
-		else {
-			Log.v(TAG, "update spinner adapter contents");
-			mAdapter.clear();
-			mAdapter.addAll(names);
-			mAdapter.notifyDataSetChanged();
 		}
 		mSpinner.setOnItemSelectedListener(listener);
 		mSpinner.setSelection(selected);
 	}
-	
-	public void setSpinner(Spinner spinner) {
-		mSpinner = spinner;
-	}
-	
-	/**
-	 * Shows or hides the whole info box
-	 * */
-	public void setVisible(boolean visible) {
-		if (visible) {
-			mBaseView.setVisibility(View.VISIBLE);
-		} else {
-			mBaseView.setVisibility(View.GONE);
-		}
-	}
-	
-	public boolean isVisible() {
-		if (mBaseView.getVisibility() == View.VISIBLE) {
-			return true;
-		}
-		return false;
-	}
+
 }

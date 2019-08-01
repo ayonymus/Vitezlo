@@ -48,9 +48,9 @@ class MapViewModel @Inject constructor(private val getCheckpoints: GetCheckpoint
         return sightsState
     }
 
-    fun getDescritpions(): LiveData<DescriptionsState>   {
+    fun getDescriptions(): LiveData<DescriptionsState>   {
         sightJob?.cancel()
-        sightJob = CoroutineScope(io).launch {
+        descriptionsJob = CoroutineScope(io).launch {
             descriptionsState.postValue(getDescriptions.invoke())
         }
         return descriptionsState

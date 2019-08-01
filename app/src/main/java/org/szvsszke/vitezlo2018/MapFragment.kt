@@ -17,13 +17,13 @@ import androidx.lifecycle.ViewModelProviders
 import com.google.android.gms.maps.MapView
 import org.szvsszke.vitezlo2018.map.MapDecorator
 import org.szvsszke.vitezlo2018.map.MapPreferences
-import org.szvsszke.vitezlo2018.map.data.DescriptionsCache
 import org.szvsszke.vitezlo2018.domain.entity.Description
 import org.szvsszke.vitezlo2018.map.overlay.InfoBox
 import org.szvsszke.vitezlo2018.map.overlay.MapControlBox
 import org.szvsszke.vitezlo2018.map.overlay.MapControlBox.MapControlListener
 import org.szvsszke.vitezlo2018.presentation.map.MapViewModel
 import org.szvsszke.vitezlo2018.usecase.CheckpointState
+import org.szvsszke.vitezlo2018.usecase.DescriptionsState
 import org.szvsszke.vitezlo2018.usecase.SightsState
 import timber.log.Timber
 import javax.inject.Inject
@@ -50,11 +50,9 @@ class MapFragment : Fragment(), MapControlListener {
     private var mInfoContainer: RelativeLayout? = null
     private var mControlContainer: LinearLayout? = null
 
-    private var mInfoBox: InfoBox? = null
+    private lateinit var mInfoBox: InfoBox
 
     private var mControlBox: MapControlBox? = null
-
-    private var mDescriptions: DescriptionsCache? = null
 
     //view variables
     private var isBoxExpanded = true
@@ -77,17 +75,13 @@ class MapFragment : Fragment(), MapControlListener {
 
         mapDecorator.init(activity, mapView, mapPrefs)
 
-        mDescriptions = DescriptionsCache(activity)
-
         mInfoContainer = inflatedView.findViewById<View>(R.id.infoBoxHolder) as RelativeLayout
 
         if (mapPrefs!!.isInfoboxEnabled) {
-            setupInfobox(inflater)
+            setupInfoBox(inflater)
         } else {
             mInfoContainer!!.visibility = View.GONE
         }
-
-        showTrackInfo()
 
         mControlContainer = inflatedView.findViewById<View>(
                 R.id.controlBoxHolder) as LinearLayout
@@ -113,11 +107,38 @@ class MapFragment : Fragment(), MapControlListener {
     override fun onResume() {
         super.onResume()
         mapView.onResume()
-        mDescriptions!!.getDescription(mapPrefs!!.selectedTrackIndex)?.let { description ->
-            mapDecorator.decorate(description)
-            showCheckpoint(description)
-            showSights()
-        }
+        viewModel.getDescriptions().observe(this,
+                Observer { result ->
+                    when(result) {
+                        is DescriptionsState.Data -> onDescriptionReady(result.data)
+                        else -> Timber.e("Could not get descriptions")
+                    }
+                })
+        showSights()
+    }
+
+    override fun onPause() {
+        mapView.onPause()
+        super.onPause()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        mapView.onDestroy()
+        mapPrefs!!.isInfoboxLocked = mInfoBox!!.isSpinnerLocked
+        mapPrefs!!.saveMapPreferences()
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        mapView.onSaveInstanceState(outState)
+        super.onSaveInstanceState(outState)
+    }
+
+    private fun onDescriptionReady(descriptions: List<Description>) {
+        Timber.v(descriptions.toString())
+        setupTrackSpinner(descriptions)
+        mapDecorator.decorate(descriptions[0])
+        showCheckpoint(descriptions[0])
     }
 
     private fun showCheckpoint(description: Description) {
@@ -140,40 +161,17 @@ class MapFragment : Fragment(), MapControlListener {
                 })
     }
 
-    override fun onPause() {
-        mapView.onPause()
-        super.onPause()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        mapView.onDestroy()
-        mapPrefs!!.isInfoboxLocked = mInfoBox!!.isSpinnerLocked
-        mapPrefs!!.saveMapPreferences()
-    }
-
-    override fun onSaveInstanceState(outState: Bundle) {
-        mapView.onSaveInstanceState(outState)
-        super.onSaveInstanceState(outState)
-    }
-
     override fun onLowMemory() {
         mapView.onLowMemory()
         super.onLowMemory()
     }
 
-    private fun setCurrentTrack(trackNr: Int) {
-        mapPrefs!!.selectedTrackIndex = trackNr
-        val descriptions = mDescriptions!!.acquireData()
-        if (descriptions != null) {
-            mDescriptions!!.getDescription(trackNr)?.let { it ->
-                updateViews(it)
-            }
-        } else {
-            mDescriptions!!.setDataLoadedListener { loadedDescriptions ->
-                loadedDescriptions[trackNr]?.let { updateViews(it) }
-            }
-        }
+    private fun setupTrackSpinner(descriptions: List<Description>) {
+        mInfoBox.setupSpinner(descriptions.map { it.name },
+                TrackSpinnerListener { position ->
+                    updateViews(descriptions[position])
+                    updateInfoDescription(descriptions[position])
+                }, 0)
     }
 
     private fun updateViews(description: Description) {
@@ -181,77 +179,37 @@ class MapFragment : Fragment(), MapControlListener {
         showCheckpoint(description)
         showSights()
         activity?.title = description.name
-        mInfoBox?.setTitle(description.name)
+        mInfoBox.setTitle(description.name)
     }
 
-    private fun setupInfobox(inflater: LayoutInflater) {
+    // TODO remove somehow
+    private fun setupInfoBox(inflater: LayoutInflater) {
         mInfoBox = InfoBox(activity)
-        mInfoBox!!.onCreateView(inflater, mInfoContainer)
+        mInfoBox.onCreateView(inflater, mInfoContainer)
         val expandCollapse = OnClickListener {
             isBoxExpanded = !isBoxExpanded
-            mInfoBox!!.expandInfoBox(isBoxExpanded)
+            mInfoBox.expandInfoBox(isBoxExpanded)
         }
-        mInfoBox!!.setOnClickListenerForContainer(expandCollapse)
-        mInfoBox!!.lockSpinner(mapPrefs!!.isInfoboxLocked)
+        mInfoBox.setOnClickListenerForContainer(expandCollapse)
+        mInfoBox.lockSpinner(mapPrefs!!.isInfoboxLocked)
     }
 
-    private fun setTrackSpinner() {
-        if (mDescriptions!!.acquireData() != null) {
-            mInfoBox!!.setupSpinner(mDescriptions!!.names,
-                    TrackSpinnerListener(),
-                    mapPrefs!!.selectedTrackIndex)
-        } else {
-            mDescriptions!!.setDataLoadedListener {
-                mInfoBox!!.setupSpinner(mDescriptions!!.names,
-                        TrackSpinnerListener(),
-                        mapPrefs!!.selectedTrackIndex)
-            }
-        }
-    }
-
+    // TODO this is wrong
     override fun displayPreferenceChanged() {
-        mDescriptions!!.getDescription(mapPrefs!!.selectedTrackIndex)?.let { description ->
-            mapDecorator.decorate(description)
-            // FIXME this is not how it should work, logic should move
-            showCheckpoint(description)
-            showSights()
-        }
-
-        showTrackInfo()
-        mapDecorator.removeUserPath()
+        showSights()
     }
 
-    private fun showTrackInfo() {
-        setTrackSpinner()
-        updateTrackInfo()
+    private fun updateInfoDescription(description: Description) {
+        mInfoBox.addItems(description.name, resources.getStringArray(R.array.hike_info),
+                description.publicData)
+
     }
 
-    private fun updateTrackInfo() {
-        //setCurrentTrack(mapPrefs.getSelectedTrackIndex());
-        val desc = mDescriptions!!.getDescription(
-                mapPrefs!!.selectedTrackIndex)
-
-        if (desc != null) {
-            mInfoBox!!.addItems(desc.name,
-                    resources.getStringArray(R.array.hike_info),
-                    desc.publicData)
-        } else {
-            mDescriptions!!.setDataLoadedListener {
-                val desc = mDescriptions!!.getDescription(
-                        mapPrefs!!.selectedTrackIndex)
-                mInfoBox!!.addItems(desc!!.name,
-                        resources.getStringArray(R.array.hike_info),
-                        desc.publicData)
-            }
-        }
-    }
-
-    private inner class TrackSpinnerListener : OnItemSelectedListener {
+    private class TrackSpinnerListener(private val action: (position: Int) -> Unit) : OnItemSelectedListener {
 
         override fun onItemSelected(parent: AdapterView<*>, view: View,
                                     position: Int, id: Long) {
-            setCurrentTrack(position)
-            updateTrackInfo()
+            action.invoke(position)
         }
 
         override fun onNothingSelected(parent: AdapterView<*>) {}

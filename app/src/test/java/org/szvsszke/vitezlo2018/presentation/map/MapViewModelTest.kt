@@ -62,7 +62,7 @@ internal class MapViewModelTest {
 
     @Test
     fun `given description data when observed then return description state`() {
-        viewModel.getDescritpions()
-        assertEquals(DescriptionsState.Data(descriptions), viewModel.getDescritpions().value)
+        viewModel.getDescriptions()
+        assertEquals(DescriptionsState.Data(descriptions), viewModel.getDescriptions().value)
     }
 }

@@ -3,28 +3,16 @@ package org.szvsszke.vitezlo2018.map.data;
 import com.google.android.gms.maps.model.LatLng;
 
 import org.szvsszke.vitezlo2018.map.model.Track;
-import org.szvsszke.vitezlo2018.domain.entity.Description;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.NamedNodeMap;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-import org.xml.sax.SAXException;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
 
 import android.util.Log;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
 
 /**
  * This class encapsulates the xml parsing functions.
@@ -141,54 +129,5 @@ public class XMLTools {
 		return new Track(name, description, trkpts, trkptNames, 
 				new ArrayList<Integer>(), new ArrayList<Double>(), 
 				new ArrayList<Long>());
-	}
-	
-	public static ArrayList<Description> parseHikeDescriptions(InputStream stream) {
-		DocumentBuilderFactory docBuilderFactory = DocumentBuilderFactory.newInstance();
-		ArrayList<Description> tracks = new ArrayList<Description>();
-		
-		// access file
-		try { 
-			DocumentBuilder documentBuilder = docBuilderFactory.newDocumentBuilder();
-			//Log.d(TAG, "args[0] " + params[0]);
-			Document doc = documentBuilder.parse(stream);
-			Element rootElement = doc.getDocumentElement();
-			
-			NodeList nodeList = rootElement.getElementsByTagName("track");
-			
-			for(int i = 0; i < nodeList.getLength(); i++) {
-				
-				Node node = nodeList.item(i);
-			    NamedNodeMap attributes = node.getAttributes();
-
-			    String name = attributes.getNamedItem("name").getTextContent();			   				     
-			    String length = attributes.getNamedItem("length").getTextContent();			    
-			    String routeFile = attributes.getNamedItem("route").getTextContent();
-			    String checkpoints = attributes.getNamedItem("checkpoints").getTextContent();
-			    String starting = attributes.getNamedItem("starting").getTextContent();
-			    String entryFee = attributes.getNamedItem("entryFee").getTextContent();				    
-			    String other = attributes.getNamedItem("other").getTextContent();
-			    String date = attributes.getNamedItem("date").getTextContent();
-			    String levelTime = attributes.getNamedItem("leveltime").getTextContent();
-
-			    String[] cps = checkpoints.split(",");
-			    Description track = new Description(name, routeFile,
-			    		starting, entryFee, other, cps, date, length, levelTime);
-			    tracks.add(track);
-			}
-			
-			stream.close();
-			
-		} catch (ParserConfigurationException e) {
-				  e.printStackTrace();
-		} catch (FileNotFoundException e) {
-			  	 e.printStackTrace();
-		} catch (SAXException e) {
-				  e.printStackTrace();
-		} catch (IOException e) {
-				  e.printStackTrace();
-		}
-		
-		return tracks;
 	}
 }
