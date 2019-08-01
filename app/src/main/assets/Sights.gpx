@@ -5,89 +5,74 @@ xmlns="http://www.topografix.com/GPX/1/0"
 xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/GPX/1/0/gpx.xsd">
 <wpt lat="48.312356999999999" lon="20.748028999999999">
   <name>Borsodi t&#xe1;jh&#xe1;z</name>
-  <cmt>borsodi-tajhaz.jpg</cmt>
-  <desc>http://www.emkkm.hu/tajhaz/</desc>
+  <desc>borsodi-tajhaz.jpg</desc>
 </wpt>
 <wpt lat="48.405364315035307" lon="20.727115353858949">
   <name>Cs&#xe1;ky kast&#xe9;ly</name>
-  <cmt>http://www.szendroitura.hu/latnivalok-szendro-varos.html</cmt>
-  <desc>0</desc>
+  <desc>http://www.szendroitura.hu/latnivalok-szendro-varos.html</desc>
 </wpt>
 <wpt lat="48.294544000000002" lon="20.739402999999999">
   <name>Edel&#xe9;ny kast&#xe9;ly</name>
-  <cmt>edeleny-3900.jpg</cmt>
-  <desc>http://www.edelenyikastelysziget.hu/</desc>
+  <desc>edeleny-3900.jpg</desc>
 </wpt>
 <wpt lat="48.411921" lon="20.730135000000001">
   <name>Forr&#xe1;s barlang</name>
-  <cmt>forrasbarlang.jpg</cmt>
+  <desc>forrasbarlang.jpg</desc>
 </wpt>
 <wpt lat="48.418796" lon="20.776744999999998">
   <name>Galv&#xe1;cs kast&#xe9;ly</name>
-  <cmt>galvacs-kastely.jpg</cmt>
-  <desc>http://www.szendroitura.hu/latnivalok-galvacs.html</desc>
+  <desc>galvacs-kastely.jpg</desc>
 </wpt>
 <wpt lat="48.409218000000003" lon="20.723987999999999">
   <name>Katolikus templom</name>
-  <cmt>szendro-katolikus.jpg</cmt>
-  <desc>http://www.szendroitura.hu/latnivalok-szendro-varos.html</desc>
+  <desc>szendro-katolikus.jpg</desc>
 </wpt>
 <wpt lat="48.407833626548964" lon="20.73450260337448">
   <name>Kil&#xe1;t&#xf3; torony</name>
-  <cmt>kilato.jpg</cmt>
+  <desc>kilato.jpg</desc>
 </wpt>
 <wpt lat="48.408994831044318" lon="20.72321273974228">
   <name>K&#xe9;kfest&#x151; h&#xe1;z</name>
-  <cmt>kekfesto-haz.jpg</cmt>
-  <desc>http://www.szendroitura.hu/latnivalok-szendro-varos.html</desc>
+  <desc>kekfesto-haz.jpg</desc>
 </wpt>
 <wpt lat="48.42839" lon="20.688527000000001">
   <name>K&#xf6;z&#xe9;phegy</name>
-  <cmt>szendro-latkep.jpg</cmt>
+  <desc>szendro-latkep.jpg</desc>
 </wpt>
 <wpt lat="48.485027000000002" lon="20.735562000000002">
   <name>P&#xe1;los kolostorrom</name>
-  <cmt>martonyi-palos-kolostor.jpg</cmt>
-  <desc>http://www.szendroitura.hu/latnivalok-martonyi-palos-kolostor.html</desc>
+  <desc>martonyi-palos-kolostor.jpg</desc>
 </wpt>
 <wpt lat="48.451622" lon="20.764915999999999">
   <name>Rakacai v&#xed;zt&#xe1;roz&#xf3;</name>
-  <cmt>rakacai-to-viztarozo-05.jpg</cmt>
-  <desc>http://www.szendroitura.hu/latnivalok-rakacai-to.html</desc>
+  <desc>rakacai-to-viztarozo-05.jpg</desc>
 </wpt>
 <wpt lat="48.448" lon="20.776097">
   <name>Rakacai v&#xed;zt&#xe1;roz&#xf3; 2.</name>
-  <cmt>rakacai-to-viztarozo.jpg</cmt>
-  <desc>http://www.szendroitura.hu/latnivalok-rakacai-to.html</desc>
+  <desc>rakacai-to-viztarozo.jpg</desc>
 </wpt>
 <wpt lat="48.391787999999998" lon="20.790611999999999">
   <name>Reform&#xe1;tus templom</name>
-  <cmt>http://www.szendroitura.hu/latnivalok-abod.html</cmt>
-  <desc>111</desc>
+  <desc>http://www.szendroitura.hu/latnivalok-abod.html</desc>
 </wpt>
 <wpt lat="48.407038999999997" lon="20.728000000000002">
   <name>Reform&#xe9;tus templom</name>
-  <cmt>szendro-reformatus-templom.jpg</cmt>
+  <desc>szendro-reformatus-templom.jpg</desc>
 </wpt>
 <wpt lat="48.449117000000001" lon="20.736249000000001">
   <name>Szalonna reform&#xe1;tus templom</name>
-  <cmt>szalonna-reformatus-templom.jpg</cmt>
-  <desc>http://www.szendroitura.hu/latnivalok-szalonna.html</desc>
+  <desc>szalonna-reformatus-templom.jpg</desc>
 </wpt>
 <wpt lat="48.437131000000001" lon="20.683548999999999">
   <name>Telekes patak</name>
-  <cmt>ordog-gat-telekes-volgy.jpg</cmt>
-  <desc>http://www.szendroitura.hu/latnivalok-telekes-volgy-ordoggat.html</desc>
-  <sym>City (Capitol)</sym>
+  <desc>ordog-gat-telekes-volgy.jpg</desc>
 </wpt>
 <wpt lat="48.402070999999999" lon="20.661639999999998">
   <name>Telekesi k&#xe1;polna</name>
-  <cmt>telekesi-kapolna.jpg</cmt>
+  <desc>telekesi-kapolna.jpg</desc>
 </wpt>
 <wpt lat="48.434255999999998" lon="20.681961000000001">
   <name>&#xd6;rd&#xf6;gg&#xe1;t</name>
-  <cmt>ordog-gat-fentrol.jpg</cmt>
-  <desc>http://www.szendroitura.hu/latnivalok-telekes-volgy-ordoggat.html</desc>
-  <sym>City (Capitol)</sym>
+  <desc>ordog-gat-fentrol.jpg</desc>
 </wpt>
 </gpx>
