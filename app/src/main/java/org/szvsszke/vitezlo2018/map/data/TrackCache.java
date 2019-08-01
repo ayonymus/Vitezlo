@@ -12,6 +12,7 @@ import android.os.AsyncTask;
 import android.util.Log;
 
 /**Loads and stores Tracks*/
+@Deprecated
 public class TrackCache extends AbstractDataCache<HashMap<Description, Track>>{
 
 	private static final String TAG = TrackCache.class.getName();

@@ -72,7 +72,6 @@ public class XMLTools {
 		HashMap<Integer, String> trkptNames = new HashMap<Integer, String>();
 		String name = "";
 		String description = "";
-		int trkptCount = 0;
 		// loop through tags
 		int eventType = parser.getEventType();
 		while (eventType != XmlPullParser.END_DOCUMENT) {
@@ -81,10 +80,7 @@ public class XMLTools {
 			case XmlPullParser.START_TAG:
 				//determine current xml tag
 				String tag = parser.getName();
-				//Log.d(TAG, "parseGpx, " + tag);
 				if (tag.equalsIgnoreCase(TRKPT)) {
-					//Log.d(TAG, "parseGpx, tag: " + TRKPT);
-					trkptCount++;
 					trkpts.add(new LatLng(
 						Double.parseDouble(parser.getAttributeValue(nameSpace, LAT)),
 						Double.parseDouble(parser.getAttributeValue(nameSpace, LON))));

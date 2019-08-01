@@ -12,7 +12,7 @@ import javax.xml.parsers.DocumentBuilderFactory
  */
 class DescriptionsXmlParser {
 
-    fun parseHikeDescriptions(stream: InputStream): ArrayList<Description> {
+    fun parseHikeDescriptions(stream: InputStream): List<Description> {
         val docBuilderFactory = DocumentBuilderFactory.newInstance()
         val tracks = ArrayList<Description>()
 
