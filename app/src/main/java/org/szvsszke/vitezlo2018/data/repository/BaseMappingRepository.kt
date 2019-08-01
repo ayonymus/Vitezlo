@@ -7,7 +7,7 @@ import org.szvsszke.vitezlo2018.domain.MappingRepository
  * Simple generic repository that is providing on demand data
  * retrieval and caching
  */
-class BaseMappingRepository<K, T>(private val source: ParameteredDataSource<K, T>
+open class BaseMappingRepository<K, T>(private val source: ParameteredDataSource<K, T>
 ): MappingRepository<K, T> {
 
     private val cache = mutableMapOf<K, T>()
