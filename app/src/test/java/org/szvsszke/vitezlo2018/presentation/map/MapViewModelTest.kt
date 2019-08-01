@@ -8,9 +8,12 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.szvsszke.vitezlo2018.domain.entity.Checkpoint
+import org.szvsszke.vitezlo2018.domain.entity.Description
 import org.szvsszke.vitezlo2018.domain.entity.Sight
 import org.szvsszke.vitezlo2018.usecase.CheckpointState
+import org.szvsszke.vitezlo2018.usecase.DescriptionsState
 import org.szvsszke.vitezlo2018.usecase.GetCheckpoints
+import org.szvsszke.vitezlo2018.usecase.GetDescriptions
 import org.szvsszke.vitezlo2018.usecase.GetSights
 import org.szvsszke.vitezlo2018.usecase.SightsState
 import kotlin.test.assertEquals
@@ -32,11 +35,17 @@ internal class MapViewModelTest {
         on { invoke() } doReturn SightsState.Data(sights)
     }
 
+    private val description = mock<Description> { }
+    private val descriptions = listOf(description)
+    private val getDescriptions = mock<GetDescriptions> {
+        on { invoke() } doReturn DescriptionsState.Data(descriptions)
+    }
+
     private lateinit var viewModel: MapViewModel
 
     @Before
     fun setUp() {
-        viewModel = MapViewModel(getCheckpoints, getSights, Dispatchers.Unconfined)
+        viewModel = MapViewModel(getCheckpoints, getSights, getDescriptions, Dispatchers.Unconfined)
     }
 
     @Test
@@ -49,5 +58,11 @@ internal class MapViewModelTest {
     fun `given sight data when observed then return sights state`() {
         viewModel.getSights()
         assertEquals(SightsState.Data(sights), viewModel.getSights().value)
+    }
+
+    @Test
+    fun `given description data when observed then return description state`() {
+        viewModel.getDescritpions()
+        assertEquals(DescriptionsState.Data(descriptions), viewModel.getDescritpions().value)
     }
 }
