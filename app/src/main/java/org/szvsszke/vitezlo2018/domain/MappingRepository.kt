@@ -5,6 +5,6 @@ package org.szvsszke.vitezlo2018.domain
  */
 interface MappingRepository<K, T> {
 
-    fun getData(key: K): T?
+    fun getData(key: K): Loading<T>
 
 }

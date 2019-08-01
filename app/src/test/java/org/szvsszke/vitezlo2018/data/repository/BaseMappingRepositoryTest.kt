@@ -6,8 +6,8 @@ import com.nhaarman.mockitokotlin2.times
 import com.nhaarman.mockitokotlin2.verify
 import org.junit.Before
 import org.junit.Test
+import org.szvsszke.vitezlo2018.domain.Loading
 import kotlin.test.assertEquals
-import kotlin.test.assertNull
 
 internal class BaseMappingRepositoryTest {
 
@@ -24,10 +24,10 @@ internal class BaseMappingRepositoryTest {
     }
 
     @Test
-    fun `given data not in source when getData called then return null`() {
+    fun `given data not in source when getData called then return failure`() {
         val result = repository.getData(key1)
 
-        assertNull(result)
+        assertEquals(Loading.Failure(), result)
         verify(source).getData(key1)
     }
 
@@ -37,7 +37,7 @@ internal class BaseMappingRepositoryTest {
         given { source.getData(key1) }.willReturn(val1)
 
         val result = repository.getData(key1)
-        assertEquals(val1, result)
+        assertEquals(Loading.Success(val1), result)
 
         verify(source, times(1)).getData(key1)
     }
@@ -49,7 +49,7 @@ internal class BaseMappingRepositoryTest {
         repository.getData(key1)
         val result = repository.getData(key1)
 
-        assertEquals(val1, result)
+        assertEquals(Loading.Success(val1), result)
         verify(source, times(1)).getData(key1)
     }
 }
