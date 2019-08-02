@@ -15,6 +15,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.google.android.gms.maps.MapView
+import com.google.android.gms.maps.model.LatLng
 import org.szvsszke.vitezlo2018.map.MapDecorator
 import org.szvsszke.vitezlo2018.map.MapPreferences
 import org.szvsszke.vitezlo2018.domain.entity.Description
@@ -25,6 +26,7 @@ import org.szvsszke.vitezlo2018.presentation.map.MapViewModel
 import org.szvsszke.vitezlo2018.usecase.CheckpointState
 import org.szvsszke.vitezlo2018.usecase.DescriptionsState
 import org.szvsszke.vitezlo2018.usecase.SightsState
+import org.szvsszke.vitezlo2018.usecase.TrackState
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -110,7 +112,7 @@ class MapFragment : Fragment(), MapControlListener {
         viewModel.getDescriptions().observe(this,
                 Observer { result ->
                     when(result) {
-                        is DescriptionsState.Data -> onDescriptionReady(result.data)
+                        is DescriptionsState.Data -> onDescriptionsReady(result.data)
                         else -> Timber.e("Could not get descriptions")
                     }
                 })
@@ -134,11 +136,13 @@ class MapFragment : Fragment(), MapControlListener {
         super.onSaveInstanceState(outState)
     }
 
-    private fun onDescriptionReady(descriptions: List<Description>) {
+    // TODO only first descrption shown
+    private fun onDescriptionsReady(descriptions: List<Description>) {
         Timber.v(descriptions.toString())
         setupTrackSpinner(descriptions)
-        mapDecorator.decorate(descriptions[0])
+        mapDecorator.decorate()
         showCheckpoint(descriptions[0])
+        showTrack(descriptions[0].routeFileName)
     }
 
     private fun showCheckpoint(description: Description) {
@@ -161,6 +165,16 @@ class MapFragment : Fragment(), MapControlListener {
                 })
     }
 
+    private fun showTrack(trackName: String) {
+        viewModel.getTrack(trackName).observe(this,
+                Observer { result ->
+                    when(result) {
+                        is TrackState.Data -> mapDecorator.markTrack(result.data.points.map { it -> LatLng(it.latitude, it.longitude) })
+                        else -> Timber.e("Could not get track")
+                    }
+                })
+    }
+
     override fun onLowMemory() {
         mapView.onLowMemory()
         super.onLowMemory()
@@ -175,7 +189,7 @@ class MapFragment : Fragment(), MapControlListener {
     }
 
     private fun updateViews(description: Description) {
-        mapDecorator.decorate(description)
+        mapDecorator.decorate()
         showCheckpoint(description)
         showSights()
         activity?.title = description.name

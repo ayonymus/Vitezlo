@@ -13,12 +13,12 @@ import org.szvsszke.vitezlo2018.adapter.CustomInfoWindowAdapter;
 import org.szvsszke.vitezlo2018.domain.entity.Checkpoint;
 import org.szvsszke.vitezlo2018.domain.entity.Sight;
 import org.szvsszke.vitezlo2018.map.handler.TouristPathsHandler;
-import org.szvsszke.vitezlo2018.map.handler.TrackHandler;
-import org.szvsszke.vitezlo2018.domain.entity.Description;
+import org.szvsszke.vitezlo2018.presentation.map.line.LineHandler;
 import org.szvsszke.vitezlo2018.presentation.map.marker.CheckpointHandler;
 import org.szvsszke.vitezlo2018.presentation.map.marker.SightsHandler;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.util.Log;
 
 import java.util.List;
@@ -46,22 +46,19 @@ public class MapDecorator {
 	
 	private boolean isMapReady = false;
 
-	private TrackHandler mTracks;
 	private TouristPathsHandler mTouristPaths;
-
-	private LineDrawer mUserPathDrawer;
 
 	private MapPreferences mMapPrefs;
 
-	private Description mLastTrack;
-
 	private CheckpointHandler checkpointHandler;
 	private SightsHandler sightsHandler;
+	private LineHandler trackHandler;
 
 	@Inject
-	public MapDecorator(CheckpointHandler checkpointHandler, SightsHandler sightsHandler){
+	public MapDecorator(CheckpointHandler checkpointHandler, SightsHandler sightsHandler, LineHandler lineHandler){
 		this.checkpointHandler = checkpointHandler;
 		this.sightsHandler = sightsHandler;
+		this.trackHandler = lineHandler;
 	}
 
 	// TODO remove context dependency
@@ -70,9 +67,6 @@ public class MapDecorator {
         mMapView = view;
 
         mMapPrefs = prefs;
-
-        mTracks = new TrackHandler(mParent);
-        mTracks.setLineColor(mMapPrefs.getTrackColor());
         setupMapIfNeeded();
 
 
@@ -104,10 +98,7 @@ public class MapDecorator {
 		            public void onMapLoaded() {
 		                isMapReady = true;
 		                Log.i(TAG, "map is ready");		                
-		                mTracks.setMap(mMap);
 		                mTouristPaths.setMap(mMap);
-		                mUserPathDrawer = new LineDrawer(mMap);
-		                decorate(mLastTrack);
 		                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(
 		                		DEFAULT_POS, 14.0f) );
 		            }
@@ -115,19 +106,10 @@ public class MapDecorator {
 	        }
 		}
 	}
-	
-	/**Decorates the map based on the preferences object provided in the 
-	 * constructor.
-	 * @param description the Track to display.*/
-	public void decorate(Description description) {
-		Log.d(TAG, "decorate");	
-		if (description != null) {
-			mLastTrack = description;
-		}
+
+	public void decorate() {
+		Log.d(TAG, "decorate");
 		if (isMapReady) {
-			if (mLastTrack != null) {
-				displayTrack(mLastTrack);
-			}
 			displayTouristPaths();
 			if (mMap.getMapType() != mMapPrefs.getMapType()) {
 				mMap.setMapType(mMapPrefs.getMapType());
@@ -135,24 +117,16 @@ public class MapDecorator {
 		}
 		
 	}
-
-	/**Removes the user path if it is drawn.*/
-	public void removeUserPath() {
-		if (mUserPathDrawer != null) {
-			mUserPathDrawer.removePath();
-		}
-	}
-
-	private void displayTrack(Description description) {
-		Log.d(TAG, "displayTrack");
-		
-		if (mMapPrefs.isHikeEnabled()) {
-			mTracks.displayTrack(description, mMapPrefs.isCenterToTrack());
-		}
-		else {			
-			mTracks.remove();			
-		}
-	}
+	// TODO accept Track object
+	// TODO set color
+	// TODO center to area
+    public void markTrack(List<LatLng> data) {
+	    if (mMapPrefs.isHikeEnabled()) {
+		    trackHandler.drawLine(mMap, data, Color.argb(255, 100, 255, 100));
+	    } else {
+	    	trackHandler.removeLine();
+	    }
+    }
 	
 	public void markCheckpoints(@NonNull List<Checkpoint> checkpoints) {
 		if (mMapPrefs.areCheckpointsEnabled()) {

@@ -13,16 +13,16 @@ import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
 
 /**
- * Helper class for drawing and removing polylines; 
+ * Helper class for drawing and removing polylines;
+ * TODO extract line drawing and camera handling into different classes
  * */
-
+@Deprecated
 public class LineDrawer {
 	private static final String TAG = LineDrawer.class.getName();
 	
 	private static final int DEFAULT_LINE_WIDTH = 5;
 	private static final int DEFAULT_Z_INDEX = 10; 
-	private static final int ARGB_GREEN = 
-			Color.argb(255, 100, 255, 100);
+	private static final int ARGB_GREEN = Color.argb(255, 100, 255, 100);
 	
 	private Polyline mPath;
 	private GoogleMap mMap;
@@ -41,6 +41,7 @@ public class LineDrawer {
 	 * @param lineCoordinates a list of LatLng's representing the line
 	 * @param center moves the camera so that the path is in the center
 	 * */
+	@Deprecated // moved to line handler
 	public void drawPath(List<LatLng> lineCoordinates, boolean center) {
 		Log.v(TAG, "drawPath");
 		if (mMap == null) {
@@ -67,13 +68,15 @@ public class LineDrawer {
 	}
 	
 	/**Removes the path drawn from the map.*/
+	@Deprecated // moved
 	public void removePath() {
 		if (mPath != null) {
 			mPath.remove();
 		}
 	}
-	
-	private void centerToTrack(List<LatLng> lineCoordinates) {
+
+	@Deprecated
+	void centerToTrack(List<LatLng> lineCoordinates) {
     	double latLow = lineCoordinates.get(0).latitude;
     	double latHi = lineCoordinates.get(0).latitude;
     	double lonLow = lineCoordinates.get(0).longitude;
@@ -100,14 +103,7 @@ public class LineDrawer {
     				new LatLng(latHi, lonHi)), 80));
 		
 	}
-	
-	public void setZIndex(float mZIndex) {
-		this.mZIndex = mZIndex;
-	}
-	
-	public void setWidth(int mWidth) {
-		this.mWidth = mWidth;
-	}
+
 	public void setColor(int color) {
 		mColor = color;
 		
