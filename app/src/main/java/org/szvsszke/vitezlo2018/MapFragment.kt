@@ -19,12 +19,14 @@ import com.google.android.gms.maps.model.LatLng
 import org.szvsszke.vitezlo2018.map.MapDecorator
 import org.szvsszke.vitezlo2018.map.MapPreferences
 import org.szvsszke.vitezlo2018.domain.entity.Description
+import org.szvsszke.vitezlo2018.domain.entity.Point
 import org.szvsszke.vitezlo2018.map.overlay.InfoBox
 import org.szvsszke.vitezlo2018.map.overlay.MapControlBox
 import org.szvsszke.vitezlo2018.map.overlay.MapControlBox.MapControlListener
 import org.szvsszke.vitezlo2018.presentation.map.MapViewModel
 import org.szvsszke.vitezlo2018.usecase.CheckpointState
 import org.szvsszke.vitezlo2018.usecase.DescriptionsState
+import org.szvsszke.vitezlo2018.usecase.FindBounds
 import org.szvsszke.vitezlo2018.usecase.SightsState
 import org.szvsszke.vitezlo2018.usecase.TrackState
 import timber.log.Timber
@@ -42,6 +44,9 @@ class MapFragment : Fragment(), MapControlListener {
     @Inject
     lateinit var mapDecorator: MapDecorator
 
+    @Inject
+    lateinit var findBounds: FindBounds
+
     private lateinit var viewModel: MapViewModel
 
     private lateinit var mapView: MapView
@@ -53,8 +58,6 @@ class MapFragment : Fragment(), MapControlListener {
     private var mControlContainer: LinearLayout? = null
 
     private lateinit var mInfoBox: InfoBox
-
-    private var mControlBox: MapControlBox? = null
 
     //view variables
     private var isBoxExpanded = true
@@ -89,10 +92,11 @@ class MapFragment : Fragment(), MapControlListener {
                 R.id.controlBoxHolder) as LinearLayout
         if (mapPrefs!!.isControlBoxEnabled) {
             // setup control box
-            mControlBox = MapControlBox(mapPrefs)
-            mControlBox!!.onCreateView(inflater, mControlContainer)
-            mControlBox!!.setListener(this)
-            mControlBox!!.enableUserHikeButton(false)
+            MapControlBox(mapPrefs).apply {
+                onCreateView(inflater, mControlContainer)
+                setListener(this@MapFragment)
+                enableUserHikeButton(false)
+            }
 
         } else {
             mControlContainer!!.visibility = View.GONE
@@ -136,7 +140,11 @@ class MapFragment : Fragment(), MapControlListener {
         super.onSaveInstanceState(outState)
     }
 
-    // TODO only first descrption shown
+    override fun onLowMemory() {
+        mapView.onLowMemory()
+        super.onLowMemory()
+    }
+
     private fun onDescriptionsReady(descriptions: List<Description>) {
         Timber.v(descriptions.toString())
         setupTrackSpinner(descriptions)
@@ -169,15 +177,17 @@ class MapFragment : Fragment(), MapControlListener {
         viewModel.getTrack(trackName).observe(this,
                 Observer { result ->
                     when(result) {
-                        is TrackState.Data -> mapDecorator.markTrack(result.data.points.map { it -> LatLng(it.latitude, it.longitude) })
+                        is TrackState.Data -> processTrack(result.data.points)
                         else -> Timber.e("Could not get track")
                     }
                 })
     }
 
-    override fun onLowMemory() {
-        mapView.onLowMemory()
-        super.onLowMemory()
+    private fun processTrack(track: List<Point>) {
+        val bounds = findBounds(track)
+        val start = LatLng(bounds.first.latitude, bounds.first.longitude)
+        val end = LatLng(bounds.second.latitude, bounds.second.longitude)
+        mapDecorator.markTrack(track.map { LatLng(it.latitude, it.longitude) }, start, end)
     }
 
     private fun setupTrackSpinner(descriptions: List<Description>) {
@@ -189,11 +199,12 @@ class MapFragment : Fragment(), MapControlListener {
     }
 
     private fun updateViews(description: Description) {
-        mapDecorator.decorate()
-        showCheckpoint(description)
-        showSights()
         activity?.title = description.name
         mInfoBox.setTitle(description.name)
+        mapDecorator.decorate()
+        showTrack(description.routeFileName)
+        showCheckpoint(description)
+        showSights()
     }
 
     // TODO remove somehow
@@ -216,7 +227,6 @@ class MapFragment : Fragment(), MapControlListener {
     private fun updateInfoDescription(description: Description) {
         mInfoBox.addItems(description.name, resources.getStringArray(R.array.hike_info),
                 description.publicData)
-
     }
 
     private class TrackSpinnerListener(private val action: (position: Int) -> Unit) : OnItemSelectedListener {

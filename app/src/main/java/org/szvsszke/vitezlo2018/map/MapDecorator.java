@@ -13,9 +13,11 @@ import org.szvsszke.vitezlo2018.adapter.CustomInfoWindowAdapter;
 import org.szvsszke.vitezlo2018.domain.entity.Checkpoint;
 import org.szvsszke.vitezlo2018.domain.entity.Sight;
 import org.szvsszke.vitezlo2018.map.handler.TouristPathsHandler;
+import org.szvsszke.vitezlo2018.presentation.map.camera.GoogleMapExtensionsKt;
 import org.szvsszke.vitezlo2018.presentation.map.line.LineHandler;
 import org.szvsszke.vitezlo2018.presentation.map.marker.CheckpointHandler;
 import org.szvsszke.vitezlo2018.presentation.map.marker.SightsHandler;
+import org.szvsszke.vitezlo2018.usecase.FindBounds;
 
 import android.app.Activity;
 import android.graphics.Color;
@@ -26,6 +28,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import androidx.annotation.NonNull;
+import kotlin.Pair;
 
 /**
  * This class is responsible for drawing lines and markers onto the google map, 
@@ -42,23 +45,26 @@ public class MapDecorator {
 	private Activity mParent;
 
 	private GoogleMap mMap;
+
 	private MapView mMapView;
-	
 	private boolean isMapReady = false;
 
 	private TouristPathsHandler mTouristPaths;
 
 	private MapPreferences mMapPrefs;
 
-	private CheckpointHandler checkpointHandler;
-	private SightsHandler sightsHandler;
-	private LineHandler trackHandler;
+	private final CheckpointHandler checkpointHandler;
+	private final SightsHandler sightsHandler;
+	private final LineHandler trackHandler;
+	private final FindBounds findBounds;
 
 	@Inject
-	public MapDecorator(CheckpointHandler checkpointHandler, SightsHandler sightsHandler, LineHandler lineHandler){
+	public MapDecorator(CheckpointHandler checkpointHandler, SightsHandler sightsHandler, LineHandler lineHandler,
+			FindBounds findBounds){
 		this.checkpointHandler = checkpointHandler;
 		this.sightsHandler = sightsHandler;
 		this.trackHandler = lineHandler;
+		this.findBounds = findBounds;
 	}
 
 	// TODO remove context dependency
@@ -115,13 +121,14 @@ public class MapDecorator {
 				mMap.setMapType(mMapPrefs.getMapType());
 			}
 		}
-		
 	}
+
 	// TODO accept Track object
 	// TODO set color
 	// TODO center to area
-    public void markTrack(List<LatLng> data) {
+    public void markTrack(List<LatLng> data, LatLng one, LatLng two) {
 	    if (mMapPrefs.isHikeEnabled()) {
+	    	GoogleMapExtensionsKt.centerToArea(mMap, one, two, 100);
 		    trackHandler.drawLine(mMap, data, Color.argb(255, 100, 255, 100));
 	    } else {
 	    	trackHandler.removeLine();

@@ -1,12 +1,13 @@
 package org.szvsszke.vitezlo2018.usecase
 
 import org.szvsszke.vitezlo2018.domain.entity.Point
+import javax.inject.Inject
 
 /**
  * Given a list of [Point]s find a the top left and bottom right
  * position of the area where all of them are enclosed.
  */
-class FindBounds {
+class FindBounds @Inject constructor() {
 
     operator fun invoke(points: List<Point>): Pair<Point, Point> {
         if (points.isEmpty()) {
