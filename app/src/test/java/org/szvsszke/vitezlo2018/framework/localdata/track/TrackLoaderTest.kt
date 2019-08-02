@@ -28,10 +28,11 @@ internal class TrackLoaderTest {
         on { parse(mockStream) } doReturn mockGpx
     }
 
-    private val trackList = Track("Track name", listOf())
+    private val trackName = "Rambo 3"
+    private val track = Track(trackName, listOf())
 
     private val gpxTrackMapper = mock<GpxTrackMapper> {
-        on { mapToTrack(mockGpx) } doReturn trackList
+        on { mapToTrack(mockGpx) } doReturn track
     }
 
     private lateinit var loader: TrackLoader
@@ -43,16 +44,16 @@ internal class TrackLoaderTest {
 
     @Test
     fun `given a gpx file when data loaded then return a list of sights`() {
-        val result = loader.getData()
+        val result = loader.getData(trackName)
 
-        assertEquals(Loading.Success(trackList), result)
+        assertEquals(track, result)
     }
 
     @Test
     fun `given a gpx file when an error happens then return Error object`() {
         given(gpxParser.parse(any())).willThrow(XmlPullParserException("Olle"))
-        val result = loader.getData()
+        val result = loader.getData(trackName)
 
-        assertEquals(Loading.Failure(), result)
+        assertEquals(null, result)
     }
 }
