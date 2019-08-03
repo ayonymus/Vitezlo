@@ -11,9 +11,8 @@ import org.junit.Before
 import org.junit.Test
 import org.szvsszke.vitezlo2018.domain.Loading
 import org.szvsszke.vitezlo2018.domain.entity.Track
+import org.szvsszke.vitezlo2018.framework.localdata.touristpath.TouristPathLoader.Companion.PATH_TO_TOURIST_PATHS
 import org.szvsszke.vitezlo2018.framework.localdata.track.GpxTrackMapper
-import org.szvsszke.vitezlo2018.map.data.FilePath
-import org.szvsszke.vitezlo2018.map.data.FilePath.PATH_TO_TOURIST_PATHS
 import org.xmlpull.v1.XmlPullParserException
 import java.io.InputStream
 import kotlin.test.assertEquals
@@ -33,7 +32,7 @@ internal class TouristPathLoaderTest {
     private val mockStream3 = mock<InputStream> { }
 
     private val assets = mock<AssetManager> {
-        on { list(FilePath.PATH_TO_TOURIST_PATHS) } doReturn arrayOf(trackName1, trackName2, trackName3)
+        on { list(PATH_TO_TOURIST_PATHS) } doReturn arrayOf(trackName1, trackName2, trackName3)
         on { open("$PATH_TO_TOURIST_PATHS/$trackName1") } doReturn mockStream1
         on { open("$PATH_TO_TOURIST_PATHS/$trackName2") } doReturn mockStream2
         on { open("$PATH_TO_TOURIST_PATHS/$trackName3") } doReturn mockStream3

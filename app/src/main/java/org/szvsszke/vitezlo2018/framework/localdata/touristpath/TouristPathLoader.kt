@@ -6,7 +6,6 @@ import org.szvsszke.vitezlo2018.data.repository.DataSource
 import org.szvsszke.vitezlo2018.domain.Loading
 import org.szvsszke.vitezlo2018.domain.entity.Track
 import org.szvsszke.vitezlo2018.framework.localdata.track.GpxTrackMapper
-import org.szvsszke.vitezlo2018.map.data.FilePath.PATH_TO_TOURIST_PATHS
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -32,5 +31,8 @@ class TouristPathLoader @Inject constructor(private val assets: AssetManager,
 
     }
 
+    companion object {
+        const val PATH_TO_TOURIST_PATHS = "touristpaths"
+    }
 
 }

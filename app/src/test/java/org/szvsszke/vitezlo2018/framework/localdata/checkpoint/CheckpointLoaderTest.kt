@@ -11,7 +11,7 @@ import org.junit.Before
 import org.junit.Test
 import org.szvsszke.vitezlo2018.domain.entity.Checkpoint
 import org.szvsszke.vitezlo2018.domain.Loading
-import org.szvsszke.vitezlo2018.map.data.FilePath
+import org.szvsszke.vitezlo2018.framework.localdata.checkpoint.CheckpointLoader.Companion.PATH_CHECKPOINTS_GPX
 import org.xmlpull.v1.XmlPullParserException
 import java.io.InputStream
 import kotlin.test.assertEquals
@@ -20,7 +20,7 @@ internal class CheckpointLoaderTest {
 
     private val mockStream = mock<InputStream> { }
     private val assets = mock<AssetManager> {
-        on { open(FilePath.FILE_CHECKPOINTS_GPX) } doReturn mockStream
+        on { open(PATH_CHECKPOINTS_GPX) } doReturn mockStream
     }
 
     private val mockGpx = mock<Gpx> { }

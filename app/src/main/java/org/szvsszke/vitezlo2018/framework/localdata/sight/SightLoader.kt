@@ -5,7 +5,6 @@ import io.ticofab.androidgpxparser.parser.GPXParser
 import org.szvsszke.vitezlo2018.data.repository.DataSource
 import org.szvsszke.vitezlo2018.domain.Loading
 import org.szvsszke.vitezlo2018.domain.entity.Sight
-import org.szvsszke.vitezlo2018.map.data.FilePath
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -17,9 +16,13 @@ class SightLoader @Inject constructor(private val assets: AssetManager,
     override fun getData() =
             try {
                 Loading.Success(gpxSightMapper.mapToSightList(
-                        gpxParser.parse(assets.open(FilePath.FILE_SIGHTS_GPX))))
+                        gpxParser.parse(assets.open(PATH_SIGHTS_GPX))))
             } catch (exception: Exception) {
                 Timber.e(exception)
                 Loading.Failure<List<Sight>>()
             }
+
+    companion object {
+        const val PATH_SIGHTS_GPX = "Sights.gpx"
+    }
 }

@@ -4,7 +4,6 @@ import android.content.res.AssetManager
 import io.ticofab.androidgpxparser.parser.GPXParser
 import org.szvsszke.vitezlo2018.data.repository.ParameteredDataSource
 import org.szvsszke.vitezlo2018.domain.entity.Track
-import org.szvsszke.vitezlo2018.map.data.FilePath
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -16,9 +15,13 @@ class TrackLoader @Inject constructor(private val assets: AssetManager,
     override fun getData(key: String) =
             try {
                 gpxTrackMapper.mapToTrack(
-                        gpxParser.parse(assets.open(FilePath.PATH_TO_ROUTES + key)))
+                        gpxParser.parse(assets.open(PATH_TO_ROUTES + key)))
             } catch (exception: Exception) {
                 Timber.e(exception)
                 null
             }
+
+    companion object {
+        const val PATH_TO_ROUTES = "routes/"
+    }
 }

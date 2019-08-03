@@ -5,7 +5,6 @@ import io.ticofab.androidgpxparser.parser.GPXParser
 import org.szvsszke.vitezlo2018.data.repository.DataSource
 import org.szvsszke.vitezlo2018.domain.Loading
 import org.szvsszke.vitezlo2018.domain.entity.Checkpoint
-import org.szvsszke.vitezlo2018.map.data.FilePath
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -21,12 +20,16 @@ class CheckpointLoader @Inject constructor(private val assets: AssetManager,
         return try {
             Loading.Success(gpxCheckpointMapper.mapToCheckPointMap(
                     gpxParser.parse(
-                            assets.open(FilePath.FILE_CHECKPOINTS_GPX))))
+                            assets.open(PATH_CHECKPOINTS_GPX))))
         } catch (exception: Exception) {
             Timber.e(exception)
             Loading.Failure(exception)
         }
 
+    }
+
+    companion object {
+        const val PATH_CHECKPOINTS_GPX = "CheckPoints.gpx"
     }
 
 }
