@@ -1,11 +1,11 @@
-package org.szvsszke.vitezlo2018.data
+package org.szvsszke.vitezlo2018.usecase
 
 import com.nhaarman.mockitokotlin2.mock
 import org.junit.Test
 import org.szvsszke.vitezlo2018.domain.entity.Checkpoint
 import kotlin.test.assertEquals
 
-class CheckpointListMapperTest {
+class GetCheckpointListFromMapTest {
 
     private val id1 = "id1"
     private val id2 = "id2"
@@ -16,7 +16,7 @@ class CheckpointListMapperTest {
     private val checkpoint3 = mock<Checkpoint> {}
 
 
-    private val mapper = CheckpointListMapper()
+    private val mapper = GetCheckpointListFromMap()
 
     @Test
     fun `given map containing all necessary checkpoints then return needed checkpoints`() {
@@ -24,7 +24,7 @@ class CheckpointListMapperTest {
                 Pair(id2, checkpoint2),
                 Pair(id3, checkpoint3))
 
-        val result = mapper.mapCheckpoint(map, arrayOf(id1, id3))
+        val result = mapper.invoke(map, arrayOf(id1, id3))
 
         assertEquals(listOf(checkpoint1, checkpoint3), result)
     }
@@ -34,7 +34,7 @@ class CheckpointListMapperTest {
         val map = mapOf(Pair(id1, checkpoint1),
                 Pair(id2, checkpoint2))
 
-        val result = mapper.mapCheckpoint(map, arrayOf(id1, id3))
+        val result = mapper.invoke(map, arrayOf(id1, id3))
 
         assertEquals(listOf(checkpoint1), result)
     }
@@ -43,7 +43,7 @@ class CheckpointListMapperTest {
     fun `given map is empty then return empty list`() {
         val map = mapOf<String, Checkpoint>()
 
-        val result = mapper.mapCheckpoint(map, arrayOf(id1, id3))
+        val result = mapper.invoke(map, arrayOf(id1, id3))
 
         assertEquals(listOf(), result)
     }
@@ -52,7 +52,7 @@ class CheckpointListMapperTest {
     fun `given map not empty when id list is empty then return empty list`() {
         val map = mapOf(Pair(id1, checkpoint1),
                 Pair(id2, checkpoint2))
-        val result = mapper.mapCheckpoint(map, arrayOf())
+        val result = mapper.invoke(map, arrayOf())
 
         assertEquals(listOf(), result)
     }

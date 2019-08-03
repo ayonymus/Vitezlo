@@ -1,13 +1,13 @@
-package org.szvsszke.vitezlo2018.data
+package org.szvsszke.vitezlo2018.usecase
 
 import org.szvsszke.vitezlo2018.domain.entity.Checkpoint
 import timber.log.Timber
 import java.util.ArrayList
 import javax.inject.Inject
 
-class CheckpointListMapper @Inject constructor() {
+class GetCheckpointListFromMap @Inject constructor() {
 
-    fun mapCheckpoint(checkpointMap: Map<String, Checkpoint>, ids: Array<String>): List<Checkpoint> {
+    operator fun invoke(checkpointMap: Map<String, Checkpoint>, ids: Array<String>): List<Checkpoint> {
         val checkPoints = ArrayList<Checkpoint>()
         ids.forEach { id ->
             checkpointMap[id]?.apply {

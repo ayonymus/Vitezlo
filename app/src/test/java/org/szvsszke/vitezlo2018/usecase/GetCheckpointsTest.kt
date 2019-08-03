@@ -5,7 +5,6 @@ import com.nhaarman.mockitokotlin2.given
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify
 import org.junit.Test
-import org.szvsszke.vitezlo2018.data.CheckpointListMapper
 import org.szvsszke.vitezlo2018.data.repository.checkpoint.CheckpointRepository
 import org.szvsszke.vitezlo2018.domain.Loading
 import org.szvsszke.vitezlo2018.domain.entity.Checkpoint
@@ -22,8 +21,8 @@ internal class GetCheckpointsTest {
     private val repo = mock<CheckpointRepository> {
         on { getData() } doReturn checkpointsResult
     }
-    private val mapper = mock<CheckpointListMapper> {
-        on { mapCheckpoint(checkpoints, ids) } doReturn checkpointList
+    private val mapper = mock<GetCheckpointListFromMap> {
+        on { invoke(checkpoints, ids) } doReturn checkpointList
     }
 
     private val getCheckpoints = GetCheckpoints(repo, mapper)
