@@ -38,7 +38,7 @@ class DescriptionsXmlParser {
                 val other = attributes.getNamedItem("other").textContent
                 val date = attributes.getNamedItem("date").textContent
                 val levelTime = attributes.getNamedItem("leveltime").textContent
-                val cps = checkpoints.split(",".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
+                val cps = checkpoints.split(",".toRegex()).dropLastWhile { it.isEmpty() }
                 val track = Description(name, routeFile, starting, entryFee, other, cps, date, length, levelTime)
 
                 tracks.add(track)

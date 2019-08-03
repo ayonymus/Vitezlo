@@ -37,7 +37,7 @@ class MapViewModel @Inject constructor(private val getCheckpoints: GetCheckpoint
     private val descriptionsState: MutableLiveData<DescriptionsState> = MutableLiveData()
     private val trackState: MutableLiveData<TrackState> = MutableLiveData()
 
-    fun getCheckpoints(ids: Array<String>): LiveData<CheckpointState> {
+    fun getCheckpoints(ids: List<String>): LiveData<CheckpointState> {
         checkpointJob?.cancel()
         checkpointJob = CoroutineScope(io).launch {
             checkpointState.postValue(getCheckpoints.invoke(ids))

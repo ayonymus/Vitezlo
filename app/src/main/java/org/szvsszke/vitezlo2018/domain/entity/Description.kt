@@ -6,7 +6,7 @@ data class Description(var name: String,
                        val starting: String,
                        val entryFee: String,
                        val other: String,
-                       val checkPointIDs: Array<String>,
+                       val checkPointIDs: List<String>,
                        val date: String,
                        val length: String,
                        val levelTime: String) {

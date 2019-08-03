@@ -7,7 +7,7 @@ import javax.inject.Inject
 
 class GetCheckpointListFromMap @Inject constructor() {
 
-    operator fun invoke(checkpointMap: Map<String, Checkpoint>, ids: Array<String>): List<Checkpoint> {
+    operator fun invoke(checkpointMap: Map<String, Checkpoint>, ids: List<String>): List<Checkpoint> {
         val checkPoints = ArrayList<Checkpoint>()
         ids.forEach { id ->
             checkpointMap[id]?.apply {

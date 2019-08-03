@@ -8,7 +8,7 @@ import javax.inject.Inject
 class GetCheckpoints @Inject constructor(private val repository: Repository<Map<String, Checkpoint>>,
                                          private val mapper: GetCheckpointListFromMap) {
 
-    operator fun invoke(checkPointIds: Array<String>): CheckpointState =
+    operator fun invoke(checkPointIds: List<String>): CheckpointState =
             when (val data = repository.getData()) {
                 is Loading.Success -> CheckpointState.Data(mapper.invoke(data.data, checkPointIds))
                 else -> CheckpointState.Error

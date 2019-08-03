@@ -24,7 +24,7 @@ class GetCheckpointListFromMapTest {
                 Pair(id2, checkpoint2),
                 Pair(id3, checkpoint3))
 
-        val result = mapper.invoke(map, arrayOf(id1, id3))
+        val result = mapper.invoke(map, listOf(id1, id3))
 
         assertEquals(listOf(checkpoint1, checkpoint3), result)
     }
@@ -34,7 +34,7 @@ class GetCheckpointListFromMapTest {
         val map = mapOf(Pair(id1, checkpoint1),
                 Pair(id2, checkpoint2))
 
-        val result = mapper.invoke(map, arrayOf(id1, id3))
+        val result = mapper.invoke(map, listOf(id1, id3))
 
         assertEquals(listOf(checkpoint1), result)
     }
@@ -43,7 +43,7 @@ class GetCheckpointListFromMapTest {
     fun `given map is empty then return empty list`() {
         val map = mapOf<String, Checkpoint>()
 
-        val result = mapper.invoke(map, arrayOf(id1, id3))
+        val result = mapper.invoke(map, listOf(id1, id3))
 
         assertEquals(listOf(), result)
     }
@@ -52,7 +52,7 @@ class GetCheckpointListFromMapTest {
     fun `given map not empty when id list is empty then return empty list`() {
         val map = mapOf(Pair(id1, checkpoint1),
                 Pair(id2, checkpoint2))
-        val result = mapper.invoke(map, arrayOf())
+        val result = mapper.invoke(map, listOf())
 
         assertEquals(listOf(), result)
     }

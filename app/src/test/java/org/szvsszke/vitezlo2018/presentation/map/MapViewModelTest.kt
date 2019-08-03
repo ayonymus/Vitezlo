@@ -29,7 +29,7 @@ internal class MapViewModelTest {
     private val id = "checkpoint"
     private val checkpoints = listOf(mock<Checkpoint> { })
     private val getCheckpoints = mock<GetCheckpoints> {
-        on { invoke(arrayOf(id)) } doReturn CheckpointState.Data(checkpoints)
+        on { invoke(listOf(id)) } doReturn CheckpointState.Data(checkpoints)
     }
 
     private val sight = mock<Sight> { }
@@ -59,8 +59,8 @@ internal class MapViewModelTest {
 
     @Test
     fun `given checkpoint data when observed then return checkpoint state`() {
-        viewModel.getCheckpoints(arrayOf(id))
-        assertEquals(CheckpointState.Data(checkpoints), viewModel.getCheckpoints(arrayOf(id)).value)
+        viewModel.getCheckpoints(listOf(id))
+        assertEquals(CheckpointState.Data(checkpoints), viewModel.getCheckpoints(listOf(id)).value)
     }
 
     @Test

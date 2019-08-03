@@ -14,7 +14,7 @@ internal class GetCheckpointsTest {
 
     private val checkpoints = mapOf<String, Checkpoint>()
     private val checkpointsResult = Loading.Success(checkpoints)
-    private val ids = arrayOf("")
+    private val ids = listOf("")
     private val checkpoint = mock<Checkpoint> { }
     private val checkpointList = listOf(checkpoint)
 
