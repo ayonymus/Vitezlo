@@ -29,8 +29,7 @@ class TouristMarkFactory @Inject constructor(private val iconRepository: Mapping
     companion object {
         // TODO should not be a const
         private const val SCALE = 30
-
-        private const val TOURIST_MARK = "touristmark"
+        const val TOURIST_MARK = "touristmark"
 
     }
 

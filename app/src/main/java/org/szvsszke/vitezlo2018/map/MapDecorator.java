@@ -12,12 +12,12 @@ import com.google.android.gms.maps.model.Marker;
 import org.szvsszke.vitezlo2018.adapter.CustomInfoWindowAdapter;
 import org.szvsszke.vitezlo2018.domain.entity.Checkpoint;
 import org.szvsszke.vitezlo2018.domain.entity.Sight;
-import org.szvsszke.vitezlo2018.map.handler.TouristPathsHandler;
+import org.szvsszke.vitezlo2018.domain.entity.Track;
 import org.szvsszke.vitezlo2018.presentation.map.camera.GoogleMapExtensionsKt;
 import org.szvsszke.vitezlo2018.presentation.map.line.LineHandler;
+import org.szvsszke.vitezlo2018.presentation.map.line.TouristPathHandler;
 import org.szvsszke.vitezlo2018.presentation.map.marker.CheckpointHandler;
 import org.szvsszke.vitezlo2018.presentation.map.marker.SightsHandler;
-import org.szvsszke.vitezlo2018.usecase.FindBounds;
 
 import android.app.Activity;
 import android.graphics.Color;
@@ -28,7 +28,8 @@ import java.util.List;
 import javax.inject.Inject;
 
 import androidx.annotation.NonNull;
-import kotlin.Pair;
+
+import static org.szvsszke.vitezlo2018.presentation.map.marker.TouristMarkFactory.TOURIST_MARK;
 
 /**
  * This class is responsible for drawing lines and markers onto the google map, 
@@ -42,6 +43,7 @@ public class MapDecorator {
 	private static final LatLng DEFAULT_POS = 
 			new LatLng(48.409291847117601, 20.724328984580993);
 
+
 	private Activity mParent;
 
 	private GoogleMap mMap;
@@ -49,22 +51,20 @@ public class MapDecorator {
 	private MapView mMapView;
 	private boolean isMapReady = false;
 
-	private TouristPathsHandler mTouristPaths;
-
 	private MapPreferences mMapPrefs;
 
 	private final CheckpointHandler checkpointHandler;
 	private final SightsHandler sightsHandler;
 	private final LineHandler trackHandler;
-	private final FindBounds findBounds;
+	private final TouristPathHandler touristPathHandler;
 
 	@Inject
 	public MapDecorator(CheckpointHandler checkpointHandler, SightsHandler sightsHandler, LineHandler lineHandler,
-			FindBounds findBounds){
+			TouristPathHandler touristPathHandler){
 		this.checkpointHandler = checkpointHandler;
 		this.sightsHandler = sightsHandler;
 		this.trackHandler = lineHandler;
-		this.findBounds = findBounds;
+		this.touristPathHandler = touristPathHandler;
 	}
 
 	// TODO remove context dependency
@@ -75,14 +75,11 @@ public class MapDecorator {
         mMapPrefs = prefs;
         setupMapIfNeeded();
 
-
-        mTouristPaths = new TouristPathsHandler(mParent);
     }
 
 	/**
 	 * This method sets up the default view, the listeners and adapters.
 	 * */
-	
 	public void setupMapIfNeeded() {		
 		Log.d(TAG, "setupMapIfNeeded");
 		if (mMap == null) {
@@ -103,8 +100,7 @@ public class MapDecorator {
 		            @Override
 		            public void onMapLoaded() {
 		                isMapReady = true;
-		                Log.i(TAG, "map is ready");		                
-		                mTouristPaths.setMap(mMap);
+		                Log.i(TAG, "map is ready");
 		                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(
 		                		DEFAULT_POS, 14.0f) );
 		            }
@@ -116,7 +112,6 @@ public class MapDecorator {
 	public void decorate() {
 		Log.d(TAG, "decorate");
 		if (isMapReady) {
-			displayTouristPaths();
 			if (mMap.getMapType() != mMapPrefs.getMapType()) {
 				mMap.setMapType(mMapPrefs.getMapType());
 			}
@@ -157,12 +152,12 @@ public class MapDecorator {
         }
     }
 	
-	private void displayTouristPaths() {
+	public void displayTouristPaths(@NonNull List<Track> paths) {
 		if (mMapPrefs.areTouristPathsEnabled()) {
-			mTouristPaths.draw();
+			touristPathHandler.drawPaths(mMap, paths);
 		}
 		else {
-			mTouristPaths.remove();
+			touristPathHandler.removePaths();
 		}
 	}
 
@@ -171,7 +166,7 @@ public class MapDecorator {
 		@Override
 		public boolean onMarkerClick(Marker marker) {
 			// tourist mark is clicked return immediately
-			if(marker.getTitle().contentEquals(TouristPathsHandler.TROUSIT_MARK)) {
+			if(marker.getTitle().contentEquals(TOURIST_MARK)) {
 				return true;
 			}
 			

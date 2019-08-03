@@ -28,6 +28,7 @@ import org.szvsszke.vitezlo2018.usecase.CheckpointState
 import org.szvsszke.vitezlo2018.usecase.DescriptionsState
 import org.szvsszke.vitezlo2018.usecase.FindBounds
 import org.szvsszke.vitezlo2018.usecase.SightsState
+import org.szvsszke.vitezlo2018.usecase.TouristPathState
 import org.szvsszke.vitezlo2018.usecase.TrackState
 import timber.log.Timber
 import javax.inject.Inject
@@ -121,6 +122,7 @@ class MapFragment : Fragment(), MapControlListener {
                     }
                 })
         showSights()
+        showTouristPaths()
     }
 
     override fun onPause() {
@@ -179,6 +181,16 @@ class MapFragment : Fragment(), MapControlListener {
                     when(result) {
                         is TrackState.Data -> processTrack(result.data.points)
                         else -> Timber.e("Could not get track")
+                    }
+                })
+    }
+
+    private fun showTouristPaths() {
+        viewModel.getTouristPath().observe(this,
+                Observer { result ->
+                    when(result) {
+                        is TouristPathState.Data -> mapDecorator.displayTouristPaths(result.data)
+                        else -> Timber.e("Could not get tourist paths")
                     }
                 })
     }
