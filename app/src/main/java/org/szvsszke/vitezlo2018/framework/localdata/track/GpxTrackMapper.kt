@@ -10,7 +10,7 @@ class GpxTrackMapper @Inject constructor() {
     fun mapToTrack(gpx: Gpx): Track {
         val gpxTrack = gpx.tracks.first()
         return Track(gpxTrack.trackName, gpxTrack.trackSegments.first()
-                .trackPoints.map { Point(it.latitude, it.longitude) })
+                .trackPoints.map { Point(it.latitude, it.longitude) }, gpxTrack.trackDesc)
     }
 
 }
