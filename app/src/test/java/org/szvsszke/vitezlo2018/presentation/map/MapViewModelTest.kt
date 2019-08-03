@@ -16,8 +16,10 @@ import org.szvsszke.vitezlo2018.usecase.DescriptionsState
 import org.szvsszke.vitezlo2018.usecase.GetCheckpoints
 import org.szvsszke.vitezlo2018.usecase.GetDescriptions
 import org.szvsszke.vitezlo2018.usecase.GetSights
+import org.szvsszke.vitezlo2018.usecase.GetTouristPaths
 import org.szvsszke.vitezlo2018.usecase.GetTrack
 import org.szvsszke.vitezlo2018.usecase.SightsState
+import org.szvsszke.vitezlo2018.usecase.TouristPathState
 import org.szvsszke.vitezlo2018.usecase.TrackState
 import kotlin.test.assertEquals
 
@@ -50,11 +52,16 @@ internal class MapViewModelTest {
         on { invoke(trackId) } doReturn TrackState.Data(track)
     }
 
+    private val getTouristPaths = mock<GetTouristPaths> {
+        on { invoke() } doReturn TouristPathState.Data(listOf(track))
+    }
+
     private lateinit var viewModel: MapViewModel
 
     @Before
     fun setUp() {
-        viewModel = MapViewModel(getCheckpoints, getSights, getDescriptions, getTrack, Dispatchers.Unconfined)
+        viewModel = MapViewModel(getCheckpoints, getSights, getDescriptions, getTrack, getTouristPaths,
+                Dispatchers.Unconfined)
     }
 
     @Test
@@ -80,5 +87,12 @@ internal class MapViewModelTest {
         viewModel.getTrack(trackId)
         assertEquals(TrackState.Data(track), viewModel.getTrack(trackId).value)
     }
+
+    @Test
+    fun `given tourist path data when observed then return tourist path state`() {
+        viewModel.getTouristPath()
+        assertEquals(TouristPathState.Data(listOf(track)), viewModel.getTouristPath().value)
+    }
+
 
 }

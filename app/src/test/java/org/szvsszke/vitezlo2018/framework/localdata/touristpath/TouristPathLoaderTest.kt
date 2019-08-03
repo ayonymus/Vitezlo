@@ -13,18 +13,19 @@ import org.szvsszke.vitezlo2018.domain.Loading
 import org.szvsszke.vitezlo2018.domain.entity.Track
 import org.szvsszke.vitezlo2018.framework.localdata.track.GpxTrackMapper
 import org.szvsszke.vitezlo2018.map.data.FilePath
+import org.szvsszke.vitezlo2018.map.data.FilePath.PATH_TO_TOURIST_PATHS
 import org.xmlpull.v1.XmlPullParserException
 import java.io.InputStream
 import kotlin.test.assertEquals
 
 internal class TouristPathLoaderTest {
 
-    private val trackName1 = "Rambo 1"
-    private val trackName2 = "Rambo 2"
-    private val trackName3 = "Rambo 3"
-    private val track1 = Track(trackName1, listOf())
-    private val track2 = Track(trackName2, listOf())
-    private val track3 = Track(trackName3, listOf())
+    private val trackName1 = "Rambo1"
+    private val trackName2 = "Rambo2"
+    private val trackName3 = "Rambo3"
+    private val track1 = Track(trackName1, listOf(), trackName1)
+    private val track2 = Track(trackName2, listOf(), trackName2)
+    private val track3 = Track(trackName3, listOf(), trackName3)
 
 
     private val mockStream1 = mock<InputStream> { }
@@ -33,9 +34,9 @@ internal class TouristPathLoaderTest {
 
     private val assets = mock<AssetManager> {
         on { list(FilePath.PATH_TO_TOURIST_PATHS) } doReturn arrayOf(trackName1, trackName2, trackName3)
-        on { open(trackName1) } doReturn mockStream1
-        on { open(trackName2) } doReturn mockStream2
-        on { open(trackName3) } doReturn mockStream3
+        on { open("$PATH_TO_TOURIST_PATHS/$trackName1") } doReturn mockStream1
+        on { open("$PATH_TO_TOURIST_PATHS/$trackName2") } doReturn mockStream2
+        on { open("$PATH_TO_TOURIST_PATHS/$trackName3") } doReturn mockStream3
 
     }
 

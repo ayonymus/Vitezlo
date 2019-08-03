@@ -6,7 +6,7 @@ import org.szvsszke.vitezlo2018.data.repository.DataSource
 import org.szvsszke.vitezlo2018.domain.Loading
 import org.szvsszke.vitezlo2018.domain.entity.Track
 import org.szvsszke.vitezlo2018.framework.localdata.track.GpxTrackMapper
-import org.szvsszke.vitezlo2018.map.data.FilePath
+import org.szvsszke.vitezlo2018.map.data.FilePath.PATH_TO_TOURIST_PATHS
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -19,10 +19,10 @@ class TouristPathLoader @Inject constructor(private val assets: AssetManager,
 
     override fun getData(): Loading<List<Track>> {
         return try {
-            val trackPaths = assets.list(FilePath.PATH_TO_TOURIST_PATHS)
+            val trackPaths = assets.list(PATH_TO_TOURIST_PATHS)
             val paths = mutableListOf<Track>()
             trackPaths?.forEach {
-                paths.add(gpxTrackMapper.mapToTrack(gpxParser.parse(assets.open(it))))
+                paths.add(gpxTrackMapper.mapToTrack(gpxParser.parse(assets.open("$PATH_TO_TOURIST_PATHS/$it"))))
             }
             Loading.Success(paths)
         } catch (exception: Exception) {
@@ -31,5 +31,6 @@ class TouristPathLoader @Inject constructor(private val assets: AssetManager,
         }
 
     }
+
 
 }

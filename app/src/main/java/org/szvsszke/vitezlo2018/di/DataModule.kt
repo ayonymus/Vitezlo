@@ -31,6 +31,6 @@ class DataModule {
     fun provideSightsRepository(repository: SightRepository): Repository<List<Sight>> = repository
 
     @Provides
-    fun provideTouristPathRepository(source: DataSource<List<Track>>) = BaseRepository(source)
+    fun provideTouristPathRepository(source: DataSource<List<Track>>): Repository<List<Track>> = BaseRepository(source)
 
 }

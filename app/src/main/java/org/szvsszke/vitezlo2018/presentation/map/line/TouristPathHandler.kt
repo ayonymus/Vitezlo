@@ -21,10 +21,11 @@ class TouristPathHandler @Inject constructor(private val markerFactory: TouristM
     fun drawPaths(map: GoogleMap, paths: List<Track>) {
         val markerOptions = mutableListOf<MarkerOptions>()
         paths.forEach { track ->
+            val trackDescription = track.description ?: ""
             lines.add(LineHandler().apply {
-                drawLine(map, track.points.map { LatLng(it.latitude, it.longitude) }, getColor(track.description))
+                drawLine(map, track.points.map { LatLng(it.latitude, it.longitude) }, getColor(trackDescription))
             })
-            markerOptions.add(markerFactory.create(track.description, getMiddle(track.points)))
+            markerOptions.add(markerFactory.create(trackDescription, getMiddle(track.points)))
         }
         markers.addMarkers(map, markerOptions)
     }

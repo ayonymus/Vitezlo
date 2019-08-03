@@ -13,29 +13,37 @@ import org.szvsszke.vitezlo2018.usecase.DescriptionsState
 import org.szvsszke.vitezlo2018.usecase.GetCheckpoints
 import org.szvsszke.vitezlo2018.usecase.GetDescriptions
 import org.szvsszke.vitezlo2018.usecase.GetSights
+import org.szvsszke.vitezlo2018.usecase.GetTouristPaths
 import org.szvsszke.vitezlo2018.usecase.GetTrack
 import org.szvsszke.vitezlo2018.usecase.SightsState
+import org.szvsszke.vitezlo2018.usecase.TouristPathState
 import org.szvsszke.vitezlo2018.usecase.TrackState
 import javax.inject.Inject
 
 /**
  * View model for the main map view
+ *
+ * This reflects the different long running calls for getting data to display.
+ * TODO refactor for less jobs and states
  */
 class MapViewModel @Inject constructor(private val getCheckpoints: GetCheckpoints,
                                        private val getSights: GetSights,
                                        private val getDescriptions: GetDescriptions,
                                        private val getTrack: GetTrack,
+                                       private val getTouristPaths: GetTouristPaths,
                                        private val io: CoroutineDispatcher = Dispatchers.IO): ViewModel() {
 
     private var checkpointJob: Job? = null
     private var sightJob: Job? = null
     private var descriptionsJob: Job? = null
     private var trackJob: Job? = null
+    private var touristPathJob: Job? = null
 
     private val checkpointState: MutableLiveData<CheckpointState> = MutableLiveData()
     private val sightsState: MutableLiveData<SightsState> = MutableLiveData()
     private val descriptionsState: MutableLiveData<DescriptionsState> = MutableLiveData()
     private val trackState: MutableLiveData<TrackState> = MutableLiveData()
+    private val touristPathState: MutableLiveData<TouristPathState> = MutableLiveData()
 
     fun getCheckpoints(ids: List<String>): LiveData<CheckpointState> {
         checkpointJob?.cancel()
@@ -67,6 +75,14 @@ class MapViewModel @Inject constructor(private val getCheckpoints: GetCheckpoint
             trackState.postValue(getTrack.invoke(trackName))
         }
         return trackState
+    }
+
+    fun getTouristPath(): LiveData<TouristPathState> {
+        touristPathJob?.cancel()
+        touristPathJob = CoroutineScope(io).launch {
+            touristPathState.postValue(getTouristPaths.invoke())
+        }
+        return touristPathState
     }
 
     override fun onCleared() {
