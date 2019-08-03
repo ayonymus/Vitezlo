@@ -9,14 +9,12 @@ import io.ticofab.androidgpxparser.parser.GPXParser
 import io.ticofab.androidgpxparser.parser.domain.Gpx
 import org.junit.Before
 import org.junit.Test
-import org.szvsszke.vitezlo2018.domain.Loading
 import org.szvsszke.vitezlo2018.domain.entity.Track
 import org.xmlpull.v1.XmlPullParserException
 import java.io.InputStream
 import kotlin.test.assertEquals
 
 internal class TrackLoaderTest {
-
 
     private val mockStream = mock<InputStream> { }
     private val assets = mock<AssetManager> {

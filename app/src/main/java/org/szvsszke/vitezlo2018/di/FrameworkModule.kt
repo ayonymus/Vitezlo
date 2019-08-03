@@ -16,6 +16,7 @@ import org.szvsszke.vitezlo2018.framework.localdata.description.DescriptionsLoad
 import org.szvsszke.vitezlo2018.framework.localdata.description.DescriptionsXmlParser
 import org.szvsszke.vitezlo2018.framework.localdata.sight.GpxSightMapper
 import org.szvsszke.vitezlo2018.framework.localdata.sight.SightLoader
+import org.szvsszke.vitezlo2018.framework.localdata.touristpath.TouristPathLoader
 import org.szvsszke.vitezlo2018.framework.localdata.track.GpxTrackMapper
 import org.szvsszke.vitezlo2018.framework.localdata.track.TrackLoader
 
@@ -47,5 +48,10 @@ class FrameworkModule {
     fun provideTrackDataSource(assets: AssetManager, gpxParser: GPXParser, gpxTrackMapper: GpxTrackMapper
     ): ParameteredDataSource<String, Track> =
             TrackLoader(assets, gpxParser, gpxTrackMapper)
+
+    @Provides
+    fun provideTouristPathSource(assets: AssetManager, gpxParser: GPXParser, gpxTrackMapper: GpxTrackMapper
+    ): DataSource<List<Track>> =
+            TouristPathLoader(assets, gpxParser, gpxTrackMapper)
 
 }

@@ -2,6 +2,7 @@ package org.szvsszke.vitezlo2018.data.repository
 
 import org.szvsszke.vitezlo2018.domain.Loading
 import org.szvsszke.vitezlo2018.domain.MappingRepository
+import java.lang.Exception
 
 /**
  * Simple generic repository that is providing on demand data
@@ -14,13 +15,17 @@ open class BaseMappingRepository<K, T>(private val source: ParameteredDataSource
 
     override fun getData(key: K): Loading<T> {
         var value = cache[key]
-        if(value == null)
-            value = source.getData(key)
+        try {
+            if (value == null)
+                value = source.getData(key)
             value?.apply {
                 cache[key] = this
                 return Loading.Success(value)
             }
-        return Loading.Failure()
+            return Loading.Failure()
+        }catch (exception: Exception) {
+            return Loading.Failure(exception)
+        }
     }
 
 }

@@ -2,6 +2,8 @@ package org.szvsszke.vitezlo2018.di
 
 import dagger.Module
 import dagger.Provides
+import org.szvsszke.vitezlo2018.data.repository.BaseRepository
+import org.szvsszke.vitezlo2018.data.repository.DataSource
 import org.szvsszke.vitezlo2018.data.repository.checkpoint.CheckpointRepository
 import org.szvsszke.vitezlo2018.data.repository.descriptions.DescriptionRepository
 import org.szvsszke.vitezlo2018.data.repository.sight.SightRepository
@@ -26,6 +28,9 @@ class DataModule {
     fun provideCheckpointRepository(repository: CheckpointRepository): Repository<Map<String, Checkpoint>>  = repository
 
     @Provides
-    fun provideSightsRepository(repository: SightRepository): Repository<List<Sight>> =repository
+    fun provideSightsRepository(repository: SightRepository): Repository<List<Sight>> = repository
+
+    @Provides
+    fun provideTouristPathRepository(source: DataSource<List<Track>>) = BaseRepository(source)
 
 }
