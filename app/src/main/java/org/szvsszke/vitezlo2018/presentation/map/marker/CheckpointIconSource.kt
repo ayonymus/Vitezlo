@@ -13,8 +13,12 @@ class CheckpointIconSource @Inject constructor(private val iconGenerator: IconGe
     override fun getData(key: String): BitmapDescriptor {
         iconGenerator.apply {
             setStyle(STYLE_WHITE)
-            setContentRotation(90)
+            setContentRotation(ROTATION)
         }
         return BitmapDescriptorFactory.fromBitmap(iconGenerator.makeIcon(key))
+    }
+
+    companion object {
+        private const val ROTATION = 90
     }
 }

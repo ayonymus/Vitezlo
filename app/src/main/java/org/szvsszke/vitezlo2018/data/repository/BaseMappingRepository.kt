@@ -15,16 +15,16 @@ open class BaseMappingRepository<K, T>(private val source: ParameteredDataSource
 
     override fun getData(key: K): Loading<T> {
         var value = cache[key]
-        try {
+        return try {
             if (value == null)
                 value = source.getData(key)
             value?.apply {
                 cache[key] = this
                 return Loading.Success(value)
             }
-            return Loading.Failure()
+            Loading.Failure()
         }catch (exception: Exception) {
-            return Loading.Failure(exception)
+            Loading.Failure(exception)
         }
     }
 

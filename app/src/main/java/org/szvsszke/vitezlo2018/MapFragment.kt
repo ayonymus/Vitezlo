@@ -248,7 +248,7 @@ class MapFragment : Fragment(), MapControlListener {
             action.invoke(position)
         }
 
-        override fun onNothingSelected(parent: AdapterView<*>) {}
+        override fun onNothingSelected(parent: AdapterView<*>) = Unit
     }
 
 }
