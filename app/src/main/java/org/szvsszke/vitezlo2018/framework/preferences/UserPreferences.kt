@@ -10,9 +10,12 @@ class UserPreferences @Inject constructor(private val sharedPreferences: SharedP
 
     override fun areTouristPathsEnabled() = sharedPreferences.getBoolean(KEY_TOURIST_PATHS_ENABLED, true)
 
+    override fun areSightsEnabled() = sharedPreferences.getBoolean(KEY_SIGHTS_ENABLED, true)
+
     companion object {
         private const val KEY_CHECK_POINTS_ENABLED = "key_checkpoints_enabled"
         private const val KEY_TOURIST_PATHS_ENABLED = "key_tourist_paths_enabled"
+        private const val KEY_SIGHTS_ENABLED = "key_sights_enabled"
     }
 
 }

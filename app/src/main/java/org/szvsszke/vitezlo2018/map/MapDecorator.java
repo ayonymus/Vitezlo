@@ -138,14 +138,11 @@ public class MapDecorator {
 	}
 
 	public void markSights(@NonNull List<Sight> sights) {
-        if (mMapPrefs.areSightsEnabled()) {
-            if(mMap != null) {
-                sightsHandler.showSights(mMap, sights);
-            }
-        }
-        else {
-            sightsHandler.hideSights();
-        }
+		sightsHandler.showSights(mMap, sights);
+	}
+
+    public void hideSights() {
+	    sightsHandler.hideSights();
     }
 	
 	public void displayTouristPaths(@NonNull List<Track> paths) {

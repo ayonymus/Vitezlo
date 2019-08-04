@@ -154,6 +154,16 @@ class MapFragment : Fragment(), MapControlListener {
         showTrack(descriptions[0].routeFileName)
     }
 
+    private fun showTrack(trackName: String) {
+        viewModel.getTrack(trackName).observe(this,
+                Observer { result ->
+                    when(result) {
+                        is TrackState.Data -> processTrack(result.data.points)
+                        else -> Timber.e("Could not get track")
+                    }
+                })
+    }
+
     private fun showCheckpoint(description: Description) {
         viewModel.getCheckpoints(description.checkPointIDs).observe(this,
                 Observer<CheckpointState> { result ->
@@ -170,17 +180,8 @@ class MapFragment : Fragment(), MapControlListener {
                 Observer { result ->
                     when(result) {
                         is SightsState.Data -> mapDecorator.markSights(result.data)
+                        is SightsState.Disabled -> mapDecorator.hideSights()
                         else -> Timber.e("Could not get sights")
-                    }
-                })
-    }
-
-    private fun showTrack(trackName: String) {
-        viewModel.getTrack(trackName).observe(this,
-                Observer { result ->
-                    when(result) {
-                        is TrackState.Data -> processTrack(result.data.points)
-                        else -> Timber.e("Could not get track")
                     }
                 })
     }

@@ -12,4 +12,9 @@
         app:title="Enable tourist path marking"
         app:defaultValue="true"/>
 
+    <SwitchPreferenceCompat
+        app:key="key_sights_enabled"
+        app:title="Enable sight marks"
+        app:defaultValue="true"/>
+
 </PreferenceScreen>

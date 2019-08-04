@@ -6,5 +6,6 @@ sealed class SightsState {
 
     data class Data(val data: List<Sight>): SightsState()
     object Error: SightsState()
+    object Disabled : SightsState()
 
 }
