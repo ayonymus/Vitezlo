@@ -138,21 +138,6 @@ public class MapPreferences {
 		this.mIsSightsEnabled = isSightsEnabled;
 	}
 
-	public boolean areTouristPathsEnabled() {
-		return mAreTouristPathsEnabled;
-	}
-
-	public void setTouristPathsEnabled(boolean areTouristPathsEnabled) {
-		this.mAreTouristPathsEnabled = areTouristPathsEnabled;
-	}
-
-	public boolean isUserPathEnabled() {
-		return mIsUserPathEnabled;
-	}
-
-	public void setUserPathEnabled(boolean isUserHikeEnabled) {
-		this.mIsUserPathEnabled = isUserHikeEnabled;
-	}
 
 	public int getMapType() {
 		return mapType;

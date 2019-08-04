@@ -3,35 +3,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-    
-    <ScrollView
-            android:id="@+id/scrollView1"
-            android:layout_width="wrap_content"
-        	android:layout_height="wrap_content">
-            
-    <LinearLayout
-        android:id="@+id/viewControlContainer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical" >
+
         
-        <ImageView
+    <ImageView
             android:id="@+id/imageViewMapTypeSwitch"
             android:layout_width="40dp"
             android:layout_height="40dp"            
             android:src="@drawable/map_switch"/>
-
-        <ImageView
-            android:id="@+id/imageViewSightsEnabled"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="10dp"
-            android:src="@drawable/sights_enabled" />
-
-
-    </LinearLayout>
-    
-    </ScrollView>
-    
 
 </LinearLayout>

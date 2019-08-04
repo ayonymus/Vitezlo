@@ -21,7 +21,6 @@ import org.szvsszke.vitezlo2018.presentation.map.marker.SightsHandler;
 
 import android.app.Activity;
 import android.graphics.Color;
-import android.util.Log;
 
 import java.util.List;
 
@@ -37,12 +36,8 @@ import static org.szvsszke.vitezlo2018.presentation.map.marker.TouristMarkFactor
  * TODO too many responsibilities, cut smaller
  * */
 public class MapDecorator {
-	
-	private static final String TAG = MapDecorator.class.getName();
 
-	private static final LatLng DEFAULT_POS = 
-			new LatLng(48.409291847117601, 20.724328984580993);
-
+	private static final LatLng DEFAULT_POS = new LatLng(48.409291847117601, 20.724328984580993);
 
 	private Activity mParent;
 
@@ -81,16 +76,13 @@ public class MapDecorator {
 	 * This method sets up the default view, the listeners and adapters.
 	 * */
 	public void setupMapIfNeeded() {		
-		Log.d(TAG, "setupMapIfNeeded");
 		if (mMap == null) {
 			isMapReady = false;
             mMap = mMapView.getMap();            
             MapsInitializer.initialize(mParent);
             mMap.setMapType(mMapPrefs.getMapType());
             
-	        if(mMap == null) {
-	        	Log.e(TAG, "mMap is null after getView!");
-	        } else {
+	        if(mMap != null) {
 	            
 		        mMap.setInfoWindowAdapter(new CustomInfoWindowAdapter(mParent));
 		        mMap.setOnMarkerClickListener(new MarkerClickListener());
@@ -100,7 +92,6 @@ public class MapDecorator {
 		            @Override
 		            public void onMapLoaded() {
 		                isMapReady = true;
-		                Log.i(TAG, "map is ready");
 		                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(
 		                		DEFAULT_POS, 14.0f) );
 		            }
@@ -110,7 +101,6 @@ public class MapDecorator {
 	}
 
 	public void decorate() {
-		Log.d(TAG, "decorate");
 		if (isMapReady) {
 			if (mMap.getMapType() != mMapPrefs.getMapType()) {
 				mMap.setMapType(mMapPrefs.getMapType());
@@ -121,12 +111,8 @@ public class MapDecorator {
 	// TODO accept Track object
 	// TODO set color
     public void markTrack(List<LatLng> data, LatLng one, LatLng two) {
-	    if (mMapPrefs.isHikeEnabled()) {
-	    	GoogleMapExtensionsKt.centerToArea(mMap, one, two, 100);
-		    trackHandler.drawLine(mMap, data, Color.argb(255, 100, 255, 100));
-	    } else {
-	    	trackHandler.removeLine();
-	    }
+		GoogleMapExtensionsKt.centerToArea(mMap, one, two, 100);
+		trackHandler.drawLine(mMap, data, Color.argb(255, 100, 255, 100));
     }
 	
 	public void markCheckpoints(@NonNull List<Checkpoint> checkpoints) {

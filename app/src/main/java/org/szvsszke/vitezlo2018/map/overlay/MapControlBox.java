@@ -1,16 +1,15 @@
 package org.szvsszke.vitezlo2018.map.overlay;
 
+import com.google.android.gms.maps.GoogleMap;
+
 import org.szvsszke.vitezlo2018.R;
 import org.szvsszke.vitezlo2018.map.MapPreferences;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-
-import com.google.android.gms.maps.GoogleMap;
 
 /**
  * Class for encapsulating the map view manipulating icons.
@@ -18,11 +17,8 @@ import com.google.android.gms.maps.GoogleMap;
  * */
 @Deprecated
 public class MapControlBox {
-	
-	private static final String TAG = MapControlBox.class.getName();
 
 	private ImageView mMapTypeSwitch;
-	private ImageView mSightsEnabled;
 	private View mBaseView;
 	
 	private MapPreferences mPrefs;
@@ -37,23 +33,8 @@ public class MapControlBox {
 		// setup image buttons
 		ViewControlListener listener = new ViewControlListener();
 		mBaseView = inflater.inflate(R.layout.control_box, container);
-		mMapTypeSwitch = (ImageView)
-				mBaseView.findViewById(R.id.imageViewMapTypeSwitch);
+		mMapTypeSwitch = mBaseView.findViewById(R.id.imageViewMapTypeSwitch);
 		mMapTypeSwitch.setOnClickListener(listener);
-		mSightsEnabled = (ImageView)
-				mBaseView.findViewById(R.id.imageViewSightsEnabled);
-		mSightsEnabled.setOnClickListener(listener);
-		setViewControlImages();
-	}
-	
-	/**
-	 * Helper method for setting the correct images for the view control "buttons"
-	 * */
-	private void setViewControlImages() {
-		if (!mPrefs.areSightsEnabled()) {
-			mSightsEnabled.setImageResource(R.drawable.sights_disabled);
-		}
-
 	}
 	
 	/**
@@ -63,11 +44,8 @@ public class MapControlBox {
 
 		@Override
 		public void onClick(View v) {
-			
-			switch(v.getId()) {
-			case R.id.imageViewMapTypeSwitch:
-				Log.d(TAG, "maptype icon clicked");
-				switch (mPrefs.getMapType()){
+
+			switch (mPrefs.getMapType()){
 				case GoogleMap.MAP_TYPE_NORMAL:
 					mPrefs.setMapType(GoogleMap.MAP_TYPE_HYBRID);
 					break;
@@ -78,19 +56,7 @@ public class MapControlBox {
 					mPrefs.setMapType(GoogleMap.MAP_TYPE_NORMAL);
 					break;
 				}
-				break;
 
-			case R.id.imageViewSightsEnabled:
-				Log.d(TAG, "sights icon clicked");
-				mPrefs.setSightsEnabled(!mPrefs.areSightsEnabled());
-				if(mPrefs.areSightsEnabled()) {
-					mSightsEnabled.setImageResource(R.drawable.sights_enabled);
-				}else {
-					mSightsEnabled.setImageResource(R.drawable.sights_disabled);
-				}
-				break;
-
-			}
 			notifyListener();
 		}
 	}
