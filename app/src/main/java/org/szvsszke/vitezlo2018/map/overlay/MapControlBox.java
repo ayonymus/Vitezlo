@@ -16,13 +16,13 @@ import com.google.android.gms.maps.GoogleMap;
  * Class for encapsulating the map view manipulating icons.
  * 
  * */
+@Deprecated
 public class MapControlBox {
 	
 	private static final String TAG = MapControlBox.class.getName();
 
 	private ImageView mMapTypeSwitch;
 	private ImageView mPathEnabled;
-	private ImageView mCheckPointsEnabled;
 	private ImageView mTouristPathEnabled;
 	private ImageView mSightsEnabled;
 	private ImageView mUserHikeEnabled;	
@@ -46,10 +46,7 @@ public class MapControlBox {
 		mPathEnabled = (ImageView) 
 				mBaseView.findViewById(R.id.imageViewHikeEnabled);
 		mPathEnabled.setOnClickListener(listener);
-		mCheckPointsEnabled = (ImageView)
-				mBaseView.findViewById(R.id.ImageViewCheckPointsEnabled);
-		mCheckPointsEnabled.setOnClickListener(listener);
-		mSightsEnabled = (ImageView) 
+		mSightsEnabled = (ImageView)
 				mBaseView.findViewById(R.id.imageViewSightsEnabled);
 		mSightsEnabled.setOnClickListener(listener);
 		mTouristPathEnabled = (ImageView) 
@@ -72,10 +69,6 @@ public class MapControlBox {
 		
 		if (!mPrefs.areTouristPathsEnabled()) {
 			mTouristPathEnabled.setImageResource(R.drawable.tpath_disabled);
-		}
-		
-		if (!mPrefs.areCheckpointsEnabled()){
-			mCheckPointsEnabled.setImageResource(R.drawable.cp_disabled);
 		}
 		
 		if (!mPrefs.areSightsEnabled()) {
@@ -133,17 +126,6 @@ public class MapControlBox {
 				else {
 					mTouristPathEnabled.setImageResource(R.drawable.tpath_disabled);
 				}				
-				break;
-			
-			case R.id.ImageViewCheckPointsEnabled:
-				Log.d(TAG, "checkpoints icon clicked");
-				mPrefs.setCheckpointsEnabled(!mPrefs.areCheckpointsEnabled());
-				if(mPrefs.areCheckpointsEnabled()) {
-					mCheckPointsEnabled.setImageResource(R.drawable.cp_enabled);
-				}
-				else {
-					mCheckPointsEnabled.setImageResource(R.drawable.cp_disabled);
-				}
 				break;
 			
 			case R.id.imageViewSightsEnabled:
