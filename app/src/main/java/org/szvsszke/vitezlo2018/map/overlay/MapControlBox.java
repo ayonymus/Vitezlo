@@ -22,9 +22,7 @@ public class MapControlBox {
 	private static final String TAG = MapControlBox.class.getName();
 
 	private ImageView mMapTypeSwitch;
-	private ImageView mPathEnabled;
 	private ImageView mSightsEnabled;
-	private ImageView mUserHikeEnabled;	
 	private View mBaseView;
 	
 	private MapPreferences mPrefs;
@@ -42,16 +40,9 @@ public class MapControlBox {
 		mMapTypeSwitch = (ImageView)
 				mBaseView.findViewById(R.id.imageViewMapTypeSwitch);
 		mMapTypeSwitch.setOnClickListener(listener);
-		mPathEnabled = (ImageView) 
-				mBaseView.findViewById(R.id.imageViewHikeEnabled);
-		mPathEnabled.setOnClickListener(listener);
 		mSightsEnabled = (ImageView)
 				mBaseView.findViewById(R.id.imageViewSightsEnabled);
 		mSightsEnabled.setOnClickListener(listener);
-
-		mUserHikeEnabled = (ImageView)
-				mBaseView.findViewById(R.id.imageViewUserHikeEnabled);
-		mUserHikeEnabled.setOnClickListener(listener);
 		setViewControlImages();
 	}
 	
@@ -59,20 +50,10 @@ public class MapControlBox {
 	 * Helper method for setting the correct images for the view control "buttons"
 	 * */
 	private void setViewControlImages() {
-		// images are enabled by default in the xml
-		if (!mPrefs.isHikeEnabled()) {
-			mPathEnabled.setImageResource(R.drawable.path_disabled);
-		}
-
 		if (!mPrefs.areSightsEnabled()) {
 			mSightsEnabled.setImageResource(R.drawable.sights_disabled);
 		}
-		
-		if (!mPrefs.isUserPathEnabled()) {
-			mUserHikeEnabled.setImageResource(R.drawable.my_hike_disabled);
-		} else {
-			mUserHikeEnabled.setImageResource(R.drawable.my_hike);
-		}
+
 	}
 	
 	/**
@@ -96,20 +77,9 @@ public class MapControlBox {
 				case GoogleMap.MAP_TYPE_TERRAIN:
 					mPrefs.setMapType(GoogleMap.MAP_TYPE_NORMAL);
 					break;
-				}				
+				}
 				break;
-			
-			case R.id.imageViewHikeEnabled:
-				Log.d(TAG, "hike icon clicked");
-				mPrefs.setHikeEnabled(!mPrefs.isHikeEnabled());
-				
-				if(mPrefs.isHikeEnabled()) {
-					mPathEnabled.setImageResource(R.drawable.path_enabled);
-				} else {
-					mPathEnabled.setImageResource(R.drawable.path_disabled);
-				}				
-				break;
-			
+
 			case R.id.imageViewSightsEnabled:
 				Log.d(TAG, "sights icon clicked");
 				mPrefs.setSightsEnabled(!mPrefs.areSightsEnabled());
@@ -119,18 +89,7 @@ public class MapControlBox {
 					mSightsEnabled.setImageResource(R.drawable.sights_disabled);
 				}
 				break;
-			
-			case R.id.imageViewUserHikeEnabled:
-				Log.d(TAG, "user hike icon clicked");
-				mPrefs.setUserPathEnabled(!mPrefs.isUserPathEnabled());
-				if (mPrefs.isUserPathEnabled()) {
-					mUserHikeEnabled.setImageResource(R.drawable.my_hike);
-				}
-				else {
-					mUserHikeEnabled.setImageResource(R.drawable.my_hike_disabled);
-					
-				}
-				break;
+
 			}
 			notifyListener();
 		}
@@ -143,18 +102,6 @@ public class MapControlBox {
 	private void notifyListener() {
 		if (mListener != null) {
 			mListener.displayPreferenceChanged();
-		}
-	}
-	
-	/**Enables or disables the User Hike button.
-	 * 
-	 * @param enable true to show button, false to hide */
-	public void enableUserHikeButton (boolean enable) {
-		if (enable) {
-			mUserHikeEnabled.setVisibility(View.VISIBLE);
-		}
-		else {
-			mUserHikeEnabled.setVisibility(View.GONE);
 		}
 	}
 	

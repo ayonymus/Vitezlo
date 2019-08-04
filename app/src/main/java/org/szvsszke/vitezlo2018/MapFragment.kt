@@ -96,7 +96,6 @@ class MapFragment : Fragment(), MapControlListener {
             MapControlBox(mapPrefs).apply {
                 onCreateView(inflater, mControlContainer)
                 setListener(this@MapFragment)
-                enableUserHikeButton(false)
             }
 
         } else {
