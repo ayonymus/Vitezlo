@@ -17,6 +17,7 @@ import com.google.android.gms.maps.GoogleMap;
  * 
  * @author Gabor Tatrai
  */
+@Deprecated
 public class MapPreferences {
 	
 	private static final String TAG = MapPreferences.class.getName();

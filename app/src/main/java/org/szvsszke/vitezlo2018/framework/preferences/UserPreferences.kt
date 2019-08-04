@@ -6,7 +6,7 @@ import javax.inject.Inject
 
 class UserPreferences @Inject constructor(private val sharedPreferences: SharedPreferences): Preferences {
 
-    override fun areCheckPointsEnabled() = sharedPreferences.getBoolean(KEY_CHECK_POINTS_ENABLED, false)
+    override fun areCheckPointsEnabled() = sharedPreferences.getBoolean(KEY_CHECK_POINTS_ENABLED, true)
 
     companion object {
         private const val KEY_CHECK_POINTS_ENABLED = "key_checkpoints_enabled"

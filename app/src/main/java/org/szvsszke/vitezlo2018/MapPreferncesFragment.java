@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 /**
  * @brief Fragment for setting the VitezloMapFragment preferences.
  * */
+@Deprecated
 public class MapPreferncesFragment extends AbstractPreferenceFragment {
 	
 	@Override

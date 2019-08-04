@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 
+@Deprecated
 abstract class AbstractPreferenceItem {
 
 	protected String mPreferenceKey;
@@ -74,20 +75,6 @@ abstract class AbstractPreferenceItem {
 	protected void savePreference(long value) {
 		mPref.edit().putLong(mPreferenceKey, value).apply();
 		mPrefChanged = true;
-	}
-	
-	protected void savePreference(String value) {
-		mPref.edit().putString(mPreferenceKey, value).apply();
-		mPrefChanged = true;
-	}
-	
-	
-	public boolean hasChanged() {
-		return mPrefChanged;
-	}
-	
-	public void setChanged(boolean changed) {
-		mPrefChanged = false;
 	}
 	
 	abstract public void resetItem();
