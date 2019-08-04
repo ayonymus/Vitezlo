@@ -26,6 +26,7 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 
 import org.szvsszke.vitezlo2018.adapter.NavDrawerAdapter;
+import org.szvsszke.vitezlo2018.presentation.preferences.PreferencesFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -194,7 +195,7 @@ public class MainActivity extends AppCompatActivity {
 		switch (position) {
             // start logging fragment
             case 1:
-                mCurrentFragment = new MapPreferncesFragment();
+                mCurrentFragment = new PreferencesFragment();
                 break;
             case 2:
                 mCurrentFragment = new GeneralInfoFragment();
@@ -226,8 +227,7 @@ public class MainActivity extends AppCompatActivity {
 		FragmentTransaction fragTransaction = getSupportFragmentManager().beginTransaction();	
 		fragTransaction.replace(R.id.fragment_container, mCurrentFragment);
         fragTransaction.commitAllowingStateLoss();
-		//fragTransaction.commit();
-		
+
 		// udpate drawer
 		mDrawerList.setItemChecked(position, true);
 		mDrawerLayout.closeDrawer(mDrawerList);

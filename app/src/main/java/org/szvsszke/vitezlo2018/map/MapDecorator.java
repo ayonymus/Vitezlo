@@ -120,7 +120,6 @@ public class MapDecorator {
 
 	// TODO accept Track object
 	// TODO set color
-	// TODO center to area
     public void markTrack(List<LatLng> data, LatLng one, LatLng two) {
 	    if (mMapPrefs.isHikeEnabled()) {
 	    	GoogleMapExtensionsKt.centerToArea(mMap, one, two, 100);
@@ -131,14 +130,13 @@ public class MapDecorator {
     }
 	
 	public void markCheckpoints(@NonNull List<Checkpoint> checkpoints) {
-		if (mMapPrefs.areCheckpointsEnabled()) {
-			if (mMap != null) {
-				checkpointHandler.showCheckpoints(mMap, checkpoints);
-			}
+		if (mMap != null) {
+			checkpointHandler.showCheckpoints(mMap, checkpoints);
 		}
-		else{
-			checkpointHandler.hideCheckpoints();
-		}
+	}
+
+	public void hideCheckpoints() {
+		checkpointHandler.hideCheckpoints();
 	}
 
 	public void markSights(@NonNull List<Sight> sights) {

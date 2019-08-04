@@ -160,6 +160,7 @@ class MapFragment : Fragment(), MapControlListener {
                 Observer<CheckpointState> { result ->
                     when (result) {
                         is CheckpointState.Data -> mapDecorator.markCheckpoints(result.data)
+                        is CheckpointState.Disabled -> mapDecorator.hideCheckpoints()
                         else -> Timber.e("Could not get checkpoints")
                     }
                 })
