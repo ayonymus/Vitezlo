@@ -72,10 +72,7 @@ public class MapDecorator {
 
     }
 
-	/**
-	 * This method sets up the default view, the listeners and adapters.
-	 * */
-	public void setupMapIfNeeded() {		
+	private void setupMapIfNeeded() {
 		if (mMap == null) {
 			isMapReady = false;
             mMap = mMapView.getMap();            
@@ -93,6 +90,7 @@ public class MapDecorator {
 		            public void onMapLoaded() {
 		                isMapReady = true;
 		                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(
+		                		// don't
 		                		DEFAULT_POS, 14.0f) );
 		            }
 		        });

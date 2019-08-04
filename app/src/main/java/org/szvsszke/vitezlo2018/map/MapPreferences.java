@@ -51,7 +51,6 @@ public class MapPreferences {
 	private boolean mAreCheckpointsEnabled;
 	private boolean mIsSightsEnabled;
 	private boolean mAreTouristPathsEnabled;
-	private boolean mIsUserPathEnabled;
 	private int mapType;
 	private int mSelectedTrackIndex;
 	private double cameraLat;
@@ -107,37 +106,12 @@ public class MapPreferences {
 		editor.putLong(LAST_CAMERA_LAT, Double.doubleToLongBits(cameraLat));
 		editor.putLong(LAST_CAMERA_LON, Double.doubleToLongBits(cameraLon));
 		editor.putFloat(LAST_CAMERA_ZOOM, cameraZoom);
-		
+
 		editor.putBoolean(IS_INFO_EXTENDED, isInfoboxExtended);
 		editor.putBoolean(IS_INFO_LOCKED, isInfoboxLocked);
-		
+
 		editor.commit();
 	}
-
-	public boolean isHikeEnabled() {
-		return mIsHikeEnabled;
-	}
-
-	public void setHikeEnabled(boolean isHikeEnabled) {
-		this.mIsHikeEnabled = isHikeEnabled;
-	}
-
-	public boolean areCheckpointsEnabled() {
-		return mAreCheckpointsEnabled;
-	}
-
-	public void setCheckpointsEnabled(boolean areCheckpointsEnabled) {
-		this.mAreCheckpointsEnabled = areCheckpointsEnabled;
-	}
-
-	public boolean areSightsEnabled() {
-		return mIsSightsEnabled;
-	}
-
-	public void setSightsEnabled(boolean isSightsEnabled) {
-		this.mIsSightsEnabled = isSightsEnabled;
-	}
-
 
 	public int getMapType() {
 		return mapType;
