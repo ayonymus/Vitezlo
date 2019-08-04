@@ -6,5 +6,6 @@ sealed class CheckpointState {
 
     data class Data(val data: List<Checkpoint>): CheckpointState()
     object Error: CheckpointState()
+    object Disabled : CheckpointState()
 
 }

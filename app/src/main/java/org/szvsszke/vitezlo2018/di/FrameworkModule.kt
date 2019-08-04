@@ -1,11 +1,13 @@
 package org.szvsszke.vitezlo2018.di
 
+import android.content.SharedPreferences
 import android.content.res.AssetManager
 import dagger.Module
 import dagger.Provides
 import io.ticofab.androidgpxparser.parser.GPXParser
 import org.szvsszke.vitezlo2018.data.repository.DataSource
 import org.szvsszke.vitezlo2018.data.repository.ParameteredDataSource
+import org.szvsszke.vitezlo2018.domain.Preferences
 import org.szvsszke.vitezlo2018.domain.entity.Checkpoint
 import org.szvsszke.vitezlo2018.domain.entity.Description
 import org.szvsszke.vitezlo2018.domain.entity.Sight
@@ -19,6 +21,7 @@ import org.szvsszke.vitezlo2018.framework.localdata.sight.SightLoader
 import org.szvsszke.vitezlo2018.framework.localdata.touristpath.TouristPathLoader
 import org.szvsszke.vitezlo2018.framework.localdata.track.GpxTrackMapper
 import org.szvsszke.vitezlo2018.framework.localdata.track.TrackLoader
+import org.szvsszke.vitezlo2018.framework.preferences.UserPreferences
 
 @Module
 class FrameworkModule {
@@ -53,5 +56,8 @@ class FrameworkModule {
     fun provideTouristPathSource(assets: AssetManager, gpxParser: GPXParser, gpxTrackMapper: GpxTrackMapper
     ): DataSource<List<Track>> =
             TouristPathLoader(assets, gpxParser, gpxTrackMapper)
+
+    @Provides
+    fun providePreferences(sharedPreferences: SharedPreferences): Preferences = UserPreferences(sharedPreferences)
 
 }

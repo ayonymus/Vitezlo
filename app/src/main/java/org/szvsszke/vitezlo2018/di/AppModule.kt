@@ -1,6 +1,7 @@
 package org.szvsszke.vitezlo2018.di
 
 import android.content.Context
+import androidx.preference.PreferenceManager
 import dagger.Module
 import dagger.Provides
 import kotlinx.coroutines.CoroutineDispatcher
@@ -17,5 +18,8 @@ class AppModule(private val appContext: Context) {
 
     @Provides
     fun ioDispatcher(): CoroutineDispatcher = Dispatchers.IO
+
+    @Provides
+    fun provideSharedPreferences(context: Context) = PreferenceManager.getDefaultSharedPreferences(context)
 
 }

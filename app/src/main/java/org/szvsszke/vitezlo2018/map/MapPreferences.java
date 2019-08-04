@@ -53,21 +53,16 @@ public class MapPreferences {
 	private boolean mIsUserPathEnabled;
 	private int mapType;
 	private int mSelectedTrackIndex;
-	private int mSelectedUserPathIndex;
 	private double cameraLat;
 	private double cameraLon;
 	private float cameraZoom;
-	private boolean centerToTrack;
-	
+
 	private boolean isInfoboxExtended;
 	private boolean isInfoboxLocked;
 	
 	//no setters for these
 	private boolean isControlBoxEnabled;
 	private boolean isInfoboxEnabled;
-	private boolean isZoomEnabled;
-	private int trackColor;
-	private int userPathColor;
 	
 	private SharedPreferences mPrefs;
 	
@@ -90,16 +85,12 @@ public class MapPreferences {
 		cameraLat = mPrefs.getLong(LAST_CAMERA_LAT, 0);
 		cameraLon = mPrefs.getLong(LAST_CAMERA_LON, 0);
 		cameraZoom = mPrefs.getFloat(LAST_CAMERA_ZOOM, 0);
-		centerToTrack = mPrefs.getBoolean(CENTER_TO_TRACK, true);
-		
+
 		isInfoboxEnabled = mPrefs.getBoolean(IS_INFO_ENABLED, true);
 		isInfoboxExtended = mPrefs.getBoolean(IS_INFO_EXTENDED, true);
 		isInfoboxLocked = mPrefs.getBoolean(IS_INFO_LOCKED, false);
 		
 		isControlBoxEnabled = mPrefs.getBoolean(IS_CONTROL_ENABLED, true);
-		isZoomEnabled = mPrefs.getBoolean(IS_ZOOM_ENABLED, false);
-		trackColor = mPrefs.getInt(TRACK_COLOR, DEFAULT_TRACK_COLOR);
-		userPathColor = mPrefs.getInt(USER_PATH_COLOR, DEFAULT_USER_HIKE_COLOR);
 	}
 	
 	public void saveMapPreferences() {
@@ -170,46 +161,6 @@ public class MapPreferences {
 		this.mapType = mapType;
 	}
 
-	public double getCameraLat() {
-		return cameraLat;
-	}
-
-	public void setCameraLat(double cameraLat) {
-		this.cameraLat = cameraLat;
-	}
-
-	public double getCameraLon() {
-		return cameraLon;
-	}
-
-	public void setCameraLon(double cameraLon) {
-		this.cameraLon = cameraLon;
-	}
-
-	public float getCameraZoom() {
-		return cameraZoom;
-	}
-
-	public void setCameraZoom(float cameraZoom) {
-		this.cameraZoom = cameraZoom;
-	}
-
-	public boolean isCenterToTrack() {
-		return centerToTrack;
-	}
-
-	public void setCenterToTrack(boolean centerToTrack) {
-		this.centerToTrack = centerToTrack;
-	}
-
-	public boolean isInfoboxExtended() {
-		return isInfoboxExtended;
-	}
-	
-	public void setInfoboxExtended(boolean isInfoboxExtended) {
-		this.isInfoboxExtended = isInfoboxExtended;
-	}
-
 	public boolean isInfoboxLocked() {
 		return isInfoboxLocked;
 	}
@@ -225,32 +176,5 @@ public class MapPreferences {
 	public boolean isInfoboxEnabled() {
 		return isInfoboxEnabled;
 	}
-	
-	public boolean isZoomEnabled() {
-		return isZoomEnabled;
-	}
 
-	public int getTrackColor() {
-		return trackColor;
-	}
-
-	public int getUserPathColor() {
-		return userPathColor;
-	}
-
-	public int getSelectedTrackIndex() {
-		return mSelectedTrackIndex;
-	}
-
-	public void setSelectedTrackIndex(int selectedTrackIndex) {
-		mSelectedTrackIndex = selectedTrackIndex;
-	}
-	
-	public int getSelectedUserPathIndex() {
-		return mSelectedUserPathIndex;
-	}
-	
-	public void setSelectedUserPathIndex(int index) {
-		mSelectedUserPathIndex = index;
-	}
 }
