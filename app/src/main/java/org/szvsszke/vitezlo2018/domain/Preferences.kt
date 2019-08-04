@@ -4,4 +4,5 @@ interface Preferences {
 
     fun areCheckPointsEnabled(): Boolean
 
+    fun areTouristPathsEnabled(): Boolean
 }

@@ -6,5 +6,6 @@ sealed class TouristPathState {
 
     data class Data(val data: List<Track>): TouristPathState()
     object Error: TouristPathState()
+    object Disabled : TouristPathState()
 
 }

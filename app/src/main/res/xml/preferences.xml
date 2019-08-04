@@ -4,6 +4,10 @@
 
     <SwitchPreferenceCompat
         app:key="key_checkpoints_enabled"
-        app:title="Enable check points on map"/>
+        app:title="Enable check points"/>
+
+    <SwitchPreferenceCompat
+        app:key="key_tourist_paths_enabled"
+        app:title="Enable tourist path marking"/>
 
 </PreferenceScreen>
