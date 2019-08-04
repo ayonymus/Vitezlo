@@ -4,10 +4,12 @@
 
     <SwitchPreferenceCompat
         app:key="key_checkpoints_enabled"
-        app:title="Enable check points"/>
+        app:title="Enable check points"
+        app:defaultValue="true"/>
 
     <SwitchPreferenceCompat
         app:key="key_tourist_paths_enabled"
-        app:title="Enable tourist path marking"/>
+        app:title="Enable tourist path marking"
+        app:defaultValue="true"/>
 
 </PreferenceScreen>

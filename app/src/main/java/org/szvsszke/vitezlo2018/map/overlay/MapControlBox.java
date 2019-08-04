@@ -23,7 +23,6 @@ public class MapControlBox {
 
 	private ImageView mMapTypeSwitch;
 	private ImageView mPathEnabled;
-	private ImageView mTouristPathEnabled;
 	private ImageView mSightsEnabled;
 	private ImageView mUserHikeEnabled;	
 	private View mBaseView;
@@ -49,9 +48,7 @@ public class MapControlBox {
 		mSightsEnabled = (ImageView)
 				mBaseView.findViewById(R.id.imageViewSightsEnabled);
 		mSightsEnabled.setOnClickListener(listener);
-		mTouristPathEnabled = (ImageView) 
-				mBaseView.findViewById(R.id.imageViewTourstPathEnabled);	
-		mTouristPathEnabled.setOnClickListener(listener);
+
 		mUserHikeEnabled = (ImageView)
 				mBaseView.findViewById(R.id.imageViewUserHikeEnabled);
 		mUserHikeEnabled.setOnClickListener(listener);
@@ -66,11 +63,7 @@ public class MapControlBox {
 		if (!mPrefs.isHikeEnabled()) {
 			mPathEnabled.setImageResource(R.drawable.path_disabled);
 		}
-		
-		if (!mPrefs.areTouristPathsEnabled()) {
-			mTouristPathEnabled.setImageResource(R.drawable.tpath_disabled);
-		}
-		
+
 		if (!mPrefs.areSightsEnabled()) {
 			mSightsEnabled.setImageResource(R.drawable.sights_disabled);
 		}
@@ -114,17 +107,6 @@ public class MapControlBox {
 					mPathEnabled.setImageResource(R.drawable.path_enabled);
 				} else {
 					mPathEnabled.setImageResource(R.drawable.path_disabled);
-				}				
-				break;
-				
-			case R.id.imageViewTourstPathEnabled:
-				Log.d(TAG, "toursit path icon clicked");
-				mPrefs.setTouristPathsEnabled(!mPrefs.areTouristPathsEnabled());
-				if(mPrefs.areTouristPathsEnabled()) {
-					mTouristPathEnabled.setImageResource(R.drawable.tpath_enabled);
-				}
-				else {
-					mTouristPathEnabled.setImageResource(R.drawable.tpath_disabled);
 				}				
 				break;
 			

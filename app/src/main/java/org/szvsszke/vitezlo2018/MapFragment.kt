@@ -191,6 +191,7 @@ class MapFragment : Fragment(), MapControlListener {
                 Observer { result ->
                     when(result) {
                         is TouristPathState.Data -> mapDecorator.displayTouristPaths(result.data)
+                        is TouristPathState.Disabled -> mapDecorator.hideTouristPaths()
                         else -> Timber.e("Could not get tourist paths")
                     }
                 })

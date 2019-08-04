@@ -130,9 +130,7 @@ public class MapDecorator {
     }
 	
 	public void markCheckpoints(@NonNull List<Checkpoint> checkpoints) {
-		if (mMap != null) {
-			checkpointHandler.showCheckpoints(mMap, checkpoints);
-		}
+		checkpointHandler.showCheckpoints(mMap, checkpoints);
 	}
 
 	public void hideCheckpoints() {
@@ -151,12 +149,11 @@ public class MapDecorator {
     }
 	
 	public void displayTouristPaths(@NonNull List<Track> paths) {
-		if (mMapPrefs.areTouristPathsEnabled()) {
-			touristPathHandler.drawPaths(mMap, paths);
-		}
-		else {
-			touristPathHandler.removePaths();
-		}
+		touristPathHandler.drawPaths(mMap, paths);
+	}
+
+	public void hideTouristPaths() {
+		touristPathHandler.removePaths();
 	}
 
 	public class MarkerClickListener implements OnMarkerClickListener {

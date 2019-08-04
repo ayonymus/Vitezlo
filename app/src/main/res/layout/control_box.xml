@@ -43,12 +43,6 @@
             android:layout_marginTop="10dp"
             android:src="@drawable/sights_enabled" />
 
-        <ImageView
-            android:id="@+id/imageViewTourstPathEnabled"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="10dp"
-            android:src="@drawable/tpath_enabled" />
 
     </LinearLayout>
     
