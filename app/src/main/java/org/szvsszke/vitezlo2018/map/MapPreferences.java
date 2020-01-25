@@ -2,7 +2,6 @@ package org.szvsszke.vitezlo2018.map;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.graphics.Color;
 import android.util.Log;
 
 import com.google.android.gms.maps.GoogleMap;
@@ -31,7 +30,7 @@ public class MapPreferences {
 	private static final String LAST_CAMERA_LON = "lon";
 	private static final String LAST_CAMERA_ZOOM = "zoom";
 	public static final String CENTER_TO_TRACK = "centerToTrack";
-	
+
 	private static final String IS_INFO_EXTENDED = "infoExtended";
 	private static final String IS_INFO_LOCKED = "isHikeLocked";
 	
@@ -42,11 +41,7 @@ public class MapPreferences {
 	public static final String USER_PATH_COLOR = "userHikeColor";
 	
 	private static final String SELECTED_TRACK_INDEX = "selectedTrackIndex";
-	
-	public static final int DEFAULT_USER_HIKE_COLOR  = 
-			Color.argb(255, 150, 150, 255);
-	public static final int DEFAULT_TRACK_COLOR = Color.argb(255, 0, 150, 0);
-	
+
 	private boolean mIsHikeEnabled;
 	private boolean mAreCheckpointsEnabled;
 	private boolean mIsSightsEnabled;

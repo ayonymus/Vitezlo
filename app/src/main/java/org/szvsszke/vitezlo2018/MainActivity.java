@@ -12,7 +12,6 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -28,10 +27,9 @@ import com.google.android.gms.common.GooglePlayServicesUtil;
 import org.szvsszke.vitezlo2018.adapter.NavDrawerAdapter;
 import org.szvsszke.vitezlo2018.presentation.preferences.PreferencesFragment;
 
-public class MainActivity extends AppCompatActivity {
+import timber.log.Timber;
 
-	/* constants*/
-	private static final String TAG = MainActivity.class.getName();
+public class MainActivity extends AppCompatActivity {
 	
 	private static final String FIRST_RUN = "first_run";
 
@@ -53,9 +51,6 @@ public class MainActivity extends AppCompatActivity {
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.v(TAG, "onCreate");
-        
-        
         setContentView(R.layout.activity_vitezlo_main);
         
         // action bar stuff
@@ -105,7 +100,6 @@ public class MainActivity extends AppCompatActivity {
 	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		Log.d(TAG, "onCreateOptionsMenu");
 		// inflate menu
 		MenuInflater inflater = getMenuInflater();
 		inflater.inflate(R.menu.hike_menu_items, menu);		
@@ -116,7 +110,6 @@ public class MainActivity extends AppCompatActivity {
 	// listener for action bar
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		Log.d(TAG, "onOptionsItemSelected: " + item.getItemId());
 		// toggle drawer
         if (mDrawerToggle.onOptionsItemSelected(item)) {
             return true;
@@ -183,11 +176,9 @@ public class MainActivity extends AppCompatActivity {
 
 	// select content
 	public void setCurrentFragment(int position) {
-		Log.d(TAG, "selectFragment: " + position);
-
         // check permissions
         if (!PermissionHelper.hasCoarse(this) || !PermissionHelper.hasFineLocation(this)) {
-            Log.d(TAG, "No perissions, start askpermission fragment");
+            Timber.v("No perissions, start askpermission fragment");
             // start with map fragment
             mCurrentFragment = new AskPermissionFragment();
         } else {
@@ -244,14 +235,6 @@ public class MainActivity extends AppCompatActivity {
             setCurrentFragment(position);
         }
     }
-	
-    /**
-     * @return the current fragment in the activity for testing purposes.
-     * */
-	public Fragment getFragment() {
-		return mCurrentFragment;
-	}
-
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {

@@ -95,12 +95,7 @@ public class InfoBox {
 	public void setTitle(String title) {
 		mTitle.setText(title);
 	}
-	
-	/**Clear all labels and texts*/
-	public void resetInfoBox() {		
-		mTitle.setText("");
-		mContent.removeAllViews();
-	}
+
 	/**
 	 * Adds a line of statistics to the info box
 	 * @param label of the info
@@ -122,25 +117,6 @@ public class InfoBox {
 		// keep a reference to the content
 		mLabels.add(labelTV);
 		mContents.add(contentTV);
-	}
-	
-	/**
-	 * Makes corresponding textView GONE or VISIBLE
-	 * @param label of textView
-	 * @param isVisible 
-	 * */
-	public void showTextView(int line, boolean isVisible) {
-		if (isVisible) {
-			if (mLabels.get(line) != null) {
-				mLabels.get(line).setVisibility(View.VISIBLE);
-			}
-			mContents.get(line).setVisibility(View.VISIBLE);			
-		} else {
-			mContents.get(line).setVisibility(View.GONE);
-			if (mLabels.get(line) != null) {
-				mLabels.get(line).setVisibility(View.GONE);
-			}
-		}
 	}
 	
 	/**Updates the content of a line, including the label.

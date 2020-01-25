@@ -10,7 +10,7 @@ import org.junit.Test
 import org.szvsszke.vitezlo2018.data.repository.checkpoint.CheckpointRepository
 import org.szvsszke.vitezlo2018.domain.Loading
 import org.szvsszke.vitezlo2018.domain.entity.Checkpoint
-import org.szvsszke.vitezlo2018.framework.localdata.checkpoint.CheckpointLoader
+import org.szvsszke.vitezlo2018.data.localdata.checkpoint.CheckpointLoader
 import kotlin.test.assertEquals
 
 class CheckpointRepositoryTest {
