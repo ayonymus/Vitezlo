@@ -8,7 +8,7 @@ import com.nhaarman.mockitokotlin2.verifyNoMoreInteractions
 import org.junit.Test
 import org.szvsszke.vitezlo2018.data.repository.sight.SightRepository
 import org.szvsszke.vitezlo2018.domain.Loading
-import org.szvsszke.vitezlo2018.domain.Preferences
+import org.szvsszke.vitezlo2018.domain.preferences.UserPreferences
 import org.szvsszke.vitezlo2018.domain.entity.Sight
 import kotlin.test.assertEquals
 
@@ -21,7 +21,7 @@ internal class GetSightsTest {
     private val repo = mock<SightRepository> {
         on { getData() } doReturn sightsResult
     }
-    private val preferences = mock<Preferences> {
+    private val preferences = mock<UserPreferences> {
         on { areSightsEnabled() } doReturn true
     }
 

@@ -83,24 +83,15 @@ class MapFragment : Fragment(), MapControlListener {
 
         mInfoContainer = inflatedView.findViewById<View>(R.id.infoBoxHolder) as RelativeLayout
 
-        if (mapPrefs!!.isInfoboxEnabled) {
-            setupInfoBox(inflater)
-        } else {
-            mInfoContainer!!.visibility = View.GONE
-        }
+        setupInfoBox(inflater)
 
         mControlContainer = inflatedView.findViewById<View>(
                 R.id.controlBoxHolder) as LinearLayout
-        if (mapPrefs!!.isControlBoxEnabled) {
-            // setup control box
-            MapControlBox(mapPrefs).apply {
-                onCreateView(inflater, mControlContainer)
-                setListener(this@MapFragment)
-            }
-
-        } else {
-            mControlContainer!!.visibility = View.GONE
+        MapControlBox(mapPrefs).apply {
+            onCreateView(inflater, mControlContainer)
+            setListener(this@MapFragment)
         }
+
         return inflatedView
     }
 

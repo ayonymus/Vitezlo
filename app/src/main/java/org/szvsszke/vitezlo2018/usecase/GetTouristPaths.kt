@@ -1,16 +1,16 @@
 package org.szvsszke.vitezlo2018.usecase
 
 import org.szvsszke.vitezlo2018.domain.Loading
-import org.szvsszke.vitezlo2018.domain.Preferences
+import org.szvsszke.vitezlo2018.domain.preferences.UserPreferences
 import org.szvsszke.vitezlo2018.domain.Repository
 import org.szvsszke.vitezlo2018.domain.entity.Track
 import javax.inject.Inject
 
 class GetTouristPaths @Inject constructor(private val repository: Repository<List<Track>>,
-                                          private val preferences: Preferences) {
+                                          private val userPreferences: UserPreferences) {
 
     operator fun invoke(): TouristPathState {
-        return if(preferences.areTouristPathsEnabled()) {
+        return if(userPreferences.areTouristPathsEnabled()) {
             getFromRepo()
         } else {
             TouristPathState.Disabled

@@ -18,34 +18,18 @@ import com.google.android.gms.maps.GoogleMap;
  */
 @Deprecated
 public class MapPreferences {
-	
-	private static final String TAG = MapPreferences.class.getName();
-	
+
 	private static final String MAP_TYPE = "map_type";
-	private static final String IS_HIKE_ENABLED = "isHikeEnabled";
-	private static final String IS_CHECKPOINT_ENABLED = "isCheckpointEnabled";
-	private static final String IS_SIGHT_ENABLED = "isSightEnabled";
-	private static final String IS_TOURIST_PATH_ENABLED = "isTouristPathEnabled";
+
 	private static final String LAST_CAMERA_LAT = "lat";
 	private static final String LAST_CAMERA_LON = "lon";
 	private static final String LAST_CAMERA_ZOOM = "zoom";
-	public static final String CENTER_TO_TRACK = "centerToTrack";
 
 	private static final String IS_INFO_EXTENDED = "infoExtended";
 	private static final String IS_INFO_LOCKED = "isHikeLocked";
 	
-	public static final String IS_CONTROL_ENABLED = "isViewControlEnabled";
-	public static final String IS_INFO_ENABLED = "infoEnabled";
-	public static final String IS_ZOOM_ENABLED = "isZoomEnabled";
-	public static final String TRACK_COLOR = "hikeColor";
-	public static final String USER_PATH_COLOR = "userHikeColor";
-	
 	private static final String SELECTED_TRACK_INDEX = "selectedTrackIndex";
 
-	private boolean mIsHikeEnabled;
-	private boolean mAreCheckpointsEnabled;
-	private boolean mIsSightsEnabled;
-	private boolean mAreTouristPathsEnabled;
 	private int mapType;
 	private int mSelectedTrackIndex;
 	private double cameraLat;
@@ -54,48 +38,29 @@ public class MapPreferences {
 
 	private boolean isInfoboxExtended;
 	private boolean isInfoboxLocked;
-	
-	//no setters for these
-	private boolean isControlBoxEnabled;
-	private boolean isInfoboxEnabled;
-	
+
 	private SharedPreferences mPrefs;
 	
 	public MapPreferences (SharedPreferences preferences) {
-		Log.d(TAG, "instantiate");
 		mPrefs = preferences;
 		loadMapPreferences();
 	}
 	
 	private void loadMapPreferences () {
-		Log.d(TAG, "loadMapPreferences");
-		
-		mIsHikeEnabled = mPrefs.getBoolean(IS_HIKE_ENABLED, true);
-		mAreCheckpointsEnabled = mPrefs.getBoolean(IS_CHECKPOINT_ENABLED, true);
-		mAreTouristPathsEnabled = mPrefs.getBoolean(
-				IS_TOURIST_PATH_ENABLED, false);
-		mIsSightsEnabled = mPrefs.getBoolean(IS_SIGHT_ENABLED, false);
+
 		mapType = mPrefs.getInt(MAP_TYPE, GoogleMap.MAP_TYPE_NORMAL);
 		mSelectedTrackIndex = mPrefs.getInt(SELECTED_TRACK_INDEX, 0);
 		cameraLat = mPrefs.getLong(LAST_CAMERA_LAT, 0);
 		cameraLon = mPrefs.getLong(LAST_CAMERA_LON, 0);
 		cameraZoom = mPrefs.getFloat(LAST_CAMERA_ZOOM, 0);
 
-		isInfoboxEnabled = mPrefs.getBoolean(IS_INFO_ENABLED, true);
 		isInfoboxExtended = mPrefs.getBoolean(IS_INFO_EXTENDED, true);
 		isInfoboxLocked = mPrefs.getBoolean(IS_INFO_LOCKED, false);
 		
-		isControlBoxEnabled = mPrefs.getBoolean(IS_CONTROL_ENABLED, true);
 	}
 	
 	public void saveMapPreferences() {
-		Log.d(TAG, "saveMapPreferences");
 		Editor editor = mPrefs.edit();
-		editor.putBoolean(IS_HIKE_ENABLED, mIsHikeEnabled);
-		editor.putBoolean(IS_CHECKPOINT_ENABLED, mAreCheckpointsEnabled);
-		editor.putBoolean(IS_SIGHT_ENABLED, mIsSightsEnabled);
-		editor.putBoolean(IS_TOURIST_PATH_ENABLED, mAreTouristPathsEnabled);
-		editor.putInt(SELECTED_TRACK_INDEX, mSelectedTrackIndex);
 		editor.putInt(MAP_TYPE, mapType);
 
 		editor.putLong(LAST_CAMERA_LAT, Double.doubleToLongBits(cameraLat));
@@ -104,6 +69,7 @@ public class MapPreferences {
 
 		editor.putBoolean(IS_INFO_EXTENDED, isInfoboxExtended);
 		editor.putBoolean(IS_INFO_LOCKED, isInfoboxLocked);
+		editor.putInt(SELECTED_TRACK_INDEX, mSelectedTrackIndex);
 
 		editor.commit();
 	}
@@ -124,12 +90,5 @@ public class MapPreferences {
 		this.isInfoboxLocked = isInfoboxLocked;
 	}
 
-	public boolean isControlBoxEnabled() {
-		return isControlBoxEnabled;
-	}
-
-	public boolean isInfoboxEnabled() {
-		return isInfoboxEnabled;
-	}
 
 }

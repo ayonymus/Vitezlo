@@ -8,7 +8,7 @@ import com.nhaarman.mockitokotlin2.verifyNoMoreInteractions
 import org.junit.Test
 import org.szvsszke.vitezlo2018.data.repository.checkpoint.CheckpointRepository
 import org.szvsszke.vitezlo2018.domain.Loading
-import org.szvsszke.vitezlo2018.domain.Preferences
+import org.szvsszke.vitezlo2018.domain.preferences.UserPreferences
 import org.szvsszke.vitezlo2018.domain.entity.Checkpoint
 import kotlin.test.assertEquals
 
@@ -26,7 +26,7 @@ internal class GetCheckpointsTest {
     private val mapper = mock<GetCheckpointListFromMap> {
         on { invoke(checkpoints, ids) } doReturn checkpointList
     }
-    private val preferences = mock<Preferences> {
+    private val preferences = mock<UserPreferences> {
         on { areCheckPointsEnabled() } doReturn true
     }
 

@@ -1,6 +1,9 @@
-package org.szvsszke.vitezlo2018.domain
+package org.szvsszke.vitezlo2018.domain.preferences
 
-interface Preferences {
+/**
+ * User settings go here
+ */
+interface UserPreferences {
 
     fun areSightsEnabled(): Boolean
 

@@ -15,7 +15,7 @@ import android.widget.ImageView;
  * Class for encapsulating the map view manipulating icons.
  * 
  * */
-@Deprecated
+@Deprecated // TODO move functions to vuewModel
 public class MapControlBox {
 
 	private ImageView mMapTypeSwitch;

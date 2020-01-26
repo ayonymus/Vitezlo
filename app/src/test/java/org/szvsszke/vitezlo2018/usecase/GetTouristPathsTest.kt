@@ -7,7 +7,7 @@ import com.nhaarman.mockitokotlin2.verify
 import com.nhaarman.mockitokotlin2.verifyNoMoreInteractions
 import org.junit.Test
 import org.szvsszke.vitezlo2018.domain.Loading
-import org.szvsszke.vitezlo2018.domain.Preferences
+import org.szvsszke.vitezlo2018.domain.preferences.UserPreferences
 import org.szvsszke.vitezlo2018.domain.Repository
 import org.szvsszke.vitezlo2018.domain.entity.Track
 import kotlin.test.assertEquals
@@ -21,7 +21,7 @@ internal class GetTouristPathsTest {
     private val repo = mock<Repository<List<Track>>> {
         on { getData() } doReturn trackResult
     }
-    private val preferences = mock<Preferences> {
+    private val preferences = mock<UserPreferences> {
         on { areTouristPathsEnabled() } doReturn true
     }
 

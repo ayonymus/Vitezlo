@@ -1,10 +1,10 @@
 package org.szvsszke.vitezlo2018.data.preferences
 
 import android.content.SharedPreferences
-import org.szvsszke.vitezlo2018.domain.Preferences
+import org.szvsszke.vitezlo2018.domain.preferences.UserPreferences
 import javax.inject.Inject
 
-class UserPreferences @Inject constructor(private val sharedPreferences: SharedPreferences): Preferences {
+class SharedUserPreferences @Inject constructor(private val sharedPreferences: SharedPreferences): UserPreferences {
 
     override fun areCheckPointsEnabled() = sharedPreferences.getBoolean(KEY_CHECK_POINTS_ENABLED, true)
 
