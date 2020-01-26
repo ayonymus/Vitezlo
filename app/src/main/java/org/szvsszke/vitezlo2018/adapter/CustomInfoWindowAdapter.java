@@ -16,9 +16,10 @@ import android.widget.TextView;
 import com.google.android.gms.maps.GoogleMap.InfoWindowAdapter;
 import com.google.android.gms.maps.model.Marker;
 
+import timber.log.Timber;
+
 public class CustomInfoWindowAdapter implements InfoWindowAdapter {
 	
-	private String TAG = CustomInfoWindowAdapter.class.getName();
 	private Activity parent;
 	private HashMap<String, Drawable> sights;
 	
@@ -75,7 +76,7 @@ public class CustomInfoWindowAdapter implements InfoWindowAdapter {
 	            
 	        }
 	        catch(IOException ex) {
-	        	Log.e(TAG, "error lodaing image: " + marker.getTitle());
+	        	Timber.e("error lodaing image: " + marker.getTitle());
 	            //return null;
 	        }
 	        if (d != null) {

@@ -57,13 +57,15 @@ internal class MapViewModelTest {
     private val getInfoBoxStatus = mock<GetInfoBoxStatus> {
         on { invoke() } doReturn infoBoxStatus
     }
+    private val saveInfoBoxStatus = mock<SaveInfoBoxStatus> { }
 
     private lateinit var viewModel: MapViewModel
 
     @Before
     fun setUp() {
         viewModel = MapViewModel(getCheckpoints, getSights, getDescriptions, getTrack, getTouristPaths,
-                getMapStatus, saveMapStatus, getInfoBoxStatus, Dispatchers.Unconfined)
+                getMapStatus, saveMapStatus, getInfoBoxStatus, saveInfoBoxStatus,
+                Dispatchers.Unconfined)
     }
 
     @Test
@@ -112,6 +114,12 @@ internal class MapViewModelTest {
     fun `given map when observed then return infobox status`() {
         val result = viewModel.getInfoBoxStatus()
         assertEquals(infoBoxStatus, result)
+    }
+
+    @Test
+    fun `given infobox status changed then save status`() {
+        viewModel.saveInfoBoxStatus(infoBoxStatus)
+        verify(saveInfoBoxStatus).invoke(infoBoxStatus)
     }
 
 }

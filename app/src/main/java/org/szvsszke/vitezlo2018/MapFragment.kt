@@ -20,9 +20,9 @@ import org.szvsszke.vitezlo2018.domain.entity.Description
 import org.szvsszke.vitezlo2018.domain.entity.Point
 import org.szvsszke.vitezlo2018.domain.preferences.InfoBoxStatus
 import org.szvsszke.vitezlo2018.map.MapDecorator
-import org.szvsszke.vitezlo2018.presentation.map.InfoBoxItem
+import org.szvsszke.vitezlo2018.presentation.listitems.InfoBoxItem
 import org.szvsszke.vitezlo2018.presentation.map.MapViewModel
-import org.szvsszke.vitezlo2018.presentation.map.SimpleExpandableItem
+import org.szvsszke.vitezlo2018.presentation.listitems.SimpleExpandableItem
 import org.szvsszke.vitezlo2018.presentation.map.SpinnerListener
 import org.szvsszke.vitezlo2018.usecase.*
 import timber.log.Timber
