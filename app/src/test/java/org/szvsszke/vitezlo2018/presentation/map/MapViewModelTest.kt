@@ -9,6 +9,7 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.szvsszke.vitezlo2018.domain.entity.*
+import org.szvsszke.vitezlo2018.domain.preferences.InfoBoxStatus
 import org.szvsszke.vitezlo2018.domain.preferences.MapStatus
 import org.szvsszke.vitezlo2018.usecase.*
 import kotlin.test.assertEquals
@@ -52,12 +53,17 @@ internal class MapViewModelTest {
     }
     private val saveMapStatus = mock<SaveMapStatus> { }
 
+    private val infoBoxStatus = InfoBoxStatus(2, true, true)
+    private val getInfoBoxStatus = mock<GetInfoBoxStatus> {
+        on { invoke() } doReturn infoBoxStatus
+    }
+
     private lateinit var viewModel: MapViewModel
 
     @Before
     fun setUp() {
         viewModel = MapViewModel(getCheckpoints, getSights, getDescriptions, getTrack, getTouristPaths,
-                getMapStatus, saveMapStatus, Dispatchers.Unconfined)
+                getMapStatus, saveMapStatus, getInfoBoxStatus, Dispatchers.Unconfined)
     }
 
     @Test
@@ -91,9 +97,9 @@ internal class MapViewModelTest {
     }
 
     @Test
-    fun `given map when observed then return map settings`() {
-        val mapStatus = viewModel.getMapStatus()
-        assertEquals(mapStatus, mapStatus)
+    fun `given map when observed then return map status`() {
+        val result = viewModel.getMapStatus()
+        assertEquals(mapStatus, result)
     }
 
     @Test
@@ -101,4 +107,11 @@ internal class MapViewModelTest {
         viewModel.saveMapStatus(mapStatus)
         verify(saveMapStatus).invoke(mapStatus)
     }
+
+    @Test
+    fun `given map when observed then return infobox status`() {
+        val result = viewModel.getInfoBoxStatus()
+        assertEquals(infoBoxStatus, result)
+    }
+
 }

@@ -205,6 +205,7 @@
     <string name="no_permission_title">Pozíció engedély probléma</string>
     <string name="no_permission_desc">Az app működéséhez elengedhetetlen engedélyeket nem adtál meg, ezért az alapfunkciók nem érhetők el. Kérlek, engedélyezd az app számára, hogy hozzáférjen a pozíció adatokhoz!</string>
     <string name="location_permission_reason">A pozíció adatokra az integrált GoogleMaps térkép működéséhez van szükség. Semmilyen pozíció vagy egyéb adatot nem gyűjtünk a készülékről.</string>
+    <string name="description">Description</string>
 
 </resources>
 

@@ -3,21 +3,27 @@ package org.szvsszke.vitezlo2018
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.OnClickListener
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.AdapterView.OnItemSelectedListener
-import android.widget.RelativeLayout
+import android.widget.ArrayAdapter
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.google.android.gms.maps.MapView
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.gms.maps.model.LatLng
+import com.xwray.groupie.ExpandableGroup
+import com.xwray.groupie.GroupAdapter
+import com.xwray.groupie.kotlinandroidextensions.GroupieViewHolder
+import kotlinx.android.synthetic.main.fragment_map_re.*
+import kotlinx.android.synthetic.main.info_box_view.*
 import org.szvsszke.vitezlo2018.domain.entity.Description
 import org.szvsszke.vitezlo2018.domain.entity.Point
+import org.szvsszke.vitezlo2018.domain.preferences.InfoBoxStatus
 import org.szvsszke.vitezlo2018.map.MapDecorator
-import org.szvsszke.vitezlo2018.map.overlay.InfoBox
+import org.szvsszke.vitezlo2018.presentation.map.InfoBoxItem
 import org.szvsszke.vitezlo2018.presentation.map.MapViewModel
+import org.szvsszke.vitezlo2018.presentation.map.SimpleExpandableItem
+import org.szvsszke.vitezlo2018.presentation.map.SpinnerListener
 import org.szvsszke.vitezlo2018.usecase.*
 import timber.log.Timber
 import javax.inject.Inject
@@ -25,6 +31,7 @@ import javax.inject.Inject
 /**
  * This fragment is responsible for loading data and displaying it
  * overlaying a map.
+ * TODO refactor properly once spaghetti is sorted out
  */
 class MapFragment : Fragment() {
 
@@ -37,17 +44,10 @@ class MapFragment : Fragment() {
     @Inject
     lateinit var findBounds: FindBounds
 
-    // TODO synthetic access
-    private lateinit var mapView: MapView
-    private lateinit var infoBoxHolder: RelativeLayout
-    private lateinit var mapTypeSwitch: View
-
     private lateinit var viewModel: MapViewModel
 
-    private lateinit var mInfoBox: InfoBox
-
-    //view variables
-    private var isBoxExpanded = true
+    private val groupAdapter = GroupAdapter<GroupieViewHolder>()
+    private var expandableGroup = ExpandableGroup(SimpleExpandableItem(R.string.description))
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,25 +56,38 @@ class MapFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        val inflatedView = inflater.inflate(R.layout.fragment_map, container, false)
-
-        mapView = inflatedView.findViewById(R.id.mapView)
-        mapView.onCreate(savedInstanceState)
-        mapDecorator.init(activity, mapView)
-
-        infoBoxHolder = inflatedView.findViewById(R.id.infoBoxHolder)
-        setupInfoBox(inflater)
-
-        mapTypeSwitch = inflatedView.findViewById(R.id.imageViewMapTypeSwitch)
-        mapTypeSwitch.setOnClickListener { mapDecorator.switchMapType() }
-
-        return inflatedView
+        return inflater.inflate(R.layout.fragment_map_re, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        mapView.onCreate(savedInstanceState)
+
+        recycler_infoBox.adapter = groupAdapter
+        recycler_infoBox.layoutManager = LinearLayoutManager(context)
+
+        groupAdapter.clear()
+        groupAdapter.add(expandableGroup)
+
+        mapDecorator.init(activity, mapView) // TODO
+
         viewModel = ViewModelProvider(this, viewModelFactory)
-                .get(MapViewModel::class.java)
+                    .get(MapViewModel::class.java)
+
+        imageView_mapTypeSwitch.setOnClickListener { mapDecorator.switchMapType() }
+        imageView_infoBoxCollapse.apply {
+            setOnClickListener {
+                val oldInfoStatus = viewModel.getInfoBoxStatus()
+                val newInfoBoxStatus = oldInfoStatus.copy(isExtended = !oldInfoStatus.isExtended)
+                viewModel.saveInfoBoxStatus(newInfoBoxStatus)
+                expandableGroup.onToggleExpanded()
+                if (newInfoBoxStatus.isExtended) {
+                    setImageDrawable(ContextCompat.getDrawable(view.context, R.drawable.ic_action_collapse))
+                } else {
+                    setImageDrawable(ContextCompat.getDrawable(view.context, R.drawable.ic_action_expand))
+                }
+            }
+        }
     }
 
     override fun onResume() {
@@ -84,7 +97,8 @@ class MapFragment : Fragment() {
         viewModel.getDescriptions().observe(this,
                 Observer { result ->
                     when(result) {
-                        is DescriptionsState.Data -> onDescriptionsReady(result.data)
+                        is DescriptionsState.Data -> onDescriptionsReady(
+                                result.descriptions, viewModel.getInfoBoxStatus())
                         else -> Timber.e("Could not get descriptions")
                     }
                 })
@@ -98,11 +112,6 @@ class MapFragment : Fragment() {
         super.onPause()
     }
 
-    override fun onDestroy() {
-        mapView.onDestroy()
-        super.onDestroy()
-    }
-
     override fun onSaveInstanceState(outState: Bundle) {
         mapView.onSaveInstanceState(outState)
         super.onSaveInstanceState(outState)
@@ -112,12 +121,79 @@ class MapFragment : Fragment() {
         mapView.onLowMemory()
         super.onLowMemory()
     }
-
-    private fun onDescriptionsReady(descriptions: List<Description>) {
+    private fun onDescriptionsReady(descriptions: List<Description>,
+                                    infoBoxStatus: InfoBoxStatus) {
         Timber.v(descriptions.toString())
-        setupTrackSpinner(descriptions)
-        showCheckpoint(descriptions[0])
-        showTrack(descriptions[0].routeFileName)
+        Timber.v(infoBoxStatus.toString())
+
+        val hikeNames = descriptions.map { it.name }
+        setupTrackSpinner(hikeNames, infoBoxStatus, descriptions)
+
+        showCheckpoint(descriptions[infoBoxStatus.selectedTrackIndex])
+        showTrack(descriptions[infoBoxStatus.selectedTrackIndex].routeFileName)
+    }
+
+    private fun setupTrackSpinner(hikeNames: List<String>, infoBoxStatus: InfoBoxStatus,
+                                  descriptions: List<Description>) {
+        context?.let { context ->
+            val adapter = ArrayAdapter<String>(context, R.layout.info_box_spinner_item,
+                    R.id.textViewTrackName, hikeNames)
+
+            spinner_infoBoxHikeSpinner.apply {
+                setAdapter(adapter)
+                setSelection(infoBoxStatus.selectedTrackIndex)
+                onItemSelectedListener = SpinnerListener { position ->
+                    updateContent(descriptions[position])
+                }
+            }
+        }
+        showSpinnerOrTitle(hikeNames, infoBoxStatus)
+        imageView_infoBoxLock.setOnClickListener {
+            val oldInfoStatus = viewModel.getInfoBoxStatus()
+            val newInfoBoxStatus = oldInfoStatus.copy(isLocked = !oldInfoStatus.isLocked)
+            viewModel.saveInfoBoxStatus(newInfoBoxStatus)
+            showSpinnerOrTitle(hikeNames, newInfoBoxStatus)
+        }
+    }
+
+    private fun updateContent(description: Description) {
+        showTrack(description.routeFileName)
+        showCheckpoint(description)
+        updateDescription(description)
+    }
+
+    private fun showSpinnerOrTitle(hikeNames: List<String>, infoBoxStatus: InfoBoxStatus) {
+        if(infoBoxStatus.isLocked) {
+            textView_infoBoxTitle.visibility = View.VISIBLE
+            textView_infoBoxTitle.text = hikeNames[infoBoxStatus.selectedTrackIndex]
+            spinner_infoBoxHikeSpinner.visibility = View.GONE
+            context?.let { context ->
+                imageView_infoBoxLock.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_menu_lock))
+            }
+        } else {
+            textView_infoBoxTitle.visibility = View.GONE
+            spinner_infoBoxHikeSpinner.visibility = View.VISIBLE
+            spinner_infoBoxHikeSpinner.setSelection(infoBoxStatus.selectedTrackIndex)
+            context?.let { context ->
+                imageView_infoBoxLock.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_menu_unlock))
+            }
+        }
+    }
+
+    private fun updateDescription(description: Description) {
+        groupAdapter.remove(expandableGroup)
+        expandableGroup = ExpandableGroup(SimpleExpandableItem(R.string.description))
+        expandableGroup.addAll(listOf(
+                InfoBoxItem(R.string.length, description.length),
+                InfoBoxItem(R.string.leveltime, description.levelTime),
+                InfoBoxItem(R.string.starting, description.starting),
+                InfoBoxItem(R.string.fee, description.entryFee)
+        ))
+        if(description.other.isNotBlank()) {
+            expandableGroup.add(InfoBoxItem(R.string.other, description.other))
+        }
+        groupAdapter.add(expandableGroup)
+        groupAdapter.notifyDataSetChanged()
     }
 
     private fun showTrack(trackName: String) {
@@ -171,48 +247,6 @@ class MapFragment : Fragment() {
         mapDecorator.markTrack(track.map { LatLng(it.latitude, it.longitude) }, start, end)
     }
 
-    private fun setupTrackSpinner(descriptions: List<Description>) {
-        mInfoBox.setupSpinner(descriptions.map { it.name },
-                TrackSpinnerListener { position ->
-                    updateViews(descriptions[position])
-                    updateInfoDescription(descriptions[position])
-                }, 0)
-    }
 
-    private fun updateViews(description: Description) {
-        activity?.title = description.name
-        mInfoBox.setTitle(description.name)
-        showTrack(description.routeFileName)
-        showCheckpoint(description)
-        showSights()
-    }
-
-    // TODO remove somehow
-    private fun setupInfoBox(inflater: LayoutInflater) {
-        mInfoBox = InfoBox(activity)
-        mInfoBox.onCreateView(inflater, infoBoxHolder)
-        val expandCollapse = OnClickListener {
-            isBoxExpanded = !isBoxExpanded
-            mInfoBox.expandInfoBox(isBoxExpanded)
-        }
-        mInfoBox.setOnClickListenerForContainer(expandCollapse)
-        // todo
-        //mInfoBox.lockSpinner(mapPrefs!!.isInfoboxLocked)
-    }
-
-    private fun updateInfoDescription(description: Description) {
-        mInfoBox.addItems(description.name, resources.getStringArray(R.array.hike_info),
-                description.publicData)
-    }
-
-    private class TrackSpinnerListener(private val action: (position: Int) -> Unit) : OnItemSelectedListener {
-
-        override fun onItemSelected(parent: AdapterView<*>, view: View,
-                                    position: Int, id: Long) {
-            action.invoke(position)
-        }
-
-        override fun onNothingSelected(parent: AdapterView<*>) = Unit
-    }
 
 }

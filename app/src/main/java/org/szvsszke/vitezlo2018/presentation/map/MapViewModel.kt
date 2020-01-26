@@ -8,6 +8,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import org.szvsszke.vitezlo2018.domain.preferences.InfoBoxStatus
 import org.szvsszke.vitezlo2018.domain.preferences.MapStatus
 import org.szvsszke.vitezlo2018.usecase.*
 import javax.inject.Inject
@@ -24,6 +25,8 @@ class MapViewModel @Inject constructor(private val getCheckpoints: GetCheckpoint
                                        private val getTouristPaths: GetTouristPaths,
                                        private val getMapStatus: GetMapStatus,
                                        private val saveMapStatus: SaveMapStatus,
+                                       private val getInfoBoxStatus: GetInfoBoxStatus,
+                                       private val saveInfoBoxStatus: SaveInfoBoxStatus,
                                        private val io: CoroutineDispatcher = Dispatchers.IO): ViewModel() {
 
     private var checkpointJob: Job? = null
@@ -82,9 +85,14 @@ class MapViewModel @Inject constructor(private val getCheckpoints: GetCheckpoint
 
     fun saveMapStatus(mapStatus: MapStatus) = saveMapStatus.invoke(mapStatus)
 
+    fun getInfoBoxStatus(): InfoBoxStatus  = getInfoBoxStatus.invoke()
+
+    fun saveInfoBoxStatus(newInfoBoxStatus: InfoBoxStatus) = saveInfoBoxStatus.invoke(newInfoBoxStatus)
+
     override fun onCleared() {
         checkpointJob?.cancel()
         sightJob?.cancel()
+        // TODO rest of jobs
         super.onCleared()
     }
 
