@@ -9,10 +9,12 @@ import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 
+import org.jetbrains.annotations.NotNull;
 import org.szvsszke.vitezlo2018.adapter.CustomInfoWindowAdapter;
 import org.szvsszke.vitezlo2018.domain.entity.Checkpoint;
 import org.szvsszke.vitezlo2018.domain.entity.Sight;
 import org.szvsszke.vitezlo2018.domain.entity.Track;
+import org.szvsszke.vitezlo2018.domain.preferences.MapStatus;
 import org.szvsszke.vitezlo2018.presentation.map.camera.GoogleMapExtensionsKt;
 import org.szvsszke.vitezlo2018.presentation.map.line.LineHandler;
 import org.szvsszke.vitezlo2018.presentation.map.line.TouristPathHandler;
@@ -28,16 +30,17 @@ import javax.inject.Inject;
 
 import androidx.annotation.NonNull;
 
+import static org.szvsszke.vitezlo2018.presentation.map.camera.GoogleMapExtensionsKt.getStatus;
+import static org.szvsszke.vitezlo2018.presentation.map.camera.GoogleMapExtensionsKt.switchType;
+import static org.szvsszke.vitezlo2018.presentation.map.camera.GoogleMapExtensionsKt.toLatLng;
 import static org.szvsszke.vitezlo2018.presentation.map.marker.TouristMarkFactory.TOURIST_MARK;
 
 /**
  * This class is responsible for drawing lines and markers onto the google map, 
  * and for providing the necessary data for these operations.
- * TODO too many responsibilities, cut smaller
+ * TODO too many responsibilities, refactor
  * */
 public class MapDecorator {
-
-	private static final LatLng DEFAULT_POS = new LatLng(48.409291847117601, 20.724328984580993);
 
 	private Activity mParent;
 
@@ -46,12 +49,12 @@ public class MapDecorator {
 	private MapView mMapView;
 	private boolean isMapReady = false;
 
-	private MapPreferences mMapPrefs;
-
 	private final CheckpointHandler checkpointHandler;
 	private final SightsHandler sightsHandler;
 	private final LineHandler trackHandler;
 	private final TouristPathHandler touristPathHandler;
+
+	private MapStatus mapStatus = null;
 
 	@Inject
 	public MapDecorator(CheckpointHandler checkpointHandler, SightsHandler sightsHandler, LineHandler lineHandler,
@@ -63,11 +66,10 @@ public class MapDecorator {
 	}
 
 	// TODO remove context dependency
-	public void init(Activity parent, MapView view, MapPreferences prefs) {
+	public void init(Activity parent, MapView view) {
         mParent = parent;
         mMapView = view;
 
-        mMapPrefs = prefs;
         setupMapIfNeeded();
 
     }
@@ -77,10 +79,8 @@ public class MapDecorator {
 			isMapReady = false;
             mMap = mMapView.getMap();            
             MapsInitializer.initialize(mParent);
-            mMap.setMapType(mMapPrefs.getMapType());
-            
+
 	        if(mMap != null) {
-	            
 		        mMap.setInfoWindowAdapter(new CustomInfoWindowAdapter(mParent));
 		        mMap.setOnMarkerClickListener(new MarkerClickListener());
 		        mMap.setMyLocationEnabled(true);
@@ -89,21 +89,19 @@ public class MapDecorator {
 		            @Override
 		            public void onMapLoaded() {
 		                isMapReady = true;
-		                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(
-		                		// don't
-		                		DEFAULT_POS, 14.0f) );
+		                if (mapStatus != null) {
+		                	setMapStatus(mMap, mapStatus);
+						}
 		            }
 		        });
 	        }
 		}
 	}
 
-	public void decorate() {
-		if (isMapReady) {
-			if (mMap.getMapType() != mMapPrefs.getMapType()) {
-				mMap.setMapType(mMapPrefs.getMapType());
-			}
-		}
+	private void setMapStatus(@NonNull GoogleMap map, @NonNull MapStatus mapStatus) {
+		map.setMapType(mapStatus.getMapType());
+		map.animateCamera(CameraUpdateFactory.newLatLngZoom(
+				toLatLng(mapStatus.getCameraPosition()), mapStatus.getCameraZoom()));
 	}
 
 	// TODO accept Track object
@@ -135,6 +133,23 @@ public class MapDecorator {
 
 	public void hideTouristPaths() {
 		touristPathHandler.removePaths();
+	}
+
+	public void setMapStatus(@NotNull MapStatus mapStatus) {
+		if (isMapReady) {
+			setMapStatus(mMap, mapStatus);
+		} else {
+			this.mapStatus = mapStatus;
+		}
+	}
+
+	@NotNull
+	public MapStatus getMapStatus() {
+		return getStatus(mMap);
+	}
+
+	public void switchMapType() {
+		switchType(mMap);
 	}
 
 	public class MarkerClickListener implements OnMarkerClickListener {

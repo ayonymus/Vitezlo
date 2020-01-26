@@ -1,35 +1,24 @@
 package org.szvsszke.vitezlo2018
 
 import android.os.Bundle
-import android.preference.PreferenceManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.OnClickListener
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.AdapterView.OnItemSelectedListener
-import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import com.google.android.gms.maps.MapView
 import com.google.android.gms.maps.model.LatLng
-import org.szvsszke.vitezlo2018.map.MapDecorator
-import org.szvsszke.vitezlo2018.map.MapPreferences
 import org.szvsszke.vitezlo2018.domain.entity.Description
 import org.szvsszke.vitezlo2018.domain.entity.Point
+import org.szvsszke.vitezlo2018.map.MapDecorator
 import org.szvsszke.vitezlo2018.map.overlay.InfoBox
-import org.szvsszke.vitezlo2018.map.overlay.MapControlBox
-import org.szvsszke.vitezlo2018.map.overlay.MapControlBox.MapControlListener
 import org.szvsszke.vitezlo2018.presentation.map.MapViewModel
-import org.szvsszke.vitezlo2018.usecase.CheckpointState
-import org.szvsszke.vitezlo2018.usecase.DescriptionsState
-import org.szvsszke.vitezlo2018.usecase.FindBounds
-import org.szvsszke.vitezlo2018.usecase.SightsState
-import org.szvsszke.vitezlo2018.usecase.TouristPathState
-import org.szvsszke.vitezlo2018.usecase.TrackState
+import org.szvsszke.vitezlo2018.usecase.*
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -37,7 +26,7 @@ import javax.inject.Inject
  * This fragment is responsible for loading data and displaying it
  * overlaying a map.
  */
-class MapFragment : Fragment(), MapControlListener {
+class MapFragment : Fragment() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
@@ -48,15 +37,12 @@ class MapFragment : Fragment(), MapControlListener {
     @Inject
     lateinit var findBounds: FindBounds
 
-    private lateinit var viewModel: MapViewModel
-
+    // TODO synthetic access
     private lateinit var mapView: MapView
+    private lateinit var infoBoxHolder: RelativeLayout
+    private lateinit var mapTypeSwitch: View
 
-    private var mapPrefs: MapPreferences? = null
-
-    // TODO use synthetic functions
-    private var mInfoContainer: RelativeLayout? = null
-    private var mControlContainer: LinearLayout? = null
+    private lateinit var viewModel: MapViewModel
 
     private lateinit var mInfoBox: InfoBox
 
@@ -70,40 +56,31 @@ class MapFragment : Fragment(), MapControlListener {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        val inflatedView = inflater.inflate(R.layout.fragment_map, container,
-                false)
+        val inflatedView = inflater.inflate(R.layout.fragment_map, container, false)
 
-        mapPrefs = MapPreferences(
-                PreferenceManager.getDefaultSharedPreferences(activity))
-
-        mapView = inflatedView.findViewById(R.id.mapView) as MapView
+        mapView = inflatedView.findViewById(R.id.mapView)
         mapView.onCreate(savedInstanceState)
+        mapDecorator.init(activity, mapView)
 
-        mapDecorator.init(activity, mapView, mapPrefs)
-
-        mInfoContainer = inflatedView.findViewById<View>(R.id.infoBoxHolder) as RelativeLayout
-
+        infoBoxHolder = inflatedView.findViewById(R.id.infoBoxHolder)
         setupInfoBox(inflater)
 
-        mControlContainer = inflatedView.findViewById<View>(
-                R.id.controlBoxHolder) as LinearLayout
-        MapControlBox(mapPrefs).apply {
-            onCreateView(inflater, mControlContainer)
-            setListener(this@MapFragment)
-        }
+        mapTypeSwitch = inflatedView.findViewById(R.id.imageViewMapTypeSwitch)
+        mapTypeSwitch.setOnClickListener { mapDecorator.switchMapType() }
 
         return inflatedView
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProviders.of(this, viewModelFactory)
+        viewModel = ViewModelProvider(this, viewModelFactory)
                 .get(MapViewModel::class.java)
     }
 
     override fun onResume() {
         super.onResume()
         mapView.onResume()
+        mapDecorator.mapStatus = viewModel.getMapStatus()
         viewModel.getDescriptions().observe(this,
                 Observer { result ->
                     when(result) {
@@ -116,15 +93,14 @@ class MapFragment : Fragment(), MapControlListener {
     }
 
     override fun onPause() {
+        viewModel.saveMapStatus(mapDecorator.mapStatus)
         mapView.onPause()
         super.onPause()
     }
 
     override fun onDestroy() {
-        super.onDestroy()
         mapView.onDestroy()
-        mapPrefs!!.isInfoboxLocked = mInfoBox!!.isSpinnerLocked
-        mapPrefs!!.saveMapPreferences()
+        super.onDestroy()
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -140,7 +116,6 @@ class MapFragment : Fragment(), MapControlListener {
     private fun onDescriptionsReady(descriptions: List<Description>) {
         Timber.v(descriptions.toString())
         setupTrackSpinner(descriptions)
-        mapDecorator.decorate()
         showCheckpoint(descriptions[0])
         showTrack(descriptions[0].routeFileName)
     }
@@ -188,6 +163,7 @@ class MapFragment : Fragment(), MapControlListener {
                 })
     }
 
+    // TODO move to a utility class
     private fun processTrack(track: List<Point>) {
         val bounds = findBounds(track)
         val start = LatLng(bounds.first.latitude, bounds.first.longitude)
@@ -206,7 +182,6 @@ class MapFragment : Fragment(), MapControlListener {
     private fun updateViews(description: Description) {
         activity?.title = description.name
         mInfoBox.setTitle(description.name)
-        mapDecorator.decorate()
         showTrack(description.routeFileName)
         showCheckpoint(description)
         showSights()
@@ -215,18 +190,14 @@ class MapFragment : Fragment(), MapControlListener {
     // TODO remove somehow
     private fun setupInfoBox(inflater: LayoutInflater) {
         mInfoBox = InfoBox(activity)
-        mInfoBox.onCreateView(inflater, mInfoContainer)
+        mInfoBox.onCreateView(inflater, infoBoxHolder)
         val expandCollapse = OnClickListener {
             isBoxExpanded = !isBoxExpanded
             mInfoBox.expandInfoBox(isBoxExpanded)
         }
         mInfoBox.setOnClickListenerForContainer(expandCollapse)
-        mInfoBox.lockSpinner(mapPrefs!!.isInfoboxLocked)
-    }
-
-    // TODO this is wrong
-    override fun displayPreferenceChanged() {
-        showSights()
+        // todo
+        //mInfoBox.lockSpinner(mapPrefs!!.isInfoboxLocked)
     }
 
     private fun updateInfoDescription(description: Description) {

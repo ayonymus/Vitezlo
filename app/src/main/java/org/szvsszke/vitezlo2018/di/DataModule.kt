@@ -14,6 +14,7 @@ import org.szvsszke.vitezlo2018.data.localdata.sight.SightLoader
 import org.szvsszke.vitezlo2018.data.localdata.touristpath.TouristPathLoader
 import org.szvsszke.vitezlo2018.data.localdata.track.GpxTrackMapper
 import org.szvsszke.vitezlo2018.data.localdata.track.TrackLoader
+import org.szvsszke.vitezlo2018.data.preferences.SharedMapPreferences
 import org.szvsszke.vitezlo2018.data.preferences.SharedUserPreferences
 import org.szvsszke.vitezlo2018.data.repository.BaseRepository
 import org.szvsszke.vitezlo2018.data.repository.DataSource
@@ -28,6 +29,7 @@ import org.szvsszke.vitezlo2018.domain.entity.Checkpoint
 import org.szvsszke.vitezlo2018.domain.entity.Description
 import org.szvsszke.vitezlo2018.domain.entity.Sight
 import org.szvsszke.vitezlo2018.domain.entity.Track
+import org.szvsszke.vitezlo2018.domain.preferences.MapPreferences
 import org.szvsszke.vitezlo2018.domain.preferences.UserPreferences
 
 @Module
@@ -80,7 +82,11 @@ class DataModule {
             TouristPathLoader(assets, gpxParser, gpxTrackMapper)
 
     @Provides
-    fun providePreferences(sharedPreferences: SharedPreferences): UserPreferences =
+    fun provideUserPreferences(sharedPreferences: SharedPreferences): UserPreferences =
             SharedUserPreferences(sharedPreferences)
+
+    @Provides
+    fun provideMAPPreferences(sharedPreferences: SharedPreferences): MapPreferences =
+            SharedMapPreferences(sharedPreferences)
 
 }

@@ -8,29 +8,22 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
-import org.szvsszke.vitezlo2018.usecase.CheckpointState
-import org.szvsszke.vitezlo2018.usecase.DescriptionsState
-import org.szvsszke.vitezlo2018.usecase.GetCheckpoints
-import org.szvsszke.vitezlo2018.usecase.GetDescriptions
-import org.szvsszke.vitezlo2018.usecase.GetSights
-import org.szvsszke.vitezlo2018.usecase.GetTouristPaths
-import org.szvsszke.vitezlo2018.usecase.GetTrack
-import org.szvsszke.vitezlo2018.usecase.SightsState
-import org.szvsszke.vitezlo2018.usecase.TouristPathState
-import org.szvsszke.vitezlo2018.usecase.TrackState
+import org.szvsszke.vitezlo2018.domain.preferences.MapStatus
+import org.szvsszke.vitezlo2018.usecase.*
 import javax.inject.Inject
 
 /**
  * View model for the main map view
  *
  * This reflects the different long running calls for getting data to display.
- * TODO refactor for less jobs and states
  */
 class MapViewModel @Inject constructor(private val getCheckpoints: GetCheckpoints,
                                        private val getSights: GetSights,
                                        private val getDescriptions: GetDescriptions,
                                        private val getTrack: GetTrack,
                                        private val getTouristPaths: GetTouristPaths,
+                                       private val getMapStatus: GetMapStatus,
+                                       private val saveMapStatus: SaveMapStatus,
                                        private val io: CoroutineDispatcher = Dispatchers.IO): ViewModel() {
 
     private var checkpointJob: Job? = null
@@ -84,6 +77,10 @@ class MapViewModel @Inject constructor(private val getCheckpoints: GetCheckpoint
         }
         return touristPathState
     }
+
+    fun getMapStatus() = getMapStatus.invoke()
+
+    fun saveMapStatus(mapStatus: MapStatus) = saveMapStatus.invoke(mapStatus)
 
     override fun onCleared() {
         checkpointJob?.cancel()

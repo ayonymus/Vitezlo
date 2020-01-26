@@ -10,9 +10,9 @@ import javax.inject.Inject
 class SharedMapPreferences @Inject constructor(private val sharedPreferences: SharedPreferences): MapPreferences {
 
     override fun getMapStatus() = MapStatus(
-                sharedPreferences.getInt(KEY_MAP_TYPE, 1),
-                Point(Double.fromBits(sharedPreferences.getLong(KEY_LAST_CAMERA_LAT, 0)),
-                        Double.fromBits(sharedPreferences.getLong(KEY_LAST_CAMERA_LON, 0))),
+                sharedPreferences.getInt(KEY_MAP_TYPE, DEFAUL_MAP),
+                Point(Double.fromBits(sharedPreferences.getLong(KEY_LAST_CAMERA_LAT, DEFAULT_LAT.toRawBits())),
+                        Double.fromBits(sharedPreferences.getLong(KEY_LAST_CAMERA_LON, DEFAULT_LONG.toRawBits()))),
                 sharedPreferences.getFloat(KEY_LAST_CAMERA_ZOOM, 0F))
 
     override fun setMapStatus(status: MapStatus) = sharedPreferences.edit().apply {
@@ -43,5 +43,11 @@ class SharedMapPreferences @Inject constructor(private val sharedPreferences: Sh
         private const val KEY_SELECTED_TRACK_INDEX = "selectedTrackIndex"
         private const val KEY_IS_INFO_EXTENDED = "infoExtended"
         private const val KEY_IS_INFO_LOCKED = "isHikeLocked"
+
+        private const val DEFAUL_MAP = 1
+        private const val DEFAULT_ZOOM = 14F
+        private const val DEFAULT_LAT = 48.409291847117601
+        private const val DEFAULT_LONG = 20.724328984580993
+
     }
 }

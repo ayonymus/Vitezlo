@@ -3,24 +3,14 @@ package org.szvsszke.vitezlo2018.presentation.map
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock
+import com.nhaarman.mockitokotlin2.verify
 import kotlinx.coroutines.Dispatchers
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
-import org.szvsszke.vitezlo2018.domain.entity.Checkpoint
-import org.szvsszke.vitezlo2018.domain.entity.Description
-import org.szvsszke.vitezlo2018.domain.entity.Sight
-import org.szvsszke.vitezlo2018.domain.entity.Track
-import org.szvsszke.vitezlo2018.usecase.CheckpointState
-import org.szvsszke.vitezlo2018.usecase.DescriptionsState
-import org.szvsszke.vitezlo2018.usecase.GetCheckpoints
-import org.szvsszke.vitezlo2018.usecase.GetDescriptions
-import org.szvsszke.vitezlo2018.usecase.GetSights
-import org.szvsszke.vitezlo2018.usecase.GetTouristPaths
-import org.szvsszke.vitezlo2018.usecase.GetTrack
-import org.szvsszke.vitezlo2018.usecase.SightsState
-import org.szvsszke.vitezlo2018.usecase.TouristPathState
-import org.szvsszke.vitezlo2018.usecase.TrackState
+import org.szvsszke.vitezlo2018.domain.entity.*
+import org.szvsszke.vitezlo2018.domain.preferences.MapStatus
+import org.szvsszke.vitezlo2018.usecase.*
 import kotlin.test.assertEquals
 
 internal class MapViewModelTest {
@@ -56,12 +46,18 @@ internal class MapViewModelTest {
         on { invoke() } doReturn TouristPathState.Data(listOf(track))
     }
 
+    private val mapStatus = MapStatus(3, Point(12.0, 12.0), 1F)
+    private val getMapStatus = mock<GetMapStatus> {
+        on { invoke() } doReturn mapStatus
+    }
+    private val saveMapStatus = mock<SaveMapStatus> { }
+
     private lateinit var viewModel: MapViewModel
 
     @Before
     fun setUp() {
         viewModel = MapViewModel(getCheckpoints, getSights, getDescriptions, getTrack, getTouristPaths,
-                Dispatchers.Unconfined)
+                getMapStatus, saveMapStatus, Dispatchers.Unconfined)
     }
 
     @Test
@@ -94,5 +90,15 @@ internal class MapViewModelTest {
         assertEquals(TouristPathState.Data(listOf(track)), viewModel.getTouristPath().value)
     }
 
+    @Test
+    fun `given map when observed then return map settings`() {
+        val mapStatus = viewModel.getMapStatus()
+        assertEquals(mapStatus, mapStatus)
+    }
 
+    @Test
+    fun `given map when destroyed then save map status`() {
+        viewModel.saveMapStatus(mapStatus)
+        verify(saveMapStatus).invoke(mapStatus)
+    }
 }
