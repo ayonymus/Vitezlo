@@ -14,6 +14,7 @@ import org.szvsszke.vitezlo2018.data.localdata.sight.SightLoader
 import org.szvsszke.vitezlo2018.data.localdata.touristpath.TouristPathLoader
 import org.szvsszke.vitezlo2018.data.localdata.track.GpxTrackMapper
 import org.szvsszke.vitezlo2018.data.localdata.track.TrackLoader
+import org.szvsszke.vitezlo2018.data.preferences.SharedInfoBoxPreferences
 import org.szvsszke.vitezlo2018.data.preferences.SharedMapPreferences
 import org.szvsszke.vitezlo2018.data.preferences.SharedUserPreferences
 import org.szvsszke.vitezlo2018.data.repository.BaseRepository
@@ -29,6 +30,7 @@ import org.szvsszke.vitezlo2018.domain.entity.Checkpoint
 import org.szvsszke.vitezlo2018.domain.entity.Description
 import org.szvsszke.vitezlo2018.domain.entity.Sight
 import org.szvsszke.vitezlo2018.domain.entity.Track
+import org.szvsszke.vitezlo2018.domain.preferences.InfoBoxPreferences
 import org.szvsszke.vitezlo2018.domain.preferences.MapPreferences
 import org.szvsszke.vitezlo2018.domain.preferences.UserPreferences
 
@@ -86,7 +88,11 @@ class DataModule {
             SharedUserPreferences(sharedPreferences)
 
     @Provides
-    fun provideMAPPreferences(sharedPreferences: SharedPreferences): MapPreferences =
+    fun provideMapPreferences(sharedPreferences: SharedPreferences): MapPreferences =
             SharedMapPreferences(sharedPreferences)
+
+    @Provides
+    fun provideInfoBoxPreferences(sharedPreferences: SharedPreferences): InfoBoxPreferences =
+            SharedInfoBoxPreferences(sharedPreferences)
 
 }

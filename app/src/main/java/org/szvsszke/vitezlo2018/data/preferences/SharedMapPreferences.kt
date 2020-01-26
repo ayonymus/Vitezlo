@@ -2,7 +2,6 @@ package org.szvsszke.vitezlo2018.data.preferences
 
 import android.content.SharedPreferences
 import org.szvsszke.vitezlo2018.domain.entity.Point
-import org.szvsszke.vitezlo2018.domain.preferences.InfoBoxStatus
 import org.szvsszke.vitezlo2018.domain.preferences.MapPreferences
 import org.szvsszke.vitezlo2018.domain.preferences.MapStatus
 import javax.inject.Inject
@@ -13,7 +12,7 @@ class SharedMapPreferences @Inject constructor(private val sharedPreferences: Sh
                 sharedPreferences.getInt(KEY_MAP_TYPE, DEFAUL_MAP),
                 Point(Double.fromBits(sharedPreferences.getLong(KEY_LAST_CAMERA_LAT, DEFAULT_LAT.toRawBits())),
                         Double.fromBits(sharedPreferences.getLong(KEY_LAST_CAMERA_LON, DEFAULT_LONG.toRawBits()))),
-                sharedPreferences.getFloat(KEY_LAST_CAMERA_ZOOM, 0F))
+                sharedPreferences.getFloat(KEY_LAST_CAMERA_ZOOM, DEFAULT_ZOOM))
 
     override fun setMapStatus(status: MapStatus) = sharedPreferences.edit().apply {
             putInt(KEY_MAP_TYPE, status.mapType)
@@ -22,27 +21,11 @@ class SharedMapPreferences @Inject constructor(private val sharedPreferences: Sh
             putFloat(KEY_LAST_CAMERA_ZOOM, status.cameraZoom)
         }.apply()
 
-    override fun getInfoBoxStatus() = InfoBoxStatus(
-            sharedPreferences.getInt(KEY_SELECTED_TRACK_INDEX, 0),
-            sharedPreferences.getBoolean(KEY_IS_INFO_EXTENDED, true),
-            sharedPreferences.getBoolean(KEY_IS_INFO_LOCKED, false)
-    )
-
-    override fun setInfoBoxStatus(infoBoxStatus: InfoBoxStatus) = sharedPreferences.edit().apply {
-            putInt(KEY_SELECTED_TRACK_INDEX, infoBoxStatus.selectedTrackIndex)
-            putBoolean(KEY_IS_INFO_EXTENDED, infoBoxStatus.isExtended)
-            putBoolean(KEY_IS_INFO_LOCKED, infoBoxStatus.isLocked)
-        }.apply()
-
     companion object {
         private const val KEY_MAP_TYPE = "map_type"
         private const val KEY_LAST_CAMERA_LAT = "lat"
         private const val KEY_LAST_CAMERA_LON = "lon"
         private const val KEY_LAST_CAMERA_ZOOM = "zoom"
-
-        private const val KEY_SELECTED_TRACK_INDEX = "selectedTrackIndex"
-        private const val KEY_IS_INFO_EXTENDED = "infoExtended"
-        private const val KEY_IS_INFO_LOCKED = "isHikeLocked"
 
         private const val DEFAUL_MAP = 1
         private const val DEFAULT_ZOOM = 14F
