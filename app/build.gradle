@@ -33,7 +33,11 @@ android {
 
 
 ext {
-    appcompat_version = '1.0.2'
+    androidx_appcompat_version = '1.1.0'
+    androidx_arch_version = '2.1.0'
+    androidx_legacy_version = '1.0.0'
+    androidx_lifecycle_version = '2.2.0'
+    androidx_preference_version = '1.1.0'
 
     dagger_version = '2.23.2'
 
@@ -45,8 +49,14 @@ ext {
     mockitoKotlinVersion = '2.0.0-RC2'
 
     // quality
-    leak_version = '2.0-alpha-3'
+    leak_version = '2.1'
     timber_version = '4.7.1'
+
+    maps_version = '8.4.0'
+    maps_utils_version = '0.4.3'
+
+    parser_version = '1.5.0'
+    jodatime_version = '2.10.3'
 }
 
 dependencies {
@@ -55,18 +65,19 @@ dependencies {
     kapt "com.google.dagger:dagger-compiler:$dagger_version"
     implementation "com.google.dagger:dagger:$dagger_version"
 
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation "androidx.appcompat:appcompat:$appcompat_version"
-    implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
-    implementation "androidx.preference:preference:1.1.0-rc01"
+    implementation "androidx.legacy:legacy-support-v4:$androidx_legacy_version"
+    implementation "androidx.appcompat:appcompat:$androidx_appcompat_version"
+    implementation "androidx.arch.core:core-testing:$androidx_arch_version"
+    implementation "androidx.lifecycle:lifecycle-extensions:$androidx_lifecycle_version"
+    implementation "androidx.preference:preference:$androidx_preference_version"
 
     // maps
-    implementation 'com.google.android.gms:play-services-maps:8.4.0'
-    implementation 'com.google.maps.android:android-maps-utils:0.4.3'
+    implementation "com.google.android.gms:play-services-maps:$maps_version"
+    implementation "com.google.maps.android:android-maps-utils:$maps_utils_version"
 
     // tools
-    api 'io.ticofab.androidgpxparser:parser:1.5.0'
-    implementation 'net.danlew:android.joda:2.10.2'
+    implementation "io.ticofab.androidgpxparser:parser:$parser_version"
+    implementation "net.danlew:android.joda:$jodatime_version"
 
     // kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
@@ -83,7 +94,6 @@ dependencies {
     // quality
     debugImplementation "com.squareup.leakcanary:leakcanary-android:$leak_version"
     implementation "com.jakewharton.timber:timber:$timber_version"
-    implementation "androidx.arch.core:core-testing:2.0.1"
 }
 
 static def getEnvironmentVariable(key) {
