@@ -1,4 +1,4 @@
-package org.szvsszke.vitezlo2018.presentation.map
+package org.szvsszke.vitezlo2018.presentation.listitems
 
 import androidx.annotation.StringRes
 import com.xwray.groupie.kotlinandroidextensions.GroupieViewHolder

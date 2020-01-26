@@ -1,8 +1,6 @@
-package org.szvsszke.vitezlo2018.presentation.map
+package org.szvsszke.vitezlo2018.presentation.listitems
 
 import androidx.annotation.StringRes
-import com.xwray.groupie.ExpandableGroup
-import com.xwray.groupie.ExpandableItem
 import com.xwray.groupie.kotlinandroidextensions.GroupieViewHolder
 import com.xwray.groupie.kotlinandroidextensions.Item
 import kotlinx.android.synthetic.main.item_simple.*
@@ -15,14 +13,4 @@ open class SimpleItem(@StringRes private val text: Int): Item()  {
     }
 
     override fun getLayout() = R.layout.item_simple
-}
-
-class SimpleExpandableItem(@StringRes titleStringResId: Int)
-    : SimpleItem(titleStringResId), ExpandableItem {
-
-    private lateinit var expandableGroup: ExpandableGroup
-
-    override fun setExpandableGroup(onToggleListener: ExpandableGroup) {
-        this.expandableGroup = onToggleListener
-    }
 }
